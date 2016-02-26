@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% load staticfiles %}
+    {% include 'templates/breadcrumbs.html' %}
+    <article class="container-fluid">
+        {% include 'templates/card.html' %}
+    </article>
+{% endblock %}

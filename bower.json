@@ -1,0 +1,26 @@
+{
+  "name": "lisbon",
+  "authors": [
+    "Constantine Podlesny"
+  ],
+  "description": "traveller",
+  "main": "",
+  "moduleType": [],
+  "keywords": [
+    "django"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "lodash": "^4.5.1",
+    "bootstrap": "^4.0.0",
+    "components-font-awesome": "^4.5.0"
+  }
+}

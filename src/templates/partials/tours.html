@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% include 'templates/breadcrumbs.html' %}
+    <article class="container-fluid tours">
+    <h1 class="display-4 type">{{ title }}</h1>
+    <div class="row">
+    {% for object in tour_list %}
+        <div class="col-md-4">
+        {% include 'templates/card.html' %}
+        </div>
+    {% endfor %}
+    </div>
+        {% include 'templates/pagination.html' %}
+    </article>
+{% endblock %}

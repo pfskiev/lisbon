@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+{% block title %}{{ block.super }}Home{% endblock %}
+{% block content %}
+    <article>
+        <div class="img">
+            <div class="container">
+                <h1 class="display-3">Cras justo odio, dapibus ac </h1>
+                <h1 class="display-3">facilisis in, egestas eget quam.</h1>
+                <a class="btn btn-lg btn-primary" href="{% url 'accounts:signup' %}" role="button">Sign up for Free!</a>
+            </div>
+        </div>
+    </article>
+    <article class="offer">
+        <div class="container">
+            <h3 class="display-3 text-center">We Offer</h3>
+            <div class="row">
+            {% for object in  offer_list%}
+                <div class="col-md-4">
+                    {% include 'templates/card.html' %}
+                </div>
+            {% endfor %}
+        </div>
+        </div>
+    </article>
+{% endblock %}
