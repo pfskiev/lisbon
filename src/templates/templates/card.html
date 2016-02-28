@@ -6,11 +6,22 @@
         <a href="{{ object.id }}"><img style="max-height: 500px;   object-fit: cover;" class="img-fluid" src="{{ object.url }}" alt="" width="100%"></a>
     {% endif %}
     <div class="card-block">
+
+        {% if pt %}
+
+
+        {% else %}
+
+
+        {% endif %}
+
+
         <h4 class="card-title">{{ object.title_pt }}</h4>
         <h4 class="card-title">{{ object.title }}</h4>
-        <p class="card-text">{{ object.text }}</p>
-        <a href="{{ object.id }}" class="btn btn-danger">BOOK NOW</a>
+        <p class="card-text text-justify">{{ object.text }}</p>
+        <a href="{{ object.id }}" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">BOOK NOW</a>
         <a href="{{ object.id }}" class="btn btn-danger-outline">DETAILS</a>
         {% include 'templates/share.html' %}
     </div>
+    {% include 'templates/modal.html' %}
 </div>

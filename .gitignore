@@ -63,4 +63,4 @@ src/static/vendor/
 src/media/
 
 # Migrations
-*/*/migrations/*_initial.py
+*/*/migrations/*.py
