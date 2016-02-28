@@ -11,11 +11,6 @@
         <p class="card-text">{{ object.text }}</p>
         <a href="{{ object.id }}" class="btn btn-danger">BOOK NOW</a>
         <a href="{{ object.id }}" class="btn btn-danger-outline">DETAILS</a>
-
-      {{ request.build_absolute_uri }}{{ object.id  }}
-      {{ request.get_full_path }}
-      {{ request.user }}
-      {{ request.get_current_site }}
         {% include 'templates/share.html' %}
     </div>
 </div>
