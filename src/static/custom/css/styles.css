@@ -59,7 +59,7 @@ article.tours {
 
     article {
         background:url(https://s-media-cache-ak0.pinimg.com/736x/5f/6b/b6/5f6bb6973d346449c793837ef5449e74.jpg);
-        height:1000px;
+        min-height:1000px;
 
     }
 }
@@ -95,7 +95,7 @@ background-color:rgba(2,117,216,1);
 display:flex;
 flex-direction:row;
 align-items:center;
-height:600px;
+min-height:600px;
 }
 
 .img:after {
