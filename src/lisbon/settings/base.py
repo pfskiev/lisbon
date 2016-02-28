@@ -100,6 +100,14 @@ DATABASES = {
     'default': env.db(),
 }
 
+EMAIL_USE_TLS = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_PASSWORD = 'Rhfrfpz,hf1301'
+EMAIL_HOST_USER = 'kostiantyn.pidlisnyi@customertimes.com'
+EMAIL_PORT = 587
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
 # Internationalization
 # https://docs.djangoproject.com/en/dev/topics/i18n/
 
@@ -120,7 +128,7 @@ STATIC_URL = '/static/'
 
 ALLOWED_HOSTS = []
 
-# Crispy Form Theme - Bootstrap 3
+# Crispy Form Theme - Bootstrap 3pyt
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # For Bootstrap 3, change error alert to 'danger'

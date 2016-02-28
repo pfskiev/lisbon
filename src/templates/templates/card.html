@@ -1,18 +1,21 @@
 {% load staticfiles %}
 <div class="card">
-    <a href="{{ object.id }}"><img style="max-height: 500px;   object-fit: cover;" class="img-fluid" src="{% static '/media/' %}{{ object.img }}" alt="" width="100%"></a>
+    {% if object.img %}
+        <a href="{{ object.id }}"><img style="max-height: 500px;   object-fit: cover;" class="img-fluid" src="{% static '/media/' %}{{ object.img }}" alt="" width="100%"></a>
+    {% else %}
+        <a href="{{ object.id }}"><img style="max-height: 500px;   object-fit: cover;" class="img-fluid" src="{{ object.url }}" alt="" width="100%"></a>
+    {% endif %}
     <div class="card-block">
         <h4 class="card-title">{{ object.title_pt }}</h4>
         <h4 class="card-title">{{ object.title }}</h4>
         <p class="card-text">{{ object.text }}</p>
-        <a href="{{ object.id }}" class="btn btn-warning">Order</a>
-        <a href="{{ object.id }}" class="btn btn-warning-outline">Details</a>
+        <a href="{{ object.id }}" class="btn btn-danger">BOOK NOW</a>
+        <a href="{{ object.id }}" class="btn btn-danger-outline">DETAILS</a>
 
-{#      {{ request.build_absolute_uri }}{{ object.id  }}#}
-{#      {{ request.get_full_path }}#}
-{#      {{ request.user }}#}
-{#      {{ request.get_current_site }}#}
-
+      {{ request.build_absolute_uri }}{{ object.id  }}
+      {{ request.get_full_path }}
+      {{ request.user }}
+      {{ request.get_current_site }}
         {% include 'templates/share.html' %}
     </div>
 </div>

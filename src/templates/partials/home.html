@@ -3,6 +3,20 @@
 {% load crispy_forms_tags %}
 {% block title %}{{ block.super }}Home{% endblock %}
 {% block content %}
+    <style>
+/* Center align the text within the three columns below the carousel */
+.marketing .col-lg-4 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.marketing h2 {
+  font-weight: normal;
+}
+.marketing .col-lg-4 p {
+  margin-right: .75rem;
+  margin-left: .75rem;
+}
+    </style>
     <article>
         <div class="img">
             <div class="container">
@@ -13,15 +27,28 @@
         </div>
     </article>
     <article class="offer">
-        <div class="container">
-            <h3 class="display-3 text-center">We Offer</h3>
-            <div class="row">
+    <div class="container marketing">
+        <h3 class="display-3 text-center">We Offer</h3>
+        <div class="row">
             {% for object in  offer_list%}
-                <div class="col-md-4">
-                    {% include 'templates/card.html' %}
-                </div>
+                <div class="col-lg-4">
+                    <a href="/tours/service/{{ object.id }}"><img class="img-circle" src="{% static '/media/' %}{{ object.img }}" alt="Generic placeholder image" width="200" height="200"></a>
+                    <h2>{{ object.title }}</h2>
+                    <p class="text-justify">{{ object.text }}</p>
+                    <p><a class="btn btn-danger-outline" href="/tours/service/{{ object.id }}" role="button">View details &raquo;</a></p>
+                </div><!-- /.col-lg-4 -->
             {% endfor %}
         </div>
-        </div>
+    </div>
+
+{#        <div class="container">#}
+{#            <h3 class="display-3 text-center">We Offer</h3>#}
+{#            <div class="row">#}
+{#            {% for object in  offer_list%}#}
+{#                <div class="col-md-4">#}
+{#                    {% include 'templates/card.html' %}#}
+{#                </div>#}
+{#            {% endfor %}#}
+{#        </div>#}
     </article>
 {% endblock %}

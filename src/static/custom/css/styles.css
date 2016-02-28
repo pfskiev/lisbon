@@ -134,11 +134,11 @@ footer {
 }
 
 .pager {
-    min-width: 130px;
-    padding: 5px 10px;
-    font-weight: bolder;
-    color: aliceblue;
-    background-color: rgba(0, 0, 0, 0.7);
+    /*min-width: 130px;*/
+    /*padding: 5px 10px;*/
+    /*font-weight: bolder;*/
+    /*color: aliceblue;*/
+    /*background-color: rgba(0, 0, 0, 0.7);*/
 }
 
 .type {

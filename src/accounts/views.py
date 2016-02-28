@@ -8,6 +8,7 @@ from authtools import views as authviews
 from braces import views as bracesviews
 from django.conf import settings
 from . import forms
+from django.core.mail import send_mail
 
 User = get_user_model()
 
@@ -25,6 +26,9 @@ class LoginView(bracesviews.AnonymousRequiredMixin,
             expiry = getattr(settings, "KEEP_LOGGED_DURATION", ONE_MONTH)
             self.request.session.set_expiry(expiry)
         return redirect
+
+    send_mail('Hello!', 'Hello my dear pussy!', 'kostiantyn.pidlisnyi@customertimes.com',
+         ['podlesny@outlook.com'], fail_silently=True)
 
 
 class LogoutView(authviews.LogoutView):
@@ -60,6 +64,8 @@ class PasswordChangeView(authviews.PasswordChangeView):
                          "Your password was changed, "
                          "hence you have been logged out. Please relogin")
         return super(PasswordChangeView, self).form_valid(form)
+
+
 
 
 class PasswordResetView(authviews.PasswordResetView):

@@ -22,22 +22,21 @@
 {% include 'templates/nav.html' %}
 {% include 'templates/alerts.html' %}
 
-{% if not user.is_authenticated %}
-    <a class="btn btn-default" href="{% url 'accounts:login' %}" role="button">Log in</a>
-    <a class="btn btn-primary" href="{% url 'accounts:signup' %}" role="button">Sign up</a>
-{% else %}
-    {{ block.super }}
-{% endif %}
 
-
-{#    {% block splash %}#}
-{#    {% endblock splash %}#}
+    {% block splash %}
+    {% endblock splash %}
 
 
 {% block container %}
 {% endblock %}
 
 {% block content %}
+    {% if  request.user.is_authenticated %}
+    <a class="btn btn-default" href="{% url 'accounts:login' %}" role="button">Log in</a>
+    <a class="btn btn-primary" href="{% url 'accounts:signup' %}" role="button">Sign up</a>
+{% else %}
+    <a class="btn btn-primary" href="user/me" role="button">Profile</a>
+{% endif %}
 {% endblock %}
 
 {% include 'templates/footer.html' %}
