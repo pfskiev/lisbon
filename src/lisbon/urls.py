@@ -8,6 +8,7 @@ urlpatterns = [
     url(r'^$', views.home, name='home'),
     url(r'^admin/', admin.site.urls),
     url(r'^about/$', views.AboutPage.as_view(), name='about'),
+    url(r'^pricing/$', views.PricingPage.as_view(), name='pricing'),
     url(r'^users/', include('profiles.urls', namespace='profiles')),
     url(r'^tours/', include('tours.urls')),
     url(r'^', include('accounts.urls', namespace='accounts')),

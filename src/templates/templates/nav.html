@@ -7,10 +7,10 @@
         <div>
             <h4>Contact</h4>
             <ol class="list-unstyled">
-                <li><a href="#"> Follow on Twitter <i class="fa fa-twitter"></i></a></li>
-                <li><a href="#">  Follow on Facebook <i class="fa fa-facebook"></i></a></li>
-                <li><a href="#"> Follow on Instagram <i class="fa fa-instagram"></i></a></li>
-                <li><a href="#"> Email me <i class="fa fa-mail-forward"></i></a></li>
+                <li><a href="#">Follow on Twitter <i class="fa fa-twitter"></i></a></li>
+                <li><a href="#">Follow on Facebook <i class="fa fa-facebook"></i></a></li>
+                <li><a href="#">Follow on Instagram <i class="fa fa-instagram"></i></a></li>
+                <li><a href="#">Email me <i class="fa fa-mail-forward"></i></a></li>
             </ol>
         </div>
     </div>
@@ -30,10 +30,10 @@
                 <a class="nav-link" href="{% url 'tour_list' %}">Tours</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
+                <a class="nav-link" href="{% url 'pricing' %}">Pricing</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">About {{ active_link }}</a>
+                <a class="nav-link" href="{% url 'about' %}">About</a>
             </li>
           </ol>
           <form class="form-inline pull-xs-right hidden-xs-down hidden-sm-down">
