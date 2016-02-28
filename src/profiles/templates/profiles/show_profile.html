@@ -11,7 +11,11 @@
             <a href="{% url 'profiles:edit_self' %}" class="btn btn-primary-outline">Edit Profile</a>
             {% endif %}
         </div>
-        <div class="col-sm-2"><img title="profile picture" class="img-circle img-responsive" src="{% thumbnail show_user.profile.picture|default:'default_profile.png' 140x140 crop %}">
+        <div class="col-sm-2">
+
+            <img class="img-circle img-responsive" src="/media/{{ show_user.profile.picture }}" style="object-fit: cover;" alt="" width="140" height="140">
+
+{#            <img title="profile picture" class="img-circle img-responsive" src="{% thumbnail show_user.profile.picture|default:'default_profile.png' 140x140 crop %}">#}
         </div>
     </div>
 </div>
