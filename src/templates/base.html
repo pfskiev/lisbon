@@ -22,30 +22,8 @@
 {% include 'templates/nav.html' %}
 {% include 'templates/alerts.html' %}
 
-
-{% if user.is_authenticated %}
-                {% if user.is_staff %}
-                <a href="{% url 'admin:index' %}">Admin</a>
-                {% endif %}
-
-    <a href="#" >
-        <img src="{% thumbnail user.profile.picture|default:'default_profile.png' 30x30 crop %}" alt="" />
-			{{ user.get_full_name|truncatechars:20 }}
-
-		    </a>
-
-                  <ul>
-                    <li><a href="{% url 'profiles:show_self' %}">Profile</a></li>
-                    <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
-                  </ul>
-                </li>
-              {% endif %}
-
-
-
     {% block splash %}
     {% endblock splash %}
-
 
 {% block container %}
 {% endblock %}

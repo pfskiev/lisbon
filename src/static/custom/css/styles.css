@@ -170,3 +170,11 @@ footer {
     min-height: 500px;
 
 }
+
+.details {
+    padding-top: 90px;
+    padding-bottom: 120px;
+    background-color: rgba(255, 248, 220, 0.7);
+
+
+}
