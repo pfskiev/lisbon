@@ -43,3 +43,9 @@ class ServiceDetailView(generic.DetailView):
     template_name = 'partials/detail.html'
     context_object_name = 'object'
 
+
+class Edit(generic.edit.UpdateView):
+    model = Tour
+    template_name = 'partials/tour_form.html'
+    fields = ['text', 'url', 'img']
+    success_url = '/tours/'
