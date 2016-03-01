@@ -1,9 +1,9 @@
 {% load staticfiles %}
 <div class="card">
     {% if object.img %}
-        <a href="{{ object.id }}"><img style="max-height: 500px;   object-fit: cover;" class="img-fluid" src="{% static '/media/' %}{{ object.img }}" alt="" width="100%"></a>
+        <a href="{{ object.id }}"><img style="height: 350px;width: 100%; object-fit: cover;" class="img-fluid" src="{% static '/media/' %}{{ object.img }}" alt="" width="100%"></a>
     {% else %}
-        <a href="{{ object.id }}"><img style="max-height: 500px;   object-fit: cover;" class="img-fluid" src="{{ object.url }}" alt="" width="100%"></a>
+        <a href="{{ object.id }}"><img style="    height: 350px;width: 100%;   object-fit: cover;" class="img-fluid" src="{{ object.url }}" alt="" width="100%"></a>
     {% endif %}
     <div class="card-block">
 
@@ -21,7 +21,11 @@
         <p class="card-text text-justify">{{ object.text }}</p>
         <a href="{{ object.id }}" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">BOOK NOW</a>
         <a href="{{ object.id }}" class="btn btn-danger-outline">DETAILS</a>
+
         {% include 'templates/share.html' %}
+    {% if user.is_staff %}
+                        <a href="/tours/{{ object.id }}/edit/">edit</a>
+                    {% endif %}
     </div>
     {% include 'templates/modal.html' %}
 </div>

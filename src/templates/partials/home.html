@@ -30,16 +30,16 @@
     <div class="container marketing">
         <h3 class="display-3 text-center">We Offer</h3>
         <div class="row">
-            {% for object in  offer_list%}
+            {% for object in offer_list%}
                 <div class="col-lg-4">
-                    <a href="/tours/service/{{ object.id }}"><img class="img-circle" src="{% static '/media/' %}{{ object.img }}" alt="Generic placeholder image" style="object-fit: cover;" width="200" height="200"></a>
+                    <a href="/tours/service/{{ object.id }}"><img class="img-circle" src="{% static '/media/' %}{{ object.img }}" alt="Generic placeholder image" style="object-fit: cover;" width="250" height="250"></a>
                     <h2>{{ object.title }}</h2>
                     <p class="text-justify">{{ object.text }}</p>
                     <p><a class="btn btn-danger-outline" href="/tours/service/{{ object.id }}" role="button">View details &raquo;</a></p>
+                    {% if user.is_staff %}
+                        <a href="/tours/{{ object.id }}/edit/">edit</a>
+                    {% endif %}
                 </div>
-                {% if user.is_staff %}
-                    <a href="/tours/{{ object.id }}/edit/">edit</a>
-                {% endif %}
             {% endfor %}
         </div>
     </div>
