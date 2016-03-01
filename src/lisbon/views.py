@@ -15,5 +15,9 @@ class AboutPage(generic.TemplateView):
     template_name = 'partials/about.html'
 
 
-class PricingPage(generic.TemplateView):
+class ContactPage(generic.TemplateView):
+    template_name = 'partials/about.html'
+
+
+class ReviewPage(generic.TemplateView):
     template_name = 'partials/about.html'

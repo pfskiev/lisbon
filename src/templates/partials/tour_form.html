@@ -4,7 +4,8 @@
     <div class="container">
     <form action="" method="post">
         <input type="hidden" name="next" value="{{ next }}" class="form-control">
-        {% crispy form %}
+{#        {%  crispy form %}#}
+        {{ form }}
         <button type="submit" class="btn btn-sm btn-info">Подтвердить</button>
         {% csrf_token %}
     </form>
