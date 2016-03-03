@@ -1,4 +1,16 @@
+from django.core.urlresolvers import reverse
 from django.db import models
+from django.conf import settings
+from django.utils.text import slugify
+
+
+from django.conf import settings
+from django.core.urlresolvers import reverse
+from django.db import models
+from django.db.models.signals import pre_save
+from django.utils import timezone
+
+from django.utils.text import slugify
 
 
 class Tour(models.Model):
@@ -30,6 +42,17 @@ class Offer(models.Model):
         return self.title
 
 
+class Gallery(models.Model):
+    img = models.FileField(null=True, blank=True)
+    title = models.TextField(max_length=100, blank=True, null=False)
+
+    def __str__(self):
+        return self.title
+
+    def __unicode__(self):
+        return self.title
+
+
 class Contact(models.Model):
     first_name = models.CharField(max_length=100, blank=True, null=False)
     last_name = models.CharField(max_length=100, blank=True, null=False)
@@ -52,3 +75,24 @@ class Contact(models.Model):
 
     def __unicode__(self):
         return self.name
+
+
+# class PostManager(models.Manager):
+#     def active(self, *args, **kwargs):
+#         # Post.objects.all() = super(PostManager, self).all()
+#         return super(PostManager, self).filter(draft=False).filter(publish__lte=timezone.now())
+
+
+class Post(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1)
+    title = models.CharField(max_length=120)
+
+    def __unicode__(self):
+        return self.title
+
+    def __str__(self):
+        return self.title
+
+    def get_absolute_url(self):
+        return reverse("review_list")
+

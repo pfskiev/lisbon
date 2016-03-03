@@ -1,9 +1,9 @@
 @import 'variables';
 
 section {
+  background-color: $color_sand;
   padding-top: 100px;
 }
-
 article {
   padding-top: 100px;
   background:url(http://expo-cruises.com/wp-content/uploads/2014/11/PORTUGAL-7-lisbon.jpg);
@@ -12,7 +12,7 @@ article {
   transition: all .5s ease;
 }
 article.tours {
-  background: $color_white
+  background-color: $color_sand;
 }
 @media all and (max-width:768px) {
   article {

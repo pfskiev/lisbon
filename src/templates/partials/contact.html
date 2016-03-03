@@ -3,11 +3,13 @@
     {% include 'templates/breadcrumbs.html' %}
 {% endblock %}
 {% block content %}
-    <section class="container contact">
+    <section>
+    <div class="container contact">
         <div class="row">
         {% for contact in contact_list %}
             {% include 'templates/contact_card.html' %}
         {% endfor %}
         </div>
+    </div>
     </section>
 {% endblock %}

@@ -1,5 +1,6 @@
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
+from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import render
 from django.views import generic
 from .models import Tour, Offer, Contact
@@ -7,6 +8,7 @@ from .models import Tour, Offer, Contact
 
 def tour_list(request):
     queryset_list = Tour.objects.all()
+    breadcrumbs_list = [{'url': '/', 'name': 'Home'}, {'url': '/tours', 'name': 'Tours'}]
     query = request.GET.get("q")
     if query:
         queryset_list = queryset_list.filter(
@@ -24,8 +26,10 @@ def tour_list(request):
         queryset = paginator.page(paginator.num_pages)
 
     context = {
+
         'tour_list': queryset,
         'title': 'Tours',
+        'breadcrumbs_list': breadcrumbs_list,
         'page_request_var': page_request_var,
     }
 

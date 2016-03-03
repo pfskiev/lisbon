@@ -41,15 +41,15 @@ opacity:0.5;
 }
 
 .form-control {
-  border-color: $color_blue;
+  border-color: $color_sand;
   transition: all .3s ease;
 }
 .form-control:hover {
-  border-color: $color_sand;
+  border-color: $color_blue_light;
 }
 .form-control:focus {
-  border-color: $color_sand;
+  border-color: $color_blue_light;
 }
 .form-control:active {
-  border-color: $color_sand;
+  border-color: $color_blue_light;
 }

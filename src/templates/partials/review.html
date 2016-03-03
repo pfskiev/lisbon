@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+    <section>
+    {% for review in review_list %}
+
+
+        {{ review.user.name }}
+        {{ review.title }}
+
+
+
+
+{#        {{ review.slug }}#}
+{#        {{ review.image }}#}
+{#        {{ review.height_field }}#}
+{#        {{ review.width_field }}#}
+{#        {{ review.content }}#}
+{#        {{ review.draft }}#}
+{#        {{ review.publish }}#}
+{#        {{ review.updated }}#}
+{#        {{ review.timestamp }}#}
+
+
+
+
+    {% endfor %}
+    <a href="{% url 'create_review' %} }">add post</a>
+    </section>
+{% endblock %}

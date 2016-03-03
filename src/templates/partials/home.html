@@ -37,7 +37,7 @@
                     <p class="text-justify">{{ object.text }}</p>
                     <p><a class="btn btn-danger-outline" href="/tours/service/{{ object.id }}" role="button">View details &raquo;</a></p>
                     {% if user.is_staff %}
-                        <a href="/tours/{{ object.id }}/edit/">edit</a>
+                        <a class="btn btn-sm btn-danger-outline" href="/tours/{{ object.id }}/edit/">edit</a>
                     {% endif %}
                 </div>
             {% endfor %}

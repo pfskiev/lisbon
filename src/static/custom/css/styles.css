@@ -66,6 +66,7 @@ body {
   background-color: white; }
 
 section {
+  background-color: #ECECDA;
   padding-top: 100px; }
 
 article {
@@ -76,7 +77,7 @@ article {
   transition: all .5s ease; }
 
 article.tours {
-  background: #FFF; }
+  background-color: #ECECDA; }
 
 @media all and (max-width: 768px) {
   article {
@@ -118,7 +119,7 @@ footer {
 .card {
   border: 0;
   transition: all .3s ease;
-  background: #ECECDA; }
+  background: #FFF; }
   .card h4.card-title {
     color: #0E2F56; }
   .card p {
@@ -195,16 +196,16 @@ footer {
   background-color: rgba(255, 248, 220, 0.7); }
 
 .form-control {
-  border-color: #0E2F56;
+  border-color: #ECECDA;
   transition: all .3s ease; }
 
 .form-control:hover {
-  border-color: #ECECDA; }
+  border-color: #118DF0; }
 
 .form-control:focus {
-  border-color: #ECECDA; }
+  border-color: #118DF0; }
 
 .form-control:active {
-  border-color: #ECECDA; }
+  border-color: #118DF0; }
 
 /*# sourceMappingURL=styles.css.map */

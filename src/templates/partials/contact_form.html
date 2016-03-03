@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
+    <section>
     <div class="container">
     <form action="" method="post">
         <input type="hidden" name="next" value="{{ next }}" class="form-control">
@@ -21,4 +22,5 @@
             $(this).addClass('my-label')
         })
     </script>
+    </section>
 {% endblock %}

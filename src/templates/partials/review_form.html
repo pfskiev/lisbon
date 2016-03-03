@@ -3,23 +3,24 @@
 {% block content %}
     <section>
     <div class="container">
-    <form action="/reviews/" method="post">
-        <input type="hidden" name="next" value="{{ next }}" class="form-control">
-        {{ form }}
-        <br>
-        <a type="submit" class="btn btn-lg btn-blue">Save</a>
-        <br>
-        <br>
-        <br>
-        {% csrf_token %}
-    </form>
+{#    <form action="" method="post">#}
+{#        <input type="hidden" name="next" value="{{ next }}" class="form-control">#}
+{#        {{ form }}#}
+{#        <br>#}
+{#        <a type="submit" class="btn btn-lg btn-blue">Save</a>#}
+{#        <br>#}
+{#        <br>#}
+{#        <br>#}
+{#        {% csrf_token %}#}
+{#    </form>#}
+
     </div>
     <script>
         $('textarea').each(function(){
             $(this).addClass('form-control')
         })
         $('input').each(function(){
-            $(this).addClass('form-control')
+            $(thdiv.addClass('form-control')
         })
         $('label').each(function(){
             $(this).addClass('my-label')
