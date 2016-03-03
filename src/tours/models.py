@@ -3,7 +3,6 @@ from django.db import models
 from django.conf import settings
 from django.utils.text import slugify
 
-
 from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.db import models
@@ -45,6 +44,7 @@ class Offer(models.Model):
 class Gallery(models.Model):
     img = models.FileField(null=True, blank=True)
     title = models.TextField(max_length=100, blank=True, null=False)
+    video = models.URLField(max_length=1000, blank=True, null=False)
 
     def __str__(self):
         return self.title
@@ -84,7 +84,7 @@ class Contact(models.Model):
 
 
 class Post(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL)
     title = models.CharField(max_length=120)
 
     def __unicode__(self):
@@ -96,3 +96,5 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse("review_list")
 
+    def user(self):
+        return re

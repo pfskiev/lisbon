@@ -14,13 +14,18 @@
 {#        {% csrf_token %}#}
 {#    </form>#}
 
-    </div>
+        <form method='POST' action='' enctype='multipart/form-data'>{% csrf_token %}
+{{ form.as_p }}
+<input type="submit" class="btn btn-lg btn-blue" value='Create Review' />
+</form>
+</div>
+
     <script>
         $('textarea').each(function(){
             $(this).addClass('form-control')
         })
         $('input').each(function(){
-            $(thdiv.addClass('form-control')
+            $(this).addClass('form-control')
         })
         $('label').each(function(){
             $(this).addClass('my-label')

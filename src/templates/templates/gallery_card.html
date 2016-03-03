@@ -3,7 +3,14 @@
     {% if object.img %}
         <a href="{{ object.id }}"><img style="height: 350px;width: 100%; object-fit: cover;" class="img-fluid" src="{% static '/media/' %}{{ object.img }}" alt="" width="100%"></a>
     {% else %}
-        <a href="{{ object.id }}"><img style="    height: 350px;width: 100%;   object-fit: cover;" class="img-fluid" src="{{ object.url }}" alt="" width="100%"></a>
+
+        <div class="embed-responsive embed-responsive-16by9">
+        <iframe src="{{ object.video }}?autoplay=1"  frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+
+        </div>
+{#        <a href="{{ object.id }}"><img style="    height: 350px;width: 100%;   object-fit: cover;" class="img-fluid" src="{{ object.url }}" alt="" width="100%"></a>#}
+
     {% endif %}
     <div class="card-block">
 
