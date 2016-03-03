@@ -24,7 +24,7 @@
 
         {% include 'templates/share.html' %}
         {% if user.is_staff %}
-            <a href="/tours/{{ object.id }}/edit/">edit</a>
+            <a class="btn btn-sm btn-danger-outline " href="/tours/{{ object.id }}/edit/">edit</a>
         {% endif %}
     </div>
     {% include 'templates/modal.html' %}

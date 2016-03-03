@@ -1,9 +1,6 @@
 <div class="col-md-4">
     <div class="card">
         <div class="card-block">
-            {% if user.is_staff %}
-                <a href="/tours/contact/{{ contact.id }}/edit/">edit</a>
-            {% endif %}
             <h4 class="card-title">{{ contact.first_name }}</h4>
             <h6 class="card-subtitle text-muted">{{ contact.last_name }}</h6>
         </div>
@@ -42,6 +39,9 @@
             {% endif %}
             {% if contact.google  %}
                 <a class="card-link" href="{{ contact.google }}">Follow on Google + <span class="fa fa-google-plus"></span></a>
+            {% endif %}
+            {% if user.is_staff %}
+                <a class="btn btn-sm btn-danger-outline" href="/tours/contact/{{ contact.id }}/edit/">edit</a>
             {% endif %}
         </div>
     </div>
