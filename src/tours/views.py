@@ -2,7 +2,7 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
 from django.shortcuts import render
 from django.views import generic
-from .models import Tour, Offer
+from .models import Tour, Offer, Contact
 
 
 def tour_list(request):
@@ -49,3 +49,11 @@ class Edit(generic.edit.UpdateView):
     template_name = 'partials/tour_form.html'
     fields = ['text', 'url', 'img']
     success_url = '/tours/'
+
+
+class ContactEdit(generic.edit.UpdateView):
+    model = Contact
+    template_name = 'partials/contact_form.html'
+    fields = ['first_name', 'last_name', 'img', 'category', 'mobile', 'email', 'whatsapp', 'viber', 'telegram', 'skype',
+              'facebook', 'twitter', 'pinterest', 'google', 'instagram']
+    success_url = '/contacts/'
