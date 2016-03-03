@@ -1,0 +1,25 @@
+.type {
+  display: inline-block;
+  background: rgba(0,0,0,0.4);
+  color: #fff;
+  font-family: 'HelveticaNeueCyr-Light', sans-serif;
+  font-weight: 100;
+  transition: all .3s ease;
+  padding: 5px 10px;
+}
+.type:hover {
+  background:rgba(0,0,0,0.7);
+}
+.display-3 {
+  display: inline-block;
+  background: rgba(0,0,0,0.3);
+  color: #fff;
+  font-family: HelveticaNeueCyr-Roman, sans-serif;
+  font-weight: bolder;
+  transition: all .3s ease;
+  padding: 60px 70px;
+  border: 1px solid white;
+}
+.display-3:hover {
+  background:rgba(0,0,0,0.4);
+}

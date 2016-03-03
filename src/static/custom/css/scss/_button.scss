@@ -1,0 +1,28 @@
+@import 'variables';
+
+.btn.btn-success-outline {
+  color:rgba(0,0,0,0.7);
+  border:1px solid rgba(0,0,0,0.7);
+  transition:all .3s ease;
+}
+.btn.btn-success-outline:hover {
+  color:#FFF;
+  background-color:rgba(0,0,0,0.4);
+  border:1px solid rgba(0,0,0,0.4);
+}
+.btn-danger {
+  color: $color_white;
+  background-color: $color_red;
+  border-color: $color_red;
+  transition: all .3s ease;
+}
+.btn-danger-outline {
+  color: $color_red;
+  background-color: $color_white;
+  border-color: $color_red;
+}
+.btn-danger-outline:hover{
+  color: $color_white;
+  background-color: $color_red;
+  border-color: $color_red;
+}

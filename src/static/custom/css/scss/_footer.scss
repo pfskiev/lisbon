@@ -1,0 +1,26 @@
+@import 'variables';
+
+footer {
+  padding-top: 60px;
+  padding-bottom: 30px;
+  background: $color_blue;
+  h4 {
+    color: $color_red;
+  }
+  a {
+    color: white;
+    transition: all .3s ease;
+  }
+  a:hover {
+    color: $color_blue_light;
+  }
+  .fa {
+    display: inline-block;
+    margin-left: auto;
+    margin-right:auto;
+    color: $color_red;
+  }
+  p {
+    color: white;
+  }
+}

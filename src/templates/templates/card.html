@@ -14,18 +14,18 @@
 
 
         {% endif %}
-
-
         <h4 class="card-title">{{ object.title_pt }}</h4>
-        <h4 class="card-title">{{ object.title }}</h4>
-        <p class="card-text text-justify">{{ object.text }}</p>
+
+
+{#        <h4 class="card-title">{{ object.title }}</h4>#}
+        <p class="card-text text-justify">{{ object.text|truncatechars:200}}</p>
         <a href="{{ object.id }}" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">BOOK NOW</a>
-        <a href="{{ object.id }}" class="btn btn-danger-outline">DETAILS</a>
+        <a href="{{ object.id }}" class="btn btn-danger-outline">Read More</a>
 
         {% include 'templates/share.html' %}
-    {% if user.is_staff %}
-                        <a href="/tours/{{ object.id }}/edit/">edit</a>
-                    {% endif %}
+        {% if user.is_staff %}
+            <a href="/tours/{{ object.id }}/edit/">edit</a>
+        {% endif %}
     </div>
     {% include 'templates/modal.html' %}
 </div>

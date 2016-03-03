@@ -1,0 +1,15 @@
+@import 'variables';
+.card {
+  border: 0;
+  transition: all .3s ease;
+  background: $color_sand;
+  h4.card-title {
+    color: $color_blue;
+  }
+  p {
+    color: $color_blue;
+  }
+}
+.fa {
+  color: $color_red;
+}

@@ -1,0 +1,17 @@
+@import 'variables';
+
+.contact {
+  h5 {
+    color: $color_blue;
+  }
+  h4 {
+    color: $color_blue;
+  }
+  p {
+    color: $color_blue;
+  }
+  span {
+    color: $color_red;
+    font-weight: bold;
+  }
+}

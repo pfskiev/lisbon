@@ -8,7 +8,7 @@ urlpatterns = [
     url(r'^$', views.home, name='home'),
     url(r'^admin/', admin.site.urls),
     url(r'^about/$', views.AboutPage.as_view(), name='about'),
-    url(r'^contacts/$', views.ContactPage.as_view(), name='contacts'),
+    url(r'^contacts/$', views.contact_list, name='contacts'),
     url(r'^reviews/$', views.ReviewPage.as_view(), name='reviews'),
     url(r'^users/', include('profiles.urls', namespace='profiles')),
     url(r'^tours/', include('tours.urls')),

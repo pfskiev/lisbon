@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import generic
-from tours.models import Offer
+from tours.models import Offer, Contact
 
 
 def home(request):
@@ -15,8 +15,12 @@ class AboutPage(generic.TemplateView):
     template_name = 'partials/about.html'
 
 
-class ContactPage(generic.TemplateView):
-    template_name = 'partials/about.html'
+def contact_list(request):
+    context = {
+        'contact_list': Contact.objects.all(),
+    }
+
+    return render(request, 'partials/contact.html', context)
 
 
 class ReviewPage(generic.TemplateView):

@@ -21,14 +21,13 @@ class LoginView(bracesviews.AnonymousRequiredMixin,
     def form_valid(self, form):
         redirect = super(LoginView, self).form_valid(form)
         remember_me = form.cleaned_data.get('remember_me')
+        send_mail('Hello!', 'Hello my dear pussy!', 'kostiantyn.pidlisnyi@customertimes.com',
+                  ['podlesny@outlook.com'], fail_silently=False)
         if remember_me is True:
-            ONE_MONTH = 30*24*60*60
+            ONE_MONTH = 30 * 24 * 60 * 60
             expiry = getattr(settings, "KEEP_LOGGED_DURATION", ONE_MONTH)
             self.request.session.set_expiry(expiry)
         return redirect
-
-    send_mail('Hello!', 'Hello my dear pussy!', 'kostiantyn.pidlisnyi@customertimes.com',
-         ['podlesny@outlook.com'], fail_silently=True)
 
 
 class LogoutView(authviews.LogoutView):
@@ -64,8 +63,6 @@ class PasswordChangeView(authviews.PasswordChangeView):
                          "Your password was changed, "
                          "hence you have been logged out. Please relogin")
         return super(PasswordChangeView, self).form_valid(form)
-
-
 
 
 class PasswordResetView(authviews.PasswordResetView):

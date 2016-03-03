@@ -1,0 +1,36 @@
+@import 'scss/general';
+@import 'scss/fonts';
+@import 'scss/typography';
+@import 'scss/nav';
+@import 'scss/breadcrumbs';
+@import 'scss/section';
+@import 'scss/footer';
+@import 'scss/icons';
+@import 'scss/card';
+@import 'scss/button';
+@import 'scss/variables';
+@import 'scss/pagination';
+@import 'scss/contact';
+
+.img {
+display:flex;
+flex-direction:row;
+align-items:center;
+min-height:600px;
+}
+.img:after {
+opacity:0.5;
+}
+
+
+.offer {
+    background: papayawhip;
+    min-height: 500px;
+
+}
+
+.details {
+    padding-top: 90px;
+    padding-bottom: 120px;
+    background-color: rgba(255, 248, 220, 0.7);
+}

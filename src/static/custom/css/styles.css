@@ -1,181 +1,187 @@
+body {
+  font-family: 'HelveticaNeueCyr-Light', sans-serif; }
+
 @font-face {
   font-family: 'HelveticaNeueCyr-Light';
   font-style: normal;
   font-weight: normal;
-  src: local('HelveticaNeueCyr-Light'), url('../fonts/HelveticaNeueCyr-Light.woff') format('woff'); }
+  src: local("HelveticaNeueCyr-Light"), url("../fonts/HelveticaNeueCyr-Light.woff") format("woff"); }
 @font-face {
   font-family: 'HelveticaNeueCyr-Roman';
   font-style: normal;
   font-weight: normal;
-  src: local('HelveticaNeueCyr-Roman'), url('../fonts/HelveticaNeueCyr-Roman.woff') format('woff'); }
+  src: local("HelveticaNeueCyr-Roman"), url("../fonts/HelveticaNeueCyr-Roman.woff") format("woff"); }
 @font-face {
   font-family: 'HelveticaNeueCyr-UltraLight';
   font-style: normal;
   font-weight: normal;
-  src: local('HelveticaNeueCyr-UltraLight'), url('../fonts/HelveticaNeueCyr-UltraLight.woff') format('woff'); }
-
-body {
-
-font-family:HelveticaNeueCyr-Light, sans-serif;
-
-}
-
-.fa {
-    opacity: 0.7;
-    transition: all .3s ease;
-}
-
-.fa:hover {
-    opacity: 1;
-}
-
-.breadcrumb {
-    width: 100%;
-    position: absolute;
-    margin-bottom: 0;
-    border-radius: 0;
-    background-color: rgba(255, 255, 255, 0.7);
-    transition: all .5s ease;
-}
-.breadcrumb:hover {
-    background-color: rgba(255, 255, 255, 1);
-}
-
-article {
-    padding-top: 100px;
-    background:url(http://expo-cruises.com/wp-content/uploads/2014/11/PORTUGAL-7-lisbon.jpg);
-background-size:cover;
-min-height:600px;
-    transition: all .5s ease;
-}
-
-article.tours {
-
-    background: aliceblue;
-
-}
-
-@media all and (max-width:768px) {
-
-    article {
-        background:url(https://s-media-cache-ak0.pinimg.com/736x/5f/6b/b6/5f6bb6973d346449c793837ef5449e74.jpg);
-        min-height:1000px;
-
-    }
-}
-
-
-.navbar-collapse {
-background-color: rgba(240, 248, 255, 0.8);
-}
-
-.btn.btn-success-outline {
-color:rgba(0,0,0,0.7);
-border:1px solid rgba(0,0,0,0.7);
-transition:all .3s ease;
-}
-
-.btn.btn-success-outline:hover {
-color:#FFF;
-background-color:rgba(0,0,0,0.4);
-border:1px solid rgba(0,0,0,0.4);
-}
-
-.navbar {
-border-radius:0;
-background-color:rgba(2,117,216,1);
-transition:all .3s ease;
-}
-
-.navbar:hover {
-background-color:rgba(2,117,216,1);
-}
-
-.img {
-display:flex;
-flex-direction:row;
-align-items:center;
-min-height:600px;
-}
-
-.img:after {
-opacity:0.5;
-}
-
-.display-3 {
-display: inline-block;
-    background: rgba(0,0,0,0.3);
-    color: #fff;
-    font-family: HelveticaNeueCyr-Roman, sans-serif;
-    font-weight: bolder;
-    transition: all .3s ease;
-    padding: 60px 70px;
-    border: 1px solid white;
-}
-
-.display-3:hover {
-background:rgba(0,0,0,0.4);
-}
-
-footer {
-    padding-top: 60px;
-    background: lightslategray;
-    padding-bottom: 30px;
-}
-
-.card {
-    border: 0;
-    transition: all .3s ease;
-
-}
-
-.card:hover {
-
-
-}
-
-.pager {
-    /*min-width: 130px;*/
-    /*padding: 5px 10px;*/
-    /*font-weight: bolder;*/
-    /*color: aliceblue;*/
-    /*background-color: rgba(0, 0, 0, 0.7);*/
-}
-
+  src: local("HelveticaNeueCyr-UltraLight"), url("../fonts/HelveticaNeueCyr-UltraLight.woff") format("woff"); }
 .type {
-    display: inline-block;
-    background: rgba(0,0,0,0.4);
-    color: #fff;
-    font-family: HelveticaNeueCyr-Light, sans-serif;
-    font-weight: 100;
-    transition: all .3s ease;
-    padding: 5px 10px;
-
-}
+  display: inline-block;
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  font-family: 'HelveticaNeueCyr-Light', sans-serif;
+  font-weight: 100;
+  transition: all .3s ease;
+  padding: 5px 10px; }
 
 .type:hover {
-    background:rgba(0,0,0,0.7);
-}
+  background: rgba(0, 0, 0, 0.7); }
+
+.display-3 {
+  display: inline-block;
+  background: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  font-family: HelveticaNeueCyr-Roman, sans-serif;
+  font-weight: bolder;
+  transition: all .3s ease;
+  padding: 60px 70px;
+  border: 1px solid white; }
+
+.display-3:hover {
+  background: rgba(0, 0, 0, 0.4); }
+
+.navbar {
+  border-radius: 0;
+  background-color: #118DF0;
+  transition: all .3s ease; }
+  .navbar a {
+    color: #ECECDA; }
+
+.navbar:hover {
+  background-color: #0275d8; }
+
+.navbar-collapse {
+  background-color: rgba(240, 248, 255, 0.8); }
+
+.breadcrumb {
+  width: 100%;
+  position: absolute;
+  margin-bottom: 0;
+  border-radius: 0;
+  background-color: rgba(255, 255, 255, 0.7);
+  transition: all .5s ease; }
+
+.breadcrumb:hover {
+  background-color: white; }
+
+section {
+  padding-top: 100px; }
+
+article {
+  padding-top: 100px;
+  background: url(http://expo-cruises.com/wp-content/uploads/2014/11/PORTUGAL-7-lisbon.jpg);
+  background-size: cover;
+  min-height: 600px;
+  transition: all .5s ease; }
+
+article.tours {
+  background: #FFF; }
+
+@media all and (max-width: 768px) {
+  article {
+    background: url(https://s-media-cache-ak0.pinimg.com/736x/5f/6b/b6/5f6bb6973d346449c793837ef5449e74.jpg);
+    min-height: 1000px; } }
+footer {
+  padding-top: 60px;
+  padding-bottom: 30px;
+  background: #0E2F56; }
+  footer h4 {
+    color: #FF304F; }
+  footer a {
+    color: white;
+    transition: all .3s ease; }
+  footer a:hover {
+    color: #118DF0; }
+  footer .fa {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    color: #FF304F; }
+  footer p {
+    color: white; }
+
+.fa {
+  opacity: 0.7;
+  transition: all .3s ease; }
+
+.fa:hover {
+  opacity: 1; }
 
 .social {
-        justify-content: center;
-    align-items: center;
-    width: 200px;
-    display: flex;
-    height: 63px;
-}
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  display: flex;
+  height: 63px; }
+
+.card {
+  border: 0;
+  transition: all .3s ease;
+  background: #ECECDA; }
+  .card h4.card-title {
+    color: #0E2F56; }
+  .card p {
+    color: #0E2F56; }
+
+.fa {
+  color: #FF304F; }
+
+.btn.btn-success-outline {
+  color: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.7);
+  transition: all .3s ease; }
+
+.btn.btn-success-outline:hover {
+  color: #FFF;
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(0, 0, 0, 0.4); }
+
+.btn-danger {
+  color: #FFF;
+  background-color: #FF304F;
+  border-color: #FF304F;
+  transition: all .3s ease; }
+
+.btn-danger-outline {
+  color: #FF304F;
+  background-color: #FFF;
+  border-color: #FF304F; }
+
+.btn-danger-outline:hover {
+  color: #FFF;
+  background-color: #FF304F;
+  border-color: #FF304F; }
+
+.pager {
+  color: #0E2F56; }
+
+.contact h5 {
+  color: #0E2F56; }
+.contact h4 {
+  color: #0E2F56; }
+.contact p {
+  color: #0E2F56; }
+.contact span {
+  color: #FF304F;
+  font-weight: bold; }
+
+.img {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-height: 600px; }
+
+.img:after {
+  opacity: 0.5; }
 
 .offer {
-
-    background: papayawhip;
-    min-height: 500px;
-
-}
+  background: papayawhip;
+  min-height: 500px; }
 
 .details {
-    padding-top: 90px;
-    padding-bottom: 120px;
-    background-color: rgba(255, 248, 220, 0.7);
+  padding-top: 90px;
+  padding-bottom: 120px;
+  background-color: rgba(255, 248, 220, 0.7); }
 
-
-}
+/*# sourceMappingURL=styles.css.map */
