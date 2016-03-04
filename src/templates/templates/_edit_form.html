@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <section>
+        <div class="container">
+            <h4 class="display-4">Editing Form</h4>
+            <form action="" method="post">
+                <input type="hidden" name="next" value="{{ next }}" class="form-control">
+                {{ form }}
+                <br>
+                <button type="submit" class="btn btn-lg btn-blue">Save</button>
+                <br>
+                <br>
+                {% csrf_token %}
+            </form>
+        </div>
+        <script>
+            _.map(['textarea', 'input', 'label'], function(el){
+                el === 'label' && $(el).attr('type') !== 'submit' ? $(el).addClass('my-label') : $(el).addClass('form-control')
+            });
+        </script>
+    </section>
+{% endblock %}

@@ -1,12 +1,12 @@
 <div class="center-block" style="width:100px">
     <nav>
     <ol class="pager">
-        {% if tour_list.has_previous %}
-            <li><a href="?{{ page_request_var }}={{ tour_list.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">Previous</a></li>
+        {% if object_list.has_previous %}
+            <li><a href="?{{ page_request_var }}={{ object_list.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">Previous</a></li>
         {% endif %}
-        Page {{ tour_list.number }} of {{ tour_list.paginator.num_pages }}.
-        {% if tour_list.has_next %}
-            <li><a href="?{{ page_request_var }}={{ tour_list.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">Next</a></li>
+        Page {{ object_list.number }} of {{ object_list.paginator.num_pages }}.
+        {% if object_list.has_next %}
+            <li><a href="?{{ page_request_var }}={{ object_list.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">Next</a></li>
         {% endif %}
     </ol>
 </nav>

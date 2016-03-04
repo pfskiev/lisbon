@@ -5,7 +5,7 @@
         <div class="container">
             <h1 class="display-4">{{ title }}</h1>
             <div class="card-columns">
-                {% for object in tour_list %}
+                {% for object in object_list %}
                     {% include 'templates/_tour_card.html' %}
                 {% endfor %}
             </div>

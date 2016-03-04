@@ -4,29 +4,13 @@
     <section>
         <div class="container">
         <h1 class="display-4">{{ title }}</h1>
-{#        <div class="card-columns">#}
-    {% for review in review_list %}
-
-
-
-        <blockquote class="blockquote">
-            <p class="m-b-0">{{ review.title }}</p>
-            <p class="m-b-0"><span class="text-muted">left by: </span>{{ review.user.name }}</p>
-            <div class="blockquote-footer">Someone famous in <cite title="Source Title">{{ review.timestamp }}</cite></div>
-        </blockquote>
-
-{#        <div class="card text-xs-center">#}
-{#            <div class="card-header">Review</div>#}
-{#            <div class="card-block">#}
-{#                <h4 class="card-title">{{ review.title }}</h4>#}
-{#                <p><span class="text-muted">review left by: </span>{{ review.user.name }}</p>#}
-{#                <a href="#" class="btn btn-primary">Go somewhere</a>#}
-{#            </div>#}
-{#            <div class="card-footer text-muted">#}
-{#                {{ review.updated }}#}
-{#            </div>#}
-{#        </div>#}
-
+            {% for review in review_list %}
+                <blockquote class="blockquote">
+                    <p class="m-b-0">{{ review.title }}</p>
+                    <p class="m-b-0"><span class="text-muted">left by: </span>{{ review.user.name }}</p>
+                    <div class="blockquote-footer">add on: <cite title="Source Title">{{ review.timestamp }}</cite></div>
+                    <a href="/feedback/{{ review.id }}/details/">details</a>
+                </blockquote>
 {#        {{ review.slug }}#}
 {#        {{ review.image }}#}
 {#        {{ review.height_field }}#}
@@ -36,8 +20,8 @@
 {#        {{ review.publish }}#}
 {#        {{ review.updated }}#}
 {#        {{ review.timestamp }}#}
-    {% endfor %}
-        <a class="btn btn-warning" href="{% url 'create_review' %}">Create Review</a>
+            {% endfor %}
+            <a class="btn btn-warning" href="{% url 'create_review' %}">Create Review</a>
         </div>
     </section>
 {% endblock %}

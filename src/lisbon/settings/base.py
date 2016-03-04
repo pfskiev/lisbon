@@ -129,6 +129,8 @@ STATIC_URL = '/static/'
 
 ALLOWED_HOSTS = []
 
+MY_HOST = ['localhost:8080']
+
 # Crispy Form Theme - Bootstrap 3pyt
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 

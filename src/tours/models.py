@@ -1,7 +1,5 @@
-import authtools
 from django.conf import settings
 from django.db import models
-from django.http import request
 
 
 class Tour(models.Model):
@@ -72,9 +70,29 @@ class Contact(models.Model):
         return self.name
 
 
+class Paragraph(models.Model):
+    text = models.TextField(max_length=500, blank=True, null=False)
+
+    def __str__(self):
+        return self.text
+
+    def __unicode__(self):
+        return self.text
+
+
+class About(models.Model):
+    paragraph = models.ManyToManyField(Paragraph)
+
+    # def __str__(self):
+    #     return self.paragraph
+
+    def __unicode__(self):
+        return self.paragraph
+
+
 class Post(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL)
-    title = models.CharField(max_length=500)
+    title = models.TextField(max_length=500)
     # updated = models.DateTimeField(auto_now=True, auto_now_add=False)
     timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
 

@@ -3,6 +3,7 @@
 {% block content %}
     <section>
     <div class="container">
+        <h4 class="display-4">Left Review</h4>
 
 
 {#    <form action="" method="post">#}
@@ -16,14 +17,11 @@
 {#        {% csrf_token %}#}
 {#    </form>#}
 
-
-
         <form method='POST' action='' enctype='multipart/form-data'>{% csrf_token %}
-{{ form.as_p }}
-<input type="submit" class="btn btn-lg btn-blue" value='Create Review' />
-</form>
-</div>
-
+            {{ form }}
+            <input type="submit" class="btn btn-lg btn-blue" value='Create Review' />
+        </form>
+    </div>
     <script>
         $('textarea').each(function(){
             $(this).addClass('form-control')
