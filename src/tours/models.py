@@ -75,8 +75,9 @@ class Contact(models.Model):
 class Post(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL)
     title = models.CharField(max_length=500)
-    # updated = models.DateTimeField(auto_now=True, auto_now_add=False)
-    # timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
+    publish = models.DateField(auto_now=False, auto_now_add=False)
+    updated = models.DateTimeField(auto_now=True, auto_now_add=False)
+    timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
 
     def __unicode__(self):
         return self.title
