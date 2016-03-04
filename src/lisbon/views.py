@@ -14,12 +14,17 @@ def home(request):
     return render(request, 'partials/home.html', context)
 
 
-class AboutPage(generic.TemplateView):
-    template_name = 'partials/about.html'
+def about(request):
+    context = {
+        'title': 'About Us',
+    }
+
+    return render(request, 'partials/about.html', context)
 
 
 def contact_list(request):
     context = {
+        'title': 'Contacts',
         'contact_list': Contact.objects.all(),
     }
 
@@ -27,7 +32,9 @@ def contact_list(request):
 
 
 def review_list(request):
+
     context = {
+        'title': 'Reviews',
         'review_list': Post.objects.all(),
     }
 
@@ -36,6 +43,7 @@ def review_list(request):
 
 def gallery_list(request):
     context = {
+        'title': 'Gallery',
         'gallery_list': Gallery.objects.all(),
     }
 
@@ -43,8 +51,8 @@ def gallery_list(request):
 
 
 def post_create(request):
-    if not request.user.is_staff or not request.user.is_superuser:
-        raise Http404
+    # if not request.user.is_staff or not request.user.is_superuser:
+    #     raise Http404
 
     form = PostForm(request.POST or None, request.FILES or None)
     if form.is_valid():
@@ -53,7 +61,7 @@ def post_create(request):
         instance.save()
         # message success
         # messages.success(request, "Successfully Created")
-        return HttpResponseRedirect(instance.get_absolute_url())
+        return HttpResponseRedirect('http://localhost:8000/reviews/')
     context = {
         "form": form,
     }

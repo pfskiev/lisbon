@@ -12,22 +12,46 @@
 }
 .btn-danger {
   color: $color_white;
-  background-color: $color_red;
-  border-color: $color_red;
+  background-color: #E83F6F;
+  border-color: #E83F6F;
+  transition: all .3s ease;
+}
+.btn-danger:hover {
+  color: $color_white;
+  background-color: #C83560;
+  border-color: #C83560;
   transition: all .3s ease;
 }
 .btn-danger-outline {
-  color: $color_red;
+  color: #E83F6F;
   background-color: $color_white;
-  border-color: $color_red;
+  border-color: #E83F6F;
+  transition: all .3s ease;
 }
 .btn-danger-outline:hover{
   color: $color_white;
-  background-color: $color_red;
-  border-color: $color_red;
+  background-color: #E83F6F;
+  border-color: #E83F6F;
 }
 .btn-blue {
   color: $color_white;
-  background-color: $color_blue;
-  border-color: $color_blue;
+  background-color: $btn-primary;
+  border-color: $btn-primary;
+  transition: all .3s ease;
+}
+.btn-blue:hover{
+  color: $btn-primary;
+  background-color: $color_white;
+  border-color: $color_white;
+}
+.btn-blue-outline {
+  color: $btn-primary;
+  background-color: $color_white;
+  border-color: $btn-primary;
+  transition: all .3s ease;
+}
+.btn-blue-outline:hover {
+  color: $color_white;
+  background-color: $btn-primary;
+  border-color: $color_white;
 }

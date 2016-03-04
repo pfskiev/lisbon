@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
     {% load staticfiles %}
-    {% include 'templates/breadcrumbs.html' %}
+    {% include 'templates/_breadcrumbs.html' %}
     <section class="details">
         <div class="container">
             <div class="row">
@@ -19,11 +19,11 @@
                     <h4 class="card-title">{{ object.title }}</h4>
                     <p class="card-text text-justify">{{ object.text }}</p>
                     <a href="{{ object.id }}" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">BOOK NOW</a>
-                    {% include 'templates/share.html' %}
+                    {% include 'templates/_share.html' %}
                     {% if user.is_staff %}
                         <a class="btn btn-sm btn-danger-outline" href="/tours/{{ object.id }}/edit/">edit</a>
                     {% endif %}
-                    {% include 'templates/modal.html' %}
+                    {% include 'templates/_modal.html' %}
                 </div>
             </div>
         </div>

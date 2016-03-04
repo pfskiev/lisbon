@@ -1,25 +1,20 @@
-from django.core.urlresolvers import reverse
-from django.db import models
+import authtools
 from django.conf import settings
-from django.utils.text import slugify
-
-from django.conf import settings
-from django.core.urlresolvers import reverse
 from django.db import models
-from django.db.models.signals import pre_save
-from django.utils import timezone
-
-from django.utils.text import slugify
+from django.http import request
 
 
 class Tour(models.Model):
     title_pt = models.CharField(max_length=100, blank=True, null=False)
-    title_en = models.CharField(max_length=100, blank=True, null=False)
+    title_gb = models.CharField(max_length=100, blank=True, null=False)
     title_de = models.CharField(max_length=100, blank=True, null=False)
-    text = models.TextField(max_length=1000, blank=True, null=False)
+    description_pt = models.TextField(max_length=1000, blank=True, null=False)
+    description_gb = models.TextField(max_length=1000, blank=True, null=False)
+    description_de = models.TextField(max_length=1000, blank=True, null=False)
+    price = models.CharField(max_length=100, blank=True, null=False)
+    img = models.FileField(null=True, blank=True)
     url = models.URLField(max_length=200, blank=True, null=False)
     created_on = models.DateTimeField(auto_now_add=True, auto_created=False)
-    img = models.FileField(null=True, blank=True)
 
     def __str__(self):
         return self.title_pt
@@ -77,21 +72,15 @@ class Contact(models.Model):
         return self.name
 
 
-# class PostManager(models.Manager):
-#     def active(self, *args, **kwargs):
-#         # Post.objects.all() = super(PostManager, self).all()
-#         return super(PostManager, self).filter(draft=False).filter(publish__lte=timezone.now())
-
-
 class Post(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL)
-    title = models.CharField(max_length=120)
+    title = models.CharField(max_length=500)
+    updated = models.DateTimeField(auto_now=True, auto_now_add=False)
+    timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
+
 
     def __unicode__(self):
         return self.title
 
     def __str__(self):
         return self.title
-
-    def get_absolute_url(self):
-        return reverse("review_list")

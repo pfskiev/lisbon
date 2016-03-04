@@ -1,16 +1,18 @@
-@import 'scss/general';
-@import 'scss/fonts';
-@import 'scss/typography';
-@import 'scss/nav';
+@import 'scss/alerts';
 @import 'scss/breadcrumbs';
-@import 'scss/section';
-@import 'scss/footer';
-@import 'scss/icons';
-@import 'scss/card';
 @import 'scss/button';
-@import 'scss/variables';
-@import 'scss/pagination';
 @import 'scss/contact';
+@import 'scss/card';
+@import 'scss/icons';
+@import 'scss/fonts';
+@import 'scss/footer';
+@import 'scss/forms';
+@import 'scss/general';
+@import 'scss/typography';
+@import 'scss/pagination';
+@import 'scss/nav';
+@import 'scss/section';
+@import 'scss/variables';
 
 .img {
 display:flex;
@@ -38,18 +40,4 @@ opacity:0.5;
     padding-top: 90px;
     padding-bottom: 120px;
     background-color: rgba(255, 248, 220, 0.7);
-}
-
-.form-control {
-  border-color: $color_sand;
-  transition: all .3s ease;
-}
-.form-control:hover {
-  border-color: $color_blue_light;
-}
-.form-control:focus {
-  border-color: $color_blue_light;
-}
-.form-control:active {
-  border-color: $color_blue_light;
 }

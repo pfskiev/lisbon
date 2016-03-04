@@ -2,20 +2,25 @@
 {% load staticfiles %}
 {% load thumbnail %}
 {% block title %}{{ block.super }}Profile{% endblock %}
-{% block container %}
+{% block content %}
+    <section>
 <div class="container profile-head">
     <div class="row">
         <div class="col-sm-10">
             <h1>{{ show_user.get_full_name }}</h1>
             {% if editable %}
-            <a href="{% url 'profiles:edit_self' %}" class="btn btn-primary-outline">Edit Profile</a>
+            <a href="{% url 'profiles:edit_self' %}" class="btn btn-blue-outline">Edit Profile</a>
             {% endif %}
         </div>
         <div class="col-sm-2">
-
-            <img class="img-circle img-responsive" src="/media/{{ show_user.profile.picture }}" style="object-fit: cover;" alt="" width="140" height="140">
-
-{#            <img title="profile picture" class="img-circle img-responsive" src="{% thumbnail show_user.profile.picture|default:'default_profile.png' 140x140 crop %}">#}
+            {% if user.profile.picture %}
+                    <img class="img-circle img-responsive" src="/media/{{ user.profile.picture }}" style="object-fit: cover;" alt="" width="140" height="140">
+{#                <img title="profile picture" class="img-circle img-responsive" src="{% thumbnail user.profile.picture|default:'default_profile.png' 140x140 crop %}">#}
+                {% else %}
+                    <div class="logo-container">
+                        <span class="fa fa-user"></span>
+                    </div>
+                {% endif %}
         </div>
     </div>
 </div>
@@ -56,4 +61,5 @@
         </div>
     </div>
 </div>
+    </section>
 {% endblock %}

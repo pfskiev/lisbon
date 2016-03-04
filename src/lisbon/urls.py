@@ -6,14 +6,31 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.home, name='home'),
+    url(r'^gb/$', views.home, name='home'),
+    url(r'^de/$', views.home, name='home'),
+
+
+    # url(r'^/$', views.home, name='home'),
+    # url(r'^$', views.home, name='home'),
+    # url(r'^$', views.home, name='home'),
+
+
     url(r'^create/', views.post_create, name='create_review'),
     url(r'^admin/', admin.site.urls),
-    url(r'^about/$', views.AboutPage.as_view(), name='about'),
+    url(r'^about/$', views.about, name='about'),
     url(r'^contacts/$', views.contact_list, name='contacts'),
     url(r'^gallery/$', views.gallery_list, name='gallery'),
     url(r'^reviews/$', views.review_list, name='review_list'),
     url(r'^users/', include('profiles.urls', namespace='profiles')),
+
+
+
+
     url(r'^tours/', include('tours.urls')),
+
+
+
+
     url(r'^', include('accounts.urls', namespace='accounts')),
 ]
 

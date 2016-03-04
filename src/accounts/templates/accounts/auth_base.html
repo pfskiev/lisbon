@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
-{% block container %}
+{% block content %}
+    <section>
     <div class="container form-box">
         <div class="text-center">
             <h2>{% block form_heading %}{% endblock %}</h2>
@@ -8,5 +9,6 @@
         {% block form %}
         {% endblock %}
     </div>
-{% endblock container %}
+    </section>
+{% endblock %}
 

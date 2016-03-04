@@ -1,3 +1,5 @@
+@import 'variables';
+
 .fa {
   opacity: 0.7;
   transition: all .3s ease;
@@ -11,4 +13,19 @@
   width: 200px;
   display: flex;
   height: 63px;
+}
+.fa.fa-user {
+  font-size: 22px;
+  color: aliceblue;
+}
+.logo-container {
+  .fa.fa-user {
+  font-size: 180px;
+    color: $color_blue_light;
+}
+  display: flex;
+    flex-direction: row;
+    height: 200px;
+    align-items: center;
+    justify-content: center;
 }

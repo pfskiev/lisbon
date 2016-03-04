@@ -1,7 +1,11 @@
 {% if user.is_authenticated %}
     {% if user.is_staff %}
         <a style="text-decoration: none" href="{% url 'profiles:show_self' %}">
-            <img class="img-circle img-responsive" src="/media/{{ user.profile.picture }}" style="object-fit: cover;" alt="" width="40" height="40">
+            {% if user.profile.picture %}
+                <img class="img-circle img-responsive" src="/media/{{ user.profile.picture }}" style="object-fit: cover;" alt="" width="40" height="40">
+            {% else %}
+                <span class="fa fa-user"></span>
+            {% endif %}
         </a>
         <div class="btn-group">
             <a style="cursor: pointer"  class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="{% url 'admin:index' %}">Admin</a>
@@ -14,7 +18,11 @@
         </div>
     {% else %}
         <a style="text-decoration: none" href="{% url 'profiles:show_self' %}">
-            <img class="img-circle img-responsive" src="/media/{{ user.profile.picture }}" style="object-fit: cover;" alt="" width="40" height="40">
+            {% if user.profile.picture %}
+                <img class="img-circle img-responsive" src="/media/{{ user.profile.picture }}" style="object-fit: cover;" alt="" width="40" height="40">
+            {% else %}
+                <span class="fa fa-user"></span>
+            {% endif %}
         </a>
         <div class="btn-group">
             <a style="cursor: pointer" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

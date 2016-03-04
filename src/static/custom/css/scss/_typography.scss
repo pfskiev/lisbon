@@ -1,3 +1,5 @@
+@import 'variables';
+
 .type {
   display: inline-block;
   background: rgba(0,0,0,0.4);
@@ -10,16 +12,21 @@
 .type:hover {
   background:rgba(0,0,0,0.7);
 }
-.display-3 {
-  display: inline-block;
-  background: rgba(0,0,0,0.3);
-  color: #fff;
-  font-family: HelveticaNeueCyr-Roman, sans-serif;
-  font-weight: bolder;
-  transition: all .3s ease;
-  padding: 60px 70px;
-  border: 1px solid white;
+
+.blockquote {
+
+    border-left: .25rem solid $color-blue-light;
 }
-.display-3:hover {
-  background:rgba(0,0,0,0.4);
-}
+//.display-3 {
+//  display: inline-block;
+//  background: rgba(0,0,0,0.3);
+//  color: #fff;
+//  font-family: HelveticaNeueCyr-Roman, sans-serif;
+//  font-weight: bolder;
+//  transition: all .3s ease;
+//  padding: 60px 70px;
+//  border: 1px solid white;
+//}
+//.display-3:hover {
+//  background:rgba(0,0,0,0.4);
+//}

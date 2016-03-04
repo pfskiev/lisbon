@@ -1,14 +1,15 @@
 {% extends 'base.html' %}
 {% block beadcrumbs %}
-    {% include 'templates/breadcrumbs.html' %}
+    {% include 'templates/_breadcrumbs.html' %}
 {% endblock %}
 {% block content %}
     <section>
     <div class="container contact">
         <div class="row">
-        {% for contact in contact_list %}
-            {% include 'templates/contact_card.html' %}
-        {% endfor %}
+            <h1 class="display-4">{{ title }}</h1>
+            {% for contact in contact_list %}
+                {% include 'templates/_contact_card.html' %}
+            {% endfor %}
         </div>
     </div>
     </section>

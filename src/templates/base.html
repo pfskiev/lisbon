@@ -19,24 +19,24 @@
     <script src="{% static 'vendor/lodash/dist/lodash.min.js' %}"></script>
 </head>
 <body>
-{% include 'templates/nav.html' %}
-{% include 'templates/alerts.html' %}
+{% include 'templates/_nav.html' %}
+{% include 'templates/_alerts.html' %}
 
 {% block beadcrumbs %}
+
+
 {% endblock %}
 
-    {% block splash %}
-    {% endblock splash %}
+{#    {% block splash %}#}
+{#    {% endblock splash %}#}
 
-{% block container %}
-{% endblock %}
+{#{% block container %}#}
+{#    #}
+{#{% endblock %}#}
 
 {% block content %}
-
-
 {% endblock %}
-
-{% include 'templates/footer.html' %}
+{% include 'templates/_footer.html' %}
 
 
 {#<body>#}
@@ -130,7 +130,9 @@
 {#            </div>#}
 {#      </div>#}
 {#    {% endblock %}#}
+
 {##}
+
 </body>
 </html>
 

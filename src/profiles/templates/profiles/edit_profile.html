@@ -3,15 +3,22 @@
 {% load crispy_forms_tags %}
 {% load thumbnail %}
 {% block title %}{{ block.super }}Profile{% endblock %}
-{% block container %}
+{% block content %}
+    <section>
 <div class="container">
     <h1 class="text-primary">Edit Profile</h1>
     <hr>
     <div class="row">
         <div class="col-md-3">
             <div class="text-center">
-                <img class="img-circle img-responsive" src="/media/{{ user.profile.picture }}" style="object-fit: cover;" alt="" width="140" height="140">
+                {% if user.profile.picture %}
+                    <img class="img-circle img-responsive" src="/media/{{ user.profile.picture }}" style="object-fit: cover;" alt="" width="140" height="140">
 {#                <img title="profile picture" class="img-circle img-responsive" src="{% thumbnail user.profile.picture|default:'default_profile.png' 140x140 crop %}">#}
+                {% else %}
+                    <div class="logo-container">
+                        <span class="fa fa-user"></span>
+                    </div>
+                {% endif %}
             </div>
         </div>
         <div class="col-md-9">
@@ -30,6 +37,7 @@
         </div>
     </div>
 </div>
+    </section>
 {% endblock %}
 
 

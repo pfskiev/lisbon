@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
-    {% include 'templates/breadcrumbs.html' %}
-    <section >
+    {% include 'templates/_breadcrumbs.html' %}
+    <section>
         <div class="container">
-            <h1 class="display-4 type">{{ title }}</h1>
+            <h1 class="display-4">{{ title }}</h1>
             <div class="card-columns">
                 {% for object in tour_list %}
-                    {% include 'templates/card.html' %}
+                    {% include 'templates/_tour_card.html' %}
                 {% endfor %}
             </div>
-            {% include 'templates/pagination.html' %}
+            {% include 'templates/_pagination.html' %}
         </div>
     </section>
 {% endblock %}

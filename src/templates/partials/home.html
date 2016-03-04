@@ -17,26 +17,19 @@
   margin-left: .75rem;
 }
     </style>
-{#    <article>#}
+    <article>
 
-{#                    <h1 class="display-3 header">Welcome to Golden Lisbon!</h1>#}
-    <div class="embed-responsive embed-responsive-16by9">
-
-<iframe src="https://player.vimeo.com/video/38955028?autoplay=1"  frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-
-        </div>
-
-{#        <div class="img">#}
-{#            <div class="container">#}
-
+        <div class="img">
+            <div class="container">
+                <h1 class="display-3 type">Welcome to Golden Lisbon!</h1>
 {#                <h1 class="display-3">facilisis in, egestas eget quam.</h1>#}
 {#                <a class="btn btn-lg btn-primary" href="{% url 'accounts:signup' %}" role="button">Sign up for Free!</a>#}
-{#            </div>#}
-{#        </div>#}
+            </div>
+        </div>
 {#    </article>#}
     <article class="offer">
     <div class="container marketing">
-        <h3 class="display-3 text-center">We Offer</h3>
+        <h3 class="display-3 text-md-center">We Offer</h3>
         <div class="row">
             {% for object in offer_list%}
                 <div class="col-lg-4">
@@ -56,7 +49,7 @@
 {#            <div class="row">#}
 {#            {% for object in  offer_list%}#}
 {#                <div class="col-md-4">#}
-{#                    {% include 'templates/card.html' %}#}
+{#                    {% include 'templates/_tour_card.html' %}#}
 {#                </div>#}
 {#            {% endfor %}#}
 {#        </div>#}

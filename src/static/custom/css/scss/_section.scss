@@ -3,11 +3,12 @@
 section {
   background-color: $color_sand;
   padding-top: 100px;
+  padding-bottom: 100px;
 }
 article {
   padding-top: 100px;
   background:url(http://expo-cruises.com/wp-content/uploads/2014/11/PORTUGAL-7-lisbon.jpg);
-  background-size:cover;
+  background-size:contain;
   min-height:600px;
   transition: all .5s ease;
 }
@@ -20,3 +21,8 @@ article.tours {
     min-height:1000px;
   }
 }
+
+
+.form-box {max-width: 330px;
+    display: block;
+    margin: 0 auto;}
