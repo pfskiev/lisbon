@@ -5,34 +5,25 @@ from django.conf.urls.static import static
 from . import views
 
 urlpatterns = [
+
     url(r'^$', views.home, name='home'),
-    url(r'^gb/$', views.home, name='home'),
-    url(r'^de/$', views.home, name='home'),
+    url(r'^users/', include('profiles.urls', namespace='profiles')),
+    url(r'^', include('accounts.urls', namespace='accounts')),
 
+    url(r'^tours/', include('tours.urls')),
+    url(r'^contacts/', include('contacts.urls', namespace='contact')),
 
-    # url(r'^/$', views.home, name='home'),
-    # url(r'^$', views.home, name='home'),
-    # url(r'^$', views.home, name='home'),
-
-    # feedback
-
+    
     url(r'^create/', views.feedback_create, name='create_review'),
     url(r'^feedback/(?P<pk>[0-9]+)/details/$', views.feedback_edit.as_view(), name='feedback_detail'),
 
     url(r'^admin/', admin.site.urls),
     url(r'^about/$', views.about, name='about'),
-    url(r'^contacts/$', views.contact_list, name='contacts'),
+
+
     url(r'^gallery/$', views.gallery_list, name='gallery'),
     url(r'^reviews/$', views.review_list, name='review_list'),
-    url(r'^users/', include('profiles.urls', namespace='profiles')),
 
-
-    url(r'^tours/', include('tours.urls')),
-
-
-
-
-    url(r'^', include('accounts.urls', namespace='accounts')),
 ]
 
 # User-uploaded files like profile pics need to be served in development

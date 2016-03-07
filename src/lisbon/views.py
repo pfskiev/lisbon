@@ -6,7 +6,7 @@ from django.db.models import Q
 from django.http import Http404, HttpResponseRedirect, HttpRequest
 from django.shortcuts import render, redirect
 from django.views import generic
-from tours.models import Offer, Contact, Post, Gallery, About
+from tours.models import Offer, Post, Gallery, About
 from .forms import PostForm
 
 
@@ -28,15 +28,6 @@ def about(request):
     return render(request, 'partials/about.html', context)
 
 
-def contact_list(request):
-    context = {
-        'title': 'Contacts',
-        'contact_list': Contact.objects.all(),
-    }
-
-    return render(request, 'partials/contact.html', context)
-
-
 def review_list(request):
 
     context = {
@@ -45,15 +36,6 @@ def review_list(request):
     }
 
     return render(request, 'partials/review.html', context)
-
-
-# def gallery_list(request):
-#     context = {
-#         'title': 'Gallery',
-#         'gallery_list': Gallery.objects.all(),
-#     }
-#
-#     return render(request, 'partials/gallery.html', context)
 
 
 def gallery_list(request):

@@ -32,6 +32,9 @@
   color: $color_white;
   background-color: #E83F6F;
   border-color: #E83F6F;
+  .fa {
+    color: $color_white;;
+  }
 }
 .btn-blue {
   color: $color_white;
@@ -54,4 +57,9 @@
   color: $color_white;
   background-color: $btn-primary;
   border-color: $color_white;
+}
+.btn-warning {
+  .fa {
+    color: $color_white
+  }
 }

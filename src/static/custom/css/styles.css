@@ -44,6 +44,8 @@
   color: #FFF;
   background-color: #E83F6F;
   border-color: #E83F6F; }
+  .btn-danger-outline:hover .fa {
+    color: #FFF; }
 
 .btn-blue {
   color: #FFF;
@@ -66,6 +68,9 @@
   color: #FFF;
   background-color: #2274A5;
   border-color: #FFF; }
+
+.btn-warning .fa {
+  color: #FFF; }
 
 .contact h5 {
   color: #0E2F56; }

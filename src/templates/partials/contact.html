@@ -11,6 +11,9 @@
                 {% include 'templates/_contact_card.html' %}
             {% endfor %}
         </div>
+        {% if user.is_staff or user.is_superuser %}
+            <a class="btn btn-warning" href="{% url 'contact:create' %}"><i class="fa fa-plus"></i> Create Contact</a>
+        {% endif %}
     </div>
     </section>
 {% endblock %}

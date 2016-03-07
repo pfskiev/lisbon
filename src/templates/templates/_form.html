@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <nav>
+        {% include 'templates/_breadcrumbs.html' %}
+    </nav>
+    <section>
+    <div class="container">
+        <h4 class="display-4">{{ title }}</h4>
+        <form method='POST' action='' enctype='multipart/form-data'>{% csrf_token %}
+            {{ form }}
+            <input type="submit" class="btn btn-lg btn-blue" value='{{ value }}' />
+        </form>
+    </div>
+    <script>
+        $('textarea').each(function(){
+            $(this).addClass('form-control')
+        })
+        $('input').each(function(){
+            $(this).addClass('form-control')
+        })
+        $('label').each(function(){
+            $(this).addClass('my-label')
+        })
+    </script>
+    </section>
+{% endblock %}

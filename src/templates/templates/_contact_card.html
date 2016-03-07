@@ -40,8 +40,12 @@
             {% if contact.google  %}
                 <a class="card-link" href="{{ contact.google }}">Follow on Google + <span class="fa fa-google-plus"></span></a>
             {% endif %}
-            {% if user.is_staff %}
-                <a class="btn btn-sm btn-danger-outline" href="/tours/contact/{{ contact.id }}/edit/">edit</a>
+            <p><a class="btn btn-danger-outline" href="/contacts/{{ contact.id }}" role="button">View details &raquo;</a></p>
+            {% if user.is_staff or user.is_superuser %}
+                <a class="btn btn-sm btn-danger-outline" href="/contacts/{{ contact.id }}/delete/">
+                    <i class="fa fa-trash"></i> Delete</a>
+                <a class="btn btn-sm btn-danger-outline" href="/contacts/{{ contact.id }}/edit/">
+                    <i class="fa fa-pencil-square-o"></i> Edit</a>
             {% endif %}
         </div>
     </div>

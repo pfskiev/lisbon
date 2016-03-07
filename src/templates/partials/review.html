@@ -5,12 +5,14 @@
         <div class="container">
         <h1 class="display-4">{{ title }}</h1>
             {% for review in review_list %}
+                {% if review.confirm %}
                 <blockquote class="blockquote">
                     <p class="m-b-0">{{ review.title }}</p>
                     <p class="m-b-0"><span class="text-muted">left by: </span>{{ review.user.name }}</p>
                     <div class="blockquote-footer">add on: <cite title="Source Title">{{ review.timestamp }}</cite></div>
                     <a href="/feedback/{{ review.id }}/details/">details</a>
                 </blockquote>
+                {% endif %}
 {#        {{ review.slug }}#}
 {#        {{ review.image }}#}
 {#        {{ review.height_field }}#}

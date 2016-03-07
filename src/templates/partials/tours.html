@@ -9,6 +9,9 @@
                     {% include 'templates/_tour_card.html' %}
                 {% endfor %}
             </div>
+            {% if user.is_staff or user.is_superuser %}
+                <a class="btn btn-warning" href="{% url 'tour_create' %}">Create Tour</a>
+            {% endif %}
             {% include 'templates/_pagination.html' %}
         </div>
     </section>
