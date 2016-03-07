@@ -6,10 +6,11 @@ from .forms import ContactForm
 
 def contact_list(request):
     model = Contact.objects.all()
-    breadcrumbs_list = [{'url': '/', 'name': 'Home'}, {'url': '/contacts', 'name': 'Contacts'}]
     context = {
         'title': 'Contacts',
-        'breadcrumbs_list': breadcrumbs_list,
+        'breadcrumbs_list': [
+            {'url': '/', 'name': 'Home'},
+            {'url': '#', 'name': 'Contacts', 'active': True}],
         'contact_list': model,
     }
 
@@ -17,12 +18,15 @@ def contact_list(request):
 
 
 def contact_detail(request, pk=None):
-    breadcrumbs_list = [{'url': '/', 'name': 'Home'}, {'url': '/tours', 'name': 'Contact detail'}]
-    model = Contact.objects.get(pk=pk)
+    contact = Contact.objects.get(pk=pk)
+    breadcrumbs_list = [
+        {'url': '/', 'name': 'Home', 'active': False},
+        {'url': '/contacts', 'name': 'Contacts', 'active': False},
+        {'url': '#', 'name': contact.first_name + ' ' + contact.last_name, 'active': True}]
     context = {
         'breadcrumbs_list': breadcrumbs_list,
-        'title': 'Contact detail',
-        'object': model,
+        'title': contact.first_name + ' ' + contact.last_name,
+        'object': contact,
     }
 
     return render(request, 'partials/detail.html', context)
@@ -41,9 +45,12 @@ def contact_create(request):
             return redirect('contact:list')
 
         context = {
-            'title': 'Contact create',
-            'breadcrumbs_list': [{'url': '/', 'name': 'Home'}, {'url': '/tours', 'name': 'Contact create'}],
-            'value': 'Contact create',
+            'title': 'Contact creating',
+            'breadcrumbs_list': [
+                {'url': '/', 'name': 'Home', 'active': False},
+                {'url': '/contacts', 'name': 'Contacts', 'active': False},
+                {'url': '#', 'name': 'Contact creating', 'active': True}],
+            'value': 'Contact creating',
             'form': form
         }
 
@@ -54,8 +61,9 @@ def contact_update(request, pk=None):
     if not request.user.is_staff or not request.user.is_superuser:
         return redirect('accounts:signup')
     else:
-        breadcrumbs_list = [{'url': '/', 'name': 'Home'}, {'url': '/contacts', 'name': 'Contacts'}]
         instance = get_object_or_404(Contact, pk=pk)
+        breadcrumbs_list = [{'url': '/', 'name': 'Home'}, {'url': '/contacts', 'name': 'Contacts'},
+                            {'url': '#', 'name': instance.first_name + ' ' + instance.last_name, 'active': True}]
         form = ContactForm(request.POST or None, request.FILES or None, instance=instance)
         if form.is_valid():
             instance = form.save(commit=False)

@@ -1,4 +1,4 @@
-<div class="col-md-4">
+<div class="col-sm-12 col-md-6 col-lg-4">
     <div class="card">
         <div class="card-block">
             <h4 class="card-title">{{ contact.first_name }}</h4>
@@ -7,39 +7,61 @@
         <img class="img-fluid" src="/media/{{ contact.img }}" alt="">
         <div class="card-block">
             <p class="card-text">{{ contact.category }}</p>
+        {% if  contact.mobile_preview %}
             {% if contact.mobile  %}
                 <p class="card-text"><span class="fa fa-mobile"></span> {{ contact.mobile }}</p>
             {% endif %}
+        {% endif %}
+        {% if  contact.email_preview %}
             {% if contact.email  %}
                 <p class="card-text"><span class="fa fa-mail-forward"></span> {{ contact.email }}</p>
             {% endif %}
+        {% endif %}
+        {% if  contact.whatsapp_preview %}
             {% if contact.whatsapp  %}
                 <p class="card-text"><span class="fa fa-whatsapp"></span> {{ contact.whatsapp }}</p>
             {% endif %}
+        {% endif %}
+        {% if  contact.viber_preview %}
             {% if contact.viber  %}
                 <p class="card-text"><span>viber:</span> {{ contact.viber }}</p>
             {% endif %}
+        {% endif %}
+        {% if  contact.telegram_preview %}
             {% if contact.telegram  %}
                 <p class="card-text"><span>telegram: </span>{{ contact.telegram }}</p>
             {% endif %}
+        {% endif %}
+        {% if  contact.skype_preview %}
             {% if contact.skype  %}
                 <p class="card-text"><span class="fa fa-skype"></span> {{ contact.skype }}</p>
             {% endif %}
+        {% endif %}
+        {% if  contact.facebook_preview %}
             {% if contact.facebook  %}
                 <a class="card-link" href="{{ contact.facebook }}">Follow on Facebook <span class="fa fa-facebook"></span></a>
             {% endif %}
+        {% endif %}
+        {% if  contact.twitter_preview %}
             {% if contact.twitter  %}
                 <a class="card-link" href="{{ contact.twitter }}">Follow on Twitter <span class="fa fa-twitter"></span></a>
             {% endif %}
+        {% endif %}
+        {% if  contact.pinterest_preview %}
             {% if contact.pinterest  %}
                 <a class="card-link" href="{{ contact.pinterest }}">Follow on Pinterest <span class="fa fa-pinterest"></span></a>
             {% endif %}
+        {% endif %}
+        {% if  contact.instagram_preview %}
             {% if contact.instagram  %}
                 <a class="card-link" href="{{ contact.instagram }}">Follow on Instagram <span class="fa fa-instagram"></span></a>
             {% endif %}
+        {% endif %}
+        {% if  contact.google_preview %}
             {% if contact.google  %}
                 <a class="card-link" href="{{ contact.google }}">Follow on Google + <span class="fa fa-google-plus"></span></a>
             {% endif %}
+        {% endif %}
             <p><a class="btn btn-danger-outline" href="/contacts/{{ contact.id }}" role="button">View details &raquo;</a></p>
             {% if user.is_staff or user.is_superuser %}
                 <a class="btn btn-sm btn-danger-outline" href="/contacts/{{ contact.id }}/delete/">
