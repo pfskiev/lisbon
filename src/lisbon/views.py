@@ -1,12 +1,6 @@
-from django.conf import settings
-from django.conf.urls import url
-from django.core.checks import messages
-from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from django.db.models import Q
-from django.http import Http404, HttpResponseRedirect, HttpRequest
 from django.shortcuts import render, redirect
 from django.views import generic
-from tours.models import Offer, Post, Gallery, About
+from tours.models import Offer, Post, About
 from .forms import PostForm
 
 
@@ -36,36 +30,6 @@ def review_list(request):
     }
 
     return render(request, 'partials/review.html', context)
-
-
-def gallery_list(request):
-    queryset_list = Gallery.objects.all()
-    breadcrumbs_list = [{'url': '/', 'name': 'Home'}, {'url': '/tours', 'name': 'Tours'}]
-    query = request.GET.get("q")
-    if query:
-        queryset_list = queryset_list.filter(
-            Q(title__icontains=query) |
-            Q(text__icontains=query)
-        ).distinct()
-    paginator = Paginator(queryset_list, 5)
-    page_request_var = "page"
-    page = request.GET.get(page_request_var)
-    try:
-        queryset = paginator.page(page)
-    except PageNotAnInteger:
-        queryset = paginator.page(1)
-    except EmptyPage:
-        queryset = paginator.page(paginator.num_pages)
-
-    context = {
-
-        'object_list': queryset,
-        'title': 'Gallery',
-        'breadcrumbs_list': breadcrumbs_list,
-        'page_request_var': page_request_var,
-    }
-
-    return render(request, 'partials/gallery.html', context)
 
 
 def feedback_create(request):

@@ -62,7 +62,8 @@ SECRET_KEY = env('SECRET_KEY')
 ALLOWED_HOSTS = []
 
 # Application definition
-INSTALLED_APPS = (
+DJANGO_APPS = [
+
     'django.contrib.auth',
     'django.contrib.admin',
     'django.contrib.contenttypes',
@@ -70,14 +71,31 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+
+]
+
+HELPER_APPS = [
+
+    'compressor',
     'authtools',
     'crispy_forms',
     'easy_thumbnails',
-    'profiles',
+
+]
+
+PROJECT_APPS = [
+
     'accounts',
+    'contacts',
+    'gallery',
+    'review',
+    'profiles',
     'tours',
-    'contacts'
-)
+
+]
+
+
+INSTALLED_APPS = DJANGO_APPS + HELPER_APPS + PROJECT_APPS
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -128,9 +146,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-ALLOWED_HOSTS = []
-
 MY_HOST = ['localhost:8080']
+
+STATIC_ROOT = '/static/'
 
 # Crispy Form Theme - Bootstrap 3pyt
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -140,6 +158,16 @@ from django.contrib import messages
 MESSAGE_TAGS = {
     messages.ERROR: 'danger'
 }
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+)
+
+COMPRESS_PRECOMPILERS = (
+    ('text/x-scss', 'django_libsass.SassCompiler'),
+)
 
 # Authentication Settings
 AUTH_USER_MODEL = 'authtools.User'

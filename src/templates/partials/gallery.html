@@ -9,6 +9,9 @@
                     {% include 'templates/_gallery_card.html' %}
                 {% endfor %}
             </div>
+            {% if user.is_staff or user.is_superuser %}
+                <a class="btn btn-warning" href="{% url 'gallery:create' %}"><i class="fa fa-plus"></i> Create Gallery</a>
+            {% endif %}
             {% include 'templates/_pagination.html' %}
         </div>
     </section>
