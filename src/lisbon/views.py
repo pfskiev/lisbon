@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from tours.models import Offer, About
+from offer.models import Offer
+from tours.models import About
 
 
 def home(request):

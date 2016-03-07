@@ -10,10 +10,11 @@ urlpatterns = [
     url(r'^', include('accounts.urls', namespace='accounts')),
     url(r'^users/', include('profiles.urls', namespace='profiles')),
     url(r'^admin/', admin.site.urls, name='admin'),
-    url(r'^tours/', include('tours.urls')),
+    url(r'^tours/', include('tours.urls', namespace='tour')),
     url(r'^contacts/', include('contacts.urls', namespace='contact')),
     url(r'^gallery/', include('gallery.urls', namespace='gallery')),
     url(r'^reviews/', include('review.urls', namespace='review')),
+    url(r'^offer/', include('offer.urls', namespace='offer')),
     url(r'^about/$', views.about, name='about'),
     url(r'^login-or-register/$', views.login_or_register, name='login_or_register')
 

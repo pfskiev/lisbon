@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.core.mail import send_mail
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
@@ -65,6 +66,8 @@ def review_create(request):
             instance.user = request.user
             instance.save()
             messages.success(request, 'Review Created')
+            send_mail('Hello!', 'Check new review!', 'kostiantyn.pidlisnyi@customertimes.com',
+                  ['podlesny@outlook.com'], fail_silently=False)
             return redirect('review:list')
 
         context = {

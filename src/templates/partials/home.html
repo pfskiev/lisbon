@@ -26,32 +26,23 @@
 {#                <a class="btn btn-lg btn-primary" href="{% url 'accounts:signup' %}" role="button">Sign up for Free!</a>#}
             </div>
         </div>
-{#    </article>#}
+    </article>
     <article class="offer">
     <div class="container marketing">
         <h3 class="display-3 text-md-center">We Offer</h3>
+    <p style="text-align: center"><a href="{% url 'offer:list' %}">
+            <em>full offer list</em>
+        </a></p>
         <div class="row">
-            {% for object in offer_list%}
+            {% for offer in offer_list%}
                 <div class="col-lg-4">
-                    <a href="/tours/service/{{ object.id }}"><img class="img-circle" src="{% static '/media/' %}{{ object.img }}" alt="Generic placeholder image" style="object-fit: cover;" width="250" height="250"></a>
-                    <h2>{{ object.title }}</h2>
-                    <p class="text-justify">{{ object.text }}</p>
-                    <p><a class="btn btn-danger-outline" href="/tours/service/{{ object.id }}" role="button">View details &raquo;</a></p>
-                    {% if user.is_staff %}
-                        <a class="btn btn-sm btn-danger-outline" href="/tours/{{ object.id }}/edit/">edit</a>
-                    {% endif %}
+                    {% include 'templates/_offer_card.html' %}
                 </div>
             {% endfor %}
         </div>
+        {% if user.is_staff or user.is_superuser %}
+            <a class="btn btn-warning" href="{% url 'offer:create' %}"><i class="fa fa-plus"></i> Create Offer</a>
+        {% endif %}
     </div>
-{#        <div class="container">#}
-{#            <h3 class="display-3 text-center">We Offer</h3>#}
-{#            <div class="row">#}
-{#            {% for object in  offer_list%}#}
-{#                <div class="col-md-4">#}
-{#                    {% include 'templates/_tour_card.html' %}#}
-{#                </div>#}
-{#            {% endfor %}#}
-{#        </div>#}
     </article>
 {% endblock %}

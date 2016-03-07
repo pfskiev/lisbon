@@ -1,0 +1,17 @@
+{% load static %}
+
+
+{% if offer.img %}
+    <a href="/offer/{{ offer.id }}"><img class="img-circle" src="{% static '/media/' %}{{ offer.img }}" alt="Generic placeholder image" style="object-fit: cover;" width="250" height="250"></a>
+{% else %}
+    <p style="text-align: center"><small><em>PLACE FOR IMAGE</em></small></p>
+{% endif %}
+<h2>{{ offer.title }}</h2>
+<p class="text-justify">{{ offer.text }}</p>
+<p><a class="btn btn-danger-outline" href="/offer/{{ offer.id }}" role="button">View details &raquo;</a></p>
+{% if user.is_staff or user.is_superuser %}
+    <a class="btn btn-sm btn-danger-outline" href="/offer/{{ offer.id }}/delete/">
+        <i class="fa fa-trash"></i> Delete</a>
+    <a class="btn btn-sm btn-danger-outline" href="/offer/{{ offer.id }}/edit/">
+        <i class="fa fa-pencil-square-o"></i> Edit</a>
+{% endif %}

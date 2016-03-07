@@ -91,6 +91,7 @@ PROJECT_APPS = [
     'review',
     'profiles',
     'tours',
+    'offer'
 
 ]
 

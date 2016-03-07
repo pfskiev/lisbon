@@ -2,9 +2,8 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
 from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
-from django.views import generic
 from .forms import TourForm
-from .models import Tour, Offer
+from .models import Tour
 
 
 def tour_list(request):
@@ -36,12 +35,17 @@ def tour_list(request):
 
 
 def tour_detail(request, pk=None):
-    breadcrumbs_list = [{'url': '/', 'name': 'Home'}, {'url': '/tours', 'name': 'Tour detail'}]
-    model = Tour.objects.get(pk=pk)
+    tour = Tour.objects.get(pk=pk)
+    breadcrumbs_list = [
+        {'url': '/', 'name': 'Home'},
+        {'url': '/tours', 'name': 'Tours'},
+        {'url': '#', 'name': tour.title_pt, 'active': True}
+    ]
+
     context = {
         'breadcrumbs_list': breadcrumbs_list,
-        'title': 'Tour detail',
-        'object': model,
+        'title': tour.title_pt,
+        'object': tour,
     }
 
     return render(request, 'partials/detail.html', context)
@@ -52,7 +56,11 @@ def tour_update(request, pk=None):
         return redirect('accounts:signup')
     else:
         instance = get_object_or_404(Tour, pk=pk)
-        breadcrumbs_list = [{'url': '/', 'name': 'Home'}, {'url': '/tours', 'name': 'Tour edit'}]
+        breadcrumbs_list = [
+            {'url': '/', 'name': 'Home'},
+            {'url': '/tours', 'name': 'Tour edit'},
+            {'url': '#', 'name': instance.title_pt, 'active': True}
+        ]
         form = TourForm(request.POST or None, request.FILES or None, instance=instance)
         if form.is_valid():
             instance = form.save(commit=False)
@@ -73,7 +81,6 @@ def tour_create(request):
     if not request.user.is_staff or not request.user.is_superuser:
         return redirect('accounts:signup')
     else:
-        # breadcrumbs_list = [{'url': '/', 'name': 'Home'}, {'url': '/tours', 'name': 'Tour create'}],
         form = TourForm(request.POST or None, request.FILES or None)
         if form.is_valid():
             instance = form.save(commit=False)
@@ -85,7 +92,10 @@ def tour_create(request):
 
         context = {
             'title': 'Tour create',
-            'breadcrumbs_list': [{'url': '/', 'name': 'Home'}, {'url': '/tours', 'name': 'Tour create'}],
+            'breadcrumbs_list': [
+                {'url': '/', 'name': 'Home'},
+                {'url': '#', 'name': 'Tour create', 'active': True}
+            ],
             'value': 'Create Tour',
             'form': form
         }
@@ -93,7 +103,10 @@ def tour_create(request):
         return render(request, 'templates/_form.html', context)
 
 
-class ServiceDetailView(generic.DetailView):
-    model = Offer
-    template_name = 'partials/detail.html'
-    context_object_name = 'object'
+def tour_delete(request, pk=None):
+    if not request.user.is_staff or not request.user.is_superuser:
+        return redirect('accounts:signup')
+    instance = get_object_or_404(Tour, pk=pk)
+    instance.delete()
+    messages.success(request, 'Tour deleted')
+    return redirect('tour:list')

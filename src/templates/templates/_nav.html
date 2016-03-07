@@ -1,17 +1,29 @@
 <div class="navbar-collapse collapse inverse" id="navbar-header">
-    <div class="container-fluid">
-        <div>
-            <h4>About</h4>
-            <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
-        </div>
-        <div>
-            <h4>Contact</h4>
-            <ol class="list-unstyled">
-                <li><a href="#">Follow on Twitter <i class="fa fa-twitter"></i></a></li>
-                <li><a href="#">Follow on Facebook <i class="fa fa-facebook"></i></a></li>
-                <li><a href="#">Follow on Instagram <i class="fa fa-instagram"></i></a></li>
-                <li><a href="#">Email me <i class="fa fa-mail-forward"></i></a></li>
-            </ol>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h4 class="text-md-center text-sm-center text-xs-center">Site Map</h4>
+                <ol class="list-unstyled">
+                    <li class="text-md-center text-sm-center text-xs-center"><a href="{% url 'home' %}">Home</a></li>
+                    <li class="text-md-center text-sm-center text-xs-center"><a href="{% url 'tour:list' %}">Tours</a></li>
+                    <li class="text-md-center text-sm-center text-xs-center"><a href="{% url 'review:list' %}">Reviews</a></li>
+                    <li class="text-md-center text-sm-center text-xs-center"><a href="{% url 'gallery:list' %}">Gallery</a></li>
+                    <li class="text-md-center text-sm-center text-xs-center"><a href="{% url 'about' %}">About Us</a></li>
+                    <li class="text-md-center text-sm-center text-xs-center"><a href="{% url 'contact:list' %}">Contacts</a></li>
+                    {% if user.is_staff or user.is_superuser %}
+                        <li class="text-md-center text-sm-center text-xs-center"><a href="/admin/">Admin Panel</a></li>
+                    {% endif %}
+                </ol>
+            </div>
+            <div class="col-md-6">
+                <h4 class="text-md-center text-sm-center text-xs-center">Contact</h4>
+                <ol class="list-unstyled">
+                    <li class="text-md-center text-sm-center text-xs-center"><a href="#">Follow on Twitter <i class="fa fa-twitter"></i></a></li>
+                    <li class="text-md-center text-sm-center text-xs-center"><a href="#">Follow on Facebook <i class="fa fa-facebook"></i></a></li>
+                    <li class="text-md-center text-sm-center text-xs-center"><a href="#">Follow on Instagram <i class="fa fa-instagram"></i></a></li>
+                    <li class="text-md-center text-sm-center text-xs-center"><a href="#">Email me <i class="fa fa-mail-forward"></i></a></li>
+                </ol>
+            </div>
         </div>
     </div>
 </div>
@@ -23,38 +35,31 @@
                     &#9776;
                 </button>
             </li>
-            <li class="nav-item">
+            <li class="nav-item hidden-sm-down">
                 <a class="nav-link" href="{% url 'home' %}">Home</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'tour_list' %}">Tours</a>
+            <li class="nav-item hidden-sm-down">
+                <a class="nav-link" href="{% url 'tour:list' %}">Tours</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item hidden-sm-down">
                 <a class="nav-link" href="{% url 'review:list' %}">Reviews</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item hidden-sm-down">
                 <a class="nav-link" href="{% url 'gallery:list' %}">Gallery</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item hidden-sm-down">
                 <a class="nav-link" href="{% url 'about' %}">About Us</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item hidden-sm-down">
                 <a class="nav-link" href="{% url 'contact:list' %}">Contact</a>
             </li>
             <li class="nav-item">
                 {% include 'templates/_user.html' %}
             </li>
         </ol>
-
-        <form class="form-inline pull-xs-right hidden-xs-down hidden-sm-down" method='GET' action=''>
+        <form class="form-inline pull-xs-right" method='GET' action=''>
             <input class="form-control" type='text' name='q' placeholder='Search' value='{{ request.GET.q }}'/>
-            <input class="btn btn-success-outline" type='submit' value='Search' />
+            <input class="btn btn-success-outline hidden-sm-down" type='submit' value='Search' />
         </form>
-
-
-{#        <form class="form-inline pull-xs-right hidden-xs-down hidden-sm-down">#}
-{#            <input class="form-control" type="text" placeholder="Search">#}
-{#            <button class="btn btn-success-outline" type="submit">Search</button>#}
-{#        </form>#}
     </div>
 </div>

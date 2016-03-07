@@ -20,19 +20,6 @@ class Tour(models.Model):
         return self.title_pt
 
 
-class Offer(models.Model):
-    title = models.CharField(max_length=100, blank=True, null=False)
-    text = models.TextField(max_length=1000, blank=True, null=False)
-    created_on = models.DateTimeField(auto_now_add=True, auto_created=False)
-    img = models.FileField(null=True, blank=True)
-
-    def __str__(self):
-        return self.title
-
-    def __unicode__(self):
-        return self.title
-
-
 class Paragraph(models.Model):
     text = models.TextField(max_length=500, blank=True, null=False)
 

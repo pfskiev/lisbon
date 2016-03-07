@@ -10,7 +10,8 @@
                 {% endfor %}
             </div>
             {% if user.is_staff or user.is_superuser %}
-                <a class="btn btn-warning" href="{% url 'tour_create' %}">Create Tour</a>
+                <a class="btn btn-warning" href="{% url 'tour:create' %}">
+                    <i class="fa fa-plus"></i> Create Tour</a>
             {% endif %}
             {% include 'templates/_pagination.html' %}
         </div>

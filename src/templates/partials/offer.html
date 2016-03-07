@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block beadcrumbs %}
+    {% include 'templates/_breadcrumbs.html' %}
+{% endblock %}
+{% block content %}
+    <section>
+    <div class="container contact">
+        <div class="row">
+            <h1 class="display-4">{{ title }}</h1>
+
+            {% for offer in offer_list %}
+                <div class="col-md-4">
+                {% include 'templates/_offer_card.html' %}
+                </div>
+            {% endfor %}
+
+        </div>
+        {% if user.is_staff or user.is_superuser %}
+            <a class="btn btn-warning" href="{% url 'offer:create' %}"><i class="fa fa-plus"></i> Create Offer</a>
+        {% endif %}
+        {% include 'templates/_pagination.html' %}
+    </div>
+    </section>
+{% endblock %}
