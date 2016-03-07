@@ -18,7 +18,7 @@
             </form>
         </div>
         <script>
-            _.map(['textarea', 'input', 'label'], function(el){
+            _.map(['textarea', 'input', 'label', 'select'], function(el){
                 el === 'label' && $(el).attr('type') !== 'submit' ? $(el).addClass('my-label') : $(el).addClass('form-control')
             });
         </script>

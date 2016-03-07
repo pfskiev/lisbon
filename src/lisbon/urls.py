@@ -10,22 +10,12 @@ urlpatterns = [
     url(r'^', include('accounts.urls', namespace='accounts')),
     url(r'^users/', include('profiles.urls', namespace='profiles')),
     url(r'^admin/', admin.site.urls, name='admin'),
-
     url(r'^tours/', include('tours.urls')),
-
     url(r'^contacts/', include('contacts.urls', namespace='contact')),
     url(r'^gallery/', include('gallery.urls', namespace='gallery')),
-
-
-    url(r'^reviews/$', views.review_list, name='review_list'),
-    url(r'^create/', views.feedback_create, name='create_review'),
-    url(r'^feedback/(?P<pk>[0-9]+)/details/$', views.feedback_edit.as_view(), name='feedback_detail'),
-
+    url(r'^reviews/', include('review.urls', namespace='review')),
     url(r'^about/$', views.about, name='about'),
-
-
-
-
+    url(r'^login-or-register/$', views.login_or_register, name='login_or_register')
 
 ]
 

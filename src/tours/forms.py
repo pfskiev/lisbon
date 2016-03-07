@@ -1,5 +1,5 @@
 from django import forms
-from .models import Tour, Review
+from .models import Tour
 
 
 class TourForm(forms.ModelForm):
@@ -19,12 +19,3 @@ class TourForm(forms.ModelForm):
 
         ]
 
-
-class ReviewForm(forms.ModelForm):
-    class Meta:
-        model = Review
-        fields = [
-
-            'title',
-
-        ]

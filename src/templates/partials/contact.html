@@ -7,13 +7,28 @@
     <div class="container contact">
         <div class="row">
             <h1 class="display-4">{{ title }}</h1>
-            {% for contact in contact_list %}
+            {% for contact in object_list %}
                 {% include 'templates/_contact_card.html' %}
             {% endfor %}
         </div>
         {% if user.is_staff or user.is_superuser %}
             <a class="btn btn-warning" href="{% url 'contact:create' %}"><i class="fa fa-plus"></i> Create Contact</a>
         {% endif %}
+        {% include 'templates/_pagination.html' %}
     </div>
     </section>
+
+    <script>
+
+
+{#    $('h4').each(function(){#}
+{#            if($(this).text({{ request.GET.q }})){#}
+{#                $(this).css('color', 'red')#}
+{#            }#}
+{#    })#}
+
+
+    </script>
+
+
 {% endblock %}

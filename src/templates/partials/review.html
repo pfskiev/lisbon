@@ -5,25 +5,19 @@
         <div class="container">
         <h1 class="display-4">{{ title }}</h1>
             {% for review in review_list %}
-                {% if review.confirm %}
+                {% if review.confirmed %}
                 <blockquote class="blockquote">
-                    <p class="m-b-0">{{ review.title }}</p>
+                    <p class="m-b-0">{{ review.text }}</p>
                     <p class="m-b-0"><span class="text-muted">left by: </span>{{ review.user.name }}</p>
                     <div class="blockquote-footer">add on: <cite title="Source Title">{{ review.timestamp }}</cite></div>
-                    <a href="/feedback/{{ review.id }}/details/">details</a>
+                    <a href="/reviews/{{ review.id }}/">details</a>
                 </blockquote>
                 {% endif %}
-{#        {{ review.slug }}#}
-{#        {{ review.image }}#}
-{#        {{ review.height_field }}#}
-{#        {{ review.width_field }}#}
-{#        {{ review.content }}#}
-{#        {{ review.draft }}#}
-{#        {{ review.publish }}#}
-{#        {{ review.updated }}#}
-{#        {{ review.timestamp }}#}
             {% endfor %}
-            <a class="btn btn-warning" href="{% url 'create_review' %}">Create Review</a>
+            <a class="btn btn-warning" href="{% url 'review:create' %}"><i class="fa fa-plus"></i> Add Review</a>
+            {% if user.is_staff or user.is_superuser %}
+                <a class="btn btn-warning" href="/admin/review/review/"> To review list</a>
+            {% endif %}
         </div>
     </section>
 {% endblock %}

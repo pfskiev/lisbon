@@ -1,3 +1,5 @@
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from .models import Contact
@@ -5,13 +7,33 @@ from .forms import ContactForm
 
 
 def contact_list(request):
-    model = Contact.objects.all()
+    queryset_list = Contact.objects.all()
+    breadcrumbs = [
+        {'url': '/', 'name': 'Home', 'active': False},
+        {'url': '#', 'name': 'Contacts', 'active': True}
+    ]
+    query = request.GET.get('q')
+    if query:
+        queryset_list = queryset_list.filter(
+            Q(first_name__icontains=query) |
+            Q(last_name__icontains=query)
+        ).distinct()
+    paginator = Paginator(queryset_list, 5)
+    page_request_var = 'page'
+    page = request.GET.get(page_request_var)
+    try:
+        queryset = paginator.page(page)
+    except PageNotAnInteger:
+        queryset = paginator.page(1)
+    except EmptyPage:
+        queryset = paginator.page(paginator.num_pages)
+
     context = {
+
+        'object_list': queryset,
         'title': 'Contacts',
-        'breadcrumbs_list': [
-            {'url': '/', 'name': 'Home'},
-            {'url': '#', 'name': 'Contacts', 'active': True}],
-        'contact_list': model,
+        'breadcrumbs_list': breadcrumbs,
+        'page_request_var': page_request_var,
     }
 
     return render(request, 'partials/contact.html', context)

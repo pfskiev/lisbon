@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% load staticfiles %}
+    {% include 'templates/_breadcrumbs.html' %}
+    <section class="details">
+        <div class="container">
+            <h4 class="display-4">{{ title }}</h4>
+            {% include 'templates/_carousel.html' %}
+            <small><em>DESCRIPTION:</em></small>
+            <p class="card-text"> {{ object.text}}</p>
+            {% if user.is_staff or user.is_superuser %}
+                <a class="btn btn-sm btn-danger-outline" href="/gallery/{{ object.id }}/delete/">
+                    <i class="fa fa-trash"></i> Delete</a>
+                <a class="btn btn-sm btn-danger-outline" href="/gallery/{{ object.id }}/edit/">
+                    <i class="fa fa-pencil-square-o"></i> Edit
+                </a>
+            {% endif %}
+            {% include 'templates/_share.html' %}
+        </div>
+    </section>
+{% endblock %}

@@ -53,7 +53,7 @@ def gallery_detail(request, pk=None):
         'object': gallery,
     }
 
-    return render(request, 'partials/detail.html', context)
+    return render(request, 'templates/_gallery_details.html', context)
 
 
 def gallery_create(request):

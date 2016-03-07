@@ -13,8 +13,7 @@ def tour_list(request):
     query = request.GET.get('q')
     if query:
         queryset_list = queryset_list.filter(
-            Q(title__icontains=query) |
-            Q(text__icontains=query)
+            Q(description_pt__icontains=query)
         ).distinct()
     paginator = Paginator(queryset_list, 5)
     page_request_var = "page"

@@ -1,4 +1,3 @@
-from django.conf import settings
 from django.db import models
 
 
@@ -53,29 +52,3 @@ class About(models.Model):
     def __unicode__(self):
         return self.paragraph
 
-
-class Post(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL)
-    title = models.TextField(max_length=500)
-    confirm = models.BooleanField(default=False)
-    # updated = models.DateTimeField(auto_now=True, auto_now_add=False)
-    timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
-
-    def __unicode__(self):
-        return self.title
-
-    def __str__(self):
-        return self.title
-
-
-class Review(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL)
-    title = models.TextField(max_length=500)
-    updated = models.DateTimeField(auto_now=True, auto_now_add=False)
-    timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
-
-    def __unicode__(self):
-        return self.title
-
-    def __str__(self):
-        return self.title
