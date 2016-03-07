@@ -31,7 +31,7 @@ def offer_list(request):
     context = {
 
         'title': 'Offers',
-        'offer_list': queryset,
+        'object_list': queryset,
         'breadcrumbs_list': breadcrumbs,
         'page_request_var': page_request_var,
     }
