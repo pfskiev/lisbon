@@ -57,7 +57,7 @@ def review_detail(request, pk=None):
 
 
 def review_create(request):
-    if not request.user.is_staff or not request.user.is_superuser:
+    if not request.user.is_authenticated:
         return redirect('login_or_register')
     else:
         form = ReviewForm(request.POST or None, request.FILES or None)
