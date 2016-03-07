@@ -84,11 +84,36 @@
         {% endif %}
             <p><a class="btn btn-danger-outline" href="/contacts/{{ contact.id }}" role="button">View details &raquo;</a></p>
             {% if user.is_staff or user.is_superuser %}
-                <a class="btn btn-sm btn-danger-outline" href="/contacts/{{ contact.id }}/delete/">
-                    <i class="fa fa-trash"></i> Delete</a>
+                <a type="button" class="btn btn-sm btn-danger-outline" onclick="delete_contact({{ contact.id }})" data-toggle="modal" data-target=".bd-example-modal-sm"><i class="fa fa-trash"></i> Delete</a></a>
                 <a class="btn btn-sm btn-danger-outline" href="/contacts/{{ contact.id }}/edit/">
                     <i class="fa fa-pencil-square-o"></i> Edit</a>
             {% endif %}
+        <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">Contact delete</h4>
+                    </div>
+                    <div class="modal-body">
+                    <div class="modal-body">
+                        <h4>Are you sure to delete Contact</h4>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-danger" onclick="confirm()">Delete</button>
+                    </div>
+                </div>
+            </div>
+                </div>
+        </div>
+            <script>
+                var _id = '';
+                function delete_contact(id){_id = id}
+                function confirm (){window.location.pathname = '/contacts/' + _id + '/delete/'}
+            </script>
         </div>
     </div>
 </div>
