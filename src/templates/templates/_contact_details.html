@@ -1,83 +1,96 @@
-<div class="col-sm-12 col-md-6 col-lg-4">
-    <div class="card">
-        <div class="card-block">
-            <h4 class="card-title">{{ contact.first_name }}</h4>
-            <h6 class="card-subtitle text-muted">{{ contact.last_name }}</h6>
-        </div>
-        <img class="img-fluid" src="/media/{{ contact.img }}" alt="">
-        <div class="card-block">
-        <small><em>CATEGORY:</em></small>
-            <p class="card-text">{{ contact.category }}</p>
-        {% if  contact.short_bio_preview %}
-            <small><em>SHORT BIO:</em></small>
-            {% if contact.short_bio  %}
-                <p class="card-text"> {{ contact.short_bio|truncatechars:100}}</p>
-            {% endif %}
-        {% endif %}
-        <small><em>CALL ME:</em></small>
-        {% if  contact.mobile_preview %}
+{% extends 'base.html' %}
+{% block content %}
+    {% load staticfiles %}
+    {% include 'templates/_breadcrumbs.html' %}
+    <section class="details">
+        <div class="container">
+            <h4 class="display-4">{{ title }}</h4>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card-block">
+                    {% if contact.img %}
+                        <img style="max-height: 500px;   object-fit: cover;" class="img-fluid" src="{% static '/media/' %}{{ contact.img }}" alt="" width="100%">
+                    {% else %}
+                        <span class="fa fa-user"></span>
+                    {% endif %}
+                    <small><em>SHORT BIO:</em></small>
+                    <p class="card-text"> {{ contact.short_bio}}</p>
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                <small><em>CATEGORY:</em></small>
+                <p class="card-text"> {{ contact.category}}</p>
+
+                <small><em>CALL ME:</em></small>
             {% if contact.mobile  %}
                 <p class="card-text"><span class="fa fa-mobile"></span> {{ contact.mobile }}</p>
             {% endif %}
-        {% endif %}
-        {% if  contact.email_preview %}
+
+
             {% if contact.email  %}
                 <p class="card-text"><span class="fa fa-mail-forward"></span> {{ contact.email }}</p>
             {% endif %}
-        {% endif %}
-        {% if  contact.whatsapp_preview %}
+
+
             {% if contact.whatsapp  %}
                 <p class="card-text"><span class="fa fa-whatsapp"></span> {{ contact.whatsapp }}</p>
             {% endif %}
-        {% endif %}
-        {% if  contact.viber_preview %}
+
+
             {% if contact.viber  %}
                 <p class="card-text"><span>viber:</span> {{ contact.viber }}</p>
             {% endif %}
-        {% endif %}
-        {% if  contact.telegram_preview %}
+
+
             {% if contact.telegram  %}
                 <p class="card-text"><span>telegram: </span>{{ contact.telegram }}</p>
             {% endif %}
-        {% endif %}
-        {% if  contact.skype_preview %}
+
+
             {% if contact.skype  %}
                 <p class="card-text"><span class="fa fa-skype"></span> {{ contact.skype }}</p>
             {% endif %}
-        {% endif %}
-        <small><em>SOCIAL NETWORKS:</em></small>
-        {% if  contact.facebook_preview %}
+
+                <small><em>SOCIAL NETWORKS:</em></small>
+
+
             {% if contact.facebook  %}
                 <p><a class="card-link" href="{{ contact.facebook }}">Follow on Facebook <span class="fa fa-facebook"></span></a></p>
             {% endif %}
-        {% endif %}
-        {% if  contact.twitter_preview %}
+
+
             {% if contact.twitter  %}
                 <p><a class="card-link" href="{{ contact.twitter }}">Follow on Twitter <span class="fa fa-twitter"></span></a></p>
             {% endif %}
-        {% endif %}
-        {% if  contact.pinterest_preview %}
+
+
             {% if contact.pinterest  %}
                 <p><a class="card-link" href="{{ contact.pinterest }}">Follow on Pinterest <span class="fa fa-pinterest"></span></a></p>
             {% endif %}
-        {% endif %}
-        {% if  contact.instagram_preview %}
+
+
             {% if contact.instagram  %}
                 <p><a class="card-link" href="{{ contact.instagram }}">Follow on Instagram <span class="fa fa-instagram"></span></a></p>
             {% endif %}
-        {% endif %}
-        {% if  contact.google_preview %}
+
+
             {% if contact.google  %}
                 <p><a class="card-link" href="{{ contact.google }}">Follow on Google + <span class="fa fa-google-plus"></span></a></p>
-            {% endif %}
         {% endif %}
-            <p><a class="btn btn-danger-outline" href="/contacts/{{ contact.id }}" role="button">View details &raquo;</a></p>
             {% if user.is_staff or user.is_superuser %}
                 <a class="btn btn-sm btn-danger-outline" href="/contacts/{{ contact.id }}/delete/">
                     <i class="fa fa-trash"></i> Delete</a>
                 <a class="btn btn-sm btn-danger-outline" href="/contacts/{{ contact.id }}/edit/">
                     <i class="fa fa-pencil-square-o"></i> Edit</a>
             {% endif %}
+
+
+
+                    {% include 'templates/_share.html' %}
+
+                </div>
+            </div>
         </div>
-    </div>
-</div>
+    </section>
+{% endblock %}

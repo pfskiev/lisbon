@@ -6,6 +6,8 @@ class Contact(models.Model):
     first_name_preview = models.BooleanField(default=False)
     last_name = models.CharField(max_length=100, blank=True, null=False)
     last_name_preview = models.BooleanField(default=False)
+    short_bio = models.TextField(max_length=400, blank=True, null=False)
+    short_bio_preview = models.BooleanField(default=False)
     img = models.FileField(null=True, blank=True)
     category = models.CharField(max_length=100, blank=True, null=False)
     category_preview = models.BooleanField(default=False)

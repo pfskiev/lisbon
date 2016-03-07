@@ -9,15 +9,18 @@ from .forms import GalleryForm
 
 def gallery_list(request):
     queryset_list = Gallery.objects.all()
-    breadcrumbs_list = [{'url': '/', 'name': 'Home'}, {'url': '/tours', 'name': 'Tours'}]
-    query = request.GET.get("q")
+    breadcrumbs = [
+        {'url': '/', 'name': 'Home', 'active': False},
+        {'url': '#', 'name': 'Gallery', 'active': True}
+    ]
+    query = request.GET.get('q')
     if query:
         queryset_list = queryset_list.filter(
             Q(title__icontains=query) |
             Q(text__icontains=query)
         ).distinct()
     paginator = Paginator(queryset_list, 5)
-    page_request_var = "page"
+    page_request_var = 'page'
     page = request.GET.get(page_request_var)
     try:
         queryset = paginator.page(page)
@@ -30,7 +33,7 @@ def gallery_list(request):
 
         'object_list': queryset,
         'title': 'Gallery',
-        'breadcrumbs_list': breadcrumbs_list,
+        'breadcrumbs_list': breadcrumbs,
         'page_request_var': page_request_var,
     }
 
@@ -39,13 +42,14 @@ def gallery_list(request):
 
 def gallery_detail(request, pk=None):
     gallery = Gallery.objects.get(pk=pk)
-    breadcrumbs_list = [
+    breadcrumbs = [
         {'url': '/', 'name': 'Home', 'active': False},
-        {'url': '/contacts', 'name': 'Contacts', 'active': False},
+        {'url': '/gallery', 'name': 'Gallery', 'active': False},
+        {'url': '#', 'name': gallery.title, 'active': True},
         ]
     context = {
-        'breadcrumbs_list': breadcrumbs_list,
-        # 'title': gallery.first_name + ' ' + gallery.last_name,
+        'breadcrumbs_list': breadcrumbs,
+        'title': gallery.title,
         'object': gallery,
     }
 
@@ -61,15 +65,15 @@ def gallery_create(request):
             instance = form.save(commit=False)
             instance.user = request.user
             instance.save()
-            messages.success(request, 'Contact Created')
+            messages.success(request, 'Gallery Created')
             return redirect('gallery:list')
 
         context = {
-            'title': 'Contact creating',
+            'title': 'Gallery creating',
             'breadcrumbs_list': [
                 {'url': '/', 'name': 'Home', 'active': False},
-                {'url': '/contacts', 'name': 'Contacts', 'active': False},
-                {'url': '#', 'name': 'Contact creating', 'active': True}],
+                {'url': '/gallery', 'name': 'Gallery', 'active': False},
+                {'url': '#', 'name': 'Gallery creating', 'active': True}],
             'value': 'Contact creating',
             'form': form
         }
@@ -82,18 +86,20 @@ def gallery_update(request, pk=None):
         return redirect('accounts:signup')
     else:
         instance = get_object_or_404(Gallery, pk=pk)
-        breadcrumbs_list = [{'url': '/', 'name': 'Home'}, {'url': '/contacts', 'name': 'Contacts'},
-                            {'url': '#', 'name': instance.first_name + ' ' + instance.last_name, 'active': True}]
+        breadcrumbs = [
+            {'url': '/', 'name': 'Home', 'active': False},
+            {'url': '/gallery', 'name': 'Gallery', 'active': False},
+            {'url': '#', 'name': instance.title, 'active': True}]
         form = GalleryForm(request.POST or None, request.FILES or None, instance=instance)
         if form.is_valid():
             instance = form.save(commit=False)
             instance.save()
-            messages.success(request, 'Contact saved')
+            messages.success(request, 'Gallery saved')
             return redirect('gallery:list')
 
         context = {
             'title': 'Contact Edit',
-            'breadcrumbs_list': breadcrumbs_list,
+            'breadcrumbs_list': breadcrumbs,
             'instance': instance,
             'form': form
         }
@@ -105,7 +111,7 @@ def gallery_delete(request, pk=None):
         return redirect('accounts:signup')
     instance = get_object_or_404(Gallery, pk=pk)
     instance.delete()
-    messages.success(request, 'Contact deleted')
+    messages.success(request, 'Gallery deleted')
     return redirect('gallery:list')
 
 

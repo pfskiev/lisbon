@@ -26,10 +26,10 @@ def contact_detail(request, pk=None):
     context = {
         'breadcrumbs_list': breadcrumbs_list,
         'title': contact.first_name + ' ' + contact.last_name,
-        'object': contact,
+        'contact': contact,
     }
 
-    return render(request, 'partials/detail.html', context)
+    return render(request, 'templates/_contact_details.html', context)
 
 
 def contact_create(request):

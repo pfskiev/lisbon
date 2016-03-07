@@ -11,6 +11,8 @@ class ContactForm(forms.ModelForm):
             'first_name_preview',
             'last_name',
             'last_name_preview',
+            'short_bio',
+            'short_bio_preview',
             'img',
             'category',
             'category_preview',
