@@ -67,6 +67,7 @@ def gallery_list(request):
 
 
 def gallery_detail(request, pk=None):
+    lang = get_lang(request)
     gallery = Gallery.objects.get(pk=pk)
     breadcrumbs = [
         {'url': '/', 'name': 'Home', 'active': False},
@@ -74,6 +75,7 @@ def gallery_detail(request, pk=None):
         {'url': '#', 'name': gallery.title, 'active': True},
     ]
     context = {
+        'lang': lang,
         'breadcrumbs_list': breadcrumbs,
         'title': gallery.title,
         'object': gallery,
@@ -125,6 +127,7 @@ def gallery_create(request):
 
 
 def gallery_update(request, pk=None):
+    lang = get_lang(request)
     if not request.user.is_staff or not request.user.is_superuser:
         return redirect('accounts:signup')
     else:
@@ -141,6 +144,7 @@ def gallery_update(request, pk=None):
             return redirect('gallery:list')
 
         context = {
+            'lang': lang,
             'title': 'Contact Edit',
             'breadcrumbs_list': breadcrumbs,
             'instance': instance,

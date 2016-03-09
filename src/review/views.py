@@ -53,6 +53,7 @@ def review_list(request):
         'pt': pt,
         'de': de,
         'gb': gb,
+        'lang': lang,
         'nav': nav_bar[lang],
         'review_list': queryset,
         'title': nav_bar[lang].review,
@@ -78,6 +79,7 @@ def review_detail(request, pk=None):
 
     context = {
         'nav': nav_bar[lang],
+        'lang': lang,
         'breadcrumbs_list': breadcrumbs,
         'title': 'Review',
         'object': review,
@@ -87,9 +89,10 @@ def review_detail(request, pk=None):
 
 
 def review_create(request):
-    if not request.user.is_authenticated:
+    if not request.user.is_authenticated():
         return redirect('login_or_register')
     else:
+        lang = get_lang(request)
         form = ReviewForm(request.POST or None, request.FILES or None)
         if form.is_valid():
             instance = form.save(commit=False)
@@ -101,6 +104,7 @@ def review_create(request):
             return redirect('review:list')
 
         context = {
+            'lang': lang,
             'title': 'Review creating',
             'breadcrumbs_list': [
                 {'url': '/', 'name': 'Home', 'active': False},
@@ -114,6 +118,7 @@ def review_create(request):
 
 
 def review_update(request, pk=None):
+    lang = get_lang(request)
     if not request.user.is_staff or not request.user.is_superuser:
         return redirect('accounts:signup')
     else:
@@ -130,6 +135,7 @@ def review_update(request, pk=None):
             return redirect('review:list')
 
         context = {
+            'lang': lang,
             'title': 'Review Edit',
             'breadcrumbs_list': breadcrumbs,
             'instance': instance,
@@ -145,5 +151,3 @@ def review_delete(request, pk=None):
     instance.delete()
     messages.success(request, 'Review deleted')
     return redirect('review:list')
-
-

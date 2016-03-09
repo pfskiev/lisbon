@@ -4,17 +4,15 @@
             <div class="col-md-6">
                 <h4 class="text-md-center text-sm-center text-xs-center">Site Map</h4>
                 <ol class="list-unstyled">
-{#                {% for nav in nav_list %}#}
-                    <li class="text-md-center text-sm-center text-xs-center"><a href="{% url 'home' %}">{{ nav.home }}</a></li>
-                    <li class="text-md-center text-sm-center text-xs-center"><a href="{% url 'tour_pt:list' %}">{{ nav.tours }}</a></li>
-                    <li class="text-md-center text-sm-center text-xs-center"><a href="{% url 'review:list' %}">{{ nav.review }}</a></li>
-                    <li class="text-md-center text-sm-center text-xs-center"><a href="{% url 'gallery:list' %}">{{ nav.gallery }}</a></li>
-                    <li class="text-md-center text-sm-center text-xs-center"><a href="{% url 'about' %}">{{ nav.about }}</a></li>
-                    <li class="text-md-center text-sm-center text-xs-center"><a href="{% url 'contact:list' %}">{{ nav.contact }}</a></li>
+                    <li class="text-md-center text-sm-center text-xs-center"><a href="/{{ lang }}">{{ nav.home }}</a></li>
+                    <li class="text-md-center text-sm-center text-xs-center"><a href="/{{ lang }}/tours/" >{{ nav.tours }}</a></li>
+                    <li class="text-md-center text-sm-center text-xs-center"><a href="/{{ lang }}/reviews/">{{ nav.review }}</a></li>
+                    <li class="text-md-center text-sm-center text-xs-center"><a href="/{{ lang }}/gallery/">{{ nav.gallery }}</a></li>
+                    <li class="text-md-center text-sm-center text-xs-center"><a href="/{{ lang }}/about/">{{ nav.about }}</a></li>
+                    <li class="text-md-center text-sm-center text-xs-center"><a href="/{{ lang }}/contacts/">{{ nav.contact }}</a></li>
                     {% if user.is_staff or user.is_superuser %}
                         <li class="text-md-center text-sm-center text-xs-center"><a href="/admin/">Admin</a></li>
                     {% endif %}
-{#                {% endfor %}#}
                 </ol>
             </div>
             <div class="col-md-6">
@@ -39,22 +37,22 @@
                 </button>
             </li>
             <li class="nav-item hidden-sm-down">
-                <a class="nav-link" href="{% url 'home' %}">{{ nav.home }}</a>
+                <a class="nav-link" href="/{{ lang }}">{{ nav.home }}</a>
             </li>
             <li class="nav-item hidden-sm-down">
-                <a class="nav-link" href="{% url 'tour_pt:list' %}">{{ nav.tours }}</a>
+                <a class="nav-link" href="/{{ lang }}/tours/">{{ nav.tours }}</a>
             </li>
             <li class="nav-item hidden-sm-down">
-                <a class="nav-link" href="{% url 'review:list' %}">{{ nav.review }}</a>
+                <a class="nav-link" href="/{{ lang }}/reviews/">{{ nav.review }}</a>
             </li>
             <li class="nav-item hidden-sm-down">
-                <a class="nav-link" href="{% url 'gallery:list' %}">{{ nav.gallery }}</a>
+                <a class="nav-link" href="/{{ lang }}/gallery/">{{ nav.gallery }}</a>
             </li>
             <li class="nav-item hidden-sm-down">
-                <a class="nav-link" href="{% url 'about' %}">{{ nav.about }}</a>
+                <a class="nav-link" href="/{{ lang }}/about/">{{ nav.about }}</a>
             </li>
             <li class="nav-item hidden-sm-down">
-                <a class="nav-link" href="{% url 'contact:list' %}">{{ nav.contact }}</a>
+                <a class="nav-link" href="/{{ lang }}/contacts/">{{ nav.contact }}</a>
             </li>
             <li class="nav-item">
                 {% include 'templates/_user.html' %}

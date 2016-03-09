@@ -106,15 +106,33 @@ def tour_detail(request, pk=None):
 
 
 def tour_update(request, pk=None):
+    lang = get_lang(request)
+    tour = Tour.objects.get(pk=pk)
+    navbar = {
+        'pt': PTNavigation.objects.get(id=1),
+        'gb': GBNavigation.objects.get(id=1),
+        'de': DENavigation.objects.get(id=1)
+    }
+    path = request.get_full_path()
+    gb = path.replace(lang, 'gb')
+    pt = path.replace(lang, 'pt')
+    de = path.replace(lang, 'de')
+
+    tour_title = {
+        'pt': tour.title_pt,
+        'gb': tour.title_gb,
+        'de': tour.title_de
+    }
+    breadcrumbs_list = [
+        {'url': '/', 'name': navbar[lang].home},
+        {'url': path.replace(pk + '/', ''), 'name': navbar[lang].tours},
+        {'url': '#', 'name': tour_title[lang], 'active': True}
+    ]
+
     if not request.user.is_staff or not request.user.is_superuser:
         return redirect('accounts:signup')
     else:
         instance = get_object_or_404(Tour, pk=pk)
-        breadcrumbs_list = [
-            {'url': '/', 'name': 'Home'},
-            {'url': '/tours', 'name': 'Tour edit'},
-            {'url': '#', 'name': instance.title_pt, 'active': True}
-        ]
         form = TourForm(request.POST or None, request.FILES or None, instance=instance)
         if form.is_valid():
             instance = form.save(commit=False)
@@ -123,7 +141,12 @@ def tour_update(request, pk=None):
             return redirect('tour_list')
 
         context = {
-            'title': 'Tout Edit',
+            'pt': pt,
+            'de': de,
+            'gb': gb,
+            'lang': lang,
+            'nav': navbar[lang],
+            'title': tour_title[lang] + ' edit',
             'breadcrumbs_list': breadcrumbs_list,
             'instance': instance,
             'form': form
@@ -132,6 +155,7 @@ def tour_update(request, pk=None):
 
 
 def tour_create(request):
+    lang = get_lang(request)
     if not request.user.is_staff or not request.user.is_superuser:
         return redirect('accounts:signup')
     else:
@@ -144,6 +168,7 @@ def tour_create(request):
             return redirect('tour_gb:list')
 
         context = {
+            'lang': lang,
             'title': 'Tour create',
             'breadcrumbs_list': [
                 {'url': '/', 'name': 'Home'},

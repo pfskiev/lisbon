@@ -33,6 +33,7 @@ def home(request):
         'pt': pt,
         'de': de,
         'gb': gb,
+        'lang': lang,
         'nav': nav_bar[lang],
         'offer_list': Offer.objects.all(),
         'breadcrumbs_list': breadcrumbs_list
@@ -56,6 +57,7 @@ def about(request):
     pt = path.replace(lang, 'pt')
     de = path.replace(lang, 'de')
     context = {
+        'lang': lang,
         'nav': nav_bar[lang],
         'pt': pt,
         'de': de,
@@ -83,6 +85,7 @@ def login_or_register(request):
     pt = path.replace(lang, 'pt')
     de = path.replace(lang, 'de')
     context = {
+        'lang': lang,
         'nav': nav_bar[lang],
         'pt': pt,
         'de': de,

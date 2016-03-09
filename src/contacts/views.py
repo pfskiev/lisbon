@@ -99,6 +99,7 @@ def contact_detail(request, pk=None):
 
 
 def contact_create(request):
+    lang = get_lang(request)
     if not request.user.is_staff or not request.user.is_superuser:
         return redirect('accounts:signup')
     else:
@@ -111,6 +112,7 @@ def contact_create(request):
             return redirect('contact:list')
 
         context = {
+            'lang': lang,
             'title': 'Contact creating',
             'breadcrumbs_list': [
                 {'url': '/', 'name': 'Home', 'active': False},
@@ -124,6 +126,7 @@ def contact_create(request):
 
 
 def contact_update(request, pk=None):
+    lang = get_lang(request)
     if not request.user.is_staff or not request.user.is_superuser:
         return redirect('accounts:signup')
     else:
@@ -138,6 +141,7 @@ def contact_update(request, pk=None):
             return redirect('contact:list')
 
         context = {
+            'lang': lang,
             'title': 'Contact Edit',
             'breadcrumbs_list': breadcrumbs_list,
             'instance': instance,
