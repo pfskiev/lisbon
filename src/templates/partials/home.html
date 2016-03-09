@@ -79,6 +79,12 @@
         {% if user.is_staff or user.is_superuser %}
             <a class="btn btn-warning" href="{% url 'offer:create' %}"><i class="fa fa-plus"></i> Create Offer</a>
         {% endif %}
+
     </div>
     </article>
+    <script>
+    $('.carousel').carousel({
+  interval: 5000
+})
+    </script>
 {% endblock %}
