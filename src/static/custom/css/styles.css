@@ -242,10 +242,6 @@ article {
 article.tours {
   background-color: #ECECDA; }
 
-@media all and (max-width: 768px) {
-  article {
-    background: url(https://s-media-cache-ak0.pinimg.com/736x/5f/6b/b6/5f6bb6973d346449c793837ef5449e74.jpg);
-    min-height: 1000px; } }
 .form-box {
   max-width: 330px;
   display: block;
