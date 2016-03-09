@@ -1,8 +1,9 @@
+{% load thumbnail %}
 {% if user.is_authenticated %}
     {% if user.is_staff or user.is_superuser %}
         <a style="text-decoration: none" href="{% url 'profiles:show_self' %}">
             {% if user.profile.picture %}
-                <img class="img-circle img-responsive" src="/media/{{ user.profile.picture }}" style="object-fit: cover;" alt="" width="40" height="40">
+                <img title="profile picture" class="img-circle img-responsive" src="{% thumbnail user.profile.picture|default:'default_profile.png' 40x40 crop %}">
             {% else %}
                 <span class="fa fa-user"></span>
             {% endif %}

@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from offer.models import Offer
 from tours.models import About
-from helpers.models import PTNavigation, GBNavigation, DENavigation
+from helpers.models import PTNavigation, GBNavigation, DENavigation, Helpers
 
 
 def get_lang(request):
@@ -25,6 +25,12 @@ def home(request):
     breadcrumbs_list = [
         {'url': '/', 'name': nav_bar[lang].home, 'active': True},
     ]
+    header = {
+        'pt': Helpers.objects.get(id=2).start_page_header_pt,
+        'gb': Helpers.objects.get(id=2).start_page_header_gb,
+        'de': Helpers.objects.get(id=2).start_page_header_de
+    }
+
     path = request.get_full_path()
     gb = path.replace(lang, 'gb')
     pt = path.replace(lang, 'pt')
@@ -33,6 +39,10 @@ def home(request):
         'pt': pt,
         'de': de,
         'gb': gb,
+        'header': header[lang],
+        'img1': Helpers.objects.get(id=2).img,
+        'img2': Helpers.objects.get(id=2).img2,
+        'img3': Helpers.objects.get(id=2).img3,
         'lang': lang,
         'nav': nav_bar[lang],
         'offer_list': Offer.objects.all(),

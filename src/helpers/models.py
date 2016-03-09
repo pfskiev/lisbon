@@ -53,6 +53,9 @@ class Helpers(models.Model):
     copyright_gb = models.CharField(max_length=200, blank=True, null=True)
     copyright_pt = models.CharField(max_length=200, blank=True, null=True)
     copyright_de = models.CharField(max_length=200, blank=True, null=True)
+    img = models.FileField(blank=True, null=True)
+    img2 = models.FileField(blank=True, null=True)
+    img3 = models.FileField(blank=True, null=True)
 
     def __unicode__(self):
         return self.start_page_header_gb

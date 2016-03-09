@@ -40,6 +40,18 @@
         <div class="btn-group center-block" style="width: 115px;margin-top: 40px;">
             {% include 'templates/_languages.html' %}
         </div>
-        <p style="padding-top: 50px; text-align: center">All Original Content © 2015-{% now 'Y' %} Madeira Tours, LLC., All Rights Reserved</p>
+
+        {% if lang == 'pt' %}
+            <p style="padding-top: 50px; text-align: center">All Original Content © 2015-{% now 'Y' %} Lisbon Tours, LLC., All Rights Reserved</p>
+        {% else %}
+            {% if lang == 'gb' %}
+                <p style="padding-top: 50px; text-align: center">All Original Content © 2015-{% now 'Y' %} Lisbon Tours, LLC., All Rights Reserved</p>
+            {% else %}
+                {% if lang == 'de' %}
+                    <p style="padding-top: 50px; text-align: center">All Original Content © 2015-{% now 'Y' %} Lisbon Tours, LLC., All Rights Reserved</p>
+                {% else %}
+                {% endif %}
+            {% endif %}
+        {% endif %}
     </div>
 </footer>
