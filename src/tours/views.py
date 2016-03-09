@@ -138,7 +138,7 @@ def tour_update(request, pk=None):
             instance = form.save(commit=False)
             instance.save()
             messages.success(request, 'Tour saved')
-            return redirect('tour:list')
+            return redirect('tour_gb:list')
 
         context = {
             'pt': pt,
