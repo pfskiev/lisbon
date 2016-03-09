@@ -26,9 +26,9 @@ def home(request):
         {'url': '/', 'name': nav_bar[lang].home, 'active': True},
     ]
     header = {
-        'pt': Helpers.objects.get(id=2).start_page_header_pt,
-        'gb': Helpers.objects.get(id=2).start_page_header_gb,
-        'de': Helpers.objects.get(id=2).start_page_header_de
+        'pt': Helpers.objects.get(id=1).start_page_header_pt,
+        'gb': Helpers.objects.get(id=1).start_page_header_gb,
+        'de': Helpers.objects.get(id=1).start_page_header_de
     }
 
     path = request.get_full_path()
