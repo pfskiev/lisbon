@@ -108,13 +108,13 @@ DATABASES = {
     'default': env.db(),
 }
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_USE_TLS = True
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_PASSWORD = 'Rhfrfpz,hf1301'
 EMAIL_HOST_USER = 'kostiantyn.pidlisnyi@customertimes.com'
+EMAIL_HOST_PASSWORD = 'Rhfrfpz,hf1301'
 EMAIL_PORT = 587
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+DEFAULT_FROM_EMAIL = 'kostiantyn.pidlisnyi@customertimes.com'
 
 # Internationalization
 # https://docs.djangoproject.com/en/dev/topics/i18n/

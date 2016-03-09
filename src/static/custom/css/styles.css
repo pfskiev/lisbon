@@ -179,15 +179,15 @@ body {
 
 .type {
   display: inline-block;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(184, 134, 11, 0.3);
   color: #fff;
   font-family: 'HelveticaNeueCyr-Light', sans-serif;
   font-weight: 100;
   transition: all .3s ease;
-  padding: 5px 10px; }
+  padding: 30px 30px 30px 30px; }
 
 .type:hover {
-  background: rgba(0, 0, 0, 0.7); }
+  background: rgba(184, 134, 11, 0.7); }
 
 .blockquote {
   border-left: 0.25rem solid #118DF0; }
@@ -199,8 +199,6 @@ body {
   border-radius: 0;
   background-color: #118DF0;
   transition: all .3s ease; }
-  .navbar a {
-    color: #ECECDA; }
 
 .navbar:hover {
   background-color: #0275d8; }
@@ -212,6 +210,19 @@ body {
   margin-top: 8px; }
   .dropdown-menu a {
     color: #0E2F56; }
+
+ol.nav.navbar-nav > li > a.nav-link {
+  color: gold;
+  transition: all .3s ease; }
+ol.nav.navbar-nav > li > a.nav-link:hover {
+  color: darkgoldenrod; }
+
+.navbar-toggler {
+  color: gold;
+  transition: all .3s ease; }
+
+.navbar-toggler:hover {
+  color: darkgoldenrod; }
 
 section {
   background-color: #ECECDA;

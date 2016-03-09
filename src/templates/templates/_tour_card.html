@@ -2,8 +2,12 @@
 <div class="card">
     {% if object.img %}
         <a href="{{ object.id }}"><img style="height: 350px;width: 100%; object-fit: cover;" class="img-fluid" src="{% static '/media/' %}{{ object.img }}" alt="{{ object.title_pt }}"></a>
-    {% else %}
+        {% else %}
+        {% if object.url  %}
         <a href="{{ object.id }}"><img style="height: 350px;width: 100%;   object-fit: cover;" class="img-fluid" src="{{ object.url }}" alt="{{ object.title_pt }}"></a>
+        {% else %}
+        <p style="text-align: center; padding-top: 100px; padding-bottom: 30px"><small><em>HERE SHOULD BE PHOTO</em></small></p>
+            {% endif %}
     {% endif %}
     <div class="card-block">
         <p>{{ object.title_pt|upper }}
