@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from offer.models import Offer
 from tours.models import About
 from helpers.models import PTNavigation, GBNavigation, DENavigation
@@ -24,7 +24,7 @@ def home(request):
     }
     breadcrumbs_list = [
         {'url': '/', 'name': nav_bar[lang].home, 'active': True},
-        ]
+    ]
     path = request.get_full_path()
     gb = path.replace(lang, 'gb')
     pt = path.replace(lang, 'pt')
@@ -96,3 +96,5 @@ def login_or_register(request):
     return render(request, 'partials/login_or_register.html', context)
 
 
+def start(request):
+    return redirect('home')
