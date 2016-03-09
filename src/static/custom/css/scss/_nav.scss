@@ -24,12 +24,16 @@ ol.nav.navbar-nav>{
     color: gold;
     transition: all .3s ease;
   }
-  li>a.nav-link:hover {
+  li>a.nav-link:hover, div.btn-group>a:hover{
     color: darkgoldenrod;
   }
 
+  a.hidden-sm-down.nav-link.dropdown-toggle {
+    color: gold;
+    transition: all .3s ease;}
 
 }
+
 .navbar-toggler {
    color: gold;
     transition: all .3s ease;;

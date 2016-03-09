@@ -4,23 +4,25 @@
             <div class="col-md-6">
                 <h4 class="text-md-center text-sm-center text-xs-center">Site Map</h4>
                 <ol class="list-unstyled">
-                    <li class="text-md-center text-sm-center text-xs-center"><a href="{% url 'home' %}">Home</a></li>
-                    <li class="text-md-center text-sm-center text-xs-center"><a href="{% url 'tour:list' %}">Tours</a></li>
-                    <li class="text-md-center text-sm-center text-xs-center"><a href="{% url 'review:list' %}">Reviews</a></li>
-                    <li class="text-md-center text-sm-center text-xs-center"><a href="{% url 'gallery:list' %}">Gallery</a></li>
-                    <li class="text-md-center text-sm-center text-xs-center"><a href="{% url 'about' %}">About Us</a></li>
-                    <li class="text-md-center text-sm-center text-xs-center"><a href="{% url 'contact:list' %}">Contacts</a></li>
+{#                {% for nav in nav_list %}#}
+                    <li class="text-md-center text-sm-center text-xs-center"><a href="{% url 'home' %}">{{ nav.home }}</a></li>
+                    <li class="text-md-center text-sm-center text-xs-center"><a href="{% url 'tour_pt:list' %}">{{ nav.tours }}</a></li>
+                    <li class="text-md-center text-sm-center text-xs-center"><a href="{% url 'review:list' %}">{{ nav.review }}</a></li>
+                    <li class="text-md-center text-sm-center text-xs-center"><a href="{% url 'gallery:list' %}">{{ nav.gallery }}</a></li>
+                    <li class="text-md-center text-sm-center text-xs-center"><a href="{% url 'about' %}">{{ nav.about }}</a></li>
+                    <li class="text-md-center text-sm-center text-xs-center"><a href="{% url 'contact:list' %}">{{ nav.contact }}</a></li>
                     {% if user.is_staff or user.is_superuser %}
-                        <li class="text-md-center text-sm-center text-xs-center"><a href="/admin/">Admin Panel</a></li>
+                        <li class="text-md-center text-sm-center text-xs-center"><a href="/admin/">Admin</a></li>
                     {% endif %}
+{#                {% endfor %}#}
                 </ol>
             </div>
             <div class="col-md-6">
                 <h4 class="text-md-center text-sm-center text-xs-center">Contact</h4>
                 <ol class="list-unstyled">
-                    <li class="text-md-center text-sm-center text-xs-center"><a href="#">Follow on Twitter <i class="fa fa-twitter"></i></a></li>
-                    <li class="text-md-center text-sm-center text-xs-center"><a href="#">Follow on Facebook <i class="fa fa-facebook"></i></a></li>
-                    <li class="text-md-center text-sm-center text-xs-center"><a href="#">Follow on Instagram <i class="fa fa-instagram"></i></a></li>
+                    <li class="text-md-center text-sm-center text-xs-center"><a href="#">Follow Twitter <i class="fa fa-twitter"></i></a></li>
+                    <li class="text-md-center text-sm-center text-xs-center"><a href="#">Follow Facebook <i class="fa fa-facebook"></i></a></li>
+                    <li class="text-md-center text-sm-center text-xs-center"><a href="#">Follow Instagram <i class="fa fa-instagram"></i></a></li>
                     <li class="text-md-center text-sm-center text-xs-center"><a href="#">Email me <i class="fa fa-mail-forward"></i></a></li>
                 </ol>
             </div>
@@ -30,32 +32,34 @@
 <div class="navbar navbar-static-top navbar-dark bg-inverse">
     <div class="container-fluid">
         <ol class="nav navbar-nav">
+{#            {% for nav in nav_list %}#}
             <li class="nav-item">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-header">
                     &#9776;
                 </button>
             </li>
             <li class="nav-item hidden-sm-down">
-                <a class="nav-link" href="{% url 'home' %}">Home</a>
+                <a class="nav-link" href="{% url 'home' %}">{{ nav.home }}</a>
             </li>
             <li class="nav-item hidden-sm-down">
-                <a class="nav-link" href="{% url 'tour:list' %}">Tours</a>
+                <a class="nav-link" href="{% url 'tour_pt:list' %}">{{ nav.tours }}</a>
             </li>
             <li class="nav-item hidden-sm-down">
-                <a class="nav-link" href="{% url 'review:list' %}">Reviews</a>
+                <a class="nav-link" href="{% url 'review:list' %}">{{ nav.review }}</a>
             </li>
             <li class="nav-item hidden-sm-down">
-                <a class="nav-link" href="{% url 'gallery:list' %}">Gallery</a>
+                <a class="nav-link" href="{% url 'gallery:list' %}">{{ nav.gallery }}</a>
             </li>
             <li class="nav-item hidden-sm-down">
-                <a class="nav-link" href="{% url 'about' %}">About Us</a>
+                <a class="nav-link" href="{% url 'about' %}">{{ nav.about }}</a>
             </li>
             <li class="nav-item hidden-sm-down">
-                <a class="nav-link" href="{% url 'contact:list' %}">Contact</a>
+                <a class="nav-link" href="{% url 'contact:list' %}">{{ nav.contact }}</a>
             </li>
             <li class="nav-item">
                 {% include 'templates/_user.html' %}
             </li>
+{#            {% endfor %}#}
         </ol>
         <form class="form-inline pull-xs-right" method='GET' action=''>
             <input class="form-control" type='text' name='q' placeholder='Search' value='{{ request.GET.q }}'/>

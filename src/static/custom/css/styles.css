@@ -214,8 +214,11 @@ body {
 ol.nav.navbar-nav > li > a.nav-link {
   color: gold;
   transition: all .3s ease; }
-ol.nav.navbar-nav > li > a.nav-link:hover {
+ol.nav.navbar-nav > li > a.nav-link:hover, ol.nav.navbar-nav > div.btn-group > a:hover {
   color: darkgoldenrod; }
+ol.nav.navbar-nav > a.hidden-sm-down.nav-link.dropdown-toggle {
+  color: gold;
+  transition: all .3s ease; }
 
 .navbar-toggler {
   color: gold;

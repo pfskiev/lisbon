@@ -80,7 +80,8 @@ INSTALLED_APPS = [
     'review',
     'profiles',
     'tours',
-    'offer'
+    'offer',
+    'helpers'
 
 ]
 

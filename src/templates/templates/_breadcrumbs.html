@@ -10,11 +10,7 @@
         {% else %}
             <li><a href="/">Home</a></li>
     {% endif %}
-{#    <li class="active">Data</li>#}
 </ol>
-<div class="pull-right" style="margin-top: 10px; margin-right: 20px">
-    <span class="text-danger">Choose language:</span>
-    <i style="cursor: pointer" class="flag-icon flag-icon-pt"></i>
-    <i style="cursor: pointer" class="flag-icon flag-icon-gb"></i>
-    <i style="cursor: pointer" class="flag-icon flag-icon-de"></i>
+<div class="btn-group pull-right" style="margin-top: 10px; margin-right: 20px">
+    {% include 'templates/_languages.html' %}
 </div>

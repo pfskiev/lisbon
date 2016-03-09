@@ -1,19 +1,39 @@
-from django.contrib import messages
-from django.core.mail import send_mail
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
+from django.contrib import messages
+from django.core.mail import send_mail
 from django.shortcuts import render, redirect, get_object_or_404
-
+from helpers.models import PTNavigation, GBNavigation, DENavigation
 from .models import Review
 from .forms import ReviewForm
 
 
+def get_lang(request):
+    lang = request.path
+    if 'pt' in lang:
+        return 'pt'
+    else:
+        if 'gb' in lang:
+            return 'gb'
+        else:
+            return 'de'
+
+
 def review_list(request):
     queryset_list = Review.objects.all()
-    breadcrumbs = [
-        {'url': '/', 'name': 'Home', 'active': False},
-        {'url': '#', 'name': 'Reviews', 'active': True}
-    ]
+    lang = get_lang(request)
+    nav_bar = {
+        'pt': PTNavigation.objects.get(id=1),
+        'gb': GBNavigation.objects.get(id=1),
+        'de': DENavigation.objects.get(id=1)
+    }
+    breadcrumbs_list = [
+        {'url': '/', 'name': nav_bar[lang].home},
+        {'url': '#', 'name': nav_bar[lang].review, 'active': True}]
+    path = request.get_full_path()
+    gb = path.replace(lang, 'gb')
+    pt = path.replace(lang, 'pt')
+    de = path.replace(lang, 'de')
     query = request.GET.get('q')
     if query:
         queryset_list = queryset_list.filter(
@@ -30,10 +50,13 @@ def review_list(request):
         queryset = paginator.page(paginator.num_pages)
 
     context = {
-
+        'pt': pt,
+        'de': de,
+        'gb': gb,
+        'nav': nav_bar[lang],
         'review_list': queryset,
-        'title': 'Review',
-        'breadcrumbs_list': breadcrumbs,
+        'title': nav_bar[lang].review,
+        'breadcrumbs_list': breadcrumbs_list,
         'page_request_var': page_request_var,
     }
 
@@ -42,14 +65,21 @@ def review_list(request):
 
 def review_detail(request, pk=None):
     review = Review.objects.get(pk=pk)
+    lang = get_lang(request)
+    nav_bar = {
+        'pt': PTNavigation.objects.get(id=1),
+        'gb': GBNavigation.objects.get(id=1),
+        'de': DENavigation.objects.get(id=1)
+    }
     breadcrumbs = [
-        {'url': '/', 'name': 'Home', 'active': False},
-        {'url': '/reviews', 'name': 'Review', 'active': False},
-        {'url': '#', 'name': review.title, 'active': True},
-        ]
+        {'url': '/', 'name': nav_bar[lang].home},
+        {'url': '#', 'name': nav_bar[lang].review},
+        {'url': '#', 'name': review.text, 'active': True}]
+
     context = {
+        'nav': nav_bar[lang],
         'breadcrumbs_list': breadcrumbs,
-        'title': review.title,
+        'title': 'Review',
         'object': review,
     }
 
