@@ -8,10 +8,14 @@
   border-radius: 0;
   /* background-color: rgba(255, 255, 255, 0.7); */
   transition: all .5s ease;
-  z-index: 9999; }
+  z-index: 9000; }
 
 .btn-group.pull-right {
   z-index: 9999; }
+
+.open > .dropdown-menu {
+  z-index: 9999;
+  display: block; }
 
 .btn.btn-success-outline {
   color: rgba(0, 0, 0, 0.7);
