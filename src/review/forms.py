@@ -9,6 +9,5 @@ class ReviewForm(forms.ModelForm):
         fields = [
 
             'text',
-            'confirmed'
 
         ]

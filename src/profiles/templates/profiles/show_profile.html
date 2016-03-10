@@ -14,8 +14,8 @@
         </div>
         <div class="col-sm-2">
             {% if user.profile.picture %}
-                    <img class="img-circle img-responsive" src="/media/{{ user.profile.picture }}" style="object-fit: cover;" alt="" width="140" height="140">
-{#                <img title="profile picture" class="img-circle img-responsive" src="{% thumbnail user.profile.picture|default:'default_profile.png' 140x140 crop %}">#}
+{#                    <img class="img-circle img-responsive" src="/media/{{ user.profile.picture }}" style="object-fit: cover;" alt="" width="140" height="140">#}
+                <img title="profile picture" class="img-circle img-responsive" src="{% thumbnail user.profile.picture|default:'default_profile.png' 140x140 crop %}">
                 {% else %}
                     <div class="logo-container">
                         <span class="fa fa-user"></span>

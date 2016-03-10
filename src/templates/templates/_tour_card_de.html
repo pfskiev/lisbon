@@ -1,0 +1,57 @@
+{% load staticfiles %}
+<div class="card">
+    {% if object.img %}
+        <a href="{{ object.id }}"><img style="height: 350px;width: 100%; object-fit: cover;" class="img-fluid" src="{% static '/media/' %}{{ object.img }}" alt="{{ object.title_de }}"></a>
+        {% else %}
+        {% if object.url  %}
+        <a href="{{ object.id }}"><img style="height: 350px;width: 100%;   object-fit: cover;" class="img-fluid" src="{{ object.url }}" alt="{{ object.title_pt }}"></a>
+        {% else %}
+        <p style="text-align: center; padding-top: 100px; padding-bottom: 30px"><small><em>HERE SHOULD BE PHOTO</em></small></p>
+            {% endif %}
+    {% endif %}
+    <div class="card-block">
+        <h4 class="card-title">{{ object.title_de|upper }}
+            {% if object.price %}
+                | {{ object.price }} €
+            {% endif %}</h4>
+        <p class="card-text text-justify">{{ object.description_de|truncatechars:200}}</p>
+        <p>{{ object.created_on }}</p>
+        <a href="{{ object.id }}" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">BOOK NOW</a>
+        <a href="{{ request.path }}{{ object.id }}" class="btn btn-danger-outline">Read More</a>
+        {% include 'templates/_share.html' %}
+        {% if user.is_staff %}
+             <a class="btn btn-sm btn-danger-outline" href="{{ request.get_full_path }}{{ object.id }}/edit/">
+                    <i class="fa fa-pencil-square-o"></i> Edit</a>
+            <a type="button" class="btn btn-sm btn-danger-outline" onclick="delete_contact({{ object.id }})" data-toggle="modal" data-target=".bd-example-modal-sm"><i class="fa fa-trash"></i> Delete</a></a>
+        {% endif %}
+    <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">Contact delete</h4>
+                    </div>
+                    <div class="modal-body">
+                    <div class="modal-body">
+                        <h4>Are you sure to delete Tour</h4>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-danger" onclick="confirm()">Delete</button>
+                    </div>
+                </div>
+            </div>
+                </div>
+        </div>
+            <script>
+                var _id = '';
+                function delete_contact(id){_id = id}
+                function confirm (){
+                    debugger
+                    window.location.pathname = '{{ request.get_full_path }}' + _id + '/delete/'}
+            </script>
+    </div>
+    {% include 'templates/_modal.html' %}
+</div>

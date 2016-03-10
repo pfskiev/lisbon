@@ -10,7 +10,7 @@
                     <p class="m-b-0">{{ review.text }}</p>
                     <p class="m-b-0"><span class="text-muted">left by: </span>{{ review.user.name }}</p>
                     <div class="blockquote-footer">add on: <cite title="Source Title">{{ review.timestamp }}</cite></div>
-                    <a href="/reviews/{{ review.id }}/">details</a>
+                    <a href="{{ request.path }}{{ review.id }}/">details</a>
                 </blockquote>
                 {% endif %}
             {% endfor %}

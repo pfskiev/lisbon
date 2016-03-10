@@ -1,14 +1,15 @@
+{% load thumbnail %}
 {% if user.is_authenticated %}
     {% if user.is_staff or user.is_superuser %}
         <a style="text-decoration: none" href="{% url 'profiles:show_self' %}">
             {% if user.profile.picture %}
-                <img class="img-circle img-responsive" src="/media/{{ user.profile.picture }}" style="object-fit: cover;" alt="" width="40" height="40">
+                <img title="profile picture" class="img-circle img-responsive" src="{% thumbnail user.profile.picture|default:'default_profile.png' 40x40 crop %}">
             {% else %}
                 <span class="fa fa-user"></span>
             {% endif %}
         </a>
         <div class="btn-group">
-            <a style="cursor: pointer"  class="hidden-sm-down nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="{% url 'admin:index' %}">Admin</a>
+            <a style="cursor: pointer;"  class="hidden-sm-down nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="{% url 'admin:index' %}">Admin</a>
             <div class="dropdown-menu">
                 <a href="{% url 'profiles:show_self' %}" class="dropdown-item">Profile</a>
                 <a href="/admin/" class="dropdown-item">Admin Panel</a>

@@ -1,16 +1,15 @@
 @import 'variables';
 
 .type {
-  display: inline-block;
-  background: rgba(0,0,0,0.4);
+  background: rgba(184, 134, 11, 0.3);
   color: #fff;
   font-family: 'HelveticaNeueCyr-Light', sans-serif;
   font-weight: 100;
   transition: all .3s ease;
-  padding: 5px 10px;
+  padding: 30px 30px 30px 30px;
 }
 .type:hover {
-  background:rgba(0,0,0,0.7);
+  background:rgba(184, 134, 11, 0.7);
 }
 
 .blockquote {

@@ -2,17 +2,39 @@ from django.contrib import messages
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
+from helpers.models import PTNavigation, GBNavigation, DENavigation
 
 from .models import Gallery
 from .forms import GalleryForm
 
 
+def get_lang(request):
+    lang = request.path
+    if 'pt' in lang:
+        return 'pt'
+    else:
+        if 'gb' in lang:
+            return 'gb'
+        else:
+            return 'de'
+
+
 def gallery_list(request):
     queryset_list = Gallery.objects.all()
+    lang = get_lang(request)
+    navbar = {
+        'pt': PTNavigation.objects.get(id=1),
+        'gb': GBNavigation.objects.get(id=1),
+        'de': DENavigation.objects.get(id=1)
+    }
     breadcrumbs = [
-        {'url': '/', 'name': 'Home', 'active': False},
-        {'url': '#', 'name': 'Gallery', 'active': True}
+        {'url': '/', 'name': navbar[lang].home},
+        {'url': '#', 'name': navbar[lang].gallery, 'active': True}
     ]
+    path = request.get_full_path()
+    gb = path.replace(lang, 'gb')
+    pt = path.replace(lang, 'pt')
+    de = path.replace(lang, 'de')
     query = request.GET.get('q')
     if query:
         queryset_list = queryset_list.filter(
@@ -30,10 +52,14 @@ def gallery_list(request):
         queryset = paginator.page(paginator.num_pages)
 
     context = {
-
-        'object_list': queryset,
-        'title': 'Gallery',
+        'pt': pt,
+        'de': de,
+        'gb': gb,
+        'lang': lang,
+        'nav': navbar[lang],
+        'title': navbar[lang].gallery,
         'breadcrumbs_list': breadcrumbs,
+        'object_list': queryset,
         'page_request_var': page_request_var,
     }
 
@@ -41,13 +67,15 @@ def gallery_list(request):
 
 
 def gallery_detail(request, pk=None):
+    lang = get_lang(request)
     gallery = Gallery.objects.get(pk=pk)
     breadcrumbs = [
         {'url': '/', 'name': 'Home', 'active': False},
         {'url': '/gallery', 'name': 'Gallery', 'active': False},
         {'url': '#', 'name': gallery.title, 'active': True},
-        ]
+    ]
     context = {
+        'lang': lang,
         'breadcrumbs_list': breadcrumbs,
         'title': gallery.title,
         'object': gallery,
@@ -57,6 +85,21 @@ def gallery_detail(request, pk=None):
 
 
 def gallery_create(request):
+    lang = get_lang(request)
+    navbar = {
+        'pt': PTNavigation.objects.get(id=1),
+        'gb': GBNavigation.objects.get(id=1),
+        'de': DENavigation.objects.get(id=1)
+    }
+    breadcrumbs = [
+        {'url': '/', 'name': navbar[lang].home},
+        {'url': '#', 'name': navbar[lang].gallery},
+        {'url': '#', 'name': 'Create Gallery', 'active': True}
+    ]
+    path = request.get_full_path()
+    gb = path.replace(lang, 'gb')
+    pt = path.replace(lang, 'pt')
+    de = path.replace(lang, 'de')
     if not request.user.is_staff or not request.user.is_superuser:
         return redirect('accounts:signup')
     else:
@@ -69,11 +112,13 @@ def gallery_create(request):
             return redirect('gallery:list')
 
         context = {
-            'title': 'Gallery creating',
-            'breadcrumbs_list': [
-                {'url': '/', 'name': 'Home', 'active': False},
-                {'url': '/gallery', 'name': 'Gallery', 'active': False},
-                {'url': '#', 'name': 'Gallery creating', 'active': True}],
+            'pt': pt,
+            'de': de,
+            'gb': gb,
+            'lang': lang,
+            'nav': navbar[lang],
+            'title': 'Create Gallery',
+            'breadcrumbs_list': breadcrumbs,
             'value': 'Contact creating',
             'form': form
         }
@@ -82,6 +127,7 @@ def gallery_create(request):
 
 
 def gallery_update(request, pk=None):
+    lang = get_lang(request)
     if not request.user.is_staff or not request.user.is_superuser:
         return redirect('accounts:signup')
     else:
@@ -98,6 +144,7 @@ def gallery_update(request, pk=None):
             return redirect('gallery:list')
 
         context = {
+            'lang': lang,
             'title': 'Contact Edit',
             'breadcrumbs_list': breadcrumbs,
             'instance': instance,
@@ -113,5 +160,3 @@ def gallery_delete(request, pk=None):
     instance.delete()
     messages.success(request, 'Gallery deleted')
     return redirect('gallery:list')
-
-

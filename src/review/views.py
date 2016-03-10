@@ -1,19 +1,39 @@
-from django.contrib import messages
-from django.core.mail import send_mail
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
+from django.contrib import messages
+from django.core.mail import send_mail
 from django.shortcuts import render, redirect, get_object_or_404
-
+from helpers.models import PTNavigation, GBNavigation, DENavigation
 from .models import Review
 from .forms import ReviewForm
 
 
+def get_lang(request):
+    lang = request.path
+    if 'pt' in lang:
+        return 'pt'
+    else:
+        if 'gb' in lang:
+            return 'gb'
+        else:
+            return 'de'
+
+
 def review_list(request):
     queryset_list = Review.objects.all()
-    breadcrumbs = [
-        {'url': '/', 'name': 'Home', 'active': False},
-        {'url': '#', 'name': 'Reviews', 'active': True}
-    ]
+    lang = get_lang(request)
+    nav_bar = {
+        'pt': PTNavigation.objects.get(id=1),
+        'gb': GBNavigation.objects.get(id=1),
+        'de': DENavigation.objects.get(id=1)
+    }
+    breadcrumbs_list = [
+        {'url': '/', 'name': nav_bar[lang].home},
+        {'url': '#', 'name': nav_bar[lang].review, 'active': True}]
+    path = request.get_full_path()
+    gb = path.replace(lang, 'gb')
+    pt = path.replace(lang, 'pt')
+    de = path.replace(lang, 'de')
     query = request.GET.get('q')
     if query:
         queryset_list = queryset_list.filter(
@@ -30,10 +50,14 @@ def review_list(request):
         queryset = paginator.page(paginator.num_pages)
 
     context = {
-
+        'pt': pt,
+        'de': de,
+        'gb': gb,
+        'lang': lang,
+        'nav': nav_bar[lang],
         'review_list': queryset,
-        'title': 'Review',
-        'breadcrumbs_list': breadcrumbs,
+        'title': nav_bar[lang].review,
+        'breadcrumbs_list': breadcrumbs_list,
         'page_request_var': page_request_var,
     }
 
@@ -42,14 +66,22 @@ def review_list(request):
 
 def review_detail(request, pk=None):
     review = Review.objects.get(pk=pk)
+    lang = get_lang(request)
+    nav_bar = {
+        'pt': PTNavigation.objects.get(id=1),
+        'gb': GBNavigation.objects.get(id=1),
+        'de': DENavigation.objects.get(id=1)
+    }
     breadcrumbs = [
-        {'url': '/', 'name': 'Home', 'active': False},
-        {'url': '/reviews', 'name': 'Review', 'active': False},
-        {'url': '#', 'name': review.title, 'active': True},
-        ]
+        {'url': '/', 'name': nav_bar[lang].home},
+        {'url': '#', 'name': nav_bar[lang].review},
+        {'url': '#', 'name': review.text, 'active': True}]
+
     context = {
+        'nav': nav_bar[lang],
+        'lang': lang,
         'breadcrumbs_list': breadcrumbs,
-        'title': review.title,
+        'title': 'Review',
         'object': review,
     }
 
@@ -57,9 +89,10 @@ def review_detail(request, pk=None):
 
 
 def review_create(request):
-    if not request.user.is_staff or not request.user.is_superuser:
+    if not request.user.is_authenticated():
         return redirect('login_or_register')
     else:
+        lang = get_lang(request)
         form = ReviewForm(request.POST or None, request.FILES or None)
         if form.is_valid():
             instance = form.save(commit=False)
@@ -71,6 +104,7 @@ def review_create(request):
             return redirect('review:list')
 
         context = {
+            'lang': lang,
             'title': 'Review creating',
             'breadcrumbs_list': [
                 {'url': '/', 'name': 'Home', 'active': False},
@@ -84,6 +118,7 @@ def review_create(request):
 
 
 def review_update(request, pk=None):
+    lang = get_lang(request)
     if not request.user.is_staff or not request.user.is_superuser:
         return redirect('accounts:signup')
     else:
@@ -100,6 +135,7 @@ def review_update(request, pk=None):
             return redirect('review:list')
 
         context = {
+            'lang': lang,
             'title': 'Review Edit',
             'breadcrumbs_list': breadcrumbs,
             'instance': instance,
@@ -115,5 +151,3 @@ def review_delete(request, pk=None):
     instance.delete()
     messages.success(request, 'Review deleted')
     return redirect('review:list')
-
-

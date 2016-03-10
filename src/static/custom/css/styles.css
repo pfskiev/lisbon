@@ -6,11 +6,16 @@
   position: absolute;
   margin-bottom: 0;
   border-radius: 0;
-  background-color: rgba(255, 255, 255, 0.7);
-  transition: all .5s ease; }
+  /* background-color: rgba(255, 255, 255, 0.7); */
+  transition: all .5s ease;
+  z-index: 9000; }
 
-.breadcrumb:hover {
-  background-color: white; }
+.btn-group.pull-right {
+  z-index: 9999; }
+
+.open > .dropdown-menu {
+  z-index: 9999;
+  display: block; }
 
 .btn.btn-success-outline {
   color: rgba(0, 0, 0, 0.7);
@@ -178,16 +183,15 @@ body {
   color: #0E2F56; }
 
 .type {
-  display: inline-block;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(184, 134, 11, 0.3);
   color: #fff;
   font-family: 'HelveticaNeueCyr-Light', sans-serif;
   font-weight: 100;
   transition: all .3s ease;
-  padding: 5px 10px; }
+  padding: 30px 30px 30px 30px; }
 
 .type:hover {
-  background: rgba(0, 0, 0, 0.7); }
+  background: rgba(184, 134, 11, 0.7); }
 
 .blockquote {
   border-left: 0.25rem solid #118DF0; }
@@ -199,8 +203,6 @@ body {
   border-radius: 0;
   background-color: #118DF0;
   transition: all .3s ease; }
-  .navbar a {
-    color: #ECECDA; }
 
 .navbar:hover {
   background-color: #0275d8; }
@@ -213,26 +215,33 @@ body {
   .dropdown-menu a {
     color: #0E2F56; }
 
+ol.nav.navbar-nav > li > a.nav-link {
+  color: gold;
+  transition: all .3s ease; }
+ol.nav.navbar-nav > li > a.nav-link:hover, ol.nav.navbar-nav > div.btn-group > a:hover {
+  color: darkgoldenrod; }
+ol.nav.navbar-nav > a.hidden-sm-down.nav-link.dropdown-toggle {
+  color: gold;
+  transition: all .3s ease; }
+
+.navbar-toggler {
+  color: gold;
+  transition: all .3s ease; }
+
+.navbar-toggler:hover {
+  color: darkgoldenrod; }
+
 section {
   background-color: #ECECDA;
   padding-top: 100px;
   padding-bottom: 100px; }
 
 article {
-  padding-top: 100px;
-  padding-bottom: 100px;
-  background: url(http://expo-cruises.com/wp-content/uploads/2014/11/PORTUGAL-7-lisbon.jpg);
-  background-size: cover;
-  min-height: 600px;
   transition: all .5s ease; }
 
 article.tours {
   background-color: #ECECDA; }
 
-@media all and (max-width: 768px) {
-  article {
-    background: url(https://s-media-cache-ak0.pinimg.com/736x/5f/6b/b6/5f6bb6973d346449c793837ef5449e74.jpg);
-    min-height: 1000px; } }
 .form-box {
   max-width: 330px;
   display: block;

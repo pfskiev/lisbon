@@ -63,4 +63,4 @@ Desktop.ini
 src/media/
 
 # Migrations
-*/*/migrations/*.py
+*/*/migrations/00*.py

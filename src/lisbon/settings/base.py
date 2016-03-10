@@ -71,7 +71,6 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
-    'compressor',
     'authtools',
     'crispy_forms',
     'easy_thumbnails',
@@ -81,7 +80,8 @@ INSTALLED_APPS = (
     'review',
     'profiles',
     'tours',
-    'offer'
+    'offer',
+    'helpers'
 
 )
 
@@ -109,13 +109,13 @@ DATABASES = {
     'default': env.db(),
 }
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_USE_TLS = True
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_PASSWORD = 'Rhfrfpz,hf1301'
 EMAIL_HOST_USER = 'kostiantyn.pidlisnyi@customertimes.com'
+EMAIL_HOST_PASSWORD = 'Rhfrfpz,hf1301'
 EMAIL_PORT = 587
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+DEFAULT_FROM_EMAIL = 'kostiantyn.pidlisnyi@customertimes.com'
 
 # Internationalization
 # https://docs.djangoproject.com/en/dev/topics/i18n/
@@ -148,19 +148,9 @@ MESSAGE_TAGS = {
     messages.ERROR: 'danger'
 }
 
-STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'compressor.finders.CompressorFinder',
-)
-
-COMPRESS_PRECOMPILERS = (
-    ('text/x-scss', 'django_libsass.SassCompiler'),
-)
-
 # Authentication Settings
 AUTH_USER_MODEL = 'authtools.User'
 LOGIN_REDIRECT_URL = reverse_lazy("profiles:show_self")
 LOGIN_URL = reverse_lazy("accounts:login")
 
-THUMBNAIL_EXTENSION = 'png'     # Or any extn for your thumbnails
+THUMBNAIL_EXTENSION = 'png' # Or any extn for your thumbnails

@@ -5,12 +5,27 @@
         <div class="container">
             <h1 class="display-4">{{ title }}</h1>
             <div class="card-columns">
+            {% if 'pt' in request.get_full_path %}
                 {% for object in object_list %}
-                    {% include 'templates/_tour_card.html' %}
+                    {% include 'templates/_tour_card_pt.html' %}
                 {% endfor %}
+            {% else %}
+                {% if request.get_full_path == '/gb/tours/' %}
+                    {% for object in object_list %}
+                        {% include 'templates/_tour_card_gb.html' %}
+                    {% endfor %}
+                {% else %}
+                    {% if request.get_full_path == '/de/tours/' %}
+                        {% for object in object_list %}
+                            {% include 'templates/_tour_card_de.html' %}
+                        {% endfor %}
+                    {% else %}
+                    {% endif %}
+                {% endif %}
+            {% endif %}
             </div>
             {% if user.is_staff or user.is_superuser %}
-                <a class="btn btn-warning" href="{% url 'tour:create' %}">
+                <a class="btn btn-warning" href="{% url 'tour_pt:create' %}">
                     <i class="fa fa-plus"></i> Create Tour</a>
             {% endif %}
             {% include 'templates/_pagination.html' %}
