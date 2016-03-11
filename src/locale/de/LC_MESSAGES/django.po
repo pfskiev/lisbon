@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-11 09:12+0000\n"
+"POT-Creation-Date: 2016-03-11 12:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,32 +42,33 @@ msgstr ""
 msgid "The %(site_name)s team"
 msgstr ""
 
-#: templates/templates/_follow_us.html:2
-msgid "Contact Us"
-msgstr "Kontaktiere uns"
+#: lisbon/views.py:16 lisbon/views.py:38 lisbon/views.py:51
+#: templates/templates/_breadcrumbs.html:12 templates/templates/_footer.html:12
+#: templates/templates/nav/_nav_test.html:8
+#: templates/templates/nav/_nav_test.html:34
+msgid "Home"
+msgstr "Zuhause"
 
-#: templates/templates/_follow_us.html:5 templates/templates/_follow_us.html:8
-#: templates/templates/_follow_us.html:11
-#: templates/templates/_follow_us.html:14
-msgid "Follow on "
-msgstr "Folgen auf"
-
-#: templates/templates/_follow_us.html:17
-msgid "Email me"
-msgstr "Maile mir"
-
-#: templates/templates/_footer.html:6
+#: lisbon/views.py:39 lisbon/views.py:42 templates/templates/_footer.html.py:6
 msgid "About"
 msgstr "Über uns"
+
+#: templates/partials/home.html:69
+msgid "We Offer"
+msgstr "Wir bieten"
+
+#: templates/partials/home.html:71
+msgid "full offer list"
+msgstr "vollständige Angebotsliste"
+
+#: templates/partials/home.html:81 templates/partials/offer.html.py:18
+#: templates/partials/offer.html:30
+msgid "Create Offer"
+msgstr "Angebot erstellen"
 
 #: templates/templates/_footer.html:10 templates/templates/nav/_nav_test.html:6
 msgid "Site Map"
 msgstr "Sitemap"
-
-#: templates/templates/_footer.html:12 templates/templates/nav/_nav_test.html:8
-#: templates/templates/nav/_nav_test.html:34
-msgid "Home"
-msgstr "Zuhause"
 
 #: templates/templates/_footer.html:13 templates/templates/nav/_nav_test.html:9
 #: templates/templates/nav/_nav_test.html:37
@@ -78,7 +79,7 @@ msgstr "Tours"
 #: templates/templates/nav/_nav_test.html:10
 #: templates/templates/nav/_nav_test.html:40
 msgid "Reviews"
-msgstr ""
+msgstr "Bewertungen"
 
 #: templates/templates/_footer.html:15
 #: templates/templates/nav/_nav_test.html:11
@@ -110,3 +111,70 @@ msgstr "Alle Original- Inhalt"
 #: templates/templates/_footer.html:37
 msgid "All Rights Reserved"
 msgstr "Alle Rechte vorbehalten"
+
+#: templates/templates/_languages.html:13
+msgid "Choose Language"
+msgstr "Wähle eine Sprache"
+
+#: templates/templates/_offer_card.html:6
+#: templates/templates/_offer_details.html:14
+msgid "place for image"
+msgstr "Platz für Bild"
+
+#: templates/templates/_offer_card.html:10
+msgid "View details"
+msgstr "Details anzeigen"
+
+#: templates/templates/_offer_card.html:13
+#: templates/templates/_offer_details.html:24
+msgid "Delete"
+msgstr "Löschen"
+
+#: templates/templates/_offer_card.html:15
+#: templates/templates/_offer_details.html:26
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: templates/templates/_offer_details.html:18
+msgid "title"
+msgstr "Titel"
+
+#: templates/templates/_offer_details.html:20
+msgid "description"
+msgstr "Beschreibung"
+
+#: templates/templates/_user.html:15 templates/templates/_user.html.py:35
+msgid "Profile"
+msgstr "Profil"
+
+#: templates/templates/_user.html:17 templates/templates/_user.html.py:36
+msgid "Change password"
+msgstr "Passwort ändern"
+
+#: templates/templates/_user.html:19 templates/templates/_user.html.py:38
+msgid "Logout"
+msgstr "Ausloggen"
+
+#: templates/templates/_user.html:43
+msgid "Login"
+msgstr "Anmeldung"
+
+#: templates/templates/nav/_follow_us.html:2
+msgid "Contact Us"
+msgstr "Kontaktiere uns"
+
+#: templates/templates/nav/_follow_us.html:5
+#: templates/templates/nav/_follow_us.html:8
+#: templates/templates/nav/_follow_us.html:11
+#: templates/templates/nav/_follow_us.html:14
+msgid "Follow on "
+msgstr "Folgen auf"
+
+#: templates/templates/nav/_follow_us.html:17
+msgid "Email me"
+msgstr "Maile mir"
+
+#: templates/templates/nav/_nav_test.html:56
+#: templates/templates/nav/_nav_test.html:57
+msgid "Search"
+msgstr "Suche"

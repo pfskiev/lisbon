@@ -53,8 +53,8 @@
             </li>
         </ol>
         <form class="form-inline pull-xs-right" method='GET' action=''>
-            <input class="form-control" type='text' name='q' placeholder='Search' value='{{ request.GET.q }}'/>
-            <input class="btn btn-success-outline hidden-sm-down" type='submit' value='Search' />
+            <input class="form-control" type='text' name='q' placeholder='{% trans 'Search' %}' value='{{ request.GET.q }}'/>
+            <input class="btn btn-success-outline hidden-sm-down" type='submit' value='{% trans 'Search' %}' />
         </form>
     </div>
 </div>

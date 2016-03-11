@@ -6,13 +6,11 @@ from . import views
 
 urlpatterns = [
 
-
+    url(r'^$', views.home, name='home'),
     url(r'^', include('accounts.urls', namespace='accounts')),
     url(r'^i18n/', include('django.conf.urls.i18n')),
     url(r'^users/', include('profiles.urls', namespace='profiles')),
     url(r'^admin/', admin.site.urls, name='admin'),
-    url(r'^$', views.home, name='home'),
-    url(r'^gb/mail/', views.thankyou),
     url(r'^tours/', include('tours.urls', namespace='tour')),
     url(r'^reviews/', include('review.urls', namespace='review')),
     url(r'^gallery/', include('gallery.urls', namespace='gallery')),

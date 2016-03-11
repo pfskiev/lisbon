@@ -28,12 +28,25 @@ def offer_list(request):
     except EmptyPage:
         queryset = paginator.page(paginator.num_pages)
 
+    if not request.user.is_staff or not request.user.is_superuser:
+        return redirect('accounts:signup')
+    else:
+        form = OfferForm(request.POST or None, request.FILES or None)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.user = request.user
+            instance.save()
+            messages.success(request, 'Offer Created')
+            return redirect('offer:list')
+
     context = {
 
         'title': 'Offers',
         'object_list': queryset,
         'breadcrumbs_list': breadcrumbs,
         'page_request_var': page_request_var,
+        'value': 'Offer creating',
+        'form': form
     }
 
     return render(request, 'partials/offer.html', context)
@@ -55,28 +68,28 @@ def offer_detail(request, pk=None):
 
 
 def offer_create(request):
-    if not request.user.is_staff or not request.user.is_superuser:
-        return redirect('accounts:signup')
-    else:
-        form = OfferForm(request.POST or None, request.FILES or None)
-        if form.is_valid():
-            instance = form.save(commit=False)
-            instance.user = request.user
-            instance.save()
-            messages.success(request, 'Offer Created')
-            return redirect('offer:list')
-
-        context = {
-            'title': 'Offer creating',
-            'breadcrumbs_list': [
-                {'url': '/', 'name': 'Home', 'active': False},
-                {'url': '/offers', 'name': 'Offers', 'active': False},
-                {'url': '#', 'name': 'Offer creating', 'active': True}],
-            'value': 'Offer creating',
-            'form': form
-        }
-
-        return render(request, 'templates/_form.html', context)
+    #     if not request.user.is_staff or not request.user.is_superuser:
+    #         return redirect('accounts:signup')
+    #     else:
+    #         form = OfferForm(request.POST or None, request.FILES or None)
+    #         if form.is_valid():
+    #             instance = form.save(commit=False)
+    #             instance.user = request.user
+    #             instance.save()
+    #             messages.success(request, 'Offer Created')
+    #             return redirect('offer:list')
+    #
+    #         context = {
+    #             'title': 'Offer creating',
+    #             'breadcrumbs_list': [
+    #                 {'url': '/', 'name': 'Home', 'active': False},
+    #                 {'url': '/offers', 'name': 'Offers', 'active': False},
+    #                 {'url': '#', 'name': 'Offer creating', 'active': True}],
+    #             'value': 'Offer creating',
+    #             'form': form
+    #         }
+    #
+    return render(request, 'templates/_form.html')
 
 
 def offer_update(request, pk=None):

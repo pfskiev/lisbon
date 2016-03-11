@@ -1,15 +1,9 @@
-{% extends 'base.html' %}
+
 {% load crispy_forms_tags %}
-{% block content %}
-    <nav>
-        {% include 'templates/_breadcrumbs.html' %}
-    </nav>
-    <section>
     <div class="container">
-        <h4 class="display-4">{{ title }}</h4>
         <form method='POST' action='' enctype='multipart/form-data'>{% csrf_token %}
             {{ form }}
-            <input type="submit" class="btn btn-lg btn-primary" value='{{ value }}' />
+            <input style="margin-top: 50px" type="submit" class="btn btn-lg btn-primary" value='{{ value }}' />
         </form>
     </div>
     <script>
@@ -23,5 +17,3 @@
             $(this).addClass('my-label')
         })
     </script>
-    </section>
-{% endblock %}

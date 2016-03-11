@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-11 12:47+0000\n"
+"POT-Creation-Date: 2016-03-11 11:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: accounts/templates/accounts/emails/password-reset-email.html:3
 #, python-format
@@ -42,139 +41,73 @@ msgstr ""
 msgid "The %(site_name)s team"
 msgstr ""
 
-#: lisbon/views.py:16 lisbon/views.py:38 lisbon/views.py:51
-#: templates/templates/_breadcrumbs.html:12 templates/templates/_footer.html:12
+#: lisbon/views.py:22 templates/templates/_footer.html.py:12
 #: templates/templates/nav/_nav_test.html:8
 #: templates/templates/nav/_nav_test.html:34
 msgid "Home"
-msgstr "Página"
+msgstr ""
 
-#: lisbon/views.py:39 lisbon/views.py:42 templates/templates/_footer.html.py:6
+#: templates/templates/_footer.html:6
 msgid "About"
-msgstr "Sobre"
-
-#: templates/partials/home.html:69
-msgid "We Offer"
-msgstr "Nós oferecemos"
-
-#: templates/partials/home.html:71
-msgid "full offer list"
-msgstr "Lista oferta completa"
-
-#: templates/partials/home.html:81 templates/partials/offer.html.py:18
-#: templates/partials/offer.html:30
-msgid "Create Offer"
-msgstr "Criar uma oferta"
+msgstr ""
 
 #: templates/templates/_footer.html:10 templates/templates/nav/_nav_test.html:6
 msgid "Site Map"
-msgstr "Mapa do site"
+msgstr ""
 
 #: templates/templates/_footer.html:13 templates/templates/nav/_nav_test.html:9
 #: templates/templates/nav/_nav_test.html:37
 msgid "Tours"
-msgstr "Tours"
+msgstr ""
 
 #: templates/templates/_footer.html:14
 #: templates/templates/nav/_nav_test.html:10
 #: templates/templates/nav/_nav_test.html:40
 msgid "Reviews"
-msgstr "Rever"
+msgstr ""
 
 #: templates/templates/_footer.html:15
 #: templates/templates/nav/_nav_test.html:11
 #: templates/templates/nav/_nav_test.html:43
 msgid "Gallery"
-msgstr "Galeria"
+msgstr ""
 
 #: templates/templates/_footer.html:16
 #: templates/templates/nav/_nav_test.html:12
 #: templates/templates/nav/_nav_test.html:46
 msgid "About Us"
-msgstr "Sobre nós"
+msgstr ""
 
 #: templates/templates/_footer.html:17
 #: templates/templates/nav/_nav_test.html:13
 #: templates/templates/nav/_nav_test.html:49
 msgid "Contacts"
-msgstr "Contactos"
+msgstr ""
 
 #: templates/templates/_footer.html:19
 #: templates/templates/nav/_nav_test.html:15
 msgid "Admin Panel"
-msgstr "Painel de administração"
+msgstr ""
 
 #: templates/templates/_footer.html:37
 msgid "All Original Content"
-msgstr "Todo o Conteúdo Original"
+msgstr ""
 
 #: templates/templates/_footer.html:37
 msgid "All Rights Reserved"
-msgstr "Todos os direitos reservados"
-
-#: templates/templates/_languages.html:13
-msgid "Choose Language"
-msgstr "escolher o idioma"
-
-#: templates/templates/_offer_card.html:6
-#: templates/templates/_offer_details.html:14
-msgid "place for image"
-msgstr "colocar para a imagem"
-
-#: templates/templates/_offer_card.html:10
-msgid "View details"
-msgstr "Ver detalhes"
-
-#: templates/templates/_offer_card.html:13
-#: templates/templates/_offer_details.html:24
-msgid "Delete"
-msgstr "Excluir"
-
-#: templates/templates/_offer_card.html:15
-#: templates/templates/_offer_details.html:26
-msgid "Edit"
-msgstr "Editar"
-
-#: templates/templates/_offer_details.html:18
-msgid "title"
-msgstr "título"
-
-#: templates/templates/_offer_details.html:20
-msgid "description"
-msgstr "Descrição"
-
-#: templates/templates/_user.html:15 templates/templates/_user.html.py:35
-msgid "Profile"
-msgstr "Perfil"
-
-#: templates/templates/_user.html:17 templates/templates/_user.html.py:36
-msgid "Change password"
-msgstr "Mudar senha"
-
-#: templates/templates/_user.html:19 templates/templates/_user.html.py:38
-msgid "Logout"
-msgstr "Sair"
-
-#: templates/templates/_user.html:43
-msgid "Login"
-msgstr "Entrar"
+msgstr ""
 
 #: templates/templates/nav/_follow_us.html:2
 msgid "Contact Us"
-msgstr "Nos contate"
+msgstr ""
 
 #: templates/templates/nav/_follow_us.html:5
 #: templates/templates/nav/_follow_us.html:8
 #: templates/templates/nav/_follow_us.html:11
 #: templates/templates/nav/_follow_us.html:14
 msgid "Follow on "
-msgstr "siga no"
+msgstr ""
 
 #: templates/templates/nav/_follow_us.html:17
 msgid "Email me"
-msgstr "Me mande um e-mail"
-
-#: templates/templates/nav/_nav_test.html:56
-#: templates/templates/nav/_nav_test.html:57
-msgid "Search"
-msgstr "Pesquisa"
+msgstr ""

@@ -1,6 +1,7 @@
+{% load i18n %}
 <ol class="breadcrumb">
-    {% if breadcrumbs_list %}
-        {% for breadcrumb in breadcrumbs_list %}
+    {% if breadcrumbs %}
+        {% for breadcrumb in breadcrumbs %}
             {% if breadcrumb.active %}
                 <li class="active">{{ breadcrumb.name }}</li>
             {% else %}
@@ -8,7 +9,7 @@
             {%  endif %}
         {% endfor %}
         {% else %}
-            <li><a href="/">Home</a></li>
+        <li><a href="/">{% trans 'Home' %}</a></li>
     {% endif %}
 </ol>
 <div class="btn-group pull-right" style="margin-top: 5px; margin-right: 20px">

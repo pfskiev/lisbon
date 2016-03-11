@@ -4,36 +4,22 @@ from django.contrib import messages
 from django.core.mail import send_mail
 from django.shortcuts import render, redirect, get_object_or_404
 from helpers.models import PTNavigation, GBNavigation, DENavigation
+from django.utils.translation import ugettext_lazy as _
 from .models import Review
 from .forms import ReviewForm
 
 
 def get_lang(request):
-    lang = request.path
-    if 'pt' in lang:
-        return 'pt'
-    else:
-        if 'gb' in lang:
-            return 'gb'
-        else:
-            return 'de'
+    lang = request.LANGUAGE_CODE
+    return lang
 
 
 def review_list(request):
     queryset_list = Review.objects.all()
-    lang = get_lang(request)
-    nav_bar = {
-        'pt': PTNavigation.objects.get(id=1),
-        'gb': GBNavigation.objects.get(id=1),
-        'de': DENavigation.objects.get(id=1)
-    }
-    breadcrumbs_list = [
-        {'url': '/', 'name': nav_bar[lang].home},
-        {'url': '#', 'name': nav_bar[lang].review, 'active': True}]
-    path = request.get_full_path()
-    gb = path.replace(lang, 'gb')
-    pt = path.replace(lang, 'pt')
-    de = path.replace(lang, 'de')
+    breadcrumbs = [
+        {'url': '/', 'name': _('Home')},
+        {'url': '#', 'name': _('Reviews'), 'active': True}
+    ]
     query = request.GET.get('q')
     if query:
         queryset_list = queryset_list.filter(
@@ -49,15 +35,25 @@ def review_list(request):
     except EmptyPage:
         queryset = paginator.page(paginator.num_pages)
 
+    form = ReviewForm(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        if not request.user.is_authenticated():
+            return redirect('login_or_register')
+        else:
+            instance = form.save(commit=False)
+            instance.user = request.user
+            instance.save()
+            messages.success(request, 'Review Created')
+            send_mail('Hello!', 'Check new review!', 'kostiantyn.pidlisnyi@customertimes.com',
+                      ['podlesny@outlook.com'], fail_silently=False)
+            return redirect('review:list')
+
     context = {
-        'pt': pt,
-        'de': de,
-        'gb': gb,
-        'lang': lang,
-        'nav': nav_bar[lang],
         'review_list': queryset,
-        'title': nav_bar[lang].review,
-        'breadcrumbs_list': breadcrumbs_list,
+        'title': _('Reviews'),
+        'breadcrumbs': breadcrumbs,
+        'value': _('Add Review'),
+        'form': form,
         'page_request_var': page_request_var,
     }
 
@@ -80,7 +76,7 @@ def review_detail(request, pk=None):
     context = {
         'nav': nav_bar[lang],
         'lang': lang,
-        'breadcrumbs_list': breadcrumbs,
+        'breadcrumbs': breadcrumbs,
         'title': 'Review',
         'object': review,
     }
@@ -106,7 +102,7 @@ def review_create(request):
         context = {
             'lang': lang,
             'title': 'Review creating',
-            'breadcrumbs_list': [
+            'breadcrumbs': [
                 {'url': '/', 'name': 'Home', 'active': False},
                 {'url': '/gallery', 'name': 'Review', 'active': False},
                 {'url': '#', 'name': 'Review creating', 'active': True}],
@@ -114,7 +110,7 @@ def review_create(request):
             'form': form
         }
 
-        return render(request, 'templates/_form.html', context)
+    return render(request, 'templates/_form.html', context)
 
 
 def review_update(request, pk=None):
@@ -137,7 +133,7 @@ def review_update(request, pk=None):
         context = {
             'lang': lang,
             'title': 'Review Edit',
-            'breadcrumbs_list': breadcrumbs,
+            'breadcrumbs': breadcrumbs,
             'instance': instance,
             'form': form
         }

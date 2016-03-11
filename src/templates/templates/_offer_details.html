@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% block content %}
     {% load staticfiles %}
     {% include 'templates/_breadcrumbs.html' %}
@@ -10,19 +11,19 @@
                     {% if offer.img %}
                         <img style="max-height: 500px;   object-fit: cover;" class="img-fluid" src="{% static '/media/' %}{{ offer.img }}" alt="" width="100%">
                     {% else %}
-
+                        <p style="text-align: center"><small><em>{% trans 'place for image' %}</em></small></p>
                     {% endif %}
                 </div>
                 <div class="col-md-6">
-                    <small><em>TITLE:</em></small>
+                    <small><em class="text-uppercase">{% trans 'title' %}:</em></small>
                     <p class="card-text"> {{ offer.title}}</p>
-                    <small><em>DESCRIPTION:</em></small>
+                    <small><em class="text-uppercase">{% trans 'description' %}:</em></small>
                     <p class="card-text"> {{ offer.text }}</p>
                     {% if user.is_staff or user.is_superuser %}
                         <a class="btn btn-sm btn-danger-outline" href="/offer/{{ offer.id }}/delete/">
-                            <i class="fa fa-trash"></i> Delete</a>
+                            <i class="fa fa-trash"></i> {% trans 'Delete' %}</a>
                         <a class="btn btn-sm btn-danger-outline" href="/offer/{{ offer.id }}/edit/">
-                            <i class="fa fa-pencil-square-o"></i> Edit</a>
+                            <i class="fa fa-pencil-square-o"></i> {% trans 'Edit' %} </a>
                     {% endif %}
                     {% include 'templates/_share.html' %}
                 </div>
