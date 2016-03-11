@@ -1,7 +1,13 @@
+from django.conf import settings
 from django.shortcuts import render, redirect
 from offer.models import Offer
 from tours.models import About
 from helpers.models import PTNavigation, GBNavigation, DENavigation, Helpers
+from django.core.mail.message import EmailMessage
+from django.core.mail import send_mail
+from django.http import HttpResponse
+from django.contrib import messages
+from django.conf import settings
 
 
 def get_lang(request):
@@ -47,8 +53,8 @@ def home(request):
         'nav': nav_bar[lang],
         'offer_list': Offer.objects.all(),
         'breadcrumbs_list': breadcrumbs_list
-    }
 
+    }
     return render(request, 'partials/home.html', context)
 
 
@@ -108,3 +114,15 @@ def login_or_register(request):
 
 def start(request):
     return redirect('home')
+
+
+def thankyou(request):
+    # save_it = form.save(commit=false)
+    # save_it.save()
+    subject = 'Thank you'
+    message = 'Hello my babe!'
+    from_email = settings.EMAIL_HOST_USER
+    to_list = ['podlesny@outlook.com']
+    send_mail(subject, message, from_email, to_list, fail_silently=False)
+    messages.success(request, 'Thank you')
+    return HttpResponse("Mail Send")

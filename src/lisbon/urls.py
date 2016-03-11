@@ -19,6 +19,8 @@ urlpatterns = [
     url(r'^pt/$', views.home, name='home'),
     url(r'^gb/$', views.home, name='home'),
 
+    url(r'^gb/mail/', views.thankyou),
+
     url(r'^pt/tours/', include('tours.urls', namespace='tour_pt')),
     url(r'^gb/tours/', include('tours.urls', namespace='tour_gb')),
     url(r'^de/tours/', include('tours.urls', namespace='tour_de')),

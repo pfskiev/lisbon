@@ -10,6 +10,12 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 from django.core.urlresolvers import reverse_lazy
 from os.path import dirname, join, exists
 
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'kostiantyn.pidlisnyi@customertimes.com'
+EMAIL_HOST_PASSWORD = 'Rhfrfpz,hf1301'
+EMAIL_PORT = 587
+
 # Build paths inside the project like this: join(BASE_DIR, "directory")
 BASE_DIR = dirname(dirname(dirname(__file__)))
 STATICFILES_DIRS = [join(BASE_DIR, 'static')]
@@ -44,6 +50,7 @@ TEMPLATES = [
 
 # Use 12factor inspired environment variables or from a file
 import environ
+
 env = environ.Env()
 
 # Ideally move env file should be outside the git repo
@@ -85,7 +92,6 @@ INSTALLED_APPS = (
 
 )
 
-
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -108,14 +114,6 @@ DATABASES = {
     # os.environ
     'default': env.db(),
 }
-
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'kostiantyn.pidlisnyi@customertimes.com'
-EMAIL_HOST_PASSWORD = 'Rhfrfpz,hf1301'
-EMAIL_PORT = 587
-DEFAULT_FROM_EMAIL = 'kostiantyn.pidlisnyi@customertimes.com'
 
 # Internationalization
 # https://docs.djangoproject.com/en/dev/topics/i18n/
@@ -144,6 +142,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # For Bootstrap 3, change error alert to 'danger'
 from django.contrib import messages
+
 MESSAGE_TAGS = {
     messages.ERROR: 'danger'
 }
@@ -153,4 +152,4 @@ AUTH_USER_MODEL = 'authtools.User'
 LOGIN_REDIRECT_URL = reverse_lazy("profiles:show_self")
 LOGIN_URL = reverse_lazy("accounts:login")
 
-THUMBNAIL_EXTENSION = 'png' # Or any extn for your thumbnails
+THUMBNAIL_EXTENSION = 'png'  # Or any extn for your thumbnails
