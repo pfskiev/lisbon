@@ -1,28 +1,31 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% block content %}
     {% include 'templates/_breadcrumbs.html' %}
     <section>
         <div class="container">
             <h1 class="display-4">{{ title }}</h1>
             <div class="card-columns">
-            {% if 'pt' in request.get_full_path %}
+
+            {% if 'pt' in request.LANGUAGE_CODE %}
                 {% for object in object_list %}
                     {% include 'templates/_tour_card_pt.html' %}
                 {% endfor %}
-            {% else %}
-                {% if request.get_full_path == '/gb/tours/' %}
-                    {% for object in object_list %}
-                        {% include 'templates/_tour_card_gb.html' %}
-                    {% endfor %}
-                {% else %}
-                    {% if request.get_full_path == '/de/tours/' %}
-                        {% for object in object_list %}
-                            {% include 'templates/_tour_card_de.html' %}
-                        {% endfor %}
-                    {% else %}
-                    {% endif %}
-                {% endif %}
             {% endif %}
+
+
+            {% if 'en' in request.LANGUAGE_CODE %}
+                {% for object in object_list %}
+                    {% include 'templates/_tour_card_gb.html' %}
+                {% endfor %}
+            {% endif %}
+
+            {% if 'de' in request.LANGUAGE_CODE %}
+                {% for object in object_list %}
+                    {% include 'templates/_tour_card_de.html' %}
+                {% endfor %}
+            {% endif %}
+
             </div>
             {% if user.is_staff or user.is_superuser %}
                 <a class="btn btn-warning" href="{% url 'tour:create' %}">

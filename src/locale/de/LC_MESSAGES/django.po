@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-11 12:47+0000\n"
+"POT-Creation-Date: 2016-03-11 13:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,16 +42,30 @@ msgstr ""
 msgid "The %(site_name)s team"
 msgstr ""
 
-#: lisbon/views.py:16 lisbon/views.py:38 lisbon/views.py:51
+#: lisbon/views.py:16 lisbon/views.py:38 lisbon/views.py:51 review/views.py:20
 #: templates/templates/_breadcrumbs.html:12 templates/templates/_footer.html:12
 #: templates/templates/nav/_nav_test.html:8
-#: templates/templates/nav/_nav_test.html:34
+#: templates/templates/nav/_nav_test.html:34 tours/views.py:19
+#: tours/views.py:55 tours/views.py:77
 msgid "Home"
 msgstr "Zuhause"
 
 #: lisbon/views.py:39 lisbon/views.py:42 templates/templates/_footer.html.py:6
 msgid "About"
 msgstr "Über uns"
+
+#: review/views.py:21 review/views.py:53 templates/templates/_footer.html.py:14
+#: templates/templates/nav/_nav_test.html:10
+#: templates/templates/nav/_nav_test.html:40
+msgid "Reviews"
+msgstr "Bewertungen"
+
+#: review/views.py:55 templates/partials/review.html.py:19
+#: templates/partials/review.html:21 templates/partials/review.html.py:34
+#, fuzzy
+#| msgid "Reviews"
+msgid "Add Review"
+msgstr "Bewertungen"
 
 #: templates/partials/home.html:69
 msgid "We Offer"
@@ -66,20 +80,23 @@ msgstr "vollständige Angebotsliste"
 msgid "Create Offer"
 msgstr "Angebot erstellen"
 
+#: templates/partials/review.html:14 templates/templates/_offer_card.html:10
+msgid "View details"
+msgstr "Details anzeigen"
+
+#: templates/partials/review.html:24
+msgid "To reviews list"
+msgstr ""
+
 #: templates/templates/_footer.html:10 templates/templates/nav/_nav_test.html:6
 msgid "Site Map"
 msgstr "Sitemap"
 
 #: templates/templates/_footer.html:13 templates/templates/nav/_nav_test.html:9
-#: templates/templates/nav/_nav_test.html:37
+#: templates/templates/nav/_nav_test.html:37 tours/views.py:20
+#: tours/views.py:37 tours/views.py:56
 msgid "Tours"
 msgstr "Tours"
-
-#: templates/templates/_footer.html:14
-#: templates/templates/nav/_nav_test.html:10
-#: templates/templates/nav/_nav_test.html:40
-msgid "Reviews"
-msgstr "Bewertungen"
 
 #: templates/templates/_footer.html:15
 #: templates/templates/nav/_nav_test.html:11
@@ -120,10 +137,6 @@ msgstr "Wähle eine Sprache"
 #: templates/templates/_offer_details.html:14
 msgid "place for image"
 msgstr "Platz für Bild"
-
-#: templates/templates/_offer_card.html:10
-msgid "View details"
-msgstr "Details anzeigen"
 
 #: templates/templates/_offer_card.html:13
 #: templates/templates/_offer_details.html:24
