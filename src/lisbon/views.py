@@ -42,6 +42,7 @@ def home(request):
     pt = path.replace(lang, 'pt')
     de = path.replace(lang, 'de')
     context = {
+        'LANGUAGES': settings.LANGUAGES,
         'pt': pt,
         'de': de,
         'gb': gb,

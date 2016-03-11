@@ -4,12 +4,12 @@
             <div class="col-md-6">
                 <h4 class="text-md-center text-sm-center text-xs-center">Site Map</h4>
                 <ol class="list-unstyled">
-                    <li class="text-md-center text-sm-center text-xs-center"><a href="/{{ lang }}">{{ nav.home }}</a></li>
-                    <li class="text-md-center text-sm-center text-xs-center"><a href="/{{ lang }}/tours/" >{{ nav.tours }}</a></li>
-                    <li class="text-md-center text-sm-center text-xs-center"><a href="/{{ lang }}/reviews/">{{ nav.review }}</a></li>
-                    <li class="text-md-center text-sm-center text-xs-center"><a href="/{{ lang }}/gallery/">{{ nav.gallery }}</a></li>
-                    <li class="text-md-center text-sm-center text-xs-center"><a href="/{{ lang }}/about/">{{ nav.about }}</a></li>
-                    <li class="text-md-center text-sm-center text-xs-center"><a href="/{{ lang }}/contacts/">{{ nav.contact }}</a></li>
+                    <li class="text-md-center text-sm-center text-xs-center"><a href="">{{ nav.home }}</a></li>
+                    <li class="text-md-center text-sm-center text-xs-center"><a href="{% url 'home' %}" >{{ nav.tours }}</a></li>
+                    <li class="text-md-center text-sm-center text-xs-center"><a href="{% url 'home' %}">{{ nav.review }}</a></li>
+                    <li class="text-md-center text-sm-center text-xs-center"><a href="{% url 'home' %}">{{ nav.gallery }}</a></li>
+                    <li class="text-md-center text-sm-center text-xs-center"><a href="{% url 'home' %}">{{ nav.about }}</a></li>
+                    <li class="text-md-center text-sm-center text-xs-center"><a href="{% url 'home' %}">{{ nav.contact }}</a></li>
                     {% if user.is_staff or user.is_superuser %}
                         <li class="text-md-center text-sm-center text-xs-center"><a href="/admin/">Admin</a></li>
                     {% endif %}

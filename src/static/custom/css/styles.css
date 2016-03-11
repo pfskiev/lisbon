@@ -3,12 +3,16 @@
 
 .breadcrumb {
   width: 100%;
+  height: 50px;
   position: absolute;
   margin-bottom: 0;
   border-radius: 0;
-  /* background-color: rgba(255, 255, 255, 0.7); */
+  background-color: rgba(255, 255, 255, 0.7);
   transition: all .5s ease;
   z-index: 9000; }
+
+.breadcrumb:hover {
+  background-color: white; }
 
 .btn-group.pull-right {
   z-index: 9999; }
@@ -177,6 +181,13 @@ footer {
 
 .form-control:active {
   border-color: #118DF0; }
+
+select.form-language {
+  margin-bottom: 8px;
+  height: 37px;
+  width: 152px;
+  color: #5bc0de;
+  border: 1px solid #5bc0de; }
 
 body {
   font-family: 'HelveticaNeueCyr-Light', sans-serif;

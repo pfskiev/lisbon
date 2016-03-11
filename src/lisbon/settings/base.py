@@ -7,8 +7,10 @@ https://docs.djangoproject.com/en/dev/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/dev/ref/settings/
 """
+import os
 from django.core.urlresolvers import reverse_lazy
 from os.path import dirname, join, exists
+from django.contrib import messages
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
@@ -100,6 +102,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 )
 
 ROOT_URLCONF = 'lisbon.urls'
@@ -118,7 +121,17 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/dev/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en'
+
+LANGUAGES = (
+    ('en', 'English'),
+    ('pt', 'Português'),
+    ('de', 'Deutch'),
+)
+
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+)
 
 TIME_ZONE = 'UTC'
 
@@ -139,9 +152,6 @@ STATIC_ROOT = '/static/'
 
 # Crispy Form Theme - Bootstrap 3pyt
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
-
-# For Bootstrap 3, change error alert to 'danger'
-from django.contrib import messages
 
 MESSAGE_TAGS = {
     messages.ERROR: 'danger'

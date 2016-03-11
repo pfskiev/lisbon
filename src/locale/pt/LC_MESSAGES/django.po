@@ -1,0 +1,112 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-03-11 09:12+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: accounts/templates/accounts/emails/password-reset-email.html:3
+#, python-format
+msgid ""
+"You're receiving this email because you requested a password reset for your "
+"user account at %(site_name)s.\n"
+msgstr ""
+
+#: accounts/templates/accounts/emails/password-reset-email.html:5
+msgid "Please go to the following page and choose a new password:"
+msgstr ""
+
+#: accounts/templates/accounts/emails/password-reset-email.html:9
+msgid "Your login email, in case you've forgotten, is same this email address:"
+msgstr ""
+
+#: accounts/templates/accounts/emails/password-reset-email.html:10
+msgid "Thanks for using our site!"
+msgstr ""
+
+#: accounts/templates/accounts/emails/password-reset-email.html:11
+#, python-format
+msgid "The %(site_name)s team"
+msgstr ""
+
+#: templates/templates/_follow_us.html:2
+msgid "Contact Us"
+msgstr "Nos contate"
+
+#: templates/templates/_follow_us.html:5 templates/templates/_follow_us.html:8
+#: templates/templates/_follow_us.html:11
+#: templates/templates/_follow_us.html:14
+msgid "Follow on "
+msgstr "siga no"
+
+#: templates/templates/_follow_us.html:17
+msgid "Email me"
+msgstr "Me mande um e-mail"
+
+#: templates/templates/_footer.html:6
+msgid "About"
+msgstr "Sobre"
+
+#: templates/templates/_footer.html:10 templates/templates/nav/_nav_test.html:6
+msgid "Site Map"
+msgstr "Mapa do site"
+
+#: templates/templates/_footer.html:12 templates/templates/nav/_nav_test.html:8
+#: templates/templates/nav/_nav_test.html:34
+msgid "Home"
+msgstr "Página"
+
+#: templates/templates/_footer.html:13 templates/templates/nav/_nav_test.html:9
+#: templates/templates/nav/_nav_test.html:37
+msgid "Tours"
+msgstr "Tours"
+
+#: templates/templates/_footer.html:14
+#: templates/templates/nav/_nav_test.html:10
+#: templates/templates/nav/_nav_test.html:40
+msgid "Reviews"
+msgstr "Rever"
+
+#: templates/templates/_footer.html:15
+#: templates/templates/nav/_nav_test.html:11
+#: templates/templates/nav/_nav_test.html:43
+msgid "Gallery"
+msgstr "Galeria"
+
+#: templates/templates/_footer.html:16
+#: templates/templates/nav/_nav_test.html:12
+#: templates/templates/nav/_nav_test.html:46
+msgid "About Us"
+msgstr "Sobre nós"
+
+#: templates/templates/_footer.html:17
+#: templates/templates/nav/_nav_test.html:13
+#: templates/templates/nav/_nav_test.html:49
+msgid "Contacts"
+msgstr "Contactos"
+
+#: templates/templates/_footer.html:19
+#: templates/templates/nav/_nav_test.html:15
+msgid "Admin Panel"
+msgstr "Painel de administração"
+
+#: templates/templates/_footer.html:37
+msgid "All Original Content"
+msgstr "Todo o Conteúdo Original"
+
+#: templates/templates/_footer.html:37
+msgid "All Rights Reserved"
+msgstr "Todos os direitos reservados"

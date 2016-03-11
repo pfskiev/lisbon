@@ -1,33 +1,27 @@
-<footer class="">
+{% load i18n %}
+<footer>
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <h4 class="text-md-center text-sm-center text-xs-center">About</h4>
+                <h4 class="text-md-center text-sm-center text-xs-center">{% trans 'About' %}</h4>
                 <p class="text-justify">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
             </div>
             <div class="col-md-4">
-                <h4 class="text-md-center text-sm-center text-xs-center">Site Map</h4>
+                <h4 class="text-md-center text-sm-center text-xs-center">{% trans 'Site Map' %}</h4>
                 <ol class="list-unstyled">
-                    <li class="text-md-center text-sm-center text-xs-center"><a href="{% url 'home' %}">{{ nav.home }}</a></li>
-                    <li class="text-md-center text-sm-center text-xs-center"><a href="{% url 'tour_pt:list' %}">{{ nav.tours }}</a></li>
-                    <li class="text-md-center text-sm-center text-xs-center"><a href="{% url 'review:list' %}">{{ nav.review }}</a></li>
-                    <li class="text-md-center text-sm-center text-xs-center"><a href="{% url 'gallery:list' %}">{{ nav.gallery }}</a></li>
-                    <li class="text-md-center text-sm-center text-xs-center"><a href="{% url 'about' %}">{{ nav.about }}</a></li>
-                    <li class="text-md-center text-sm-center text-xs-center"><a href="{% url 'contact:list' %}">{{ nav.contact }}</a></li>
+                    <li class="text-md-center text-sm-center text-xs-center"><a href="{% url 'home' %}">{% trans 'Home' %}</a></li>
+                    <li class="text-md-center text-sm-center text-xs-center"><a href="{% url 'tour:list' %}">{% trans 'Tours' %}</a></li>
+                    <li class="text-md-center text-sm-center text-xs-center"><a href="{% url 'review:list' %}">{% trans 'Reviews' %}</a></li>
+                    <li class="text-md-center text-sm-center text-xs-center"><a href="{% url 'gallery:list' %}">{% trans 'Gallery' %}</a></li>
+                    <li class="text-md-center text-sm-center text-xs-center"><a href="{% url 'about' %}">{% trans 'About Us' %}</a></li>
+                    <li class="text-md-center text-sm-center text-xs-center"><a href="{% url 'contact:list' %}">{% trans 'Contacts' %}</a></li>
                     {% if user.is_staff or user.is_superuser %}
-                        <li class="text-md-center text-sm-center text-xs-center"><a href="/admin/">Admin Panel</a></li>
+                        <li class="text-md-center text-sm-center text-xs-center"><a href="/admin/">{% trans 'Admin Panel' %}</a></li>
                     {% endif %}
                 </ol>
             </div>
             <div class="col-md-4">
-                <h4 class="text-md-center text-sm-center text-xs-center">Contact</h4>
-                <ol class="list-unstyled">
-                    <li class="text-md-center text-sm-center text-xs-center"><a href="#">Follow on Twitter <i class="fa fa-twitter"></i></a></li>
-                    <li class="text-md-center text-sm-center text-xs-center"><a href="#">Follow on Facebook <i class="fa fa-facebook"></i></a></li>
-                    <li class="text-md-center text-sm-center text-xs-center"><a href="https://www.instagram.com/">Follow on Google + <i class="fa fa-google-plus"></i></a></li>
-                    <li class="text-md-center text-sm-center text-xs-center"><a href="#">Follow on Instagram <i class="fa fa-instagram"></i></a></li>
-                    <li class="text-md-center text-sm-center text-xs-center"><a href="#">Email me <i class="fa fa-mail-forward"></i></a></li>
-                </ol>
+                {% include 'templates/nav/_follow_us.html' %}
             </div>
         </div>
         <div class="center-block" style="width: 215px; margin-top: 30px">
@@ -40,18 +34,6 @@
         <div class="btn-group center-block" style="width: 115px;margin-top: 40px;">
             {% include 'templates/_languages.html' %}
         </div>
-
-        {% if lang == 'pt' %}
-            <p style="padding-top: 50px; text-align: center">All Original Content © 2015-{% now 'Y' %} Lisbon Tours, LLC., All Rights Reserved</p>
-        {% else %}
-            {% if lang == 'gb' %}
-                <p style="padding-top: 50px; text-align: center">All Original Content © 2015-{% now 'Y' %} Lisbon Tours, LLC., All Rights Reserved</p>
-            {% else %}
-                {% if lang == 'de' %}
-                    <p style="padding-top: 50px; text-align: center">All Original Content © 2015-{% now 'Y' %} Lisbon Tours, LLC., All Rights Reserved</p>
-                {% else %}
-                {% endif %}
-            {% endif %}
-        {% endif %}
+        <p style="padding-top: 50px; text-align: center">{% trans 'All Original Content' %} © 2015-{% now 'Y' %} Lisbon Tours, LLC., {% trans 'All Rights Reserved' %}</p>
     </div>
 </footer>

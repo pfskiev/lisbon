@@ -13,3 +13,11 @@
 .form-control:active {
   border-color: $color_blue_light;
 }
+select.form-language {
+  margin-bottom: 8px;
+  height: 37px;
+  width: 152px;
+  color: #5bc0de;
+  border: 1px solid #5bc0de;
+
+}

@@ -1,30 +1,14 @@
-{% if 'pt' in request.get_full_path %}
-    <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  href="{{ pt }}"><i class="flag-icon flag-icon-pt"></i> Português</a>
-    <div class="dropdown-menu">
-            <a class="dropdown-item" href="{{ gb }}"><i style="cursor: pointer" class="flag-icon flag-icon-gb"></i> English</a>
-            <a class="dropdown-item" href="{{ de }}"><i style="cursor: pointer" class="flag-icon flag-icon-de"></i> Deutsch</a>
-        </div>
-
-{% else %}
-    {% if 'gb' in request.get_full_path %}
-
-            <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  href="{{ gb }}"><i class="flag-icon flag-icon-gb"></i> English</a>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="{{ pt }}"><i style="cursor: pointer" class="flag-icon flag-icon-pt"></i> Português</a>
-                <a class="dropdown-item" href="{{ de }}"><i style="cursor: pointer" class="flag-icon flag-icon-de"></i> Deutsch</a>
-            </div>
-
-    {% else %}
-        {% if 'de' in request.get_full_path %}
-
-                <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  href="{{ de }}"><i class="flag-icon flag-icon-de"></i> Deutsch</a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="{{ gb }}"><i style="cursor: pointer" class="flag-icon flag-icon-gb"></i> English</a>
-                    <a class="dropdown-item" href="{{ pt }}"><i style="cursor: pointer" class="flag-icon flag-icon-pt"></i> Português</a>
-                </div>
-
-        {% else %}
-        {% endif %}
-    {% endif %}
-{% endif %}
-
+{% load i18n %}
+<form class="form-inline" action="/i18n/setlang/" method="post">
+    {% csrf_token %}
+    <input name="next" type="hidden" value="{{ request.path }}" />
+    <select class="form-language" name="language">
+        {% get_language_info_list for LANGUAGES as languages %}
+       {% for language in languages %}
+            <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected="selected"{% endif %}>
+                 {{ language.name_local }} ({{ language.code }})
+            </option>
+       {% endfor %}
+    </select>
+    <input class="btn btn-info-outline" type="submit" value="Switch Language"/>
+</form>
