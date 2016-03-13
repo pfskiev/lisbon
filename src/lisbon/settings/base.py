@@ -71,7 +71,7 @@ SECRET_KEY = env('SECRET_KEY')
 ALLOWED_HOSTS = []
 
 # Application definition
-INSTALLED_APPS = (
+DJANGO_APPS = [
 
     'django.contrib.auth',
     'django.contrib.admin',
@@ -80,9 +80,21 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    # 'django.contrib.sites',
+    'django.contrib.sitemaps',
+
+]
+
+HELPER_APPS = [
+
     'authtools',
     'crispy_forms',
     'easy_thumbnails',
+
+]
+
+PROJECT_APPS = [
+
     'accounts',
     'contacts',
     'gallery',
@@ -92,7 +104,10 @@ INSTALLED_APPS = (
     'offer',
     'helpers'
 
-)
+]
+
+INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS + HELPER_APPS
+
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',

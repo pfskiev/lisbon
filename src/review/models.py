@@ -9,6 +9,9 @@ class Review(models.Model):
     timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
     confirmed = models.BooleanField(default=False)
 
+    def get_absolute_url(self):
+        return "/reviews/%i/" % self.id
+
     def __unicode__(self):
         return self.text
 

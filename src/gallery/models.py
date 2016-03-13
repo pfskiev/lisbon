@@ -12,6 +12,9 @@ class Gallery(models.Model):
     text = models.TextField(max_length=1000, blank=True, null=False)
     video = models.URLField(max_length=100, blank=True, null=False)
 
+    def get_absolute_url(self):
+        return "/gallery/%i/" % self.id
+
     def __str__(self):
         return self.title
 

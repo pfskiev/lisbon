@@ -13,6 +13,9 @@ class Tour(models.Model):
     url = models.URLField(max_length=200, blank=True, null=False)
     created_on = models.DateTimeField(auto_now_add=True, auto_created=False)
 
+    def get_absolute_url(self):
+        return "/tour/%i/" % self.id
+
     def __str__(self):
         return self.title_pt
 
@@ -38,4 +41,3 @@ class About(models.Model):
 
     def __unicode__(self):
         return self.paragraph
-

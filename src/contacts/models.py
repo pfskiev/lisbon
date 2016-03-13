@@ -34,6 +34,9 @@ class Contact(models.Model):
     instagram = models.URLField(max_length=100, blank=True, null=False)
     instagram_preview = models.BooleanField(default=False)
 
+    def get_absolute_url(self):
+        return "/contacts/%i/" % self.id
+
     def __str__(self):
         return self.last_name
 

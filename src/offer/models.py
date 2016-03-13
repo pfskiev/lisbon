@@ -7,6 +7,9 @@ class Offer(models.Model):
     created_on = models.DateTimeField(auto_now_add=True, auto_created=False)
     img = models.FileField(null=True, blank=True)
 
+    def get_absolute_url(self):
+        return "/offers/%i/" % self.id
+
     def __str__(self):
         return self.title
 

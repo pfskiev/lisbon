@@ -2,11 +2,14 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.sitemaps.views import sitemap
 from . import views
+from .sitemap import sitemaps
 
 urlpatterns = [
 
     url(r'^$', views.home, name='home'),
+    url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
     url(r'^', include('accounts.urls', namespace='accounts')),
     url(r'^i18n/', include('django.conf.urls.i18n')),
     url(r'^users/', include('profiles.urls', namespace='profiles')),
