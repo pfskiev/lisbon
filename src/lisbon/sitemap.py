@@ -1,4 +1,5 @@
 from django.contrib.sitemaps import Sitemap
+from django.core.urlresolvers import reverse
 
 from tours.models import Tour
 from contacts.models import Contact
@@ -7,7 +8,18 @@ from review.models import Review
 from offer.models import Offer
 
 
-class TodoSitemap(Sitemap):
+class StaticSitemap(Sitemap):
+    priority = 0.6
+    changefreq = 'weekly'
+
+    def items(self):
+        return ['home']
+
+    def location(self, item):
+        return reverse(item)
+
+
+class TourSitemap(Sitemap):
     changefreq = "weekly"
     priority = 0.5
 
@@ -48,7 +60,8 @@ class ReviewSitemap(Sitemap):
 
 
 sitemaps = {
-    'tour': TodoSitemap(),
+    'static': StaticSitemap(),
+    'tour': TourSitemap(),
     'contact': ContactSitemap(),
     'gallery': GallerySitemap(),
     'offer': OfferSitemap(),
