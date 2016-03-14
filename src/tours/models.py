@@ -28,10 +28,10 @@ class Tour(models.Model):
         return "/tour/%i/" % self.id
 
     def __str__(self):
-        return self.title_EN
+        return self.title_PT
 
     def __unicode__(self):
-        return self.title_EN
+        return self.title_PT
 
 
 class Paragraph(models.Model):
