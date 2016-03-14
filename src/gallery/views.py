@@ -2,39 +2,27 @@ from django.contrib import messages
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
-from helpers.models import PTNavigation, GBNavigation, DENavigation
-
+from django.utils.translation import ugettext_lazy as _
+from helpers.models import Helpers
 from .models import Gallery
 from .forms import GalleryForm
 
 
 def get_lang(request):
-    lang = request.path
-    if 'pt' in lang:
-        return 'pt'
-    else:
-        if 'gb' in lang:
-            return 'gb'
-        else:
-            return 'de'
+    lang = request.LANGUAGE_CODE
+    return lang
+
+
+def get_company():
+    return Helpers.objects.get(id=1).company_name
 
 
 def gallery_list(request):
     queryset_list = Gallery.objects.all()
-    lang = get_lang(request)
-    navbar = {
-        'pt': PTNavigation.objects.get(id=1),
-        'gb': GBNavigation.objects.get(id=1),
-        'de': DENavigation.objects.get(id=1)
-    }
     breadcrumbs = [
-        {'url': '/', 'name': navbar[lang].home},
-        {'url': '#', 'name': navbar[lang].gallery, 'active': True}
+        {'url': '/', 'name': _('Home')},
+        {'url': '#', 'name': _('Gallery'), 'active': True}
     ]
-    path = request.get_full_path()
-    gb = path.replace(lang, 'gb')
-    pt = path.replace(lang, 'pt')
-    de = path.replace(lang, 'de')
     query = request.GET.get('q')
     if query:
         queryset_list = queryset_list.filter(
@@ -52,13 +40,9 @@ def gallery_list(request):
         queryset = paginator.page(paginator.num_pages)
 
     context = {
-        'pt': pt,
-        'de': de,
-        'gb': gb,
-        'lang': lang,
-        'nav': navbar[lang],
-        'title': navbar[lang].gallery,
-        'breadcrumbs_list': breadcrumbs,
+        'company': get_company(),
+        'title': _('Gallery'),
+        'breadcrumbs': breadcrumbs,
         'object_list': queryset,
         'page_request_var': page_request_var,
     }
@@ -67,90 +51,99 @@ def gallery_list(request):
 
 
 def gallery_detail(request, pk=None):
-    lang = get_lang(request)
     gallery = Gallery.objects.get(pk=pk)
+    lang = get_lang(request)
+    gallery_title = {
+        'pt': gallery.title_PT,
+        'en': gallery.title_EN,
+        'de': gallery.title_DE
+    }
+    gallery_description = {
+        'pt': gallery.description_PT,
+        'en': gallery.description_EN,
+        'de': gallery.description_DE
+    }
     breadcrumbs = [
-        {'url': '/', 'name': 'Home', 'active': False},
-        {'url': '/gallery', 'name': 'Gallery', 'active': False},
-        {'url': '#', 'name': gallery.title, 'active': True},
+        {'url': '/', 'name': _('Home')},
+        {'url': '#', 'name': _('Gallery')},
+        {'url': '#', 'name': gallery_title[lang], 'active': True}
     ]
+    gallery_current = {
+        'title': gallery_title[lang],
+        'description': gallery_description[lang],
+        'id': gallery.id,
+        'img': gallery.img,
+        'video': gallery.video,
+    }
     context = {
-        'lang': lang,
-        'breadcrumbs_list': breadcrumbs,
-        'title': gallery.title,
-        'object': gallery,
+        'company': get_company(),
+        'breadcrumbs': breadcrumbs,
+        'title': gallery_title[lang],
+        'object': gallery_current,
     }
 
     return render(request, 'templates/_gallery_details.html', context)
 
 
+def gallery_update(request, pk=None):
+    if not request.user.is_staff or not request.user.is_superuser:
+        return redirect('accounts:signup')
+    else:
+        gallery = get_object_or_404(Gallery, pk=pk)
+        lang = get_lang(request)
+        gallery_title = {
+            'pt': gallery.title_PT,
+            'en': gallery.title_EN,
+            'de': gallery.title_DE
+        }
+        breadcrumbs = [
+            {'url': '/', 'name': _('Home')},
+            {'url': '/gallery', 'name': _('Gallery')},
+            {'url': '#', 'name': gallery_title[lang], 'active': True}
+        ]
+        form = GalleryForm(request.POST or None, request.FILES or None, instance=gallery)
+        if form.is_valid():
+            gallery = form.save(commit=False)
+            gallery.save()
+            messages.success(request, _('Gallery edited'))
+            return redirect('gallery:list')
+
+        context = {
+            'company': get_company(),
+            'title': _('Gallery edit'),
+            'breadcrumbs': breadcrumbs,
+            'instance': gallery,
+            'form': form
+        }
+        return render(request, 'templates/_edit_form.html', context)
+
+
 def gallery_create(request):
-    lang = get_lang(request)
-    navbar = {
-        'pt': PTNavigation.objects.get(id=1),
-        'gb': GBNavigation.objects.get(id=1),
-        'de': DENavigation.objects.get(id=1)
-    }
-    breadcrumbs = [
-        {'url': '/', 'name': navbar[lang].home},
-        {'url': '#', 'name': navbar[lang].gallery},
-        {'url': '#', 'name': 'Create Gallery', 'active': True}
-    ]
-    path = request.get_full_path()
-    gb = path.replace(lang, 'gb')
-    pt = path.replace(lang, 'pt')
-    de = path.replace(lang, 'de')
     if not request.user.is_staff or not request.user.is_superuser:
         return redirect('accounts:signup')
     else:
         form = GalleryForm(request.POST or None, request.FILES or None)
+        breadcrumbs = [
+            {'url': '/', 'name': _('Home')},
+            {'url': '/gallery', 'name': _('Gallery')},
+            {'url': '#', 'name': _('Create Gallery'), 'active': True}
+        ]
         if form.is_valid():
             instance = form.save(commit=False)
             instance.user = request.user
             instance.save()
-            messages.success(request, 'Gallery Created')
+            messages.success(request, _('Gallery created'))
             return redirect('gallery:list')
 
         context = {
-            'pt': pt,
-            'de': de,
-            'gb': gb,
-            'lang': lang,
-            'nav': navbar[lang],
-            'title': 'Create Gallery',
-            'breadcrumbs_list': breadcrumbs,
-            'value': 'Contact creating',
+            'company': get_company(),
+            'title': _('Create Gallery'),
+            'breadcrumbs': breadcrumbs,
+            'value': _('Create'),
             'form': form
         }
 
         return render(request, 'templates/_form.html', context)
-
-
-def gallery_update(request, pk=None):
-    lang = get_lang(request)
-    if not request.user.is_staff or not request.user.is_superuser:
-        return redirect('accounts:signup')
-    else:
-        instance = get_object_or_404(Gallery, pk=pk)
-        breadcrumbs = [
-            {'url': '/', 'name': 'Home', 'active': False},
-            {'url': '/gallery', 'name': 'Gallery', 'active': False},
-            {'url': '#', 'name': instance.title, 'active': True}]
-        form = GalleryForm(request.POST or None, request.FILES or None, instance=instance)
-        if form.is_valid():
-            instance = form.save(commit=False)
-            instance.save()
-            messages.success(request, 'Gallery saved')
-            return redirect('gallery:list')
-
-        context = {
-            'lang': lang,
-            'title': 'Contact Edit',
-            'breadcrumbs_list': breadcrumbs,
-            'instance': instance,
-            'form': form
-        }
-        return render(request, 'templates/_edit_form.html', context)
 
 
 def gallery_delete(request, pk=None):
@@ -158,5 +151,5 @@ def gallery_delete(request, pk=None):
         return redirect('accounts:signup')
     instance = get_object_or_404(Gallery, pk=pk)
     instance.delete()
-    messages.success(request, 'Gallery deleted')
+    messages.success(request, _('Gallery deleted'))
     return redirect('gallery:list')

@@ -1,22 +1,27 @@
 .breadcrumb {
   width: 100%;
   height: 50px;
-    position: absolute;
-    margin-bottom: 0;
-    border-radius: 0;
-    background-color: rgba(255, 255, 255, 0.7);
-    transition: all .5s ease;
-    z-index: 9000;
+  position: absolute;
+  margin-bottom: 0;
+  border-radius: 0;
+  background-color: rgba(255, 255, 255, 0.7);
+  transition: all .5s ease;
+  z-index: 9000;
 }
 .breadcrumb:hover {
+  color: darkgoldenrod;
   background-color: rgba(255, 255, 255, 1);
 }
 
 .btn-group.pull-right {
-z-index: 9999;
+  z-index: 9999;
 }
 
 .open>.dropdown-menu {
-      z-index: 9999;
-    display: block;
+  z-index: 9999;
+  display: block;
+}
+ol.breadcrumb>li>a{
+  color: darkgoldenrod;
+  transition: all .5s ease;
 }

@@ -2,12 +2,16 @@ from django.shortcuts import render
 from django.utils.translation import ugettext_lazy as _
 from offer.models import Offer
 from tours.models import About
-from helpers.models import PTNavigation, GBNavigation, DENavigation, Helpers
+from helpers.models import Helpers
 
 
 def get_lang(request):
     lang = request.LANGUAGE_CODE
     return lang
+
+
+def get_company():
+    return Helpers.objects.get(id=1).company_name
 
 
 def home(request):
@@ -21,12 +25,14 @@ def home(request):
         'de': Helpers.objects.get(id=1).start_page_header_de
     }
     context = {
+        'audio': Helpers.objects.get(id=1).audio,
+        'company': get_company(),
         'header': header[lang],
         'img1': Helpers.objects.get(id=1).img,
         'img2': Helpers.objects.get(id=1).img2,
         'img3': Helpers.objects.get(id=1).img3,
         'lang': lang,
-        'offer_list': Offer.objects.all(),
+        'object_list': Offer.objects.all(),
         'breadcrumbs': breadcrumbs
 
     }
@@ -39,6 +45,7 @@ def about(request):
         {'url': '#', 'name': _('About'), 'active': True}
     ]
     context = {
+        'company': get_company(),
         'title': _('About'),
         'breadcrumbs': breadcrumbs,
         'about_list': About.objects.all()

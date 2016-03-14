@@ -1,16 +1,20 @@
 {% load static %}
 {% load i18n %}
-{% if offer.img %}
-    <a href="/offer/{{ offer.id }}"><img class="img-circle" src="{% static '/media/' %}{{ offer.img }}" alt="Generic placeholder image" style="object-fit: cover;" width="250" height="250"></a>
+{% if object.img %}
+    <a href="{% if 'offer' in request.get_full_path %}{{ request.get_full_path }}{{ object.id }}{% else %}/offer/{{ object.id }}{% endif %}"><img class="img-circle" src="{% static '/media/' %}{{ object.img }}" alt="{{ object.title }}" style="object-fit: cover;" width="250" height="250"></a>
 {% else %}
     <p style="text-align: center"><small><em>{% trans 'place for image' %}</em></small></p>
 {% endif %}
-<h2>{{ offer.title }}</h2>
-<p class="text-justify">{{ offer.text }}</p>
-<p><a class="btn btn-danger-outline" href="/offer/{{ offer.id }}" role="button">{% trans 'View details' %} &raquo;</a></p>
-{% if user.is_staff or user.is_superuser %}
-    <a class="btn btn-sm btn-danger-outline" href="/offer/{{ offer.id }}/delete/">
-        <i class="fa fa-trash"></i> {% trans 'Delete' %}</a>
-    <a class="btn btn-sm btn-danger-outline" href="/offer/{{ offer.id }}/edit/">
-        <i class="fa fa-pencil-square-o"></i> {% trans 'Edit' %}</a>
+<h2>{{ object.title }}</h2>
+<p class="text-justify">{{ object.description }}</p>
+{% if 'offer' in request.path %}
+    {% include 'templates/_CRUD.html' %}
+{% else %}
+    <p><a class="btn btn-danger-outline" href="/offer/{{ object.id }}" role="button">{% trans 'View details' %} &raquo;</a></p>
+    {% if user.is_staff or user.is_superuser %}
+        <a class="btn btn-sm btn-danger-outline" href="/offer/{{ object.id }}/delete/">
+            <i class="fa fa-trash"></i> {% trans 'Delete' %}</a>
+        <a class="btn btn-sm btn-danger-outline" href="/offer/{{ object.id }}/edit/">
+            <i class="fa fa-pencil-square-o"></i> {% trans 'Edit' %}</a>
+    {% endif %}
 {% endif %}

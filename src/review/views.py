@@ -3,15 +3,19 @@ from django.db.models import Q
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.shortcuts import render, redirect, get_object_or_404
-from helpers.models import PTNavigation, GBNavigation, DENavigation
 from django.utils.translation import ugettext_lazy as _
 from .models import Review
 from .forms import ReviewForm
+from helpers.models import Helpers
 
 
 def get_lang(request):
     lang = request.LANGUAGE_CODE
     return lang
+
+
+def get_company():
+    return Helpers.objects.get(id=1).company_name
 
 
 def review_list(request):
@@ -49,6 +53,7 @@ def review_list(request):
             return redirect('review:list')
 
     context = {
+        'company': get_company(),
         'review_list': queryset,
         'title': _('Reviews'),
         'breadcrumbs': breadcrumbs,
@@ -74,6 +79,7 @@ def review_detail(request, pk=None):
         {'url': '#', 'name': review.text, 'active': True}]
 
     context = {
+        'company': get_company(),
         'nav': nav_bar[lang],
         'lang': lang,
         'breadcrumbs': breadcrumbs,
@@ -100,6 +106,7 @@ def review_create(request):
             return redirect('review:list')
 
         context = {
+            'company': get_company(),
             'lang': lang,
             'title': 'Review creating',
             'breadcrumbs': [
@@ -131,6 +138,7 @@ def review_update(request, pk=None):
             return redirect('review:list')
 
         context = {
+            'company': get_company(),
             'lang': lang,
             'title': 'Review Edit',
             'breadcrumbs': breadcrumbs,

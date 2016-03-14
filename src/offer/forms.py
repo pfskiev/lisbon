@@ -7,8 +7,14 @@ class OfferForm(forms.ModelForm):
         model = Offer
         fields = [
 
-            'title',
-            'text',
+            'title_PT',
+            'title_EN',
+            'title_DE',
+            'description_PT',
+            'description_EN',
+            'description_DE',
             'img',
+            'keywords_SEO',
+            'description_SEO',
 
         ]

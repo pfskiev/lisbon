@@ -37,5 +37,7 @@ class ContactForm(forms.ModelForm):
             'google',
             'google_preview',
             'instagram',
-            'instagram_preview'
+            'instagram_preview',
+            'keywords_SEO',
+            'description_SEO',
         ]

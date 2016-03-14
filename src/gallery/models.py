@@ -2,21 +2,27 @@ from django.db import models
 
 
 class Gallery(models.Model):
-    title = models.CharField(max_length=100, blank=True, null=False)
-    img_main = models.FileField(null=True, blank=True)
+    title_PT = models.CharField(max_length=100, blank=True, null=False)
+    title_EN = models.CharField(max_length=100, blank=True, null=False)
+    title_DE = models.CharField(max_length=100, blank=True, null=False)
+    description_PT = models.TextField(max_length=1000, blank=True, null=False)
+    description_EN = models.TextField(max_length=1000, blank=True, null=False)
+    description_DE = models.TextField(max_length=1000, blank=True, null=False)
+    img = models.FileField(null=True, blank=True)
     img_1 = models.FileField(null=True, blank=True)
     img_2 = models.FileField(null=True, blank=True)
     img_3 = models.FileField(null=True, blank=True)
     img_4 = models.FileField(null=True, blank=True)
     img_5 = models.FileField(null=True, blank=True)
-    text = models.TextField(max_length=1000, blank=True, null=False)
     video = models.URLField(max_length=100, blank=True, null=False)
+    keywords_SEO = models.TextField(max_length=1000, blank=True, null=False)
+    description_SEO = models.TextField(max_length=1000, blank=True, null=False)
 
     def get_absolute_url(self):
         return "/gallery/%i/" % self.id
 
     def __str__(self):
-        return self.title
+        return self.title_EN
 
     def __unicode__(self):
-        return self.title
+        return self.title_EN

@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="{% block description %}{% endblock description %}">
-    <meta name="keywords" content="goldenlisbon, Lisbon, Lisbon District, Central Portugal, Things to do in Lisbon, attraction, activity, things to do, fun, advice, attractions, attractions in Lisbon, Lisbon District, Central Portugal, activities in Lisbon, Lisbon District, Central Portugal, things to do in Lisbon, Lisbon District, Central Portugal, vacation, reviews, travel">
+    <meta name="keywords" content="{% block main_keywords %}{{ object.main_keywords }}{% endblock main_keywords %}{% block keywords %}{% endblock keywords %}">
     <meta name="author" content="">
     <title>Lisbon :: {% block title %}{% endblock %}</title>
     <link rel="shortcut icon" href="{% static 'custom/ico/favicon.ico' %}">
@@ -18,16 +18,17 @@
     <script src="{% static 'vendor/jquery/dist/jquery.min.js' %}"></script>
     <script src="{% static 'vendor/bootstrap/dist/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'vendor/lodash/dist/lodash.min.js' %}"></script>
+
 </head>
 <body>
 {% include 'templates/nav/_nav_test.html' %}
 {% include 'templates/_alerts.html' %}
 
 {% block beadcrumbs %}
-{% endblock %}
+{% endblock beadcrumbs %}
 
 {% block content %}
-{% endblock %}
+{% endblock content %}
 {% include 'templates/_footer.html' %}
 
 <script>

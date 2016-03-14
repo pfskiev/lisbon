@@ -1,4 +1,7 @@
 {% extends 'base.html' %}
+{% load i18n %}
+{% block description %}{{ object.description_SEO }}{% endblock description %}
+{% block keywords %}{{ object.keywords_SEO }}{% endblock keywords %}
 {% block content %}
     {% load staticfiles %}
     {% include 'templates/_breadcrumbs.html' %}
@@ -7,86 +10,80 @@
             <h4 class="display-4">{{ title }}</h4>
             <div class="row">
                 <div class="col-md-6">
-
-                    {% if contact.img %}
-                        <img style="max-height: 500px;   object-fit: cover;" class="img-fluid" src="{% static '/media/' %}{{ contact.img }}" alt="" width="100%">
+                    {% if object.img %}
+                        <img style="max-height: 500px;   object-fit: cover;" class="img-fluid" src="{% static '/media/' %}{{ object.img }}" alt="" width="100%">
                     {% else %}
-                        <span class="fa fa-user"></span>
+                        <p style="text-align: center"><small><em>{% trans 'place for image' %}</em></small></p>
                     {% endif %}
                     <small><em>SHORT BIO:</em></small>
-                    <p class="card-text text-justify"> {{ contact.short_bio}}</p>
-
-
+                    <p class="card-text text-justify"> {{ object.short_bio}}</p>
                 </div>
                 <div class="col-md-6">
                 <small><em>CATEGORY:</em></small>
-                <p class="card-text"> {{ contact.category}}</p>
+                <p class="card-text"> {{ object.category}}</p>
 
                 <small><em>CALL ME:</em></small>
-            {% if contact.mobile  %}
-                <p class="card-text"><span class="fa fa-mobile"></span> {{ contact.mobile }}</p>
+            {% if object.mobile  %}
+                <p class="card-text"><span class="fa fa-mobile"></span> {{ object.mobile }}</p>
             {% endif %}
 
 
-            {% if contact.email  %}
-                <p class="card-text"><span class="fa fa-mail-forward"></span> {{ contact.email }}</p>
+            {% if object.email  %}
+                <p class="card-text"><span class="fa fa-mail-forward"></span> {{ object.email }}</p>
             {% endif %}
 
 
-            {% if contact.whatsapp  %}
-                <p class="card-text"><span class="fa fa-whatsapp"></span> {{ contact.whatsapp }}</p>
+            {% if object.whatsapp  %}
+                <p class="card-text"><span class="fa fa-whatsapp"></span> {{ object.whatsapp }}</p>
             {% endif %}
 
 
-            {% if contact.viber  %}
-                <p class="card-text"><span>viber:</span> {{ contact.viber }}</p>
+            {% if object.viber  %}
+                <p class="card-text"><span>viber:</span> {{ object.viber }}</p>
             {% endif %}
 
 
-            {% if contact.telegram  %}
-                <p class="card-text"><span>telegram: </span>{{ contact.telegram }}</p>
+            {% if object.telegram  %}
+                <p class="card-text"><span>telegram: </span>{{ object.telegram }}</p>
             {% endif %}
 
 
-            {% if contact.skype  %}
-                <p class="card-text"><span class="fa fa-skype"></span> {{ contact.skype }}</p>
+            {% if object.skype  %}
+                <p class="card-text"><span class="fa fa-skype"></span> {{ object.skype }}</p>
             {% endif %}
 
                 <small><em>SOCIAL NETWORKS:</em></small>
 
 
-            {% if contact.facebook  %}
-                <p><a class="card-link" href="{{ contact.facebook }}">Follow on Facebook <span class="fa fa-facebook"></span></a></p>
+            {% if object.facebook  %}
+                <p><a class="card-link" href="{{ object.facebook }}">{% trans 'Follow on ' %} Facebook <span class="fa fa-facebook"></span></a></p>
             {% endif %}
 
 
-            {% if contact.twitter  %}
-                <p><a class="card-link" href="{{ contact.twitter }}">Follow on Twitter <span class="fa fa-twitter"></span></a></p>
+            {% if object.twitter  %}
+                <p><a class="card-link" href="{{ object.twitter }}">{% trans 'Follow on ' %} Twitter <span class="fa fa-twitter"></span></a></p>
             {% endif %}
 
 
-            {% if contact.pinterest  %}
-                <p><a class="card-link" href="{{ contact.pinterest }}">Follow on Pinterest <span class="fa fa-pinterest"></span></a></p>
+            {% if object.pinterest  %}
+                <p><a class="card-link" href="{{ object.pinterest }}">{% trans 'Follow on ' %} Pinterest <span class="fa fa-pinterest"></span></a></p>
             {% endif %}
 
 
-            {% if contact.instagram  %}
-                <p><a class="card-link" href="{{ contact.instagram }}">Follow on Instagram <span class="fa fa-instagram"></span></a></p>
+            {% if object.instagram  %}
+                <p><a class="card-link" href="{{ object.instagram }}">{% trans 'Follow on ' %} Instagram <span class="fa fa-instagram"></span></a></p>
             {% endif %}
 
 
-            {% if contact.google  %}
-                <p><a class="card-link" href="{{ contact.google }}">Follow on Google + <span class="fa fa-google-plus"></span></a></p>
+            {% if object.google  %}
+                <p><a class="card-link" href="{{ object.google }}">{% trans 'Follow on ' %} Google + <span class="fa fa-google-plus"></span></a></p>
         {% endif %}
             {% if user.is_staff or user.is_superuser %}
-                <a class="btn btn-sm btn-danger-outline" href="/contacts/{{ contact.id }}/delete/">
+                <a class="btn btn-sm btn-danger-outline" href="/contacts/{{ object.id }}/delete/">
                     <i class="fa fa-trash"></i> Delete</a>
-                <a class="btn btn-sm btn-danger-outline" href="/contacts/{{ contact.id }}/edit/">
+                <a class="btn btn-sm btn-danger-outline" href="/contacts/{{ object.id }}/edit/">
                     <i class="fa fa-pencil-square-o"></i> Edit</a>
             {% endif %}
-
-
-
                     {% include 'templates/_share.html' %}
 
                 </div>

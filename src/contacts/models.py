@@ -33,6 +33,8 @@ class Contact(models.Model):
     google_preview = models.BooleanField(default=False)
     instagram = models.URLField(max_length=100, blank=True, null=False)
     instagram_preview = models.BooleanField(default=False)
+    keywords_SEO = models.TextField(max_length=1000, blank=True, null=False)
+    description_SEO = models.TextField(max_length=1000, blank=True, null=False)
 
     def get_absolute_url(self):
         return "/contacts/%i/" % self.id

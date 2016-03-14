@@ -10,7 +10,7 @@
             {% endif %}
         </a>
         <div class="btn-group">
-            <a style="cursor: pointer;"  class="hidden-sm-down nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="{% url 'admin:index' %}">Admin</a>
+            <a style="cursor: pointer;color: gold;"  class="hidden-sm-down nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="{% url 'admin:index' %}">Admin</a>
             <div class="dropdown-menu">
                 <a href="{% url 'profiles:show_self' %}" class="dropdown-item">{% trans 'Profile' %}</a>
                 <a href="/admin/" class="dropdown-item">Admin Panel</a>
@@ -28,7 +28,7 @@
             {% endif %}
         </a>
         <div class="btn-group">
-            <a style="cursor: pointer" class=" hidden-sm-down nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a style="cursor: pointer;color: gold;"  class=" hidden-sm-down nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {{ user.get_full_name }}
             </a>
             <div class="dropdown-menu ">

@@ -5,6 +5,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.translation import ugettext_lazy as _
 from .models import Tour
 from .forms import TourForm
+from helpers.models import Helpers
 
 
 def get_lang(request):
@@ -12,8 +13,11 @@ def get_lang(request):
     return lang
 
 
+def get_company():
+    return Helpers.objects.get(id=1).company_name
+
+
 def tour_list(request):
-    lang = get_lang(request)
     queryset_list = Tour.objects.all()
     query = request.GET.get('q')
     breadcrumbs = [
@@ -37,6 +41,7 @@ def tour_list(request):
         queryset = paginator.page(paginator.num_pages)
 
     context = {
+        'company': get_company(),
         'title': _('Tours'),
         'breadcrumbs': breadcrumbs,
         'object_list': queryset,
@@ -60,6 +65,7 @@ def tour_detail(request, pk=None):
         {'url': '/', 'name': tour_title[lang], 'active': True},
     ]
     context = {
+        'company': get_company(),
         'title': tour_title[lang],
         'breadcrumbs': breadcrumbs,
         'object': tour,
@@ -93,6 +99,7 @@ def tour_update(request, pk=None):
             return redirect('tour:list')
 
         context = {
+            'company': get_company(),
             'title': tour_title[lang] + ' edit',
             'breadcrumbs': breadcrumbs,
             'instance': instance,
@@ -120,6 +127,7 @@ def tour_create(request):
             return redirect('tour:list')
 
         context = {
+            'company': get_company(),
             'lang': lang,
             'title': 'Tour create',
             'breadcrumbs': breadcrumbs,

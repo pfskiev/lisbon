@@ -16,6 +16,7 @@ class TourForm(forms.ModelForm):
             'price',
             'img',
             'url',
+            'keywords'
 
         ]
 
