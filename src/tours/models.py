@@ -10,7 +10,7 @@ class Category(models.Model):
 
 
 class Tour(models.Model):
-    category = models.ForeignKey(Category, default=None, blank=True, null=False)
+    category = models.ForeignKey(Category, default=1, blank=True, null=False)
     title_PT = models.CharField(max_length=100, blank=True, null=False)
     title_EN = models.CharField(max_length=100, blank=True, null=False)
     title_DE = models.CharField(max_length=100, blank=True, null=False)
