@@ -12,7 +12,7 @@ urlpatterns = (
 
 )
 
-categories = Category.objects.all()
-for category in categories:
-    urlpatterns += url(r'^' + category.url, views.tour_category, name=category.url),
+# categories = Category.objects.all()
+# for category in categories:
+#     urlpatterns += url(r'^' + category.url, views.tour_category, name=category.url),
 

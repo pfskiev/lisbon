@@ -176,12 +176,12 @@ def tour_delete(request, pk=None):
     return redirect('tour:list')
 
 
-def tour_category(request):
-    tours = Tour.objects.all()
-    tours.filter(category__icontains='king')
-
-    context = {
-        'object_list': tours
-    }
-
-    return render(request, 'templates/_tour_cat.html', context)
+# def tour_category(request):
+#     tours = Tour.objects.all()
+#     tours.filter(category__icontains='king')
+#
+#     context = {
+#         'object_list': tours
+#     }
+#
+#     return render(request, 'templates/_tour_cat.html', context)
