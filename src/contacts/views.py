@@ -120,7 +120,7 @@ def contact_update(request, pk=None):
             'instance': contact,
             'form': form
         }
-        return render(request, 'templates/_edit_form.html', context)
+        return render(request, 'templates/_form.html', context)
 
 
 def contact_delete(request, pk=None):

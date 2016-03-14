@@ -8,20 +8,20 @@
     <div class="container">
         <h4 class="display-4">{{ title }}</h4>
         <form method='POST' action='' enctype='multipart/form-data'>{% csrf_token %}
-            {{ form }}
-            <input type="submit" class="btn btn-lg btn-primary" value='{{ value }}' />
+            {{ form.as_p }}
+            <input type='submit' class='btn btn-lg btn-primary' value='{{ value }}' />
         </form>
+{#        <form method="POST" action="">{% csrf_token %}#}
+{#            <input type="hidden" name="next" value="{{ next }}">#}
+{#            {{ form.as_p }}#}
+{#            <input type="submit" class="btn btn-lg btn-primary" value="{{ value }}" />#}
+{#        </form>#}
     </div>
     <script>
-        $('textarea').each(function(){
-            $(this).addClass('form-control')
-        })
-        $('input').each(function(){
-            $(this).addClass('form-control')
-        })
-        $('label').each(function(){
-            $(this).addClass('my-label')
-        })
+        _.map(['textarea', 'input', 'label', 'select'], function(el){
+                el === 'label' && $(el).attr('type') !== 'submit' ? $(el).addClass('my-label') : $(el).addClass('form-control');
+            });
+        $('select').css('height', '40px')
     </script>
     </section>
 {% endblock %}

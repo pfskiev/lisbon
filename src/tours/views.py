@@ -3,7 +3,7 @@ from django.db.models import Q
 from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.translation import ugettext_lazy as _
-from .models import Tour
+from .models import Tour, Category
 from .forms import TourForm
 from helpers.models import Helpers
 
@@ -19,17 +19,33 @@ def get_company():
 
 def tour_list(request):
     queryset_list = Tour.objects.all()
-    query = request.GET.get('q')
+    lang = get_lang(request)
     breadcrumbs = [
         {'url': '/', 'name': _('Home')},
-        {'url': '/', 'name': _('Tours'), 'active': True},
+        {'url': '#', 'name': _('Tours'), 'active': True},
     ]
+    query = request.GET.get('q')
     if query:
-        queryset_list = queryset_list.filter(
-            Q(title_pt__icontains=query) |
-            Q(title_gb__icontains=query) |
-            Q(title_de__icontains=query)
-        ).distinct()
+        if 'pt' in lang:
+            queryset_list = queryset_list.filter(
+                Q(title_PT__icontains=query) |
+                Q(description_PT__icontains=query)
+                # Q(category__icontains=query)
+            ).distinct()
+        else:
+            if 'en' in lang:
+                queryset_list = queryset_list.filter(
+                    Q(title_EN__icontains=query) |
+                    Q(description_EN__icontains=query)
+                    # Q(category__icontains=query)
+                ).distinct()
+            else:
+                if 'de' in lang:
+                    queryset_list = queryset_list.filter(
+                        Q(title_DE__icontains=query) |
+                        Q(description_DE__icontains=query)
+                        # Q(category__icontains=query)
+                    )
     paginator = Paginator(queryset_list, 5)
     page_request_var = "page"
     page = request.GET.get(page_request_var)
@@ -54,23 +70,35 @@ def tour_list(request):
 def tour_detail(request, pk=None):
     tour = Tour.objects.get(pk=pk)
     lang = get_lang(request)
-    tour_title = {
-        'pt': tour.title_pt,
-        'en': tour.title_gb,
-        'de': tour.title_de
+    title = {
+        'pt': tour.title_PT,
+        'en': tour.title_EN,
+        'de': tour.title_DE
+    }
+    description = {
+        'pt': tour.description_PT,
+        'en': tour.description_EN,
+        'de': tour.description_DE
     }
     breadcrumbs = [
         {'url': '/', 'name': _('Home')},
         {'url': '/', 'name': _('Tours')},
-        {'url': '/', 'name': tour_title[lang], 'active': True},
+        {'url': '/', 'name': title[lang], 'active': True},
     ]
     context = {
         'company': get_company(),
-        'title': tour_title[lang],
+        'title': title[lang],
         'breadcrumbs': breadcrumbs,
-        'object': tour,
+        'object': {
+            'keywords': tour.keywords_SEO,
+            'description_SEO': tour.description_SEO,
+            'title': title[lang],
+            'id': tour.id,
+            'img': tour.img,
+            'url': tour.url,
+            'description': description[lang],
+        },
     }
-
     return render(request, 'partials/detail.html', context)
 
 
@@ -78,14 +106,14 @@ def tour_update(request, pk=None):
     lang = get_lang(request)
     tour = Tour.objects.get(pk=pk)
     tour_title = {
-        'pt': tour.title_pt,
-        'en': tour.title_gb,
-        'de': tour.title_de
+        'pt': tour.title_PT,
+        'en': tour.title_EN,
+        'de': tour.title_DE
     }
     breadcrumbs = [
         {'url': '/', 'name': _('Home')},
-        {'url': '/', 'name': _('Tours')},
-        {'url': '/', 'name': tour_title[lang], 'active': True},
+        {'url': '/tours', 'name': _('Tours')},
+        {'url': '#', 'name': tour_title[lang], 'active': True},
     ]
     if not request.user.is_staff or not request.user.is_superuser:
         return redirect('accounts:signup')
@@ -100,12 +128,13 @@ def tour_update(request, pk=None):
 
         context = {
             'company': get_company(),
-            'title': tour_title[lang] + ' edit',
+            'title': _('Edit') + ' ' + tour_title[lang],
             'breadcrumbs': breadcrumbs,
             'instance': instance,
-            'form': form
+            'form': form,
+            'value': _('Add')
         }
-        return render(request, 'templates/_edit_form.html', context)
+        return render(request, 'templates/_form.html', context)
 
 
 def tour_create(request):
@@ -115,10 +144,10 @@ def tour_create(request):
     else:
         form = TourForm(request.POST or None, request.FILES or None)
         breadcrumbs = [
-                {'url': '/', 'name': 'Home'},
-                {'url': '/', 'name': _('Tours')},
-                {'url': '/', 'name': _('Create Tour'), 'active': True},
-            ],
+                          {'url': '/', 'name': 'Home'},
+                          {'url': '/', 'name': _('Tours')},
+                          {'url': '/', 'name': _('Create Tour'), 'active': True},
+                      ],
         if form.is_valid():
             instance = form.save(commit=False)
             instance.user = request.user
@@ -131,7 +160,7 @@ def tour_create(request):
             'lang': lang,
             'title': 'Tour create',
             'breadcrumbs': breadcrumbs,
-            'value': _('Create Tour'),
+            'value': _('Add'),
             'form': form
         }
 
@@ -145,3 +174,14 @@ def tour_delete(request, pk=None):
     instance.delete()
     messages.success(request, 'Tour deleted')
     return redirect('tour:list')
+
+
+def tour_category(request):
+    tours = Tour.objects.all()
+    tours.filter(category__icontains='king')
+
+    context = {
+        'object_list': tours
+    }
+
+    return render(request, 'templates/_tour_cat.html', context)

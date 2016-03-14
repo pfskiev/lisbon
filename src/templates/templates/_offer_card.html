@@ -5,8 +5,18 @@
 {% else %}
     <p style="text-align: center"><small><em>{% trans 'place for image' %}</em></small></p>
 {% endif %}
-<h2>{{ object.title }}</h2>
-<p class="text-justify">{{ object.description }}</p>
+{% if 'pt' in request.LANGUAGE_CODE %}
+    <h2>{{ object.title_PT }}</h2>
+    <p class="text-justify">{{ object.description_PT|truncatechars:200 }}</p>
+{% endif %}
+{% if 'en' in request.LANGUAGE_CODE %}
+    <h2>{{ object.title_EN }}</h2>
+    <p class="text-justify">{{ object.description_EN|truncatechars:200 }}</p>
+{% endif %}
+{% if 'de' in request.LANGUAGE_CODE %}
+    <h2>{{ object.title_DE }}</h2>
+    <p class="text-justify">{{ object.description_DE|truncatechars:200 }}</p>
+{% endif %}
 {% if 'offer' in request.path %}
     {% include 'templates/_CRUD.html' %}
 {% else %}

@@ -57,7 +57,7 @@ def review_list(request):
         'review_list': queryset,
         'title': _('Reviews'),
         'breadcrumbs': breadcrumbs,
-        'value': _('Add Review'),
+        'value': _('Add'),
         'form': form,
         'page_request_var': page_request_var,
     }
@@ -113,7 +113,7 @@ def review_create(request):
                 {'url': '/', 'name': 'Home', 'active': False},
                 {'url': '/gallery', 'name': 'Review', 'active': False},
                 {'url': '#', 'name': 'Review creating', 'active': True}],
-            'value': 'Contact creating',
+            'value': _('Add'),
             'form': form
         }
 
@@ -145,7 +145,7 @@ def review_update(request, pk=None):
             'instance': instance,
             'form': form
         }
-        return render(request, 'templates/_edit_form.html', context)
+        return render(request, 'templates/_form.html', context)
 
 
 def review_delete(request, pk=None):

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-14 13:47+0000\n"
+"POT-Creation-Date: 2016-03-14 16:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,11 +45,12 @@ msgstr ""
 #: contacts/views.py:23 contacts/views.py:56 contacts/views.py:76
 #: contacts/views.py:105 gallery/views.py:23 gallery/views.py:67
 #: gallery/views.py:100 gallery/views.py:127 lisbon/views.py:20
-#: lisbon/views.py:44 lisbon/views.py:58 offer/views.py:24 review/views.py:24
-#: templates/templates/_breadcrumbs.html:12 templates/templates/_footer.html:12
-#: templates/templates/nav/_nav_test.html:8
+#: lisbon/views.py:44 lisbon/views.py:58 offer/views.py:24 offer/views.py:94
+#: offer/views.py:119 offer/views.py:149 review/views.py:24
+#: templates/partials/home.html:6 templates/templates/_breadcrumbs.html:12
+#: templates/templates/_footer.html:12 templates/templates/nav/_nav_test.html:8
 #: templates/templates/nav/_nav_test.html:34 tours/views.py:24
-#: tours/views.py:63 tours/views.py:86
+#: tours/views.py:80 tours/views.py:110
 msgid "Home"
 msgstr "Zuhause"
 
@@ -61,7 +62,7 @@ msgstr "Zuhause"
 msgid "Contacts"
 msgstr "Kontakt"
 
-#: contacts/views.py:78 contacts/views.py:89 templates/partials/contact.html:16
+#: contacts/views.py:78 contacts/views.py:89 templates/partials/contact.html:17
 #, fuzzy
 #| msgid "Contacts"
 msgid "Create Contact"
@@ -73,9 +74,11 @@ msgstr "Kontakt"
 msgid "Contact Created"
 msgstr "Kontaktiere uns"
 
-#: contacts/views.py:91 offer/views.py:73
+#: contacts/views.py:91 gallery/views.py:142 offer/views.py:73
+#: offer/views.py:131 review/views.py:60 review/views.py:116 tours/views.py:131
+#: tours/views.py:159
 msgid "Add"
-msgstr ""
+msgstr "Hinzufügen"
 
 #: contacts/views.py:113
 #, fuzzy
@@ -107,15 +110,15 @@ msgstr "Galerie"
 #, fuzzy
 #| msgid "Gallery"
 msgid "Gallery edited"
-msgstr "Galerie"
+msgstr "Galerie bearbeitet"
 
 #: gallery/views.py:113
 #, fuzzy
 #| msgid "Gallery"
 msgid "Gallery edit"
-msgstr "Galerie"
+msgstr "Galerie bearbeitet"
 
-#: gallery/views.py:129 gallery/views.py:140 templates/partials/gallery.html:14
+#: gallery/views.py:129 gallery/views.py:140 templates/partials/gallery.html:15
 #, fuzzy
 #| msgid "Create Offer"
 msgid "Create Gallery"
@@ -125,12 +128,6 @@ msgstr "Angebot erstellen"
 #, fuzzy
 #| msgid "Gallery"
 msgid "Gallery created"
-msgstr "Galerie"
-
-#: gallery/views.py:142
-#, fuzzy
-#| msgid "Create Offer"
-msgid "Create"
 msgstr "Angebot erstellen"
 
 #: gallery/views.py:154
@@ -143,18 +140,33 @@ msgstr "Galerie"
 msgid "About"
 msgstr "Über uns"
 
-#: offer/views.py:25 offer/views.py:69
+#: offer/views.py:25 offer/views.py:69 offer/views.py:95 offer/views.py:119
+#: offer/views.py:150
 #, fuzzy
 #| msgid "We Offer"
 msgid "Offers"
 msgstr "Wir bieten"
 
-#: offer/views.py:154 offer/views.py:164 templates/templates/_CRUD.html.py:7
-#: templates/templates/_contact_card.html:84
+#: offer/views.py:119 offer/views.py:129 templates/partials/home.html.py:76
+#: templates/partials/offer.html:19 templates/partials/offer.html.py:30
+msgid "Create Offer"
+msgstr "Angebot erstellen"
+
+#: offer/views.py:151 offer/views.py:161 templates/partials/detail.html.py:39
+#: templates/templates/_CRUD.html:7 templates/templates/_contact_card.html:84
 #: templates/templates/_offer_card.html:18
 #: templates/templates/_offer_details.html:28
+#: templates/templates/_tour_card_de.html:27
+#: templates/templates/_tour_card_gb.html:26
+#: templates/templates/_tour_card_pt.html:26 tours/views.py:127
 msgid "Edit"
 msgstr "Bearbeiten"
+
+#: offer/views.py:156
+#, fuzzy
+#| msgid "We Offer"
+msgid "Offer saved"
+msgstr "Wir bieten"
 
 #: review/views.py:25 review/views.py:58 templates/templates/_footer.html.py:14
 #: templates/templates/nav/_nav_test.html:10
@@ -162,52 +174,76 @@ msgstr "Bearbeiten"
 msgid "Reviews"
 msgstr "Bewertungen"
 
-#: review/views.py:60 templates/partials/review.html.py:19
-#: templates/partials/review.html:21 templates/partials/review.html.py:34
+#: templates/base.html:13
+msgid "Lisbon "
+msgstr "Lissabon"
+
+#: templates/partials/detail.html:24 templates/templates/_contact_card.html:13
+#: templates/templates/_contact_details.html:16
+#: templates/templates/_offer_card.html:6
+#: templates/templates/_offer_details.html:16
+#: templates/templates/_tour_card_de.html:11
+#: templates/templates/_tour_card_gb.html:10
+#: templates/templates/_tour_card_pt.html:10
+msgid "place for image"
+msgstr "Platz für Bild"
+
+#: templates/partials/detail.html:35 templates/templates/_tour_card_de.html:22
+#: templates/templates/_tour_card_gb.html:21
+#: templates/templates/_tour_card_pt.html:21
+msgid "book now"
+msgstr "Buche jetzt"
+
+#: templates/partials/detail.html:40 templates/templates/_CRUD.html.py:5
+#: templates/templates/_contact_card.html:82
+#: templates/templates/_contact_card.html:101
+#: templates/templates/_offer_card.html:16
+#: templates/templates/_offer_details.html:26
+#: templates/templates/_tour_card_de.html:28
+#: templates/templates/_tour_card_gb.html:27
+#: templates/templates/_tour_card_pt.html:27
+msgid "Delete"
+msgstr "Löschen"
+
+#: templates/partials/home.html:64
+msgid "We Offer"
+msgstr "Wir bieten"
+
+#: templates/partials/home.html:66
+msgid "full offer list"
+msgstr "vollständige Angebotsliste"
+
+#: templates/partials/review.html:15 templates/templates/_CRUD.html.py:2
+#: templates/templates/_offer_card.html:13
+#: templates/templates/_tour_card_de.html:23
+#: templates/templates/_tour_card_gb.html:22
+#: templates/templates/_tour_card_pt.html:22
+msgid "View details"
+msgstr "Details anzeigen"
+
+#: templates/partials/review.html:20 templates/partials/review.html.py:22
+#: templates/partials/review.html:35
 #, fuzzy
 #| msgid "Reviews"
 msgid "Add Review"
 msgstr "Bewertungen"
 
-#: templates/partials/home.html:67
-msgid "We Offer"
-msgstr "Wir bieten"
+#: templates/partials/review.html:25
+msgid "To reviews list"
+msgstr "Um Bewertungen Liste"
 
-#: templates/partials/home.html:69
-msgid "full offer list"
-msgstr "vollständige Angebotsliste"
-
-#: templates/partials/home.html:79 templates/partials/offer.html.py:18
-#: templates/partials/offer.html:29
-msgid "Create Offer"
+#: templates/partials/tours.html:28 tours/views.py:145
+#, fuzzy
+#| msgid "Create Offer"
+msgid "Create Tour"
 msgstr "Angebot erstellen"
 
-#: templates/partials/review.html:14 templates/templates/_CRUD.html.py:2
-#: templates/templates/_offer_card.html:13
-msgid "View details"
-msgstr "Details anzeigen"
-
-#: templates/partials/review.html:24
-msgid "To reviews list"
-msgstr ""
-
-#: templates/templates/_CRUD.html:5 templates/templates/_contact_card.html:82
-#: templates/templates/_contact_card.html:101
-#: templates/templates/_offer_card.html:16
-#: templates/templates/_offer_details.html:26
-msgid "Delete"
-msgstr "Löschen"
-
-#: templates/templates/_contact_card.html:13
-#: templates/templates/_contact_details.html:16
-#: templates/templates/_offer_card.html:6
-#: templates/templates/_offer_details.html:16
-msgid "place for image"
-msgstr "Platz für Bild"
-
 #: templates/templates/_contact_card.html:16
+#: templates/templates/_tour_card_de.html:21
+#: templates/templates/_tour_card_gb.html:20
+#: templates/templates/_tour_card_pt.html:20
 msgid "category"
-msgstr ""
+msgstr "Kategorie"
 
 #: templates/templates/_contact_card.html:19
 msgid "short bio"
@@ -246,11 +282,11 @@ msgstr "Kontaktiere uns"
 
 #: templates/templates/_contact_card.html:97
 msgid "Are you sure to delete Contact"
-msgstr ""
+msgstr "Sind Sie sicher, Kontakt zu löschen"
 
 #: templates/templates/_contact_card.html:100
 msgid "Cancel"
-msgstr ""
+msgstr "Stornieren"
 
 #: templates/templates/_footer.html:10 templates/templates/nav/_nav_test.html:6
 msgid "Site Map"
@@ -258,7 +294,7 @@ msgstr "Sitemap"
 
 #: templates/templates/_footer.html:13 templates/templates/nav/_nav_test.html:9
 #: templates/templates/nav/_nav_test.html:37 tours/views.py:25
-#: tours/views.py:45 tours/views.py:64 tours/views.py:87 tours/views.py:119
+#: tours/views.py:57 tours/views.py:81 tours/views.py:111 tours/views.py:144
 msgid "Tours"
 msgstr "Tours"
 
@@ -322,8 +358,7 @@ msgstr "Maile mir"
 msgid "Search"
 msgstr "Suche"
 
-#: tours/views.py:120 tours/views.py:134
 #, fuzzy
-#| msgid "Create Offer"
-msgid "Create Tour"
-msgstr "Angebot erstellen"
+#~| msgid "Create Offer"
+#~ msgid "Create"
+#~ msgstr "Angebot erstellen"

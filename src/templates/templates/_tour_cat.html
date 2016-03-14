@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 {% load i18n %}
-{% block title %}{{ title }}{% endblock title %}
 {% block content %}
     {% include 'templates/_breadcrumbs.html' %}
-    <section>
+    <section class="details">
         <div class="container">
             <h1 class="display-4">{{ title }}</h1>
+            {{ object_list }}
             <div class="card-columns">
                 {% if 'pt' in request.LANGUAGE_CODE %}
                     {% for object in object_list %}

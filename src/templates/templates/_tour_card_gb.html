@@ -1,28 +1,30 @@
 {% load staticfiles %}
+{% load i18n %}
 <div class="card">
     {% if object.img %}
-        <a href="{{ object.id }}"><img style="height: 350px;width: 100%; object-fit: cover;" class="img-fluid" src="{% static '/media/' %}{{ object.img }}" alt="{{ object.title_gb }}"></a>
+        <a href="{{ object.id }}"><img style="height: 350px;width: 100%; object-fit: cover;" class="img-fluid" src="{% static '/media/' %}{{ object.img }}" alt="{{ object.title_EN }}"></a>
         {% else %}
         {% if object.url  %}
-        <a href="{{ object.id }}"><img style="height: 350px;width: 100%;   object-fit: cover;" class="img-fluid" src="{{ object.url }}" alt="{{ object.title_pt }}"></a>
+        <a href="{{ object.id }}"><img style="height: 350px;width: 100%;   object-fit: cover;" class="img-fluid" src="{{ object.url }}" alt="{{ object.title_EN }}"></a>
         {% else %}
-        <p style="text-align: center; padding-top: 100px; padding-bottom: 30px"><small><em>HERE SHOULD BE PHOTO</em></small></p>
+        <p style="text-align: center"><small><em>{% trans 'place for image' %}</em></small></p>
             {% endif %}
     {% endif %}
     <div class="card-block">
-        <h4 class="card-title">{{ object.title_gb|upper }}
+        <h4 class="card-title">{{ object.title_EN|upper }}
             {% if object.price %}
                 | {{ object.price }} €
             {% endif %}</h4>
-        <p class="card-text text-justify">{{ object.description_gb|truncatechars:200}}</p>
+        <p class="card-text text-justify">{{ object.description_EN|truncatechars:200}}</p>
         <p>{{ object.created_on }}</p>
-        <a href="{{ object.id }}" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">BOOK NOW</a>
-        <a href="{{ object.id }}" class="btn btn-danger-outline">Read More</a>
+        <p><small><em class="text-uppercase">{% trans 'category' %}: </em><em>{{ object.category }}</em></small></p>
+        <a href="{{ object.id }}" class="btn btn-danger text-uppercase" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">{% trans 'book now' %}</a>
+        <a class="btn btn-danger-outline" href="{{ request.get_full_path }}{{ object.id }}">{% trans 'View details' %} &raquo;</a>
         {% include 'templates/_share.html' %}
         {% if user.is_staff %}
              <a class="btn btn-sm btn-danger-outline" href="{{ request.get_full_path }}{{ object.id }}/edit/">
-                    <i class="fa fa-pencil-square-o"></i> Edit</a>
-        <a type="button" class="btn btn-sm btn-danger-outline" onclick="delete_contact({{ object.id }})" data-toggle="modal" data-target=".bd-example-modal-sm"><i class="fa fa-trash"></i> Delete</a></a>
+                    <i class="fa fa-pencil-square-o"></i> {% trans 'Edit' %}</a>
+            <a type="button" class="btn btn-sm btn-danger-outline" onclick="delete_contact({{ object.id }})" data-toggle="modal" data-target=".bd-example-modal-sm"><i class="fa fa-trash"></i> {% trans 'Delete'%}</a></a>
         {% endif %}
     <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-sm">

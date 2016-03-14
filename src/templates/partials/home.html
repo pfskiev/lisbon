@@ -3,7 +3,7 @@
 {% load staticfiles %}
 {% load thumbnail %}
 {% load crispy_forms_tags %}
-{% block title %}{{ block.super }}Home{% endblock %}
+{% block title %}{% trans 'Home' %}{% endblock %}
 {% block content %}
     {% include 'templates/_breadcrumbs.html' %}
     <style>
@@ -26,9 +26,6 @@
         <source src="media/{{ audio }}" type="audio/mpeg">
   </audio>
 
-{#    <audio autoplay loop>#}
-{#        <source src="https://cs7-4v4.vk-cdn.net/p4/ee5e48e1936de0.mp3?extra=MrpSMSP8pO9vU1ULYduWUFCdYfQx_RpZ2i_UHU-CDm-wg7w2GDYuHYBl05VBdbLLwp__Gj1fYWWtJfGNoVR-6fxNWorv4bJG5qD30pibkzxA8X68matTE7FG5BEplEd2pSUBxXrrVWLJ3Fw">#}
-{#    </audio>#}
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>

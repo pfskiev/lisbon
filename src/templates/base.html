@@ -1,5 +1,6 @@
 {% load staticfiles %}
 {% load thumbnail %}
+{% load i18n %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -9,7 +10,7 @@
     <meta name="description" content="{% block description %}{% endblock description %}">
     <meta name="keywords" content="{% block main_keywords %}{{ object.main_keywords }}{% endblock main_keywords %}{% block keywords %}{% endblock keywords %}">
     <meta name="author" content="">
-    <title>Lisbon :: {% block title %}{% endblock %}</title>
+    <title>{% trans 'Lisbon '%} : {% block title %}{% endblock title%}</title>
     <link rel="shortcut icon" href="{% static 'custom/ico/favicon.ico' %}">
     <link rel="stylesheet" href="{% static 'vendor/bootstrap/dist/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'vendor/components-font-awesome/css/font-awesome.min.css' %}">
@@ -18,7 +19,6 @@
     <script src="{% static 'vendor/jquery/dist/jquery.min.js' %}"></script>
     <script src="{% static 'vendor/bootstrap/dist/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'vendor/lodash/dist/lodash.min.js' %}"></script>
-
 </head>
 <body>
 {% include 'templates/nav/_nav_test.html' %}

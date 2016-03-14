@@ -115,7 +115,7 @@ def gallery_update(request, pk=None):
             'instance': gallery,
             'form': form
         }
-        return render(request, 'templates/_edit_form.html', context)
+        return render(request, 'templates/_form.html', context)
 
 
 def gallery_create(request):
@@ -139,7 +139,7 @@ def gallery_create(request):
             'company': get_company(),
             'title': _('Create Gallery'),
             'breadcrumbs': breadcrumbs,
-            'value': _('Create'),
+            'value': _('Add'),
             'form': form
         }
 

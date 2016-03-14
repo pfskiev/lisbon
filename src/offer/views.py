@@ -90,7 +90,6 @@ def offer_detail(request, pk=None):
         'en': offer.description_EN,
         'de': offer.description_DE
     }
-
     breadcrumbs = [
         {'url': '/', 'name': _('Home'), 'active': False},
         {'url': '/offer', 'name': _('Offers'), 'active': False},
@@ -164,7 +163,7 @@ def offer_update(request, pk=None):
             'instance': offer,
             'form': form
         }
-        return render(request, 'templates/_edit_form.html', context)
+        return render(request, 'templates/_form.html', context)
 
 
 def offer_delete(request, pk=None):
