@@ -7,7 +7,7 @@ class TourForm(forms.ModelForm):
         model = Tour
         fields = [
 
-            'category',
+            # 'category',
             'title_PT',
             'title_EN',
             'title_DE',
