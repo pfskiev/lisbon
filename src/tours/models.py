@@ -1,16 +1,21 @@
 from django.db import models
+from autoslug.fields import AutoSlugField
 
 
 class Category(models.Model):
     category = models.CharField(max_length=100, blank=True, null=False)
-    url = models.CharField(max_length=100, blank=True, null=False)
+    url = AutoSlugField(populate_from='category', unique=True, max_length=255)
+
 
     def __str__(self):
         return self.category
 
+    def __unicode__(self):
+        return self.category
+
 
 class Tour(models.Model):
-    # category = models.ForeignKey(Category, default=1, blank=True, null=True)
+    category = models.ForeignKey(Category, default=1, blank=True, null=True)
     title_PT = models.CharField(max_length=100, blank=True, null=False)
     title_EN = models.CharField(max_length=100, blank=True, null=False)
     title_DE = models.CharField(max_length=100, blank=True, null=False)

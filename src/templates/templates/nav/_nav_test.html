@@ -34,7 +34,18 @@
                 <a class="nav-link" href="{% url 'home' %}">{% trans 'Home' %}</a>
             </li>
             <li class="nav-item hidden-sm-down">
-                <a class="nav-link" href="{% url 'tour:list' %}">{% trans 'Tours' %}</a>
+                <div class="btn-group">
+                <a style="cursor: pointer;color: gold;"  class=" hidden-sm-down nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {% trans 'Tours' %}</a>
+                <div class="dropdown-menu" style="    margin-top: 9px;">
+                    <a class="dropdown-item" href="{% url 'tour:list' %}">{% trans 'Tours' %}</a>
+                    {% if categories_list %}
+                        {% for category in categories_list %}
+                            <a href="/tours/{{ category.url }}" class="dropdown-item">{{ category.category }}</a>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                </div>
             </li>
             <li class="nav-item hidden-sm-down">
                 <a class="nav-link" href="{% url 'review:list' %}">{% trans 'Reviews' %}</a>

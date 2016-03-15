@@ -7,6 +7,8 @@ class ReviewForm(forms.ModelForm):
         model = Review
         fields = [
 
-            'text',
+            'category',
+            'review',
+
 
         ]

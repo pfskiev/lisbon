@@ -16,15 +16,10 @@
                             <img style="max-height: 500px;   object-fit: cover;" class="img-fluid" src="{% static '/media/' %}{{ object.img }}" alt="" width="100%">
                         {% else %}
                             {% if  object.url %}
-
                                 <img style="max-height: 500px;   object-fit: cover;" class="img-fluid" src="{{ object.url }}" alt="" width="100%">
-
-                                {% else %}
-
+                            {% else %}
                                 <p style="text-align: center"><small><em>{% trans 'place for image' %}</em></small></p>
-
-                                {% endif %}
-
+                            {% endif %}
                         {% endif %}
                     </div>
                 </div>
@@ -66,7 +61,7 @@
                     debugger
                     window.location.pathname = '/tours/' + _id + '/delete/'}
             </script>
-                    {% include 'templates/_modal.html' %}
+{#                    {% include 'templates/_modal_book_now.html' %}#}
                 </div>
             </div>
         </div>

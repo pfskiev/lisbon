@@ -7,6 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 from .models import Review
 from .forms import ReviewForm
 from helpers.models import Helpers
+from tours.models import Category
 
 
 def get_lang(request):
@@ -53,6 +54,7 @@ def review_list(request):
             return redirect('review:list')
 
     context = {
+        'categories_list': Category.objects.all(),
         'company': get_company(),
         'review_list': queryset,
         'title': _('Reviews'),
@@ -68,22 +70,16 @@ def review_list(request):
 def review_detail(request, pk=None):
     review = Review.objects.get(pk=pk)
     lang = get_lang(request)
-    nav_bar = {
-        'pt': PTNavigation.objects.get(id=1),
-        'gb': GBNavigation.objects.get(id=1),
-        'de': DENavigation.objects.get(id=1)
-    }
-    breadcrumbs = [
-        {'url': '/', 'name': nav_bar[lang].home},
-        {'url': '#', 'name': nav_bar[lang].review},
-        {'url': '#', 'name': review.text, 'active': True}]
 
+    breadcrumbs = [
+        {'url': '/', 'name': _('Home')},
+        {'url': '#', 'name': _('Reviews'), 'active': True}
+    ]
     context = {
+        'categories_list': Category.objects.all(),
         'company': get_company(),
-        'nav': nav_bar[lang],
-        'lang': lang,
         'breadcrumbs': breadcrumbs,
-        'title': 'Review',
+        'title': _('Reviews'),
         'object': review,
     }
 
@@ -106,6 +102,7 @@ def review_create(request):
             return redirect('review:list')
 
         context = {
+            'categories_list': Category.objects.all(),
             'company': get_company(),
             'lang': lang,
             'title': 'Review creating',
@@ -138,6 +135,7 @@ def review_update(request, pk=None):
             return redirect('review:list')
 
         context = {
+            'categories_list': Category.objects.all(),
             'company': get_company(),
             'lang': lang,
             'title': 'Review Edit',
@@ -146,6 +144,23 @@ def review_update(request, pk=None):
             'form': form
         }
         return render(request, 'templates/_form.html', context)
+
+
+def review_filter(request, slug=None):
+    reviews = Review.objects.filter(category__url__contains=slug)
+    category = Category.objects.filter(url__icontains=slug)
+    context = {
+            'categories_list': Category.objects.all(),
+            'breadcrumbs': [
+                {'url': '/', 'name': _('Home')},
+                {'url': '/', 'name': _('Reviews')},
+                {'url': '#', 'name': category[0], 'active': True}
+            ],
+            'title': _('category'),
+            'object_list': reviews
+        }
+
+    return render(request, 'partials/review_filter.html', context)
 
 
 def review_delete(request, pk=None):

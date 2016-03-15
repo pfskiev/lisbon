@@ -9,10 +9,12 @@
             {% for review in review_list %}
                 {% if review.confirmed %}
                 <blockquote class="blockquote">
-                    <p class="m-b-0">{{ review.text }}</p>
+                    <p class="m-b-0">{{ review.review }}</p>
                     <p class="m-b-0"><span class="text-muted">left by: </span>{{ review.user.name }}</p>
                     <div class="blockquote-footer">add on: <cite title="Source Title">{{ review.timestamp }}</cite></div>
                     <a href="{{ request.path }}{{ review.id }}/">{% trans 'View details' %}</a>
+                    <p><small><em class="text-uppercase">{% trans 'category' %}: </em><em><a href="/reviews/{{ review.category.url }}">{{ review.category }}</a>
+                    </em></small></p>
                 </blockquote>
                 {% endif %}
             {% endfor %}

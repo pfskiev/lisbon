@@ -4,6 +4,7 @@ from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.translation import ugettext_lazy as _
 from helpers.models import Helpers
+from tours.models import Category
 from .models import Gallery
 from .forms import GalleryForm
 
@@ -40,6 +41,7 @@ def gallery_list(request):
         queryset = paginator.page(paginator.num_pages)
 
     context = {
+        'categories_list': Category.objects.all(),
         'company': get_company(),
         'title': _('Gallery'),
         'breadcrumbs': breadcrumbs,
@@ -76,6 +78,7 @@ def gallery_detail(request, pk=None):
         'video': gallery.video,
     }
     context = {
+        'categories_list': Category.objects.all(),
         'company': get_company(),
         'breadcrumbs': breadcrumbs,
         'title': gallery_title[lang],
@@ -109,6 +112,7 @@ def gallery_update(request, pk=None):
             return redirect('gallery:list')
 
         context = {
+            'categories_list': Category.objects.all(),
             'company': get_company(),
             'title': _('Gallery edit'),
             'breadcrumbs': breadcrumbs,
@@ -136,6 +140,7 @@ def gallery_create(request):
             return redirect('gallery:list')
 
         context = {
+            'categories_list': Category.objects.all(),
             'company': get_company(),
             'title': _('Create Gallery'),
             'breadcrumbs': breadcrumbs,

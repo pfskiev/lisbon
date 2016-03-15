@@ -3,6 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 from offer.models import Offer
 from tours.models import About
 from helpers.models import Helpers
+from tours.models import Category
 
 
 def get_lang(request):
@@ -25,6 +26,7 @@ def home(request):
         'de': Helpers.objects.get(id=1).start_page_header_de
     }
     context = {
+        'categories_list': Category.objects.all(),
         'audio': Helpers.objects.get(id=1).audio,
         'company': get_company(),
         'header': header[lang],
@@ -45,6 +47,7 @@ def about(request):
         {'url': '#', 'name': _('About'), 'active': True}
     ]
     context = {
+        'categories_list': Category.objects.all(),
         'company': get_company(),
         'title': _('About'),
         'breadcrumbs': breadcrumbs,

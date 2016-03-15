@@ -90,6 +90,7 @@ HELPER_APPS = [
     'authtools',
     'crispy_forms',
     'easy_thumbnails',
+    'autoslug'
 
 ]
 

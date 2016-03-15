@@ -10,7 +10,7 @@ from offer.models import Offer
 
 class StaticSitemap(Sitemap):
     priority = 0.6
-    changefreq = 'weekly'
+    changefreq = 'hourly'
 
     def items(self):
         return ['home', 'tour:list', 'contact:list', 'review:list', 'offer:list']
@@ -20,7 +20,7 @@ class StaticSitemap(Sitemap):
 
 
 class TourSitemap(Sitemap):
-    changefreq = "weekly"
+    changefreq = "hourly"
     priority = 0.5
 
     def items(self):
@@ -28,7 +28,7 @@ class TourSitemap(Sitemap):
 
 
 class ContactSitemap(Sitemap):
-    changefreq = "weekly"
+    changefreq = "hourly"
     priority = 0.5
 
     def items(self):
@@ -36,7 +36,7 @@ class ContactSitemap(Sitemap):
 
 
 class GallerySitemap(Sitemap):
-    changefreq = "weekly"
+    changefreq = "hourly"
     priority = 0.5
 
     def items(self):
@@ -44,7 +44,7 @@ class GallerySitemap(Sitemap):
 
 
 class OfferSitemap(Sitemap):
-    changefreq = "weekly"
+    changefreq = "hourly"
     priority = 0.5
 
     def items(self):
@@ -52,7 +52,7 @@ class OfferSitemap(Sitemap):
 
 
 class ReviewSitemap(Sitemap):
-    changefreq = "weekly"
+    changefreq = "hourly"
     priority = 0.5
 
     def items(self):
@@ -61,7 +61,7 @@ class ReviewSitemap(Sitemap):
 
 sitemaps = {
     'static': StaticSitemap(),
-    'tour': TourSitemap(),
+    'tours': TourSitemap(),
     'contact': ContactSitemap(),
     'gallery': GallerySitemap(),
     'offer': OfferSitemap(),

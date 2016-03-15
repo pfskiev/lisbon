@@ -5,6 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib import messages
 from .models import Offer
 from .forms import OfferForm
+from tours.models import Category
 from helpers.models import Helpers
 
 
@@ -65,6 +66,7 @@ def offer_list(request):
             return redirect('offer:list')
 
     context = {
+        'categories_list': Category.objects.all(),
         'company': get_company(),
         'title': _('Offers'),
         'object_list': queryset,
@@ -95,6 +97,7 @@ def offer_detail(request, pk=None):
         {'url': '/offer', 'name': _('Offers'), 'active': False},
         {'url': '#', 'name': title[lang], 'active': True}]
     context = {
+        'categories_list': Category.objects.all(),
         'company': get_company(),
         'breadcrumbs': breadcrumbs,
         'title': title[get_lang(request)],
@@ -125,6 +128,7 @@ def offer_create(request):
             return redirect('offer:list')
 
     context = {
+        'categories_list': Category.objects.all(),
         'company': get_company(),
         'title': _('Create Offer'),
         'breadcrumbs': breadcrumbs,
@@ -157,6 +161,7 @@ def offer_update(request, pk=None):
             return redirect('offer:list')
 
         context = {
+            'categories_list': Category.objects.all(),
             'company': get_company(),
             'title': _('Edit') + ' ' + title[lang],
             'breadcrumbs': breadcrumbs,

@@ -22,9 +22,9 @@
     </style>
     <article>
 
-    <audio autoplay loop>
-        <source src="media/{{ audio }}" type="audio/mpeg">
-  </audio>
+{#    <audio autoplay loop>#}
+{#        <source src="media/{{ audio }}" type="audio/mpeg">#}
+{#  </audio>#}
 
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
@@ -61,7 +61,7 @@
     </article>
     <article style="padding-bottom: 100px;padding-top: 100px" class="offer">
     <div class="container marketing">
-        <h3 class="display-3 text-md-center">{% trans 'We Offer' %}</h3>
+        <h3 class="display-3 text-md-center">{% trans 'Our tours and excursions in Lisbon and in Portugal' %}</h3>
     <p style="text-align: center"><a href="{% url 'offer:list' %}">
             <em>{% trans 'full offer list' %}</em>
         </a></p>

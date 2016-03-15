@@ -21,6 +21,7 @@
   "dependencies": {
     "lodash": "^4.5.1",
     "bootstrap": "^4.0.0",
-    "components-font-awesome": "^4.5.0"
+    "components-font-awesome": "^4.5.0",
+    "jquery-ui": "^1.11.4"
   }
 }

@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.translation import ugettext_lazy as _
 from django.contrib import messages
 from helpers.models import Helpers
+from tours.models import Category
 from .models import Contact
 from .forms import ContactForm
 
@@ -40,6 +41,7 @@ def contact_list(request):
         queryset = paginator.page(paginator.num_pages)
 
     context = {
+        'categories_list': Category.objects.all(),
         'company': get_company(),
         'title': _('Contacts'),
         'breadcrumbs': breadcrumbs,
@@ -58,6 +60,7 @@ def contact_detail(request, pk=None):
         {'url': '#', 'name': contact.first_name + ' ' + contact.last_name, 'active': True}
     ]
     context = {
+        'categories_list': Category.objects.all(),
         'company': get_company(),
         'title': contact.first_name + ' ' + contact.last_name,
         'breadcrumbs': breadcrumbs,
@@ -85,6 +88,7 @@ def contact_create(request):
             return redirect('contact:list')
 
         context = {
+            'categories_list': Category.objects.all(),
             'company': get_company(),
             'title': _('Create Contact'),
             'breadcrumbs': breadcrumbs,
@@ -114,6 +118,7 @@ def contact_update(request, pk=None):
             return redirect('contact:list')
 
         context = {
+            'categories_list': Category.objects.all(),
             'company': get_company(),
             'title': _('Contact Edit'),
             'breadcrumbs': breadcrumbs,

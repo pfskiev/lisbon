@@ -17,7 +17,7 @@
             {% endif %}</h4>
         <p class="card-text text-justify">{{ object.description_PT|truncatechars:200}}</p>
         <p>{{ object.created_on }}</p>
-        <p><small><em class="text-uppercase">{% trans 'category' %}: </em><em>{{ object.category }}</em></small></p>
+        <p><small><em class="text-uppercase">{% trans 'category' %}: </em><em><a href="/tours/{{ object.category.url }}">{{ object.category }}</a></em></small></p>
         <a href="{{ object.id }}" class="btn btn-danger text-uppercase" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">{% trans 'book now' %}</a>
         <a class="btn btn-danger-outline" href="{{ request.get_full_path }}{{ object.id }}">{% trans 'View details' %} &raquo;</a>
         {% include 'templates/_share.html' %}
@@ -55,5 +55,5 @@
                     window.location.pathname = '{{ request.get_full_path }}' + _id + '/delete/'}
             </script>
     </div>
-    {% include 'templates/_modal.html' %}
+{#    {% include 'templates/_modal_book_now.html' %}#}
 </div>
