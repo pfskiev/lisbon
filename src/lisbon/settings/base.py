@@ -167,7 +167,7 @@ MY_HOST = ['localhost:8080']
 STATIC_ROOT = '/static/'
 
 # Crispy Form Theme - Bootstrap 3pyt
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 MESSAGE_TAGS = {
     messages.ERROR: 'danger'
