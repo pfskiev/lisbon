@@ -61,7 +61,7 @@ class ReviewSitemap(Sitemap):
 
 sitemaps = {
     'static': StaticSitemap(),
-    'tours': TourSitemap(),
+    'tour': TourSitemap(),
     'contact': ContactSitemap(),
     'gallery': GallerySitemap(),
     'offer': OfferSitemap(),
