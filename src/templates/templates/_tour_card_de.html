@@ -54,6 +54,9 @@
                 function confirm (){
                     debugger
                     window.location.pathname = '{{ request.get_full_path }}' + _id + '/delete/'}
+                $('document').ready(function(){
+                    $( ".datepicker" ).datepicker();
+                })
             </script>
     </div>
     {% include 'templates/_modal_book_now.html' %}
