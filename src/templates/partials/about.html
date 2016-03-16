@@ -11,9 +11,9 @@
             {% for object in about_list %}
                 {% for paragraph in object.paragraph.all %}
                     <p>{{ paragraph }}</p>
-                    {% if user.is_staff %}
-                        <a class="btn btn-sm btn-danger-outline" href="/tours/{{ paragraph.id }}/edit/">edit</a>
-                    {% endif %}
+{#                    {% if user.is_staff %}#}
+{#                        <a class="btn btn-sm btn-danger-outline" href="/tours/{{ paragraph.id }}/edit/">edit</a>#}
+{#                    {% endif %}#}
                 {% endfor %}
             {% endfor %}
         </div>
