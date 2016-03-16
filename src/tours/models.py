@@ -30,7 +30,7 @@ class Tour(models.Model):
     description_SEO = models.TextField(max_length=2000, blank=True, null=False)
 
     def get_absolute_url(self):
-        return "/tour/%i/" % self.id
+        return "/tours/%i/" % self.id
 
     def __str__(self):
         return self.title_PT

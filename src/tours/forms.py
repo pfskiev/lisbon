@@ -32,7 +32,7 @@ class BookNow(forms.Form):
     fullname = forms.CharField(label=_('Name'), required=True)
     tour = forms.ModelChoiceField(label=_('Tour'), required=True, queryset=Tour.objects.all())
     # card_number = forms.CharField(label="Card", required=True, max_length=16)
-    phone = forms.IntegerField(label=_('Phone'), required=True)
+    phone = forms.CharField(label=_('Phone'), required=True)
     from_date = forms.DateField(label=_('From Date'), required=True)
     to_date = forms.DateField(label=_('From Date'), required=True)
     message = forms.CharField(label=_('Message'), widget=forms.Textarea(), required=True)
@@ -41,9 +41,9 @@ class BookNow(forms.Form):
     helper.form_method = 'POST'
     helper.form_class = 'form-group'
     helper.layout = Layout(
-        Field('fullname', css_class='form-control'),
+        Field('fullname', css_class='form-control', placeholder='Enter you\'re name'),
         Field('tour', css_class='form-control'),
-        Field('phone', css_class='form-control'),
+        Field('phone', css_class='phone', placeholder='0(000)-000-00-00'),
         Field('message', css_class='form-control'),
         Field('from_date', css_class='datepicker'),
         Field('to_date', css_class='datepicker'),
