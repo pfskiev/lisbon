@@ -80,17 +80,17 @@
         </a></p>
         <div class="card-columns">
                 {% if 'pt' in request.LANGUAGE_CODE %}
-                    {% for object in object_list %}
+                    {% for object in tour_list %}
                         {% include 'templates/_tour_card_pt.html' %}
                     {% endfor %}
                 {% endif %}
                 {% if 'en' in request.LANGUAGE_CODE %}
-                    {% for object in object_list %}
+                    {% for object in tour_list %}
                         {% include 'templates/_tour_card_gb.html' %}
                     {% endfor %}
                 {% endif %}
                 {% if 'de' in request.LANGUAGE_CODE %}
-                    {% for object in object_list %}
+                    {% for object in tour_list %}
                         {% include 'templates/_tour_card_de.html' %}
                     {% endfor %}
                 {% endif %}
