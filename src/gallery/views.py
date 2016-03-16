@@ -67,15 +67,18 @@ def gallery_detail(request, pk=None):
     }
     breadcrumbs = [
         {'url': '/', 'name': _('Home')},
-        {'url': '#', 'name': _('Gallery')},
+        {'url': '/gallery', 'name': _('Gallery')},
         {'url': '#', 'name': gallery_title[lang], 'active': True}
     ]
     gallery_current = {
         'title': gallery_title[lang],
         'description': gallery_description[lang],
         'id': gallery.id,
-        'img': gallery.img,
         'video': gallery.video,
+        'img': gallery.img,
+        'img1': gallery.img_1,
+        'img2': gallery.img_2,
+        'img3': gallery.img_3,
     }
     context = {
         'categories_list': Category.objects.all(),
