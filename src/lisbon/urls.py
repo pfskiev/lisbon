@@ -21,6 +21,7 @@ urlpatterns = [
     url(r'^about/$', views.about, name='about'),
     url(r'^login-or-register/$', views.login_or_register, name='login_or_register'),
     url(r'^offer/', include('offer.urls', namespace='offer')),
+    url(r'^category/', include('category.urls', namespace='category')),
 
 
 ]

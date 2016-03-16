@@ -1,7 +1,7 @@
 from django.contrib.sitemaps import Sitemap
 from django.core.urlresolvers import reverse
 
-from tours.models import Tour
+from tours.models import Tour, Category
 from contacts.models import Contact
 from gallery.models import Gallery
 from review.models import Review
@@ -59,6 +59,14 @@ class ReviewSitemap(Sitemap):
         return Review.objects.all()
 
 
+class CategorySitemap(Sitemap):
+    changefreq = "hourly"
+    priority = 0.5
+
+    def items(self):
+        return Category.objects.all()
+
+
 sitemaps = {
     'static': StaticSitemap(),
     'tour': TourSitemap(),
@@ -66,4 +74,5 @@ sitemaps = {
     'gallery': GallerySitemap(),
     'offer': OfferSitemap(),
     'review': ReviewSitemap(),
+    'category': CategorySitemap()
 }

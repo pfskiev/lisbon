@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{{ title }}{% endblock title %}
+{% block beadcrumbs %}
+    {% include 'templates/_breadcrumbs.html' %}
+{% endblock %}
+{% block content %}
+    <section>
+        <div class="container">
+            <h1 class="display-3">{{ title }}</h1>
+        </div>
+    </section>
+{% endblock %}

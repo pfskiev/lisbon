@@ -6,6 +6,8 @@ class Category(models.Model):
     category = models.CharField(max_length=100, blank=True, null=False)
     url = AutoSlugField(populate_from='category', unique=True, max_length=255)
 
+    def get_absolute_url(self):
+        return "/category/" + self.url
 
     def __str__(self):
         return self.category
@@ -33,10 +35,10 @@ class Tour(models.Model):
         return "/tours/%i/" % self.id
 
     def __str__(self):
-        return self.title_PT
+        return self.title_EN
 
     def __unicode__(self):
-        return self.title_PT
+        return self.title_EN
 
 
 class Paragraph(models.Model):

@@ -77,7 +77,9 @@ def tour_list(request):
                 # send_mail(subject=fullname, body=phone, message, ['podlesny@outlook.com'])
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
-            return redirect('tour:list')
+            return redirect('tour:success')
+        else:
+            return redirect('tour:fail')
 
     context = {
         'form': form,
@@ -95,6 +97,28 @@ def tour_list(request):
 def tour_detail(request, pk=None):
     tour = Tour.objects.get(pk=pk)
     lang = get_lang(request)
+    if request.method == 'GET':
+        form = BookNow()
+    else:
+        form = BookNow(request.POST)
+        if form.is_valid():
+            fullname = form.cleaned_data['fullname']
+            phone = form.cleaned_data['phone']
+            message = form.cleaned_data['message']
+            subject = 'BOOK REQUEST from ' + fullname
+            from_email = settings.EMAIL_HOST_USER
+            to_list = ['podlesny@outlook.com']
+            try:
+                send_mail(subject, message, from_email, to_list, fail_silently=False)
+                # send_mail('Subject here', message, settings.EMAIL_HOST_USER,
+                #           ['podlesny@outlook.com'], fail_silently=True)
+                # send_mail(subject=fullname, body=phone, message, ['podlesny@outlook.com'])
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return redirect('tour:success')
+        else:
+            return redirect('tour:fail')
+
     title = {
         'pt': tour.title_PT,
         'en': tour.title_EN,
@@ -111,6 +135,7 @@ def tour_detail(request, pk=None):
         {'url': '/', 'name': title[lang], 'active': True},
     ]
     context = {
+        'form': form,
         'categories_list': Category.objects.all(),
         'company': get_company(),
         'title': title[lang],
@@ -239,6 +264,7 @@ def tour_category(request, slug=None):
     except EmptyPage:
         queryset = paginator.page(paginator.num_pages)
     category = Category.objects.filter(url__icontains=slug)
+
     if request.method == 'GET':
         form = BookNow()
     else:
@@ -257,16 +283,16 @@ def tour_category(request, slug=None):
                 # send_mail(subject=fullname, body=phone, message, ['podlesny@outlook.com'])
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
-            return redirect('tour:list')
+            return redirect('tour:success')
         else:
-            return redirect('tour:create')
+            return redirect('tour:fail')
 
     context = {
         'form': form,
         'categories_list': Category.objects.all(),
         'breadcrumbs': [
             {'url': '/', 'name': _('Home')},
-            {'url': '/', 'name': _('Tours')},
+            {'url': '/tours', 'name': _('Tours')},
             {'url': '#', 'name': category[0], 'active': True}
         ],
         'title': _('category'),
@@ -275,3 +301,26 @@ def tour_category(request, slug=None):
     }
 
     return render(request, 'templates/_tour_cat.html', context)
+
+
+def tour_success(request):
+    context = {
+        'categories_list': Category.objects.all(),
+        'title': 'Thank you for you\'re mail! Soon you will have response from admin',
+        'company': get_company(),
+        'breadcrumbs': [
+            {'url': '/', 'name': _('Home')},
+        ]}
+
+    return render(request, 'partials/success.html', context)
+
+
+def tour_fail(request):
+    context = {
+        'categories_list': Category.objects.all(),
+        'title': 'Sorry, something goes wrong! Please try again.',
+        'company': get_company(),
+        'breadcrumbs': [
+            {'url': '/', 'name': _('Home')},
+        ]}
+    return render(request, 'partials/fail.html', context)

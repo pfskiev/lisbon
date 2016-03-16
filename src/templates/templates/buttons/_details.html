@@ -1,0 +1,2 @@
+{% load i18n %}
+<a class="btn btn-danger-outline" href="{% if 'offer' in request.get_full_path  %}/offer/{{ object.id }}{% endif %}{% if 'tours' in request.get_full_path  %}/tours/{{ object.id }}{% endif %}{% if 'reviews' in request.get_full_path  %}/reviews/{{ object.id }}{% endif %}{% if 'gallery' in request.get_full_path  %}/gallery/{{ object.id }}{% endif %}{% if 'contacts' in request.get_full_path  %}/contacts/{{ object.id }}{% endif %}" role="button">{% trans 'View details' %} &raquo;</a>
