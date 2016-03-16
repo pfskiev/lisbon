@@ -32,22 +32,21 @@ def tour_list(request):
         if 'pt' in lang:
             queryset_list = queryset_list.filter(
                 Q(title_PT__icontains=query) |
-                Q(description_PT__icontains=query) |
-                Q(category__category__icontains=query)
+                Q(description_PT__icontains=query)                 # Q(category__category__icontains=query)
             ).distinct()
         else:
             if 'en' in lang:
                 queryset_list = queryset_list.filter(
                     Q(title_EN__icontains=query) |
-                    Q(description_EN__icontains=query) |
-                    Q(category__category__icontains=query)
+                    Q(description_EN__icontains=query)
+                    # Q(category__category__icontains=query)
                 ).distinct()
             else:
                 if 'de' in lang:
                     queryset_list = queryset_list.filter(
                         Q(title_DE__icontains=query) |
-                        Q(description_DE__icontains=query) |
-                        Q(category__category__icontains=query)
+                        Q(description_DE__icontains=query)
+                        # Q(category__category__icontains=query)
                     )
     paginator = Paginator(queryset_list, 5)
     page_request_var = "page"
@@ -237,22 +236,22 @@ def tour_category(request, slug=None):
         if 'pt' in lang:
             queryset_list = queryset_list.filter(
                 Q(title_PT__icontains=query) |
-                Q(description_PT__icontains=query) |
-                Q(category__category__icontains=query)
+                Q(description_PT__icontains=query)
+                # Q(category__category__icontains=query)
             ).distinct()
         else:
             if 'en' in lang:
                 queryset_list = queryset_list.filter(
                     Q(title_EN__icontains=query) |
-                    Q(description_EN__icontains=query) |
-                    Q(category__category__icontains=query)
+                    Q(description_EN__icontains=query)
+                    # Q(category__category__icontains=query)
                 ).distinct()
             else:
                 if 'de' in lang:
                     queryset_list = queryset_list.filter(
                         Q(title_DE__icontains=query) |
-                        Q(description_DE__icontains=query) |
-                        Q(category__category__icontains=query)
+                        Q(description_DE__icontains=query)
+                        # Q(category__category__icontains=query)
                     )
     paginator = Paginator(queryset_list, 5)
     page_request_var = "page"

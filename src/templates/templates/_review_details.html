@@ -1,32 +1,32 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% block content %}
     {% load staticfiles %}
     {% include 'templates/_breadcrumbs.html' %}
     <section class="details">
         <div class="container">
             <h4 class="display-4">{{ title }}</h4>
-            <div class="row">
-                <div class="col-md-6">
-                    {% if object.img %}
-                        <img style="max-height: 500px;   object-fit: cover;" class="img-fluid" src="{% static '/media/' %}{{ object.img }}" alt="" width="100%">
-                    {% else %}
+            {% if object.img %}
+                <img style="max-height: 500px;   object-fit: cover;" class="img-fluid" src="{% static '/media/' %}{{ object.img }}" alt="" width="100%">
+            {% else %}
 
-                    {% endif %}
-                </div>
-                <div class="col-md-6">
-                    <small><em>TITLE:</em></small>
-                    <p class="card-text"> {{ object.title}}</p>
-                    <small><em>DESCRIPTION:</em></small>
-                    <p class="card-text"> {{ object.text }}</p>
-                    {% if user.is_staff or user.is_superuser %}
-                        <a class="btn btn-sm btn-danger-outline" href="/object/{{ object.id }}/delete/">
-                            <i class="fa fa-trash"></i> Delete</a>
-                        <a class="btn btn-sm btn-danger-outline" href="/object/{{ object.id }}/edit/">
-                            <i class="fa fa-pencil-square-o"></i> Edit</a>
-                    {% endif %}
-                    {% include 'templates/_share.html' %}
-                </div>
-            </div>
+            {% endif %}
+            {% if object.confirmed %}
+                <blockquote class="blockquote">
+                    <p class="m-b-0">{{ object.review }}</p>
+                    <p class="m-b-0"><span class="text-muted">left by: </span>{{ object.user.name }}</p>
+                    <div class="blockquote-footer">add on: <cite title="Source Title">{{ object.timestamp }}</cite></div>
+                    <p><small><em class="text-uppercase">{% trans 'category' %}: </em><em><a href="/reviews/{{ object.category.url }}">{{ object.category }}</a>
+                    </em></small></p>
+                </blockquote>
+            {% endif %}
+            {% if user.is_staff or user.is_superuser %}
+                <a class="btn btn-sm btn-danger-outline" href="/reviews/{{ object.id }}/delete/">
+                    <i class="fa fa-trash"></i> {% trans 'Delete' %}</a>
+                <a class="btn btn-sm btn-danger-outline" href="/reviews/{{ object.id }}/edit/">
+                    <i class="fa fa-pencil-square-o"></i> {% trans 'Edit' %}</a>
+            {% endif %}
+            {% include 'templates/_share.html' %}
         </div>
     </section>
 {% endblock %}

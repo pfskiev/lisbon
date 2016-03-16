@@ -1,14 +1,26 @@
 {% load i18n %}
-<form class="form-inline" action="/i18n/setlang/" method="post">
-    {% csrf_token %}
-    <input name="next" type="hidden" value="{{ request.path }}" />
-    <select class="form-language" name="language">
-        {% get_language_info_list for LANGUAGES as languages %}
-       {% for language in languages %}
-            <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected="selected"{% endif %}>
-                 {{ language.name_local }} ({{ language.code }})
-            </option>
-       {% endfor %}
-    </select>
-    <input class="btn btn-success-outline" type="submit" value="{% trans 'Choose Language' %}"/>
-</form>
+{#<form class="form-inline" action="/i18n/setlang/" method="post">#}
+{#    {% csrf_token %}#}
+{#    <input name="next" type="hidden" value="{{ request.path }}" />#}
+{#    <select class="form-language" name="language">#}
+{#        {% get_language_info_list for LANGUAGES as languages %}#}
+{#       {% for language in languages %}#}
+{#            <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected="selected"{% endif %}>#}
+{#                 {{ language.name_local }} ({{ language.code }})#}
+{#            </option>#}
+{#       {% endfor %}#}
+{#    </select>#}
+{#    <input class="btn btn-success-outline" type="submit" value="{% trans 'Choose Language' %}"/>#}
+{#</form>#}
+
+{#{% get_language_info_list for LANGUAGES as languages %}#}
+
+{% for lang in LANGUAGES %}
+    <form id="setLang{{ lang.1}}" class="form-inline" action="/i18n/setlang/" method="POST">
+        {% csrf_token %}
+        <input name="next" type="hidden" value="{{ request.path }}">
+        <input type="hidden" name="language" value="{{ lang.0 }}">
+        <a href="#" onclick="$('#setLang{{ lang.1 }}').submit();
+                return false;">{{ lang.1 }}</a>
+    </form>
+{% endfor %}
