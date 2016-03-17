@@ -101,12 +101,17 @@ ol.breadcrumb > li > a {
 
 .card {
   border: 0;
-  transition: all .3s ease;
-  background: #FFF; }
+  background: #FFF;
+  transition: all .3s ease; }
   .card h4.card-title {
     color: #0E2F56; }
   .card p {
     color: #0E2F56; }
+
+.card:hover {
+  -webkit-box-shadow: 0 0 50px -4px black;
+  -moz-box-shadow: 0 0 50px -4px black;
+  box-shadow: 0 0 50px -4px black; }
 
 .fa {
   color: #FF304F; }
@@ -116,15 +121,21 @@ ol.breadcrumb > li > a {
   background-color: #118DF0; }
 
 .card {
-  outline: 0;
+  transition: all .3s ease;
   -webkit-box-shadow: 0 0 50px -4px rgba(0, 0, 0, 0.55);
   -moz-box-shadow: 0 0 50px -4px rgba(0, 0, 0, 0.55);
   box-shadow: 0 0 50px -4px rgba(0, 0, 0, 0.55); }
 
 .shadow {
+  transition: all .3s ease;
   -webkit-box-shadow: 0 0 50px -4px rgba(0, 0, 0, 0.55);
   -moz-box-shadow: 0 0 50px -4px rgba(0, 0, 0, 0.55);
   box-shadow: 0 0 50px -4px rgba(0, 0, 0, 0.55); }
+
+.shadow:hover {
+  -webkit-box-shadow: 0 0 50px -4px black;
+  -moz-box-shadow: 0 0 50px -4px black;
+  box-shadow: 0 0 50px -4px black; }
 
 .img-fluid {
   width: 100%;

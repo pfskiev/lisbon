@@ -1,14 +1,20 @@
 @import 'variables';
 .card {
   border: 0;
-  transition: all .3s ease;
+
   background: $color_white;
+  transition: all .3s ease;
   h4.card-title {
     color: $color_blue;
   }
   p {
     color: $color_blue;
   }
+}
+.card:hover {
+  -webkit-box-shadow: 0 0 50px -4px rgb(0, 0, 0);
+-moz-box-shadow: 0 0 50px -4px rgb(0, 0, 0);
+box-shadow: 0 0 50px -4px rgb(0, 0, 0);
 }
 .fa {
   color: $color_red;
@@ -19,7 +25,7 @@
   background-color: $color_blue_light;
 }
 .card {
-  outline: 0;
+  transition: all .3s ease;
   -webkit-box-shadow: 0 0 50px -4px rgba(0,0,0,0.55);
 -moz-box-shadow: 0 0 50px -4px rgba(0,0,0,0.55);
 box-shadow: 0 0 50px -4px rgba(0,0,0,0.55);
@@ -27,10 +33,16 @@ box-shadow: 0 0 50px -4px rgba(0,0,0,0.55);
 
 
 .shadow {
+  transition: all .3s ease;
   -webkit-box-shadow: 0 0 50px -4px rgba(0,0,0,0.55);
 -moz-box-shadow: 0 0 50px -4px rgba(0,0,0,0.55);
 box-shadow: 0 0 50px -4px rgba(0,0,0,0.55);
 
+}
+.shadow:hover {
+  -webkit-box-shadow: 0 0 50px -4px rgb(0, 0, 0);
+-moz-box-shadow: 0 0 50px -4px rgb(0, 0, 0);
+box-shadow: 0 0 50px -4px rgb(0, 0, 0);
 }
 
 .img-fluid {
