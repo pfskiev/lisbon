@@ -9,7 +9,8 @@
     <section>
         <div class="container">
             <h1 class="display-4">{{ title }}</h1>
-            <div class="card-columns">
+            <div class="row">
+            <div class="col-md-4">
             {% if 'pt' in request.LANGUAGE_CODE %}
                 {% for object in object_list %}
                     <div class="card">
@@ -58,6 +59,7 @@
                     </div>
                 {% endfor %}
             {% endif %}
+            </div>
             </div>
             {% if user.is_staff or user.is_superuser %}
                 <a class="btn btn-warning" href="{% url 'related_links:create' %}">
