@@ -1,7 +1,9 @@
 {% load i18n %}
 
-{#<p><a class="btn btn-danger-outline" href="{% if 'tours' in request.get_full_path  %}'/tours/'{% else %}{% endif %}{{ object.id }}" role="button">{% trans 'View details' %} ! &raquo;</a></p>#}
-<p>{% include 'templates/buttons/_details.html' %}</p>
+{% if not 'related-links' in request.path %}
+    <p>{% include 'templates/buttons/_details.html' %}</p>
+{% else %}
+{% endif %}
 {% if user.is_staff or user.is_superuser %}
     <a class="btn btn-sm btn-danger-outline" href="{{ request.get_full_path }}{{ object.id }}/delete/">
         <i class="fa fa-trash"></i> {% trans 'Delete' %}</a>

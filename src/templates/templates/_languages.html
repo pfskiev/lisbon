@@ -21,6 +21,6 @@
         <input name="next" type="hidden" value="{{ request.path }}">
         <input type="hidden" name="language" value="{{ lang.0 }}">
         <a href="#" onclick="$('#setLang{{ lang.1 }}').submit();
-                return false;"><i class="flag-icon flag-icon-{% if lang.0 == 'en' %}gb{% else %}{{ lang.0 }}{% endif %} flag-icon-squared"></i>{{ lang.1 }}</a>
+                return false;"><i class="flag-icon flag-icon-{% if lang.0 == 'en' %}gb{% else %}{{ lang.0 }}{% endif %}"></i>  <span>{{ lang.1 }}</span></a>
     </form>
 {% endfor %}

@@ -22,6 +22,7 @@ urlpatterns = [
     url(r'^login-or-register/$', views.login_or_register, name='login_or_register'),
     url(r'^offer/', include('offer.urls', namespace='offer')),
     url(r'^category/', include('category.urls', namespace='category')),
+    url(r'^related-links/', include('related_links.urls', namespace='related_links')),
 
 
 ]

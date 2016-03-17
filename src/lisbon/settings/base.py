@@ -103,7 +103,8 @@ PROJECT_APPS = [
     'profiles',
     'tours',
     'offer',
-    'helpers'
+    'helpers',
+    'related_links'
 
 ]
 
@@ -140,8 +141,8 @@ DATABASES = {
 LANGUAGE_CODE = 'en'
 
 LANGUAGES = (
-    ('en', 'English'),
     ('pt', 'Português'),
+    ('en', 'English'),
     ('de', 'Deutch'),
 )
 
