@@ -120,7 +120,8 @@ def gallery_update(request, pk=None):
             'title': _('Gallery edit'),
             'breadcrumbs': breadcrumbs,
             'instance': gallery,
-            'form': form
+            'form': form,
+            'value': _('Add'),
         }
         return render(request, 'templates/_form.html', context)
 

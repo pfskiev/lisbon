@@ -158,10 +158,12 @@ ol.breadcrumb > li > a {
 footer {
   padding-top: 60px;
   padding-bottom: 30px;
-  background: -webkit-linear-gradient(left top, #0E2F56, #118DF0);
-  background: -o-linear-gradient(bottom right, #0E2F56, #118DF0);
-  background: -moz-linear-gradient(bottom right, #0E2F56, #118DF0);
-  background: linear-gradient(to bottom right, #0E2F56, #118DF0); }
+  background: #0E2F56;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #0E2F56, #118DF0);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #0E2F56, #118DF0);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ }
   footer h4 {
     color: #FF304F; }
   footer a {
@@ -251,7 +253,12 @@ ol.nav.navbar-nav > a.hidden-sm-down.nav-link.dropdown-toggle {
   color: darkgoldenrod; }
 
 section {
-  background: linear-gradient(80deg, #ffefd5, #FFF);
+  background: #EFEFBB;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #EFEFBB, #D4D3DD);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #EFEFBB, #D4D3DD);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   padding-top: 100px;
   padding-bottom: 100px; }
 
@@ -259,7 +266,23 @@ article {
   transition: all .5s ease; }
 
 article.tours {
-  background-color: #ffefd5; }
+  padding-bottom: 100px;
+  padding-top: 100px;
+  background: #C9FFBF;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #C9FFBF, #FFAFBD);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #C9FFBF, #FFAFBD);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ }
+
+.offer {
+  background: #B993D6;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #B993D6, #8CA6DB);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #B993D6, #8CA6DB);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  min-height: 500px; }
 
 .form-box {
   max-width: 330px;
@@ -275,14 +298,20 @@ article.tours {
 .img:after {
   opacity: 0.5; }
 
+@media all and (max-width: 1000px) {
+  /* screen size until 1000px */
+  .display-3 {
+    font-size: 3.2em;
+    text-align: center; } }
+@media all and (max-width: 500px) {
+  /* screen size until 500px */
+  .display-3 {
+    font-size: 2.8em;
+    text-align: center; } }
 .my-label {
   padding-top: 10px;
   padding-bottom: 10px;
   color: #FF304F; }
-
-.offer {
-  background: papayawhip;
-  min-height: 500px; }
 
 .details {
   padding-top: 90px;

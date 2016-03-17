@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.core.mail import send_mail, BadHeaderError
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.utils.translation import ugettext_lazy as _
@@ -90,6 +91,7 @@ def category_list(request, slug=None):
         'title': _('category'),
         'object_list': queryset,
         'page_request_var': page_request_var,
+        'value': _('Add'),
     }
 
     return render(request, 'templates/_tour_cat.html', context)

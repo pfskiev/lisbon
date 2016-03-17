@@ -1,7 +1,20 @@
 @import 'variables';
 
 section {
-  background: linear-gradient(80deg, $color_sand, $color_white);
+//
+//background: #70e1f5; /* fallback for old browsers */
+//background: -webkit-linear-gradient(to left, #70e1f5 , #ffd194); /* Chrome 10-25, Safari 5.1-6 */
+//background: linear-gradient(to left, #70e1f5 , #ffd194); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+
+background: #EFEFBB; /* fallback for old browsers */
+background: -webkit-linear-gradient(to left, #EFEFBB , #D4D3DD); /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #EFEFBB , #D4D3DD); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+
+
   padding-top: 100px;
   padding-bottom: 100px;
 }
@@ -9,7 +22,22 @@ article {
   transition: all .5s ease;
 }
 article.tours {
-  background-color: $color_sand;
+
+  padding-bottom: 100px;padding-top: 100px;
+  background: #C9FFBF; /* fallback for old browsers */
+background: -webkit-linear-gradient(to left, #C9FFBF , #FFAFBD); /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #C9FFBF , #FFAFBD); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.offer {
+
+
+background: #B993D6; /* fallback for old browsers */
+background: -webkit-linear-gradient(to left, #B993D6 , #8CA6DB); /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #B993D6 , #8CA6DB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    min-height: 500px;
+
 }
 
 .form-box {max-width: 330px;

@@ -143,7 +143,7 @@ def related_links_update(request, pk=None):
             'de': related_link.title_DE
         }
         breadcrumbs = [{'url': '/', 'name': _('Home')},
-                       {'url': '/related_links', 'name': _('Related links')},
+                       {'url': '/related-links', 'name': _('Related links')},
                        {'url': '#', 'name': _('Edit') + ' ' + title[lang], 'active': True}]
         form = RelatedLinkForm(request.POST or None, request.FILES or None, instance=related_link)
         if form.is_valid():

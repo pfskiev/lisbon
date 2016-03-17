@@ -141,7 +141,8 @@ def review_update(request, pk=None):
             'title': 'Review Edit',
             'breadcrumbs': breadcrumbs,
             'instance': instance,
-            'form': form
+            'form': form,
+            'value': _('Add'),
         }
         return render(request, 'templates/_form.html', context)
 

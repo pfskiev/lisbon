@@ -54,7 +54,7 @@ msgstr ""
 #: tours/views.py:133 tours/views.py:165 tours/views.py:199 tours/views.py:294
 #: tours/views.py:312 tours/views.py:324
 msgid "Home"
-msgstr ""
+msgstr "Home"
 
 #: category/views.py:87 templates/templates/_footer.html.py:13
 #: templates/templates/nav/_nav_test.html:9
@@ -62,7 +62,7 @@ msgstr ""
 #: tours/views.py:88 tours/views.py:134 tours/views.py:166 tours/views.py:200
 #: tours/views.py:295
 msgid "Tours"
-msgstr ""
+msgstr "Touren"
 
 #: category/views.py:90 review/views.py:159 templates/partials/review.html:16
 #: templates/templates/_contact_card.html:16
@@ -70,7 +70,7 @@ msgstr ""
 #: templates/templates/_tour_card_gb.html:23
 #: templates/templates/_tour_card_pt.html:23 tours/views.py:298
 msgid "category"
-msgstr ""
+msgstr "Kategorie"
 
 #: contacts/views.py:25 contacts/views.py:46 contacts/views.py:59
 #: contacts/views.py:80 contacts/views.py:110
@@ -78,33 +78,33 @@ msgstr ""
 #: templates/templates/nav/_nav_test.html:13
 #: templates/templates/nav/_nav_test.html:60
 msgid "Contacts"
-msgstr ""
+msgstr "Kontakte"
 
 #: contacts/views.py:81 contacts/views.py:93 templates/partials/contact.html:17
 msgid "Create Contact"
-msgstr ""
+msgstr "erstellen Kontakt"
 
 #: contacts/views.py:87
 msgid "Contact Created"
-msgstr ""
+msgstr "Kontakt erstellt"
 
 #: contacts/views.py:95 gallery/views.py:150 offer/views.py:75
 #: offer/views.py:135 review/views.py:62 review/views.py:113 tours/views.py:187
 #: tours/views.py:216
 msgid "Add"
-msgstr ""
+msgstr "Addieren"
 
 #: contacts/views.py:117
 msgid "Contact saved"
-msgstr ""
+msgstr "Kontakt gespeichert"
 
 #: contacts/views.py:123
 msgid "Contact Edit"
-msgstr ""
+msgstr "Kontakt editieren"
 
 #: contacts/views.py:136
 msgid "Contact deleted"
-msgstr ""
+msgstr "Kontakt geloscht"
 
 #: gallery/views.py:25 gallery/views.py:46 gallery/views.py:70
 #: gallery/views.py:107 gallery/views.py:135
@@ -112,41 +112,41 @@ msgstr ""
 #: templates/templates/nav/_nav_test.html:11
 #: templates/templates/nav/_nav_test.html:54
 msgid "Gallery"
-msgstr ""
+msgstr "Galerie"
 
 #: gallery/views.py:114
 msgid "Gallery edited"
-msgstr ""
+msgstr "Galerie editiert"
 
 #: gallery/views.py:120
 msgid "Gallery edit"
-msgstr ""
+msgstr "Galerie editieren"
 
 #: gallery/views.py:136 gallery/views.py:148 templates/partials/gallery.html:15
 msgid "Create Gallery"
-msgstr ""
+msgstr "erstellen Galerie"
 
 #: gallery/views.py:142
 msgid "Gallery created"
-msgstr ""
+msgstr "Galerie erstellt"
 
 #: gallery/views.py:162
 msgid "Gallery deleted"
-msgstr ""
+msgstr "Galerie geloscht"
 
 #: lisbon/views.py:76 lisbon/views.py:81 templates/templates/_footer.html.py:6
 msgid "About"
-msgstr ""
+msgstr "Uber uns"
 
 #: offer/views.py:26 offer/views.py:71 offer/views.py:97 offer/views.py:122
 #: offer/views.py:154 templates/partials/home.html.py:103
 msgid "Offers"
-msgstr ""
+msgstr "Angebot"
 
 #: offer/views.py:122 offer/views.py:133 templates/partials/home.html.py:115
 #: templates/partials/offer.html:19 templates/partials/offer.html.py:30
 msgid "Create Offer"
-msgstr ""
+msgstr "erstellen Angebot"
 
 #: offer/views.py:155 offer/views.py:166 templates/partials/detail.html.py:33
 #: templates/templates/_CRUD.html:9 templates/templates/_contact_card.html:84
@@ -156,22 +156,22 @@ msgstr ""
 #: templates/templates/_tour_card_gb.html:29
 #: templates/templates/_tour_card_pt.html:29 tours/views.py:183
 msgid "Edit"
-msgstr ""
+msgstr "Editieren"
 
 #: offer/views.py:160
 msgid "Offer saved"
-msgstr ""
+msgstr "Angebot gespeichert"
 
 #: review/views.py:26 review/views.py:60 review/views.py:76 review/views.py:82
 #: review/views.py:156 templates/templates/_footer.html.py:14
 #: templates/templates/nav/_nav_test.html:10
 #: templates/templates/nav/_nav_test.html:51
 msgid "Reviews"
-msgstr ""
+msgstr "Kommentare"
 
 #: templates/base.html:13
 msgid "Lisbon "
-msgstr ""
+msgstr "Lissabon"
 
 #: templates/partials/detail.html:21 templates/templates/_contact_card.html:13
 #: templates/templates/_contact_details.html:16
@@ -181,7 +181,7 @@ msgstr ""
 #: templates/templates/_tour_card_gb.html:13
 #: templates/templates/_tour_card_pt.html:13
 msgid "place for image"
-msgstr ""
+msgstr "Platz fur Bild"
 
 #: templates/partials/detail.html:29
 #: templates/templates/_modal_book_now.html:11
@@ -189,7 +189,7 @@ msgstr ""
 #: templates/templates/_tour_card_gb.html:24
 #: templates/templates/_tour_card_pt.html:24
 msgid "book now"
-msgstr ""
+msgstr "Jetzt reservieren"
 
 #: templates/partials/detail.html:34 templates/templates/_CRUD.html.py:7
 #: templates/templates/_contact_card.html:82
@@ -201,19 +201,19 @@ msgstr ""
 #: templates/templates/_tour_card_pt.html:30
 #: templates/templates/modal/_delete_tour.html:17
 msgid "Delete"
-msgstr ""
+msgstr "Loschen"
 
 #: templates/partials/home.html:77
 msgid "Our tours and excursions in Lisbon and in Portugal"
-msgstr ""
+msgstr "Unsere Touren und Ausfluge im Lissabon und Portugal"
 
 #: templates/partials/home.html:79
 msgid "full tour list"
-msgstr ""
+msgstr "Volle Tourliste"
 
 #: templates/partials/home.html:105
 msgid "full offer list"
-msgstr ""
+msgstr "Volle Angebotsliste"
 
 #: templates/partials/review.html:15 templates/partials/review_filter.html:15
 #: templates/templates/_offer_card.html:23
@@ -222,35 +222,35 @@ msgstr ""
 #: templates/templates/_tour_card_pt.html:25
 #: templates/templates/buttons/_details.html:2
 msgid "View details"
-msgstr ""
+msgstr "Details anzeigen"
 
 #: templates/partials/review.html:22 templates/partials/review.html.py:24
 #: templates/partials/review.html:37 templates/partials/review_filter.html:20
 #: templates/partials/review_filter.html:22
 #: templates/partials/review_filter.html:35
 msgid "Add Review"
-msgstr ""
+msgstr "Kommentar addieren"
 
 #: templates/partials/review.html:27 templates/partials/review_filter.html:25
 msgid "To reviews list"
-msgstr ""
+msgstr "um Kommentar Liste"
 
 #: templates/partials/tours.html:28 templates/templates/_tour_cat.html.py:28
 #: tours/views.py:201
 msgid "Create Tour"
-msgstr ""
+msgstr "erstellen Tour"
 
 #: templates/templates/_contact_card.html:19
 msgid "short bio"
-msgstr ""
+msgstr "Kurzbiografie"
 
 #: templates/templates/_contact_card.html:24
 msgid "CALL ME"
-msgstr ""
+msgstr "Ruf mich an"
 
 #: templates/templates/_contact_card.html:55
 msgid "social networks"
-msgstr ""
+msgstr "Soziale Netzwerke"
 
 #: templates/templates/_contact_card.html:58
 #: templates/templates/_contact_card.html:63
@@ -267,108 +267,108 @@ msgstr ""
 #: templates/templates/nav/_follow_us.html:11
 #: templates/templates/nav/_follow_us.html:14
 msgid "Follow on "
-msgstr ""
+msgstr "Folgen"
 
 #: templates/templates/_contact_card.html:93
 msgid "Contact delete"
-msgstr ""
+msgstr "Kontakt zu loschen"
 
 #: templates/templates/_contact_card.html:97
 msgid "Are you sure to delete Contact"
-msgstr ""
+msgstr "Sind Sie sicher, dass Sie Kontakt loschen mochten?"
 
 #: templates/templates/_contact_card.html:100
 #: templates/templates/_modal_book_now.html:21
 #: templates/templates/modal/_delete_tour.html:16
 msgid "Cancel"
-msgstr ""
+msgstr "Stornieren"
 
 #: templates/templates/_footer.html:10 templates/templates/nav/_nav_test.html:6
 msgid "Site Map"
-msgstr ""
+msgstr "Sitemap"
 
 #: templates/templates/_footer.html:16
 #: templates/templates/nav/_nav_test.html:12
 #: templates/templates/nav/_nav_test.html:57
 msgid "About Us"
-msgstr ""
+msgstr "Uber uns"
 
 #: templates/templates/_footer.html:19
 #: templates/templates/nav/_nav_test.html:15
 msgid "Admin Panel"
-msgstr ""
+msgstr "Panel Admin"
 
 #: templates/templates/_footer.html:37
 msgid "All Original Content"
-msgstr ""
+msgstr "Alle Original Inhalt"
 
 #: templates/templates/_footer.html:37
 msgid "All Rights Reserved"
-msgstr ""
+msgstr "Alle Rechte vorbehalten"
 
 #: templates/templates/_gallery_details.html:12
 #: templates/templates/_offer_details.html:20
 msgid "title"
-msgstr ""
+msgstr "Titel"
 
 #: templates/templates/_gallery_details.html:15
 #: templates/templates/_offer_details.html:22
 msgid "description"
-msgstr ""
+msgstr "Beschreibung"
 
 #: templates/templates/_languages.html:13
 msgid "Choose Language"
-msgstr ""
+msgstr "Wahle eine Sprache"
 
 #: templates/templates/_user.html:15 templates/templates/_user.html.py:35
 msgid "Profile"
-msgstr ""
+msgstr "Profil"
 
 #: templates/templates/_user.html:17 templates/templates/_user.html.py:36
 msgid "Change password"
-msgstr ""
+msgstr "Passwort andern"
 
 #: templates/templates/_user.html:19 templates/templates/_user.html.py:38
 msgid "Logout"
-msgstr ""
+msgstr "Ausolggen"
 
 #: templates/templates/_user.html:43
 msgid "Login"
-msgstr ""
+msgstr "Ammeldung"
 
 #: templates/templates/nav/_follow_us.html:2
 msgid "Contact Us"
-msgstr ""
+msgstr "Kontaktiere uns"
 
 #: templates/templates/nav/_follow_us.html:17
 msgid "Email me"
-msgstr ""
+msgstr "Maile mir"
 
 #: templates/templates/nav/_nav_test.html:41
 msgid "All Tours"
-msgstr ""
+msgstr "Alle Touren"
 
 #: templates/templates/nav/_nav_test.html:67
 #: templates/templates/nav/_nav_test.html:68
 msgid "Search"
-msgstr ""
+msgstr "Suche"
 
 #: tours/forms.py:32
 msgid "Name"
-msgstr ""
+msgstr "Name"
 
 #: tours/forms.py:35
 msgid "Phone"
-msgstr ""
+msgstr "Telefon"
 
 #: tours/forms.py:36 tours/forms.py:37
 msgid "From Date"
-msgstr ""
+msgstr "ab Datum"
 
 #: tours/forms.py:38
 msgid "Message"
-msgstr ""
+msgstr "Nachrisht"
 
 #: tours/forms.py:49
 msgid "confirm"
-msgstr ""
+msgstr "Bestatigen"

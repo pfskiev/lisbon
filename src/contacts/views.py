@@ -123,7 +123,8 @@ def contact_update(request, pk=None):
             'title': _('Contact Edit'),
             'breadcrumbs': breadcrumbs,
             'instance': contact,
-            'form': form
+            'form': form,
+            'value': _('Add'),
         }
         return render(request, 'templates/_form.html', context)
 
