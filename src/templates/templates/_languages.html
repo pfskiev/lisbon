@@ -16,11 +16,11 @@
 {#{% get_language_info_list for LANGUAGES as languages %}#}
 
 {% for lang in LANGUAGES %}
-    <form id="setLang{{ lang.1}}" class="form-inline" action="/i18n/setlang/" method="POST">
+    <form style="display: inline-block" id="setLang{{ lang.1}}" class="form-inline" action="/i18n/setlang/" method="POST">
         {% csrf_token %}
         <input name="next" type="hidden" value="{{ request.path }}">
         <input type="hidden" name="language" value="{{ lang.0 }}">
         <a href="#" onclick="$('#setLang{{ lang.1 }}').submit();
-                return false;">{{ lang.1 }}</a>
+                return false;"><i class="flag-icon flag-icon-{% if lang.0 == 'en' %}gb{% else %}{{ lang.0 }}{% endif %} flag-icon-squared"></i>{{ lang.1 }}</a>
     </form>
 {% endfor %}

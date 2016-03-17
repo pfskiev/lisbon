@@ -3,7 +3,10 @@
 footer {
   padding-top: 60px;
   padding-bottom: 30px;
-  background: $color_blue;
+  background: -webkit-linear-gradient(left top, $color_blue , $color_blue_light);
+  background: -o-linear-gradient(bottom right, $color_blue, $color_blue_light);
+  background: -moz-linear-gradient(bottom right, $color_blue, $color_blue_light);
+  background: linear-gradient(to bottom right, $color_blue , $color_blue_light);
   h4 {
     color: $color_red;
   }

@@ -158,7 +158,10 @@ ol.breadcrumb > li > a {
 footer {
   padding-top: 60px;
   padding-bottom: 30px;
-  background: #0E2F56; }
+  background: -webkit-linear-gradient(left top, #0E2F56, #118DF0);
+  background: -o-linear-gradient(bottom right, #0E2F56, #118DF0);
+  background: -moz-linear-gradient(bottom right, #0E2F56, #118DF0);
+  background: linear-gradient(to bottom right, #0E2F56, #118DF0); }
   footer h4 {
     color: #FF304F; }
   footer a {
@@ -248,7 +251,7 @@ ol.nav.navbar-nav > a.hidden-sm-down.nav-link.dropdown-toggle {
   color: darkgoldenrod; }
 
 section {
-  background-color: #ffefd5;
+  background: linear-gradient(80deg, #ffefd5, #FFF);
   padding-top: 100px;
   padding-bottom: 100px; }
 
