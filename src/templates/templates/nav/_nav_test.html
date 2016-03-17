@@ -6,7 +6,7 @@
                 <h4 class="text-md-center text-sm-center text-xs-center">{% trans 'Site Map' %}</h4>
                 <ol class="list-unstyled">
                     <li class="text-md-center text-sm-center text-xs-center"><a href="{% url 'home' %}">{% trans 'Home' %}</a></li>
-                    <li class="text-md-center text-sm-center text-xs-center"><a href="{% url 'tour:list' %}" >{% trans 'Tours' %}</a></li>
+                    <li class="text-md-center text-sm-center text-xs-center"><a href="{% url 'tour:list' %}" >{% trans 'Tours & Excursions' %}</a></li>
                     <li class="text-md-center text-sm-center text-xs-center"><a href="{% url 'review:list' %}">{% trans 'Reviews' %}</a></li>
                     <li class="text-md-center text-sm-center text-xs-center"><a href="{% url 'gallery:list' %}">{% trans 'Gallery' %}</a></li>
                     <li class="text-md-center text-sm-center text-xs-center"><a href="{% url 'about' %}">{% trans 'About Us' %}</a></li>
@@ -37,7 +37,7 @@
             <li class="nav-item hidden-sm-down">
                 <div class="btn-group">
                 <a style="cursor: pointer;color: gold;"  class=" hidden-sm-down nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {% trans 'Tours' %}</a>
+                    {% trans 'Tours & Excursions' %}</a>
                 <div class="dropdown-menu" style="margin-top: 9px;">
                     {% if categories_list %}
                         {% for category in categories_list %}
