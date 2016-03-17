@@ -14,6 +14,21 @@
   color: $color_red;
 }
 .card-header, .card-footer {
+
   color: $color-sand;
   background-color: $color_blue_light;
+}
+.card {
+  outline: 0;
+  -webkit-box-shadow: 0 0 50px -4px rgba(0,0,0,0.55);
+-moz-box-shadow: 0 0 50px -4px rgba(0,0,0,0.55);
+box-shadow: 0 0 50px -4px rgba(0,0,0,0.55);
+}
+
+
+.shadow {
+  -webkit-box-shadow: 0 0 50px -4px rgba(0,0,0,0.55);
+-moz-box-shadow: 0 0 50px -4px rgba(0,0,0,0.55);
+box-shadow: 0 0 50px -4px rgba(0,0,0,0.55);
+
 }

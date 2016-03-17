@@ -30,21 +30,18 @@ class TourForm(forms.ModelForm):
 class BookNow(forms.Form):
 
     fullname = forms.CharField(label=_('Name'), required=True)
-    # tour = forms.ModelChoiceField(label=_('Tour'), required=True, queryset=Tour.objects.all())
-    # card_number = forms.CharField(label="Card", required=True, max_length=16)
+    email = forms.EmailField(label=_('Email'), required=True)
     phone = forms.CharField(label=_('Phone'), required=True)
-    from_date = forms.DateField(label=_('From Date'), required=True)
-    to_date = forms.DateField(label=_('From Date'), required=True)
     message = forms.CharField(label=_('Message'), widget=forms.Textarea(), required=True)
-
+    date = forms.DateField(label=_('From Date'), required=True)
     helper = FormHelper()
     helper.form_method = 'POST'
     helper.form_class = 'form-group'
     helper.layout = Layout(
         Field('fullname', css_class='form-control', placeholder='Enter you\'re name'),
+        Field('email', css_class='form-control', placeholder='Enter you\'re email'),
         Field('phone', css_class='phone', placeholder='0(000)-000-00-00'),
         Field('message', css_class='form-control'),
-        Field('from_date', css_class='datepicker'),
-        Field('to_date', css_class='datepicker'),
-        FormActions(Submit('purchase', _('confirm'), css_class='text-uppercase form-control btn btn-lg btn-primary'))
+        Field('date', css_class='datepicker'),
+        FormActions(Submit('purchase', _('Send'), css_class='text-uppercase form-control btn btn-lg btn-primary'))
     )

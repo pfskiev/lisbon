@@ -32,7 +32,7 @@
                         <div class="card-block">
                             <h4 class="card-title">{{ object.title_EN }}</h4>
                         </div>
-                        <a href="{{ object.link }}"><img src="{% thumbnail object.img 320x270 crop %}" alt="{{ object.title_EN }}"></a>
+                        <a href="{{ object.link }}"><img style="width: 100%; object-fit: cover" src="{% thumbnail object.img 320x270 crop %}" alt="{{ object.title_EN }}"></a>
                         <div class="card-block">
                             <p class="card-text">{{ object.description_EN }}</p>
                             <a href="{{ object.link }}" class="card-link">{% trans 'View details' %}</a>
@@ -48,7 +48,7 @@
                         <div class="card-block">
                             <h4 class="card-title">{{ object.title_DE }}</h4>
                         </div>
-                        <a href="{{ object.link }}"><img src="{% thumbnail object.img 320x270 crop %}" alt="{{ object.title_DE }}"></a>
+                        <a href="{{ object.link }}"><img style="width: 100%; object-fit: cover" src="{% thumbnail object.img 320x270 crop %}" alt="{{ object.title_DE }}"></a>
                         <div class="card-block">
                             <p class="card-text">{{ object.description_DE }}</p>
                             <a href="{{ object.link }}" class="card-link">{% trans 'View details' %}</a>

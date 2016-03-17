@@ -166,7 +166,8 @@ def offer_update(request, pk=None):
             'title': _('Edit') + ' ' + title[lang],
             'breadcrumbs': breadcrumbs,
             'instance': offer,
-            'form': form
+            'form': form,
+            'value': _('Add'),
         }
         return render(request, 'templates/_form.html', context)
 
