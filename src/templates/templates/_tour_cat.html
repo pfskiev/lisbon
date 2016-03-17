@@ -6,20 +6,26 @@
     <section class="details">
         <div class="container">
             <h1 class="display-4">{{ title }}</h1>
-            <div class="card-columns">
+            <div class="row">
                 {% if 'pt' in request.LANGUAGE_CODE %}
                     {% for object in object_list %}
-                        {% include 'templates/_tour_card_pt.html' %}
+                        <div class="col-md-4">
+                            {% include 'templates/_tour_card_pt.html' %}
+                        </div>
                     {% endfor %}
                 {% endif %}
                 {% if 'en' in request.LANGUAGE_CODE %}
                     {% for object in object_list %}
-                        {% include 'templates/_tour_card_gb.html' %}
+                        <div class="col-md-4">
+                            {% include 'templates/_tour_card_gb.html' %}
+                        </div>
                     {% endfor %}
                 {% endif %}
                 {% if 'de' in request.LANGUAGE_CODE %}
                     {% for object in object_list %}
-                        {% include 'templates/_tour_card_de.html' %}
+                        <div class="col-md-4">
+                            {% include 'templates/_tour_card_de.html' %}
+                        </div>
                     {% endfor %}
                 {% endif %}
             </div>
