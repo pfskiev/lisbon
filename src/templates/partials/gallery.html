@@ -7,11 +7,13 @@
         <div class="container">
             <h1 class="display-4">{{ title }}</h1>
             <div class="row">
-            <div class="col-md-4">
+
                 {% for object in object_list %}
+                    <div class="col-md-4">
                     {% include 'templates/_gallery_card.html' %}
+                    </div>
                 {% endfor %}
-            </div>
+
             </div>
             {% if user.is_staff or user.is_superuser %}
                 <a class="btn btn-warning" href="{% url 'gallery:create' %}"><i class="fa fa-plus"></i> {% trans 'Create Gallery' %}</a>
