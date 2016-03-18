@@ -54,7 +54,7 @@ def review_list(request):
             instance.save()
             messages.success(request, 'Review Created')
             send_mail('Hello!', 'Check new review!', 'kostiantyn.pidlisnyi@customertimes.com',
-                      ['podlesny@outlook.com'], fail_silently=False)
+                      settings.EMAIL_TO, fail_silently=False)
             return redirect('review:list')
 
     if request.method == 'GET':
@@ -66,7 +66,7 @@ def review_list(request):
             message = contact_me.cleaned_data['message']
             subject = 'Mail from ' + fullname
             from_email = settings.EMAIL_HOST_USER
-            to_list = ['podlesny@outlook.com']
+            to_list = settings.EMAIL_TO
             try:
                 send_mail(subject, message, from_email, to_list, fail_silently=False)
             except BadHeaderError:
@@ -101,7 +101,7 @@ def review_detail(request, pk=None):
             message = contact_me.cleaned_data['message']
             subject = 'Mail from ' + fullname
             from_email = settings.EMAIL_HOST_USER
-            to_list = ['podlesny@outlook.com']
+            to_list = settings.EMAIL_TO
             try:
                 send_mail(subject, message, from_email, to_list, fail_silently=False)
             except BadHeaderError:
@@ -135,7 +135,7 @@ def review_create(request):
             message = contact_me.cleaned_data['message']
             subject = 'Mail from ' + fullname
             from_email = settings.EMAIL_HOST_USER
-            to_list = ['podlesny@outlook.com']
+            to_list = settings.EMAIL_TO
             try:
                 send_mail(subject, message, from_email, to_list, fail_silently=False)
             except BadHeaderError:
@@ -155,7 +155,7 @@ def review_create(request):
             instance.save()
             messages.success(request, 'Review Created')
             send_mail('Hello!', 'Check new review!', 'kostiantyn.pidlisnyi@customertimes.com',
-                      ['podlesny@outlook.com'], fail_silently=False)
+                      settings.EMAIL_TO, fail_silently=False)
             return redirect('review:list')
 
         context = {
@@ -186,7 +186,7 @@ def review_update(request, pk=None):
             message = contact_me.cleaned_data['message']
             subject = 'Mail from ' + fullname
             from_email = settings.EMAIL_HOST_USER
-            to_list = ['podlesny@outlook.com']
+            to_list = settings.EMAIL_TO
             try:
                 send_mail(subject, message, from_email, to_list, fail_silently=False)
             except BadHeaderError:
@@ -236,7 +236,7 @@ def review_filter(request, slug=None):
             message = contact_me.cleaned_data['message']
             subject = 'Mail from ' + fullname
             from_email = settings.EMAIL_HOST_USER
-            to_list = ['podlesny@outlook.com']
+            to_list = settings.EMAIL_TO
             try:
                 send_mail(subject, message, from_email, to_list, fail_silently=False)
             except BadHeaderError:

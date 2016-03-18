@@ -7,23 +7,27 @@
         <div class="container">
             <h1 class="display-4">{{ title }}</h1>
             <div class="row">
-            <div class="col-md-4">
                 {% if 'pt' in request.LANGUAGE_CODE %}
                     {% for object in object_list %}
+                        <div class="col-md-4">
                         {% include 'templates/_tour_card_pt.html' %}
+                        </div>
                     {% endfor %}
                 {% endif %}
                 {% if 'en' in request.LANGUAGE_CODE %}
                     {% for object in object_list %}
+                        <div class="col-md-4">
                         {% include 'templates/_tour_card_gb.html' %}
+                        </div>
                     {% endfor %}
                 {% endif %}
                 {% if 'de' in request.LANGUAGE_CODE %}
                     {% for object in object_list %}
+                        <div class="col-md-4">
                         {% include 'templates/_tour_card_de.html' %}
+                        </div>
                     {% endfor %}
                 {% endif %}
-            </div>
             </div>
             {% if user.is_staff or user.is_superuser %}
                 <a class="btn btn-warning" href="{% url 'tour:create' %}">

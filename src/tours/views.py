@@ -68,7 +68,7 @@ def tour_list(request):
             message = form.cleaned_data['message']
             subject = 'BOOK REQUEST from ' + fullname
             from_email = settings.EMAIL_HOST_USER
-            to_list = ['podlesny@outlook.com']
+            to_list = settings.EMAIL_TO
             try:
                 send_mail(subject, message, from_email, to_list, fail_silently=False)
             except BadHeaderError:
@@ -86,7 +86,7 @@ def tour_list(request):
             message = contact_me.cleaned_data['message']
             subject = 'Mail from ' + fullname
             from_email = settings.EMAIL_HOST_USER
-            to_list = ['podlesny@outlook.com']
+            to_list = settings.EMAIL_TO
             try:
                 send_mail(subject, message, from_email, to_list, fail_silently=False)
             except BadHeaderError:
@@ -121,7 +121,7 @@ def tour_detail(request, pk=None):
             message = form.cleaned_data['message']
             subject = 'BOOK REQUEST from ' + fullname
             from_email = settings.EMAIL_HOST_USER
-            to_list = ['podlesny@outlook.com']
+            to_list = settings.EMAIL_TO
             try:
                 send_mail(subject, message, from_email, to_list, fail_silently=False)
                 # send_mail('Subject here', message, settings.EMAIL_HOST_USER,
@@ -142,7 +142,7 @@ def tour_detail(request, pk=None):
             message = contact_me.cleaned_data['message']
             subject = 'Mail from ' + fullname
             from_email = settings.EMAIL_HOST_USER
-            to_list = ['podlesny@outlook.com']
+            to_list = settings.EMAIL_TO
             try:
                 send_mail(subject, message, from_email, to_list, fail_silently=False)
             except BadHeaderError:
@@ -207,7 +207,7 @@ def tour_update(request, pk=None):
             message = contact_me.cleaned_data['message']
             subject = 'Mail from ' + fullname
             from_email = settings.EMAIL_HOST_USER
-            to_list = ['podlesny@outlook.com']
+            to_list = settings.EMAIL_TO
             try:
                 send_mail(subject, message, from_email, to_list, fail_silently=False)
             except BadHeaderError:
@@ -242,24 +242,6 @@ def tour_update(request, pk=None):
 
 def tour_create(request):
     lang = get_lang(request)
-    if request.method == 'GET':
-        contact_me = ContactMe()
-    else:
-        contact_me = ContactMe(request.POST)
-        if contact_me.is_valid():
-            fullname = contact_me.cleaned_data['fullname']
-            message = contact_me.cleaned_data['message']
-            subject = 'Mail from ' + fullname
-            from_email = settings.EMAIL_HOST_USER
-            to_list = ['podlesny@outlook.com']
-            try:
-                send_mail(subject, message, from_email, to_list, fail_silently=False)
-            except BadHeaderError:
-                return HttpResponse('Invalid header found.')
-            return redirect('tour:success')
-        else:
-            return redirect('tour:fail')
-
     if not request.user.is_staff or not request.user.is_superuser:
         return redirect('accounts:signup')
     else:
@@ -309,7 +291,7 @@ def tour_category(request, slug=None):
             message = contact_me.cleaned_data['message']
             subject = 'Mail from ' + fullname
             from_email = settings.EMAIL_HOST_USER
-            to_list = ['podlesny@outlook.com']
+            to_list = settings.EMAIL_TO
             try:
                 send_mail(subject, message, from_email, to_list, fail_silently=False)
             except BadHeaderError:
@@ -362,7 +344,7 @@ def tour_category(request, slug=None):
             message = form.cleaned_data['message']
             subject = 'BOOK REQUEST from ' + fullname
             from_email = settings.EMAIL_HOST_USER
-            to_list = ['podlesny@outlook.com']
+            to_list = settings.EMAIL_TO
             try:
                 send_mail(subject, message, from_email, to_list, fail_silently=False)
             except BadHeaderError:
@@ -397,7 +379,7 @@ def tour_success(request):
             message = contact_me.cleaned_data['message']
             subject = 'Mail from ' + fullname
             from_email = settings.EMAIL_HOST_USER
-            to_list = ['podlesny@outlook.com']
+            to_list = settings.EMAIL_TO
             try:
                 send_mail(subject, message, from_email, to_list, fail_silently=False)
             except BadHeaderError:
@@ -427,7 +409,7 @@ def tour_fail(request):
             message = contact_me.cleaned_data['message']
             subject = 'Mail from ' + fullname
             from_email = settings.EMAIL_HOST_USER
-            to_list = ['podlesny@outlook.com']
+            to_list = settings.EMAIL_TO
             try:
                 send_mail(subject, message, from_email, to_list, fail_silently=False)
             except BadHeaderError:

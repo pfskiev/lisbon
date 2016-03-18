@@ -64,3 +64,6 @@ src/media/
 
 # Migrations
 */*/migrations/00*.py
+
+
+*/*/*/mail.py

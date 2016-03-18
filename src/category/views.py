@@ -68,7 +68,7 @@ def category_list(request, slug=None):
             message = form.cleaned_data['message']
             subject = 'BOOK REQUEST from ' + fullname
             from_email = settings.EMAIL_HOST_USER
-            to_list = ['podlesny@outlook.com']
+            to_list = settings.EMAIL_TO
             try:
                 send_mail(subject, message, from_email, to_list, fail_silently=False)
                 # send_mail('Subject here', message, settings.EMAIL_HOST_USER,

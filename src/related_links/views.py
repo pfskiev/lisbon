@@ -69,7 +69,7 @@ def related_links_list(request):
             message = contact_me.cleaned_data['message']
             subject = 'Mail from ' + fullname
             from_email = settings.EMAIL_HOST_USER
-            to_list = ['podlesny@outlook.com']
+            to_list = settings.EMAIL_TO
             try:
                 send_mail(subject, message, from_email, to_list, fail_silently=False)
             except BadHeaderError:
@@ -151,7 +151,7 @@ def related_links_create(request):
             message = contact_me.cleaned_data['message']
             subject = 'Mail from ' + fullname
             from_email = settings.EMAIL_HOST_USER
-            to_list = ['podlesny@outlook.com']
+            to_list = settings.EMAIL_TO
             try:
                 send_mail(subject, message, from_email, to_list, fail_silently=False)
             except BadHeaderError:
@@ -182,7 +182,7 @@ def related_links_update(request, pk=None):
             message = contact_me.cleaned_data['message']
             subject = 'Mail from ' + fullname
             from_email = settings.EMAIL_HOST_USER
-            to_list = ['podlesny@outlook.com']
+            to_list = settings.EMAIL_TO
             try:
                 send_mail(subject, message, from_email, to_list, fail_silently=False)
             except BadHeaderError:

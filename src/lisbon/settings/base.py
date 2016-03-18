@@ -11,12 +11,14 @@ import os
 from django.core.urlresolvers import reverse_lazy
 from os.path import dirname, join, exists
 from django.contrib import messages
+from .mail import *
 
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'danichisce@gmail.com'
-EMAIL_HOST_PASSWORD = 'isce2013danich'
-EMAIL_PORT = 587
+EMAIL_USE_TLS = EMAIL_USE_TLS
+EMAIL_HOST = EMAIL_HOST
+EMAIL_HOST_USER = EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD
+EMAIL_PORT = EMAIL_PORT
+EMAIL_TO = EMAIL_TO
 
 # Build paths inside the project like this: join(BASE_DIR, "directory")
 BASE_DIR = dirname(dirname(dirname(__file__)))
@@ -72,7 +74,6 @@ ALLOWED_HOSTS = []
 
 # Application definition
 DJANGO_APPS = [
-
     'django.contrib.auth',
     'django.contrib.admin',
     'django.contrib.contenttypes',
@@ -82,20 +83,14 @@ DJANGO_APPS = [
     'django.contrib.humanize',
     # 'django.contrib.sites',
     'django.contrib.sitemaps',
-
 ]
-
 HELPER_APPS = [
-
     'authtools',
     'crispy_forms',
     'easy_thumbnails',
     'autoslug'
-
 ]
-
 PROJECT_APPS = [
-
     'accounts',
     'contacts',
     'gallery',
@@ -105,11 +100,9 @@ PROJECT_APPS = [
     'offer',
     'helpers',
     'related_links'
-
 ]
 
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS + HELPER_APPS
-
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',

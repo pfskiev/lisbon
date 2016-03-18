@@ -3,14 +3,10 @@ from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.utils.translation import ugettext_lazy as _
-from offer.models import Offer
-from tours.models import About
 from helpers.models import Helpers
-from tours.models import Category, Tour
-
-from tours.forms import BookNow
-
-from tours.forms import ContactMe
+from offer.models import Offer
+from tours.models import Category, Tour, About
+from tours.forms import BookNow, ContactMe
 
 
 def get_lang(request):
@@ -30,16 +26,12 @@ def home(request):
         form = BookNow(request.POST)
         if form.is_valid():
             fullname = form.cleaned_data['fullname']
-            phone = form.cleaned_data['phone']
             message = form.cleaned_data['message']
             subject = 'BOOK REQUEST from ' + fullname
             from_email = settings.EMAIL_HOST_USER
-            to_list = ['podlesny@outlook.com']
+            to_list = settings.EMAIL_TO
             try:
                 send_mail(subject, message, from_email, to_list, fail_silently=False)
-                # send_mail('Subject here', message, settings.EMAIL_HOST_USER,
-                #           ['podlesny@outlook.com'], fail_silently=True)
-                # send_mail(subject=fullname, body=phone, message, ['podlesny@outlook.com'])
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
             return redirect('tour:success')
@@ -103,7 +95,7 @@ def email_me(request):
             message = contact_me.cleaned_data['message']
             subject = 'Mail from ' + fullname
             from_email = settings.EMAIL_HOST_USER
-            to_list = ['podlesny@outlook.com']
+            to_list = settings.EMAIL_TO
             try:
                 send_mail(subject, message, from_email, to_list, fail_silently=False)
             except BadHeaderError:
