@@ -1,11 +1,16 @@
+from django.conf import settings
+from django.core.mail import send_mail
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
+from django.http import BadHeaderError
+from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.translation import ugettext_lazy as _
 from django.contrib import messages
 from tours.models import Category
 from helpers.models import Helpers
 
+from tours.forms import ContactMe
 from .models import RelatedLink
 from .forms import RelatedLinkForm
 
@@ -55,6 +60,24 @@ def related_links_list(request):
     except EmptyPage:
         queryset = paginator.page(paginator.num_pages)
 
+    if request.method == 'GET':
+        contact_me = ContactMe()
+    else:
+        contact_me = ContactMe(request.POST)
+        if contact_me.is_valid():
+            fullname = contact_me.cleaned_data['fullname']
+            message = contact_me.cleaned_data['message']
+            subject = 'Mail from ' + fullname
+            from_email = settings.EMAIL_HOST_USER
+            to_list = ['podlesny@outlook.com']
+            try:
+                send_mail(subject, message, from_email, to_list, fail_silently=False)
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return redirect('tour:success')
+        else:
+            return redirect('tour:fail')
+
     context = {
         'categories_list': Category.objects.all(),
         'company': get_company(),
@@ -85,6 +108,7 @@ def related_links_detail(request, pk=None):
         {'url': '/', 'name': _('Home'), 'active': False},
         {'url': '/related-links', 'name': _('Related links'), 'active': False},
         {'url': '#', 'name': title[lang], 'active': True}]
+
     context = {
         'categories_list': Category.objects.all(),
         'company': get_company(),
@@ -118,6 +142,23 @@ def related_links_create(request):
             instance.save()
             messages.success(request, 'Link Created')
             return redirect('related_links:list')
+    if request.method == 'GET':
+        contact_me = ContactMe()
+    else:
+        contact_me = ContactMe(request.POST)
+        if contact_me.is_valid():
+            fullname = contact_me.cleaned_data['fullname']
+            message = contact_me.cleaned_data['message']
+            subject = 'Mail from ' + fullname
+            from_email = settings.EMAIL_HOST_USER
+            to_list = ['podlesny@outlook.com']
+            try:
+                send_mail(subject, message, from_email, to_list, fail_silently=False)
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return redirect('tour:success')
+        else:
+            return redirect('tour:fail')
 
     context = {
         'categories_list': Category.objects.all(),
@@ -132,6 +173,24 @@ def related_links_create(request):
 
 
 def related_links_update(request, pk=None):
+    if request.method == 'GET':
+        contact_me = ContactMe()
+    else:
+        contact_me = ContactMe(request.POST)
+        if contact_me.is_valid():
+            fullname = contact_me.cleaned_data['fullname']
+            message = contact_me.cleaned_data['message']
+            subject = 'Mail from ' + fullname
+            from_email = settings.EMAIL_HOST_USER
+            to_list = ['podlesny@outlook.com']
+            try:
+                send_mail(subject, message, from_email, to_list, fail_silently=False)
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return redirect('tour:success')
+        else:
+            return redirect('tour:fail')
+
     if not request.user.is_staff or not request.user.is_superuser:
         return redirect('accounts:signup')
     else:
@@ -153,6 +212,7 @@ def related_links_update(request, pk=None):
             return redirect('related_links:list')
 
         context = {
+
             'categories_list': Category.objects.all(),
             'company': get_company(),
             'title': _('Edit') + ' ' + title[lang],

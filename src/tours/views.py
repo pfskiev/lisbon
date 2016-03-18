@@ -7,7 +7,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.translation import ugettext_lazy as _
 from .models import Tour, Category
-from .forms import TourForm, BookNow
+from .forms import TourForm, BookNow, ContactMe
 from helpers.models import Helpers
 
 
@@ -32,21 +32,22 @@ def tour_list(request):
         if 'pt' in lang:
             queryset_list = queryset_list.filter(
                 Q(title_PT__icontains=query) |
-                Q(description_PT__icontains=query)                 # Q(category__category__icontains=query)
+                Q(description_PT__icontains=query) |
+                Q(category__category__icontains=query)
             ).distinct()
         else:
             if 'en' in lang:
                 queryset_list = queryset_list.filter(
                     Q(title_EN__icontains=query) |
-                    Q(description_EN__icontains=query)
-                    # Q(category__category__icontains=query)
+                    Q(description_EN__icontains=query) |
+                    Q(category__category__icontains=query)
                 ).distinct()
             else:
                 if 'de' in lang:
                     queryset_list = queryset_list.filter(
                         Q(title_DE__icontains=query) |
-                        Q(description_DE__icontains=query)
-                        # Q(category__category__icontains=query)
+                        Q(description_DE__icontains=query) |
+                        Q(category__category__icontains=query)
                     )
     paginator = Paginator(queryset_list, 5)
     page_request_var = "page"
@@ -64,16 +65,30 @@ def tour_list(request):
         form = BookNow(request.POST)
         if form.is_valid():
             fullname = form.cleaned_data['fullname']
-            phone = form.cleaned_data['phone']
             message = form.cleaned_data['message']
             subject = 'BOOK REQUEST from ' + fullname
             from_email = settings.EMAIL_HOST_USER
             to_list = ['podlesny@outlook.com']
             try:
                 send_mail(subject, message, from_email, to_list, fail_silently=False)
-                # send_mail('Subject here', message, settings.EMAIL_HOST_USER,
-                #           ['podlesny@outlook.com'], fail_silently=True)
-                # send_mail(subject=fullname, body=phone, message, ['podlesny@outlook.com'])
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return redirect('tour:success')
+        else:
+            return redirect('tour:fail')
+
+    if request.method == 'GET':
+        contact_me = ContactMe()
+    else:
+        contact_me = ContactMe(request.POST)
+        if contact_me.is_valid():
+            fullname = contact_me.cleaned_data['fullname']
+            message = contact_me.cleaned_data['message']
+            subject = 'Mail from ' + fullname
+            from_email = settings.EMAIL_HOST_USER
+            to_list = ['podlesny@outlook.com']
+            try:
+                send_mail(subject, message, from_email, to_list, fail_silently=False)
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
             return redirect('tour:success')
@@ -112,6 +127,24 @@ def tour_detail(request, pk=None):
                 # send_mail('Subject here', message, settings.EMAIL_HOST_USER,
                 #           ['podlesny@outlook.com'], fail_silently=True)
                 # send_mail(subject=fullname, body=phone, message, ['podlesny@outlook.com'])
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return redirect('tour:success')
+        else:
+            return redirect('tour:fail')
+
+    if request.method == 'GET':
+        contact_me = ContactMe()
+    else:
+        contact_me = ContactMe(request.POST)
+        if contact_me.is_valid():
+            fullname = contact_me.cleaned_data['fullname']
+            message = contact_me.cleaned_data['message']
+            subject = 'Mail from ' + fullname
+            from_email = settings.EMAIL_HOST_USER
+            to_list = ['podlesny@outlook.com']
+            try:
+                send_mail(subject, message, from_email, to_list, fail_silently=False)
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
             return redirect('tour:success')
@@ -165,6 +198,24 @@ def tour_update(request, pk=None):
         {'url': '/tours', 'name': _('Tours')},
         {'url': '#', 'name': tour_title[lang], 'active': True},
     ]
+    if request.method == 'GET':
+        contact_me = ContactMe()
+    else:
+        contact_me = ContactMe(request.POST)
+        if contact_me.is_valid():
+            fullname = contact_me.cleaned_data['fullname']
+            message = contact_me.cleaned_data['message']
+            subject = 'Mail from ' + fullname
+            from_email = settings.EMAIL_HOST_USER
+            to_list = ['podlesny@outlook.com']
+            try:
+                send_mail(subject, message, from_email, to_list, fail_silently=False)
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return redirect('tour:success')
+        else:
+            return redirect('tour:fail')
+
     if not request.user.is_staff or not request.user.is_superuser:
         return redirect('accounts:signup')
     else:
@@ -177,6 +228,7 @@ def tour_update(request, pk=None):
             return redirect('tour:list')
 
         context = {
+
             'categories_list': Category.objects.all(),
             'company': get_company(),
             'title': _('Edit') + ' ' + tour_title[lang],
@@ -190,6 +242,24 @@ def tour_update(request, pk=None):
 
 def tour_create(request):
     lang = get_lang(request)
+    if request.method == 'GET':
+        contact_me = ContactMe()
+    else:
+        contact_me = ContactMe(request.POST)
+        if contact_me.is_valid():
+            fullname = contact_me.cleaned_data['fullname']
+            message = contact_me.cleaned_data['message']
+            subject = 'Mail from ' + fullname
+            from_email = settings.EMAIL_HOST_USER
+            to_list = ['podlesny@outlook.com']
+            try:
+                send_mail(subject, message, from_email, to_list, fail_silently=False)
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return redirect('tour:success')
+        else:
+            return redirect('tour:fail')
+
     if not request.user.is_staff or not request.user.is_superuser:
         return redirect('accounts:signup')
     else:
@@ -207,6 +277,7 @@ def tour_create(request):
             return redirect('tour:list')
 
         context = {
+
             'categories_list': Category.objects.all(),
             'company': get_company(),
             'lang': lang,
@@ -229,6 +300,24 @@ def tour_delete(request, pk=None):
 
 
 def tour_category(request, slug=None):
+    if request.method == 'GET':
+        contact_me = ContactMe()
+    else:
+        contact_me = ContactMe(request.POST)
+        if contact_me.is_valid():
+            fullname = contact_me.cleaned_data['fullname']
+            message = contact_me.cleaned_data['message']
+            subject = 'Mail from ' + fullname
+            from_email = settings.EMAIL_HOST_USER
+            to_list = ['podlesny@outlook.com']
+            try:
+                send_mail(subject, message, from_email, to_list, fail_silently=False)
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return redirect('tour:success')
+        else:
+            return redirect('tour:fail')
+
     queryset_list = Tour.objects.filter(category__url__contains=slug)
     lang = get_lang(request)
     query = request.GET.get('q')
@@ -270,16 +359,12 @@ def tour_category(request, slug=None):
         form = BookNow(request.POST)
         if form.is_valid():
             fullname = form.cleaned_data['fullname']
-            phone = form.cleaned_data['phone']
             message = form.cleaned_data['message']
             subject = 'BOOK REQUEST from ' + fullname
             from_email = settings.EMAIL_HOST_USER
             to_list = ['podlesny@outlook.com']
             try:
                 send_mail(subject, message, from_email, to_list, fail_silently=False)
-                # send_mail('Subject here', message, settings.EMAIL_HOST_USER,
-                #           ['podlesny@outlook.com'], fail_silently=True)
-                # send_mail(subject=fullname, body=phone, message, ['podlesny@outlook.com'])
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
             return redirect('tour:success')
@@ -303,6 +388,24 @@ def tour_category(request, slug=None):
 
 
 def tour_success(request):
+    if request.method == 'GET':
+        contact_me = ContactMe()
+    else:
+        contact_me = ContactMe(request.POST)
+        if contact_me.is_valid():
+            fullname = contact_me.cleaned_data['fullname']
+            message = contact_me.cleaned_data['message']
+            subject = 'Mail from ' + fullname
+            from_email = settings.EMAIL_HOST_USER
+            to_list = ['podlesny@outlook.com']
+            try:
+                send_mail(subject, message, from_email, to_list, fail_silently=False)
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return redirect('tour:success')
+        else:
+            return redirect('tour:fail')
+
     context = {
         'categories_list': Category.objects.all(),
         'title': 'Thank you for you\'re mail! Soon you will have response from admin',
@@ -315,6 +418,24 @@ def tour_success(request):
 
 
 def tour_fail(request):
+    if request.method == 'GET':
+        contact_me = ContactMe()
+    else:
+        contact_me = ContactMe(request.POST)
+        if contact_me.is_valid():
+            fullname = contact_me.cleaned_data['fullname']
+            message = contact_me.cleaned_data['message']
+            subject = 'Mail from ' + fullname
+            from_email = settings.EMAIL_HOST_USER
+            to_list = ['podlesny@outlook.com']
+            try:
+                send_mail(subject, message, from_email, to_list, fail_silently=False)
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return redirect('tour:success')
+        else:
+            return redirect('tour:fail')
+
     context = {
         'categories_list': Category.objects.all(),
         'title': 'Sorry, something goes wrong! Please try again.',

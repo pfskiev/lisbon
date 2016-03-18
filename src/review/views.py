@@ -1,9 +1,13 @@
+from django.conf import settings
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
 from django.contrib import messages
-from django.core.mail import send_mail
+from django.core.mail import send_mail, BadHeaderError
+from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.translation import ugettext_lazy as _
+
+from tours.forms import ContactMe
 from .models import Review
 from .forms import ReviewForm
 from helpers.models import Helpers
@@ -53,6 +57,24 @@ def review_list(request):
                       ['podlesny@outlook.com'], fail_silently=False)
             return redirect('review:list')
 
+    if request.method == 'GET':
+        contact_me = ContactMe()
+    else:
+        contact_me = ContactMe(request.POST)
+        if contact_me.is_valid():
+            fullname = contact_me.cleaned_data['fullname']
+            message = contact_me.cleaned_data['message']
+            subject = 'Mail from ' + fullname
+            from_email = settings.EMAIL_HOST_USER
+            to_list = ['podlesny@outlook.com']
+            try:
+                send_mail(subject, message, from_email, to_list, fail_silently=False)
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return redirect('tour:success')
+        else:
+            return redirect('tour:fail')
+
     context = {
         'categories_list': Category.objects.all(),
         'company': get_company(),
@@ -70,6 +92,23 @@ def review_list(request):
 def review_detail(request, pk=None):
     review = Review.objects.get(pk=pk)
     lang = get_lang(request)
+    if request.method == 'GET':
+        contact_me = ContactMe()
+    else:
+        contact_me = ContactMe(request.POST)
+        if contact_me.is_valid():
+            fullname = contact_me.cleaned_data['fullname']
+            message = contact_me.cleaned_data['message']
+            subject = 'Mail from ' + fullname
+            from_email = settings.EMAIL_HOST_USER
+            to_list = ['podlesny@outlook.com']
+            try:
+                send_mail(subject, message, from_email, to_list, fail_silently=False)
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return redirect('tour:success')
+        else:
+            return redirect('tour:fail')
 
     breadcrumbs = [
         {'url': '/', 'name': _('Home')},
@@ -87,6 +126,24 @@ def review_detail(request, pk=None):
 
 
 def review_create(request):
+    if request.method == 'GET':
+        contact_me = ContactMe()
+    else:
+        contact_me = ContactMe(request.POST)
+        if contact_me.is_valid():
+            fullname = contact_me.cleaned_data['fullname']
+            message = contact_me.cleaned_data['message']
+            subject = 'Mail from ' + fullname
+            from_email = settings.EMAIL_HOST_USER
+            to_list = ['podlesny@outlook.com']
+            try:
+                send_mail(subject, message, from_email, to_list, fail_silently=False)
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return redirect('tour:success')
+        else:
+            return redirect('tour:fail')
+
     if not request.user.is_authenticated():
         return redirect('login_or_register')
     else:
@@ -98,10 +155,11 @@ def review_create(request):
             instance.save()
             messages.success(request, 'Review Created')
             send_mail('Hello!', 'Check new review!', 'kostiantyn.pidlisnyi@customertimes.com',
-                  ['podlesny@outlook.com'], fail_silently=False)
+                      ['podlesny@outlook.com'], fail_silently=False)
             return redirect('review:list')
 
         context = {
+
             'categories_list': Category.objects.all(),
             'company': get_company(),
             'lang': lang,
@@ -119,6 +177,24 @@ def review_create(request):
 
 def review_update(request, pk=None):
     lang = get_lang(request)
+    if request.method == 'GET':
+        contact_me = ContactMe()
+    else:
+        contact_me = ContactMe(request.POST)
+        if contact_me.is_valid():
+            fullname = contact_me.cleaned_data['fullname']
+            message = contact_me.cleaned_data['message']
+            subject = 'Mail from ' + fullname
+            from_email = settings.EMAIL_HOST_USER
+            to_list = ['podlesny@outlook.com']
+            try:
+                send_mail(subject, message, from_email, to_list, fail_silently=False)
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return redirect('tour:success')
+        else:
+            return redirect('tour:fail')
+
     if not request.user.is_staff or not request.user.is_superuser:
         return redirect('accounts:signup')
     else:
@@ -135,6 +211,7 @@ def review_update(request, pk=None):
             return redirect('review:list')
 
         context = {
+
             'categories_list': Category.objects.all(),
             'company': get_company(),
             'lang': lang,
@@ -150,16 +227,34 @@ def review_update(request, pk=None):
 def review_filter(request, slug=None):
     reviews = Review.objects.filter(category__url__contains=slug)
     category = Category.objects.filter(url__icontains=slug)
+    if request.method == 'GET':
+        contact_me = ContactMe()
+    else:
+        contact_me = ContactMe(request.POST)
+        if contact_me.is_valid():
+            fullname = contact_me.cleaned_data['fullname']
+            message = contact_me.cleaned_data['message']
+            subject = 'Mail from ' + fullname
+            from_email = settings.EMAIL_HOST_USER
+            to_list = ['podlesny@outlook.com']
+            try:
+                send_mail(subject, message, from_email, to_list, fail_silently=False)
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return redirect('tour:success')
+        else:
+            return redirect('tour:fail')
+
     context = {
-            'categories_list': Category.objects.all(),
-            'breadcrumbs': [
-                {'url': '/', 'name': _('Home')},
-                {'url': '/', 'name': _('Reviews')},
-                {'url': '#', 'name': category[0], 'active': True}
-            ],
-            'title': _('category'),
-            'object_list': reviews
-        }
+        'categories_list': Category.objects.all(),
+        'breadcrumbs': [
+            {'url': '/', 'name': _('Home')},
+            {'url': '/', 'name': _('Reviews')},
+            {'url': '#', 'name': category[0], 'active': True}
+        ],
+        'title': _('category'),
+        'object_list': reviews
+    }
 
     return render(request, 'partials/review_filter.html', context)
 

@@ -1,8 +1,12 @@
 @import 'variables';
 .card {
   border: 0;
-
-  background: $color_white;
+  background: #fff;
+  background: -webkit-linear-gradient(to left, #ffffff , #eee);
+  background: linear-gradient(to left, #ffffff , #eee);
+  -webkit-box-shadow: 0 0 50px -4px rgba(0,0,0,0.55);
+  -moz-box-shadow: 0 0 50px -4px rgba(0,0,0,0.55);
+  box-shadow: 0 0 50px -4px rgba(0,0,0,0.55);
   transition: all .3s ease;
   h4.card-title {
     color: $color_blue;
@@ -13,38 +17,27 @@
 }
 .card:hover {
   -webkit-box-shadow: 0 0 50px -4px rgb(0, 0, 0);
--moz-box-shadow: 0 0 50px -4px rgb(0, 0, 0);
-box-shadow: 0 0 50px -4px rgb(0, 0, 0);
+  -moz-box-shadow: 0 0 50px -4px rgb(0, 0, 0);
+  box-shadow: 0 0 50px -4px rgb(0, 0, 0);
 }
 .fa {
   color: $color_red;
 }
 .card-header, .card-footer {
-
   color: $color-sand;
   background-color: $color_blue_light;
 }
-.card {
-  transition: all .3s ease;
-  -webkit-box-shadow: 0 0 50px -4px rgba(0,0,0,0.55);
--moz-box-shadow: 0 0 50px -4px rgba(0,0,0,0.55);
-box-shadow: 0 0 50px -4px rgba(0,0,0,0.55);
-}
-
-
 .shadow {
   transition: all .3s ease;
-  -webkit-box-shadow: 0 0 50px -4px rgba(0,0,0,0.55);
--moz-box-shadow: 0 0 50px -4px rgba(0,0,0,0.55);
-box-shadow: 0 0 50px -4px rgba(0,0,0,0.55);
-
+  -webkit-box-shadow: 0 0 50px -4px rgba(0,0,0,0.2);
+  -moz-box-shadow: 0 0 50px -4px rgba(0,0,0,0.2);
+  box-shadow: 0 0 50px -4px rgba(0,0,0,0.2);
 }
 .shadow:hover {
   -webkit-box-shadow: 0 0 50px -4px rgb(0, 0, 0);
--moz-box-shadow: 0 0 50px -4px rgb(0, 0, 0);
-box-shadow: 0 0 50px -4px rgb(0, 0, 0);
+  -moz-box-shadow: 0 0 50px -4px rgb(0, 0, 0);
+  box-shadow: 0 0 50px -4px rgb(0, 0, 0);
 }
-
 .img-fluid {
   width: 100%;
   object-fit: cover;

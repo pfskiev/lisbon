@@ -10,6 +10,8 @@ from tours.models import Category, Tour
 
 from tours.forms import BookNow
 
+from tours.forms import ContactMe
+
 
 def get_lang(request):
     lang = request.LANGUAGE_CODE
@@ -89,3 +91,33 @@ def about(request):
 def login_or_register(request):
     breadcrumbs = [{'url': '/', 'name': _('Home'), 'active': True}]
     return render(request, 'partials/login_or_register.html', {'breadcrumbs': breadcrumbs})
+
+
+def email_me(request):
+    if request.method == 'GET':
+        contact_me = ContactMe()
+    else:
+        contact_me = ContactMe(request.POST)
+        if contact_me.is_valid():
+            fullname = contact_me.cleaned_data['fullname']
+            message = contact_me.cleaned_data['message']
+            subject = 'Mail from ' + fullname
+            from_email = settings.EMAIL_HOST_USER
+            to_list = ['podlesny@outlook.com']
+            try:
+                send_mail(subject, message, from_email, to_list, fail_silently=False)
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return redirect('tour:success')
+        else:
+            return redirect('tour:fail')
+
+    context = {
+        'form': contact_me,
+        'categories_list': Category.objects.all(),
+        'title': 'Contact me',
+        'company': get_company(),
+        'breadcrumbs': [
+            {'url': '/', 'name': _('Home')},
+        ]}
+    return render(request, 'partials/email.html', context)

@@ -14,8 +14,8 @@ from django.contrib import messages
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'kostiantyn.pidlisnyi@customertimes.com'
-EMAIL_HOST_PASSWORD = 'Rhfrfpz,hf1301'
+EMAIL_HOST_USER = 'danichisce@gmail.com'
+EMAIL_HOST_PASSWORD = 'isce2013danich'
 EMAIL_PORT = 587
 
 # Build paths inside the project like this: join(BASE_DIR, "directory")

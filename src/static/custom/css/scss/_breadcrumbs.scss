@@ -6,20 +6,18 @@
   border-radius: 0;
   background-color: rgba(255, 255, 255, 0.7);
   transition: all .5s ease;
-  z-index: 9000;
+  z-index: 500;
   -webkit-box-shadow: 0 0 50px -4px rgba(0,0,0,0.55);
--moz-box-shadow: 0 0 50px -4px rgba(0,0,0,0.55);
-box-shadow: 0 0 50px -4px rgba(0,0,0,0.55);
+  -moz-box-shadow: 0 0 50px -4px rgba(0,0,0,0.55);
+  box-shadow: 0 0 50px -4px rgba(0,0,0,0.55);
 }
 .breadcrumb:hover {
   color: darkgoldenrod;
   background-color: rgba(255, 255, 255, 1);
 }
-
 .btn-group.pull-right {
   z-index: 9999;
 }
-
 .open>.dropdown-menu {
   z-index: 9999;
   display: block;

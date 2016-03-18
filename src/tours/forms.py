@@ -45,3 +45,19 @@ class BookNow(forms.Form):
         Field('date', css_class='datepicker'),
         FormActions(Submit('purchase', _('Send'), css_class='text-uppercase form-control btn btn-lg btn-primary'))
     )
+
+
+class ContactMe(forms.Form):
+
+    fullname = forms.CharField(label=_('Name'), required=True)
+    email = forms.EmailField(label=_('Email'), required=True)
+    message = forms.CharField(label=_('Message'), widget=forms.Textarea(), required=True)
+    helper = FormHelper()
+    helper.form_method = 'POST'
+    helper.form_class = 'form-group'
+    helper.layout = Layout(
+        Field('fullname', css_class='form-control', placeholder='Enter you\'re name'),
+        Field('email', css_class='form-control', placeholder='Enter you\'re email'),
+        Field('message', css_class='form-control'),
+        FormActions(Submit('purchase', _('Send'), css_class='text-uppercase form-control btn btn-lg btn-primary'))
+    )

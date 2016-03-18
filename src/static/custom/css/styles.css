@@ -9,7 +9,7 @@
   border-radius: 0;
   background-color: rgba(255, 255, 255, 0.7);
   transition: all .5s ease;
-  z-index: 9000;
+  z-index: 500;
   -webkit-box-shadow: 0 0 50px -4px rgba(0, 0, 0, 0.55);
   -moz-box-shadow: 0 0 50px -4px rgba(0, 0, 0, 0.55);
   box-shadow: 0 0 50px -4px rgba(0, 0, 0, 0.55); }
@@ -101,7 +101,12 @@ ol.breadcrumb > li > a {
 
 .card {
   border: 0;
-  background: #FFF;
+  background: #fff;
+  background: -webkit-linear-gradient(to left, #ffffff, #eee);
+  background: linear-gradient(to left, #ffffff, #eee);
+  -webkit-box-shadow: 0 0 50px -4px rgba(0, 0, 0, 0.55);
+  -moz-box-shadow: 0 0 50px -4px rgba(0, 0, 0, 0.55);
+  box-shadow: 0 0 50px -4px rgba(0, 0, 0, 0.55);
   transition: all .3s ease; }
   .card h4.card-title {
     color: #0E2F56; }
@@ -120,17 +125,11 @@ ol.breadcrumb > li > a {
   color: #ffefd5;
   background-color: #118DF0; }
 
-.card {
-  transition: all .3s ease;
-  -webkit-box-shadow: 0 0 50px -4px rgba(0, 0, 0, 0.55);
-  -moz-box-shadow: 0 0 50px -4px rgba(0, 0, 0, 0.55);
-  box-shadow: 0 0 50px -4px rgba(0, 0, 0, 0.55); }
-
 .shadow {
   transition: all .3s ease;
-  -webkit-box-shadow: 0 0 50px -4px rgba(0, 0, 0, 0.55);
-  -moz-box-shadow: 0 0 50px -4px rgba(0, 0, 0, 0.55);
-  box-shadow: 0 0 50px -4px rgba(0, 0, 0, 0.55); }
+  -webkit-box-shadow: 0 0 50px -4px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 0 50px -4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 50px -4px rgba(0, 0, 0, 0.2); }
 
 .shadow:hover {
   -webkit-box-shadow: 0 0 50px -4px black;
