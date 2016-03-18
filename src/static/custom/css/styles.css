@@ -99,6 +99,9 @@ ol.breadcrumb > li > a {
   color: #FF304F;
   font-weight: bold; }
 
+.col-md-4 {
+  min-width: 350px; }
+
 .card {
   min-width: 320px;
   border: 0;
