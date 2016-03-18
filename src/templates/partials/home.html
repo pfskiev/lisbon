@@ -85,22 +85,25 @@
                     {% for object in tour_list %}
                         <div class="col-md-4">
                         {% include 'templates/_tour_card_pt.html' %}
+                        </div>
                     {% endfor %}
-                    </div>
+
                 {% endif %}
                 {% if 'en' in request.LANGUAGE_CODE %}
                     {% for object in tour_list %}
                         <div class="col-md-4">
                         {% include 'templates/_tour_card_gb.html' %}
+                        </div>
                     {% endfor %}
-                    </div>
+
                 {% endif %}
                 {% if 'de' in request.LANGUAGE_CODE %}
                     {% for object in tour_list %}
                         <div class="col-md-4">
                         {% include 'templates/_tour_card_de.html' %}
+                        </div>
                     {% endfor %}
-                    </div>
+
                 {% endif %}
         </div>
     </div>
