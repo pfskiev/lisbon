@@ -79,23 +79,29 @@
             <em>{% trans 'full tour list' %}</em>
         </a></p>
         <div class="row">
-        <div class="col-md-4">
+
                 {% if 'pt' in request.LANGUAGE_CODE %}
+
                     {% for object in tour_list %}
+                        <div class="col-md-4">
                         {% include 'templates/_tour_card_pt.html' %}
                     {% endfor %}
+                    </div>
                 {% endif %}
                 {% if 'en' in request.LANGUAGE_CODE %}
                     {% for object in tour_list %}
+                        <div class="col-md-4">
                         {% include 'templates/_tour_card_gb.html' %}
                     {% endfor %}
+                    </div>
                 {% endif %}
                 {% if 'de' in request.LANGUAGE_CODE %}
                     {% for object in tour_list %}
+                        <div class="col-md-4">
                         {% include 'templates/_tour_card_de.html' %}
                     {% endfor %}
+                    </div>
                 {% endif %}
-            </div>
         </div>
     </div>
     </article>
