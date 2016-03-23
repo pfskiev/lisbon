@@ -12,6 +12,7 @@ class Offer(models.Model):
     description_SEO = models.TextField(max_length=1000, blank=True, null=False)
     created_on = models.DateTimeField(auto_now_add=True, auto_created=False)
     img = models.ImageField(null=True, blank=True)
+    position = models.IntegerField(default=1, blank=True, null=True)
 
     def get_absolute_url(self):
         return "/offers/%i/" % self.id
@@ -21,3 +22,6 @@ class Offer(models.Model):
 
     def __unicode__(self):
         return self.title_EN
+
+    class Meta:
+        ordering = ["position", "-created_on"]

@@ -10,6 +10,7 @@ class OfferForm(forms.ModelForm):
             'title_PT',
             'title_EN',
             'title_DE',
+            'position',
             'description_PT',
             'description_EN',
             'description_DE',

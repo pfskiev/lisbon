@@ -53,21 +53,21 @@
             <div class="row">
                 {% if 'pt' in request.LANGUAGE_CODE %}
                     {% for object in tour_list %}
-                        <div class="col-md-4">
+                        <div class="col-md-4 ">
                             {% include 'templates/_tour_card_pt.html' %}
                         </div>
                     {% endfor %}
                 {% endif %}
                 {% if 'en' in request.LANGUAGE_CODE %}
                     {% for object in tour_list %}
-                        <div class="col-md-4">
+                        <div class="col-md-4 ">
                             {% include 'templates/_tour_card_gb.html' %}
                         </div>
                     {% endfor %}
                 {% endif %}
                 {% if 'de' in request.LANGUAGE_CODE %}
                     {% for object in tour_list %}
-                        <div class="col-md-4">
+                        <div class="col-md-4 ">
                             {% include 'templates/_tour_card_de.html' %}
                         </div>
                     {% endfor %}
@@ -81,7 +81,7 @@
             <p style="text-align: center"><a href="{% url 'offer:list' %}"><em>{% trans 'full offer list' %}</em></a></p>
             <div class="row">
                 {% for object in object_list%}
-                    <div class="col-md-4">
+                    <div class="col-md-4 ">
                         {% include 'templates/_offer_card.html' %}
                     </div>
                 {% endfor %}

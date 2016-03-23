@@ -30,6 +30,7 @@ class Tour(models.Model):
     created_on = models.DateTimeField(auto_now_add=True, auto_created=False)
     keywords_SEO = models.TextField(max_length=2000, blank=True, null=False)
     description_SEO = models.TextField(max_length=2000, blank=True, null=False)
+    position = models.IntegerField(default=1, blank=True, null=True)
 
     def get_absolute_url(self):
         return "/tours/%i/" % self.id
@@ -39,6 +40,9 @@ class Tour(models.Model):
 
     def __unicode__(self):
         return self.title_EN
+
+    class Meta:
+        ordering = ["position"]
 
 
 class Paragraph(models.Model):
