@@ -144,6 +144,14 @@ ol.breadcrumb > li > a {
   width: 100%;
   object-fit: cover; }
 
+.awesome-background {
+  background: #ECE9E6;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #ECE9E6, #FFFFFF);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #ECE9E6, #FFFFFF);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ }
+
 .fa {
   opacity: 0.7;
   transition: all .3s ease; }
