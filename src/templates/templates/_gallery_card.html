@@ -10,19 +10,17 @@
     {% endif %}
     <div class="card-block">
         {% if 'pt' in request.LANGUAGE_CODE %}
-    <h2>{{ object.title_PT }}</h2>
-    <p class="text-justify">{{ object.description_PT|truncatechars:200 }}</p>
-{% endif %}
-{% if 'en' in request.LANGUAGE_CODE %}
-    <h2>{{ object.title_EN }}</h2>
-    <p class="text-justify">{{ object.description_EN|truncatechars:200 }}</p>
-{% endif %}
-{% if 'de' in request.LANGUAGE_CODE %}
-    <h2>{{ object.title_DE }}</h2>
-    <p class="text-justify">{{ object.description_DE|truncatechars:200 }}</p>
-{% endif %}
-
-
+            <h2>{{ object.title_PT }}</h2>
+            <p class="text-justify">{{ object.description_PT|truncatechars:200 }}</p>
+        {% endif %}
+        {% if 'en' in request.LANGUAGE_CODE %}
+            <h2>{{ object.title_EN }}</h2>
+            <p class="text-justify">{{ object.description_EN|truncatechars:200 }}</p>
+        {% endif %}
+        {% if 'de' in request.LANGUAGE_CODE %}
+            <h2>{{ object.title_DE }}</h2>
+            <p class="text-justify">{{ object.description_DE|truncatechars:200 }}</p>
+        {% endif %}
         {% include 'templates/_share.html' %}
         {% include 'templates/_CRUD.html' %}
     </div>

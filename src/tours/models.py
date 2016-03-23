@@ -42,7 +42,7 @@ class Tour(models.Model):
         return self.title_EN
 
     class Meta:
-        ordering = ["position"]
+        ordering = ["position", "-created_on"]
 
 
 class Paragraph(models.Model):
