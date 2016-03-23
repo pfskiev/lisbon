@@ -1,9 +1,9 @@
-{% load staticfiles %}
+{% load thumbnail %}
 {% load i18n %}
 <div class="card">
 {% load i18n %}
     {% if object.img %}
-        <a href="{{ object.id }}"><img style="height: 350px;width: 100%; object-fit: cover;" class="img-fluid" src="{% static '/media/' %}{{ object.img }}" alt="{{ object.title_DE }}"></a>
+        <a href="{{ object.id }}"><img style="height: 350px;width: 100%; object-fit: cover;" class="img-fluid" src="{% thumbnail object.img|default:'default_profile.png' 350x280 crop %}" alt="{{ object.title_DE }}"></a>
         {% else %}
         {% if object.url  %}
         <a href="{{ object.id }}"><img style="height: 350px;width: 100%;   object-fit: cover;" class="img-fluid" src="{{ object.url }}" alt="{{ object.title_DE }}"></a>

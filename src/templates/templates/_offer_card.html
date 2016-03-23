@@ -1,18 +1,16 @@
 {% load static %}
+{% load thumbnail %}
 {% load i18n %}
 <div class="card card-block awesome-background">
 {% if object.img %}
     <a  href="{% if 'offer' in request.get_full_path %}{{ request.get_full_path }}{{ object.id }}{% else %}/offer/{{ object.id }}{% endif %}">
-        <img class="img-rounded center-block" src="{% static '/media/' %}{{ object.img }}" alt="{{ object.title }}" style="object-fit: cover;" width="250" height="250"></a>
+        <img class="img-rounded center-block" src="{% thumbnail object.img|default:'default_profile.png' 250x250 crop %}" alt="{{ object.title }}" style="object-fit: cover;" width="250" height="250"></a>
 {% else %}
     <p style="text-align: center"><small><em>{% trans 'place for image' %}</em></small></p>
 {% endif %}
 {% if 'pt' in request.LANGUAGE_CODE %}
-        <h4 style="margin-top: 20px" class="card-title text-md-center">{{ object.title_PT }}</h4>
-        <p class="card-text text-md-center">{{ object.description_PT|truncatechars:200 }}</p>
-
-{#    <h2 class="text-md-center">{{ object.title_PT }}</h2>#}
-{#    <p class="text-md-center">{{ object.description_PT|truncatechars:200 }}</p>#}
+    <h4 style="margin-top: 20px" class="card-title text-md-center">{{ object.title_PT }}</h4>
+    <p class="card-text text-md-center">{{ object.description_PT|truncatechars:200 }}</p>
 {% endif %}
 {% if 'en' in request.LANGUAGE_CODE %}
     <h4 style="margin-top: 20px" class="card-title text-md-center">{{ object.title_EN }}</h4>

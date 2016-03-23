@@ -1,10 +1,7 @@
-{% load staticfiles %}
 {% load thumbnail %}
 {% load i18n %}
 <div class="card">
     {% if object.img %}
-{#        <a href="{{ object.id }}"><img style="height: 350px;width: 100%; object-fit: cover;" class="img-fluid" src="{% static '/media/' %}{{ object.img }}" alt="" width="100%"></a>#}
-
         <a href="{{ object.id }}"><img style="height: 350px;width: 100%; object-fit: cover;" class="img-fluid" src="{% thumbnail object.img|default:'default_profile.png' 350x280 crop %}" alt="" width="100%"></a>
     {% else %}
         <div class="embed-responsive embed-responsive-16by9">
