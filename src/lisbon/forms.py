@@ -1,4 +1,3 @@
-
 from django import forms
 from tours.models import Post
 

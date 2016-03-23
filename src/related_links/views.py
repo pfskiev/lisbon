@@ -60,24 +60,6 @@ def related_links_list(request):
     except EmptyPage:
         queryset = paginator.page(paginator.num_pages)
 
-    if request.method == 'GET':
-        contact_me = ContactMe()
-    else:
-        contact_me = ContactMe(request.POST)
-        if contact_me.is_valid():
-            fullname = contact_me.cleaned_data['fullname']
-            message = contact_me.cleaned_data['message']
-            subject = 'Mail from ' + fullname
-            from_email = settings.EMAIL_HOST_USER
-            to_list = settings.EMAIL_TO
-            try:
-                send_mail(subject, message, from_email, to_list, fail_silently=False)
-            except BadHeaderError:
-                return HttpResponse('Invalid header found.')
-            return redirect('tour:success')
-        else:
-            return redirect('tour:fail')
-
     context = {
         'categories_list': Category.objects.all(),
         'company': get_company(),
@@ -142,23 +124,6 @@ def related_links_create(request):
             instance.save()
             messages.success(request, 'Link Created')
             return redirect('related_links:list')
-    if request.method == 'GET':
-        contact_me = ContactMe()
-    else:
-        contact_me = ContactMe(request.POST)
-        if contact_me.is_valid():
-            fullname = contact_me.cleaned_data['fullname']
-            message = contact_me.cleaned_data['message']
-            subject = 'Mail from ' + fullname
-            from_email = settings.EMAIL_HOST_USER
-            to_list = settings.EMAIL_TO
-            try:
-                send_mail(subject, message, from_email, to_list, fail_silently=False)
-            except BadHeaderError:
-                return HttpResponse('Invalid header found.')
-            return redirect('tour:success')
-        else:
-            return redirect('tour:fail')
 
     context = {
         'categories_list': Category.objects.all(),
@@ -173,24 +138,6 @@ def related_links_create(request):
 
 
 def related_links_update(request, pk=None):
-    if request.method == 'GET':
-        contact_me = ContactMe()
-    else:
-        contact_me = ContactMe(request.POST)
-        if contact_me.is_valid():
-            fullname = contact_me.cleaned_data['fullname']
-            message = contact_me.cleaned_data['message']
-            subject = 'Mail from ' + fullname
-            from_email = settings.EMAIL_HOST_USER
-            to_list = settings.EMAIL_TO
-            try:
-                send_mail(subject, message, from_email, to_list, fail_silently=False)
-            except BadHeaderError:
-                return HttpResponse('Invalid header found.')
-            return redirect('tour:success')
-        else:
-            return redirect('tour:fail')
-
     if not request.user.is_staff or not request.user.is_superuser:
         return redirect('accounts:signup')
     else:

@@ -40,7 +40,7 @@ class BookNow(forms.Form):
     helper.layout = Layout(
         Field('fullname', css_class='form-control', placeholder='Enter you\'re name'),
         Field('email', css_class='form-control', placeholder='Enter you\'re email'),
-        Field('phone', css_class='phone', placeholder='0(000)-000-00-00'),
+        Field('phone', css_class='phone', placeholder='(000)-00-000-00-00'),
         Field('message', css_class='form-control'),
         Field('date', css_class='datepicker'),
         FormActions(Submit('purchase', _('Send'), css_class='text-uppercase form-control btn btn-lg btn-primary'))

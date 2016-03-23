@@ -8,14 +8,27 @@
     <section>
         <div class="container">
             <h1 class="display-4">{{ title }}</h1>
-            {% for object in about_list %}
-                {% for paragraph in object.paragraph.all %}
-                    <p>{{ paragraph }}</p>
-{#                    {% if user.is_staff %}#}
-{#                        <a class="btn btn-sm btn-danger-outline" href="/tours/{{ paragraph.id }}/edit/">edit</a>#}
-{#                    {% endif %}#}
+            {% if 'pt' in request.LANGUAGE_CODE %}
+                {% for object in about_list %}
+                    {% for paragraph in object.paragraph.all %}
+                        <p>{{ paragraph.text_PT }}</p>
+                    {% endfor %}
                 {% endfor %}
-            {% endfor %}
+            {% endif %}
+            {% if 'en' in request.LANGUAGE_CODE %}
+                {% for object in about_list %}
+                    {% for paragraph in object.paragraph.all %}
+                        <p>{{ paragraph.text_EN }}</p>
+                    {% endfor %}
+                {% endfor %}
+            {% endif %}
+            {% if 'de' in request.LANGUAGE_CODE %}
+                {% for object in about_list %}
+                    {% for paragraph in object.paragraph.all %}
+                        <p>{{ paragraph.text_DE }}</p>
+                    {% endfor %}
+                {% endfor %}
+            {% endif %}
         </div>
     </section>
 {% endblock %}

@@ -42,13 +42,15 @@ class Tour(models.Model):
 
 
 class Paragraph(models.Model):
-    text = models.TextField(max_length=500, blank=True, null=False)
+    text_PT = models.TextField(max_length=500, blank=True, null=False)
+    text_EN = models.TextField(max_length=500, blank=True, null=False)
+    text_DE = models.TextField(max_length=500, blank=True, null=False)
 
     def __str__(self):
-        return self.text
+        return self.text_EN
 
     def __unicode__(self):
-        return self.text
+        return self.text_EN
 
 
 class About(models.Model):

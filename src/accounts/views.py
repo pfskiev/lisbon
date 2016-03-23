@@ -8,7 +8,6 @@ from authtools import views as authviews
 from braces import views as bracesviews
 from django.conf import settings
 from . import forms
-from django.core.mail import EmailMessage
 
 User = get_user_model()
 
@@ -21,8 +20,6 @@ class LoginView(bracesviews.AnonymousRequiredMixin,
     def form_valid(self, form):
         redirect = super(LoginView, self).form_valid(form)
         remember_me = form.cleaned_data.get('remember_me')
-        email = EmailMessage('Subject', 'Body', to=settings.EMAIL_TO)
-        email.send()
         if remember_me is True:
             ONE_MONTH = 30 * 24 * 60 * 60
             expiry = getattr(settings, "KEEP_LOGGED_DURATION", ONE_MONTH)

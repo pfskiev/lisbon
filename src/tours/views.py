@@ -373,7 +373,7 @@ def tour_success(request):
 
     context = {
         'categories_list': Category.objects.all(),
-        'title': 'Thank you for you\'re mail! Soon you will have response from admin',
+        'title': 'Thank you very much for your contact. We will get in touch with you soon!',
         'company': get_company(),
         'breadcrumbs': [
             {'url': '/', 'name': _('Home')},
