@@ -309,11 +309,11 @@ article.tours {
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ }
 
 .offer {
-  background: #B993D6;
+  background: #EFEFBB;
   /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #B993D6, #8CA6DB);
+  background: -webkit-linear-gradient(to left, #EFEFBB, #D4D3DD);
   /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, #B993D6, #8CA6DB);
+  background: linear-gradient(to left, #EFEFBB, #D4D3DD);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   min-height: 500px; }
 

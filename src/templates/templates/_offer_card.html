@@ -1,30 +1,41 @@
 {% load static %}
 {% load i18n %}
+<div class="card card-block">
 {% if object.img %}
-    <a href="{% if 'offer' in request.get_full_path %}{{ request.get_full_path }}{{ object.id }}{% else %}/offer/{{ object.id }}{% endif %}"><img class="img-circle" src="{% static '/media/' %}{{ object.img }}" alt="{{ object.title }}" style="object-fit: cover;" width="250" height="250"></a>
+    <a  href="{% if 'offer' in request.get_full_path %}{{ request.get_full_path }}{{ object.id }}{% else %}/offer/{{ object.id }}{% endif %}">
+        <img class="img-rounded center-block" src="{% static '/media/' %}{{ object.img }}" alt="{{ object.title }}" style="object-fit: cover;" width="250" height="250"></a>
 {% else %}
     <p style="text-align: center"><small><em>{% trans 'place for image' %}</em></small></p>
 {% endif %}
 {% if 'pt' in request.LANGUAGE_CODE %}
-    <h2>{{ object.title_PT }}</h2>
-    <p class="text-center">{{ object.description_PT|truncatechars:200 }}</p>
+        <h4 style="margin-top: 20px" class="card-title text-md-center">{{ object.title_PT }}</h4>
+        <p class="card-text text-md-center">{{ object.description_PT|truncatechars:200 }}</p>
+
+{#    <h2 class="text-md-center">{{ object.title_PT }}</h2>#}
+{#    <p class="text-md-center">{{ object.description_PT|truncatechars:200 }}</p>#}
 {% endif %}
 {% if 'en' in request.LANGUAGE_CODE %}
-    <h2>{{ object.title_EN }}</h2>
-    <p class="text-center">{{ object.description_EN|truncatechars:200 }}</p>
+    <h4 style="margin-top: 20px" class="card-title text-md-center">{{ object.title_EN }}</h4>
+    <p class="card-text text-md-center">{{ object.description_EN|truncatechars:200 }}</p>
 {% endif %}
 {% if 'de' in request.LANGUAGE_CODE %}
-    <h2>{{ object.title_DE }}</h2>
-    <p class="text-center">{{ object.description_DE|truncatechars:200 }}</p>
+    <h4 style="margin-top: 20px" class="card-title text-md-center">{{ object.title_DE }}</h4>
+    <p class="card-text text-md-center">{{ object.description_DE|truncatechars:200 }}</p>
 {% endif %}
-{% if 'offer' in request.path %}
+
+<div class="center-block">
+    {% if 'offer' in request.path %}
     {% include 'templates/_CRUD.html' %}
 {% else %}
-    <p><a class="btn btn-danger-outline" href="/offer/{{ object.id }}" role="button">{% trans 'View details' %} &raquo;</a></p>
+    <p class="text-md-center"><a class="btn btn-danger-outline" href="/offer/{{ object.id }}" role="button">{% trans 'View details' %} &raquo;</a></p>
     {% if user.is_staff or user.is_superuser %}
+        <p class="text-md-center">
         <a class="btn btn-sm btn-danger-outline" href="/offer/{{ object.id }}/delete/">
             <i class="fa fa-trash"></i> {% trans 'Delete' %}</a>
         <a class="btn btn-sm btn-danger-outline" href="/offer/{{ object.id }}/edit/">
             <i class="fa fa-pencil-square-o"></i> {% trans 'Edit' %}</a>
+        </p>
     {% endif %}
 {% endif %}
+</div>
+</div>
