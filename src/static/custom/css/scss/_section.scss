@@ -1,53 +1,24 @@
 @import 'variables';
+@import 'bourbon/bourbon';
 
 section {
-//
-//background: #70e1f5; /* fallback for old browsers */
-//background: -webkit-linear-gradient(to left, #70e1f5 , #ffd194); /* Chrome 10-25, Safari 5.1-6 */
-//background: linear-gradient(to left, #70e1f5 , #ffd194); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-
-
-background: #EFEFBB; /* fallback for old browsers */
-background: -webkit-linear-gradient(to left, #EFEFBB , #D4D3DD); /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to left, #EFEFBB , #D4D3DD); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-
-
-
   padding-top: 100px;
   padding-bottom: 100px;
+  @include background(linear-gradient(to left, #EFEFBB, #D4D3DD));
 }
 article {
-  transition: all .5s ease;
+  @include transition(all .5s ease-in-out);
 }
 article.tours {
-
-  padding-bottom: 100px;padding-top: 100px;
-  background: #C9FFBF; /* fallback for old browsers */
-background: -webkit-linear-gradient(to left, #C9FFBF , #FFAFBD); /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to left, #C9FFBF , #FFAFBD); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  padding-bottom: 100px;
+  padding-top: 100px;
+  @include background(linear-gradient(to left, #C9FFBF, #FFAFBD));
 }
-
 .offer {
-
-
-
-
-
-
-
-
-background: #EFEFBB; /* fallback for old browsers */
-background: -webkit-linear-gradient(to left, #EFEFBB , #D4D3DD); /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to left, #EFEFBB , #D4D3DD); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-
-
-    min-height: 500px;
-
+  @include background(linear-gradient(to left, #EFEFBB, #D4D3DD));
 }
-
-.form-box {max-width: 330px;
-    display: block;
-    margin: 0 auto;}
+.form-box {
+  max-width: 330px;
+  display: block;
+  margin: 0 auto;
+}

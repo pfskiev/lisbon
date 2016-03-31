@@ -8,6 +8,7 @@ $('document').ready(function() {
     $('.carousel').carousel({
         interval: 5000
     })
+    $('footer .text-justify').empty().text('We are portuguese family company providing best quality of service in tourism in LISBON city and PORTUGAL. Our staff is qualified guides, including myself, who speak several languages and ready to show you the best what Lisbon has to offer. What is important to us is that you get satisfied of our services and if you are happy then we are double happy! Come and enjoy Golden Lisbon! Your sincerely, Mark Danici - CEO')
 });
 
 function delete_contact(id) {

@@ -83,7 +83,7 @@ def tour_list(request):
         contact_me = ContactMe(request.POST)
         if contact_me.is_valid():
             fullname = contact_me.cleaned_data['fullname']
-            message = contact_me.cleaned_data['message']
+            message = contact_me.cleaned_data['message-']
             subject = 'Mail from ' + fullname
             from_email = settings.EMAIL_HOST_USER
             to_list = settings.EMAIL_TO
