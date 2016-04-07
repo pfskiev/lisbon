@@ -19,6 +19,12 @@ def get_company():
 
 
 def gallery_list(request):
+    footer = {
+        'pt': Helpers.objects.get(id=1).about_footer_PT,
+        'en': Helpers.objects.get(id=1).about_footer_EN,
+        'de': Helpers.objects.get(id=1).about_footer_DE
+    }
+    lang = get_lang(request)
     queryset_list = Gallery.objects.all()
     breadcrumbs = [
         {'url': '/', 'name': _('Home')},
@@ -41,6 +47,9 @@ def gallery_list(request):
         queryset = paginator.page(paginator.num_pages)
 
     context = {
+        'footer': {
+            'about': footer[lang]
+        },
         'categories_list': Category.objects.all(),
         'company': get_company(),
         'title': _('Gallery'),
@@ -55,6 +64,11 @@ def gallery_list(request):
 def gallery_detail(request, pk=None):
     gallery = Gallery.objects.get(pk=pk)
     lang = get_lang(request)
+    footer = {
+        'pt': Helpers.objects.get(id=1).about_footer_PT,
+        'en': Helpers.objects.get(id=1).about_footer_EN,
+        'de': Helpers.objects.get(id=1).about_footer_DE
+    }
     gallery_title = {
         'pt': gallery.title_PT,
         'en': gallery.title_EN,
@@ -81,6 +95,9 @@ def gallery_detail(request, pk=None):
         'img3': gallery.img_3,
     }
     context = {
+        'footer': {
+            'about': footer[lang]
+        },
         'categories_list': Category.objects.all(),
         'company': get_company(),
         'breadcrumbs': breadcrumbs,
@@ -92,6 +109,12 @@ def gallery_detail(request, pk=None):
 
 
 def gallery_update(request, pk=None):
+    footer = {
+        'pt': Helpers.objects.get(id=1).about_footer_PT,
+        'en': Helpers.objects.get(id=1).about_footer_EN,
+        'de': Helpers.objects.get(id=1).about_footer_DE
+    }
+    lang = get_lang(request)
     if not request.user.is_staff or not request.user.is_superuser:
         return redirect('accounts:signup')
     else:
@@ -115,6 +138,9 @@ def gallery_update(request, pk=None):
             return redirect('gallery:list')
 
         context = {
+            'footer': {
+                'about': footer[lang]
+            },
             'categories_list': Category.objects.all(),
             'company': get_company(),
             'title': _('Gallery edit'),
@@ -127,6 +153,12 @@ def gallery_update(request, pk=None):
 
 
 def gallery_create(request):
+    lang = get_lang(request)
+    footer = {
+        'pt': Helpers.objects.get(id=1).about_footer_PT,
+        'en': Helpers.objects.get(id=1).about_footer_EN,
+        'de': Helpers.objects.get(id=1).about_footer_DE
+    }
     if not request.user.is_staff or not request.user.is_superuser:
         return redirect('accounts:signup')
     else:
@@ -144,6 +176,9 @@ def gallery_create(request):
             return redirect('gallery:list')
 
         context = {
+            'footer': {
+                'about': footer[lang]
+            },
             'categories_list': Category.objects.all(),
             'company': get_company(),
             'title': _('Create Gallery'),

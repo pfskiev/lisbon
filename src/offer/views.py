@@ -19,6 +19,12 @@ def get_company():
 
 
 def offer_list(request):
+    lang = request.LANGUAGE_CODE
+    footer = {
+        'pt': Helpers.objects.get(id=1).about_footer_PT,
+        'en': Helpers.objects.get(id=1).about_footer_EN,
+        'de': Helpers.objects.get(id=1).about_footer_DE
+    }
     queryset_list = Offer.objects.all()
     lang = get_lang(request)
     breadcrumbs = [
@@ -66,6 +72,9 @@ def offer_list(request):
             return redirect('offer:list')
 
     context = {
+        'footer': {
+            'about': footer[lang]
+        },
         'categories_list': Category.objects.all(),
         'company': get_company(),
         'title': _('Offers'),
@@ -80,6 +89,12 @@ def offer_list(request):
 
 
 def offer_detail(request, pk=None):
+    lang = request.LANGUAGE_CODE
+    footer = {
+        'pt': Helpers.objects.get(id=1).about_footer_PT,
+        'en': Helpers.objects.get(id=1).about_footer_EN,
+        'de': Helpers.objects.get(id=1).about_footer_DE
+    }
     offer = Offer.objects.get(pk=pk)
     lang = get_lang(request)
     title = {
@@ -97,6 +112,9 @@ def offer_detail(request, pk=None):
         {'url': '/offer', 'name': _('Offers'), 'active': False},
         {'url': '#', 'name': title[lang], 'active': True}]
     context = {
+        'footer': {
+            'about': footer[lang]
+        },
         'categories_list': Category.objects.all(),
         'company': get_company(),
         'breadcrumbs': breadcrumbs,
@@ -115,6 +133,12 @@ def offer_detail(request, pk=None):
 
 
 def offer_create(request):
+    lang = request.LANGUAGE_CODE
+    footer = {
+        'pt': Helpers.objects.get(id=1).about_footer_PT,
+        'en': Helpers.objects.get(id=1).about_footer_EN,
+        'de': Helpers.objects.get(id=1).about_footer_DE
+    }
     if not request.user.is_staff or not request.user.is_superuser:
         return redirect('accounts:signup')
     else:
@@ -128,6 +152,9 @@ def offer_create(request):
             return redirect('offer:list')
 
     context = {
+        'footer': {
+            'about': footer[lang]
+        },
         'categories_list': Category.objects.all(),
         'company': get_company(),
         'title': _('Create Offer'),
@@ -140,6 +167,12 @@ def offer_create(request):
 
 
 def offer_update(request, pk=None):
+    lang = request.LANGUAGE_CODE
+    footer = {
+        'pt': Helpers.objects.get(id=1).about_footer_PT,
+        'en': Helpers.objects.get(id=1).about_footer_EN,
+        'de': Helpers.objects.get(id=1).about_footer_DE
+    }
     if not request.user.is_staff or not request.user.is_superuser:
         return redirect('accounts:signup')
     else:
@@ -161,6 +194,9 @@ def offer_update(request, pk=None):
             return redirect('offer:list')
 
         context = {
+            'footer': {
+                'about': footer[lang]
+            },
             'categories_list': Category.objects.all(),
             'company': get_company(),
             'title': _('Edit') + ' ' + title[lang],

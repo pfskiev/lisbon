@@ -19,6 +19,7 @@ def get_company():
 
 
 def contact_list(request):
+    lang = get_lang(request)
     queryset_list = Contact.objects.all()
     breadcrumbs = [
         {'url': '/', 'name': _('Home')},
@@ -40,7 +41,15 @@ def contact_list(request):
     except EmptyPage:
         queryset = paginator.page(paginator.num_pages)
 
+    footer = {
+        'pt': Helpers.objects.get(id=1).about_footer_PT,
+        'en': Helpers.objects.get(id=1).about_footer_EN,
+        'de': Helpers.objects.get(id=1).about_footer_DE
+    }
     context = {
+        'footer': {
+            'about': footer[lang]
+        },
         'categories_list': Category.objects.all(),
         'company': get_company(),
         'title': _('Contacts'),
@@ -53,13 +62,22 @@ def contact_list(request):
 
 
 def contact_detail(request, pk=None):
+    lang = get_lang(request)
     contact = Contact.objects.get(pk=pk)
     breadcrumbs = [
         {'url': '/', 'name': _('Home')},
         {'url': '/contacts', 'name': _('Contacts')},
         {'url': '#', 'name': contact.first_name + ' ' + contact.last_name, 'active': True}
     ]
+    footer = {
+        'pt': Helpers.objects.get(id=1).about_footer_PT,
+        'en': Helpers.objects.get(id=1).about_footer_EN,
+        'de': Helpers.objects.get(id=1).about_footer_DE
+    }
     context = {
+        'footer': {
+            'about': footer[lang]
+        },
         'categories_list': Category.objects.all(),
         'company': get_company(),
         'title': contact.first_name + ' ' + contact.last_name,
@@ -71,6 +89,12 @@ def contact_detail(request, pk=None):
 
 
 def contact_create(request):
+    lang = get_lang(request)
+    footer = {
+        'pt': Helpers.objects.get(id=1).about_footer_PT,
+        'en': Helpers.objects.get(id=1).about_footer_EN,
+        'de': Helpers.objects.get(id=1).about_footer_DE
+    }
     if not request.user.is_staff or not request.user.is_superuser:
         return redirect('accounts:signup')
     else:
@@ -88,6 +112,9 @@ def contact_create(request):
             return redirect('contact:list')
 
         context = {
+            'footer': {
+            'about': footer[lang]
+            },
             'categories_list': Category.objects.all(),
             'company': get_company(),
             'title': _('Create Contact'),
@@ -101,6 +128,11 @@ def contact_create(request):
 
 def contact_update(request, pk=None):
     lang = get_lang(request)
+    footer = {
+        'pt': Helpers.objects.get(id=1).about_footer_PT,
+        'en': Helpers.objects.get(id=1).about_footer_EN,
+        'de': Helpers.objects.get(id=1).about_footer_DE
+    }
     if not request.user.is_staff or not request.user.is_superuser:
         return redirect('accounts:signup')
     else:
@@ -118,6 +150,9 @@ def contact_update(request, pk=None):
             return redirect('contact:list')
 
         context = {
+            'footer': {
+            'about': footer[lang]
+            },
             'categories_list': Category.objects.all(),
             'company': get_company(),
             'title': _('Contact Edit'),

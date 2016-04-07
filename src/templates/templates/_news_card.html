@@ -1,0 +1,25 @@
+{% load thumbnail %}
+{% load i18n %}
+<div class="card">
+    {% if object.img %}
+        <a href="{{ object.id }}"><img style="height: 350px;width: 100%; object-fit: cover;" class="img-fluid" src="{% thumbnail object.img|default:'default_profile.png' 350x280 crop %}" alt="" width="100%"></a>
+    {% else %}
+        <p style="text-align: center"><small><em>{% trans 'place for image' %}</em></small></p>
+    {% endif %}
+    <div class="card-block">
+        {% if 'pt' in request.LANGUAGE_CODE %}
+            <h2>{{ object.title_PT }}</h2>
+            <p class="text-justify">{{ object.description_PT|truncatechars:200 }}</p>
+        {% endif %}
+        {% if 'en' in request.LANGUAGE_CODE %}
+            <h2>{{ object.title_EN }}</h2>
+            <p class="text-justify">{{ object.description_EN|truncatechars:200 }}</p>
+        {% endif %}
+        {% if 'de' in request.LANGUAGE_CODE %}
+            <h2>{{ object.title_DE }}</h2>
+            <p class="text-justify">{{ object.description_DE|truncatechars:200 }}</p>
+        {% endif %}
+        {% include 'templates/_share.html' %}
+        {% include 'templates/_CRUD.html' %}
+    </div>
+</div>

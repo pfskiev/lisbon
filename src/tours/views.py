@@ -21,6 +21,12 @@ def get_company():
 
 
 def tour_list(request):
+    lang = request.LANGUAGE_CODE
+    footer = {
+        'pt': Helpers.objects.get(id=1).about_footer_PT,
+        'en': Helpers.objects.get(id=1).about_footer_EN,
+        'de': Helpers.objects.get(id=1).about_footer_DE
+    }
     queryset_list = Tour.objects.all()
     lang = get_lang(request)
     breadcrumbs = [
@@ -96,6 +102,9 @@ def tour_list(request):
             return redirect('tour:fail')
 
     context = {
+        'footer': {
+            'about': footer[lang]
+        },
         'form': form,
         'categories_list': Category.objects.all(),
         'company': get_company(),
@@ -109,6 +118,12 @@ def tour_list(request):
 
 
 def tour_detail(request, pk=None):
+    lang = request.LANGUAGE_CODE
+    footer = {
+        'pt': Helpers.objects.get(id=1).about_footer_PT,
+        'en': Helpers.objects.get(id=1).about_footer_EN,
+        'de': Helpers.objects.get(id=1).about_footer_DE
+    }
     tour = Tour.objects.get(pk=pk)
     lang = get_lang(request)
     if request.method == 'GET':
@@ -167,6 +182,9 @@ def tour_detail(request, pk=None):
         {'url': '/', 'name': title[lang], 'active': True},
     ]
     context = {
+        'footer': {
+            'about': footer[lang]
+        },
         'form': form,
         'categories_list': Category.objects.all(),
         'company': get_company(),
@@ -186,6 +204,12 @@ def tour_detail(request, pk=None):
 
 
 def tour_update(request, pk=None):
+    lang = request.LANGUAGE_CODE
+    footer = {
+        'pt': Helpers.objects.get(id=1).about_footer_PT,
+        'en': Helpers.objects.get(id=1).about_footer_EN,
+        'de': Helpers.objects.get(id=1).about_footer_DE
+    }
     lang = get_lang(request)
     tour = Tour.objects.get(pk=pk)
     tour_title = {
@@ -211,6 +235,9 @@ def tour_update(request, pk=None):
             return redirect('tour:list')
 
         context = {
+            'footer': {
+                'about': footer[lang]
+            },
 
             'categories_list': Category.objects.all(),
             'company': get_company(),
@@ -224,6 +251,12 @@ def tour_update(request, pk=None):
 
 
 def tour_create(request):
+    lang = request.LANGUAGE_CODE
+    footer = {
+        'pt': Helpers.objects.get(id=1).about_footer_PT,
+        'en': Helpers.objects.get(id=1).about_footer_EN,
+        'de': Helpers.objects.get(id=1).about_footer_DE
+    }
     lang = get_lang(request)
     if not request.user.is_staff or not request.user.is_superuser:
         return redirect('accounts:signup')
@@ -242,6 +275,9 @@ def tour_create(request):
             return redirect('tour:list')
 
         context = {
+            'footer': {
+                'about': footer[lang]
+            },
 
             'categories_list': Category.objects.all(),
             'company': get_company(),
@@ -256,6 +292,12 @@ def tour_create(request):
 
 
 def tour_delete(request, pk=None):
+    lang = request.LANGUAGE_CODE
+    footer = {
+        'pt': Helpers.objects.get(id=1).about_footer_PT,
+        'en': Helpers.objects.get(id=1).about_footer_EN,
+        'de': Helpers.objects.get(id=1).about_footer_DE
+    }
     if not request.user.is_staff or not request.user.is_superuser:
         return redirect('accounts:signup')
     instance = get_object_or_404(Tour, pk=pk)
@@ -265,6 +307,12 @@ def tour_delete(request, pk=None):
 
 
 def tour_category(request, slug=None):
+    lang = request.LANGUAGE_CODE
+    footer = {
+        'pt': Helpers.objects.get(id=1).about_footer_PT,
+        'en': Helpers.objects.get(id=1).about_footer_EN,
+        'de': Helpers.objects.get(id=1).about_footer_DE
+    }
     if request.method == 'GET':
         contact_me = ContactMe()
     else:
@@ -337,6 +385,9 @@ def tour_category(request, slug=None):
             return redirect('tour:fail')
 
     context = {
+        'footer': {
+            'about': footer[lang]
+        },
         'form': form,
         'categories_list': Category.objects.all(),
         'breadcrumbs': [
@@ -344,7 +395,7 @@ def tour_category(request, slug=None):
             {'url': '/tours', 'name': _('Tours')},
             {'url': '#', 'name': category[0], 'active': True}
         ],
-        'title': _('category'),
+        'title': category[0],  # _('category'),
         'object_list': queryset,
         'page_request_var': page_request_var,
     }
@@ -353,6 +404,12 @@ def tour_category(request, slug=None):
 
 
 def tour_success(request):
+    lang = request.LANGUAGE_CODE
+    footer = {
+        'pt': Helpers.objects.get(id=1).about_footer_PT,
+        'en': Helpers.objects.get(id=1).about_footer_EN,
+        'de': Helpers.objects.get(id=1).about_footer_DE
+    }
     if request.method == 'GET':
         contact_me = ContactMe()
     else:
@@ -372,6 +429,9 @@ def tour_success(request):
             return redirect('tour:fail')
 
     context = {
+        'footer': {
+            'about': footer[lang]
+        },
         'categories_list': Category.objects.all(),
         'title': 'Thank you very much for your contact. We will get in touch with you soon!',
         'company': get_company(),
@@ -383,6 +443,12 @@ def tour_success(request):
 
 
 def tour_fail(request):
+    lang = request.LANGUAGE_CODE
+    footer = {
+        'pt': Helpers.objects.get(id=1).about_footer_PT,
+        'en': Helpers.objects.get(id=1).about_footer_EN,
+        'de': Helpers.objects.get(id=1).about_footer_DE
+    }
     if request.method == 'GET':
         contact_me = ContactMe()
     else:
@@ -402,6 +468,9 @@ def tour_fail(request):
             return redirect('tour:fail')
 
     context = {
+        'footer': {
+            'about': footer[lang]
+        },
         'categories_list': Category.objects.all(),
         'title': 'Sorry, something goes wrong! Please try again.',
         'company': get_company(),

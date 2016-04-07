@@ -8,11 +8,16 @@ class Helpers(models.Model):
     copyright_gb = models.CharField(max_length=200, blank=True, null=True)
     copyright_pt = models.CharField(max_length=200, blank=True, null=True)
     copyright_de = models.CharField(max_length=200, blank=True, null=True)
+    about_footer_PT = models.TextField(max_length=200, blank=True, null=False)
+    about_footer_EN = models.TextField(max_length=200, blank=True, null=False)
+    about_footer_DE = models.TextField(max_length=200, blank=True, null=False)
     company_name = models.CharField(max_length=200, blank=True, null=True)
     main_keywords = models.TextField(max_length=2000, blank=True, null=True)
     img = models.FileField(blank=True, null=True)
     img2 = models.FileField(blank=True, null=True)
     img3 = models.FileField(blank=True, null=True)
+    img4 = models.FileField(blank=True, null=True)
+    img5 = models.FileField(blank=True, null=True)
     audio = models.FileField(blank=True, null=True)
 
     def __unicode__(self):

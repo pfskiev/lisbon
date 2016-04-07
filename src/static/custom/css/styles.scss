@@ -71,9 +71,13 @@ p.goldenlisbon {
   margin-bottom: 0;
   padding-bottom: 11px;
   transition: all .3s ease;
-  z-index: 99999;
+  z-index: 7000;
+
 }
 p.goldenlisbon:hover {
   color:darkgoldenrod !important;
 
+}
+.modal {
+  z-index: 9999;
 }

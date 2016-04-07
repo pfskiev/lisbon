@@ -24,6 +24,11 @@ def get_company():
 
 
 def category_list(request, slug=None):
+    footer = {
+        'pt': Helpers.objects.get(id=1).about_footer_PT,
+        'en': Helpers.objects.get(id=1).about_footer_EN,
+        'de': Helpers.objects.get(id=1).about_footer_DE
+    }
     queryset_list = Tour.objects.filter(category__url__contains=slug)
     lang = get_lang(request)
     query = request.GET.get('q')
@@ -82,6 +87,9 @@ def category_list(request, slug=None):
 
     context = {
         'form': form,
+        'footer': {
+            'about': footer[lang],
+        },
         'categories_list': Category.objects.all(),
         'breadcrumbs': [
             {'url': '/', 'name': _('Home')},

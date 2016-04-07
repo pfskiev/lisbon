@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{{ title }}{% endblock title %}
+{% block beadcrumbs %}
+    {% include 'templates/_breadcrumbs.html' %}
+{% endblock %}
+{% block content %}
+    <section>
+        <div class="container">
+            <h1 class="display-3">{{ title }}</h1>
+        </div>
+        <div class="container">
+            <div class="row">
+
+            </div>
+            {% if user.is_staff or user.is_superuser %}
+                <a class="btn btn-warning" href="{% url 'news:create' %}"><i class="fa fa-plus"></i> {% trans 'Create Article' %}</a>
+            {% endif %}
+            {% include 'templates/_pagination.html' %}
+        </div>
+    </section>
+{% endblock %}

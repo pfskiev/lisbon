@@ -24,6 +24,12 @@ def get_company():
 
 
 def review_list(request):
+    lang = request.LANGUAGE_CODE
+    footer = {
+        'pt': Helpers.objects.get(id=1).about_footer_PT,
+        'en': Helpers.objects.get(id=1).about_footer_EN,
+        'de': Helpers.objects.get(id=1).about_footer_DE
+    }
     queryset_list = Review.objects.all()
     breadcrumbs = [
         {'url': '/', 'name': _('Home')},
@@ -76,6 +82,9 @@ def review_list(request):
             return redirect('tour:fail')
 
     context = {
+        'footer': {
+            'about': footer[lang]
+        },
         'categories_list': Category.objects.all(),
         'company': get_company(),
         'review_list': queryset,
@@ -90,6 +99,12 @@ def review_list(request):
 
 
 def review_detail(request, pk=None):
+    lang = request.LANGUAGE_CODE
+    footer = {
+        'pt': Helpers.objects.get(id=1).about_footer_PT,
+        'en': Helpers.objects.get(id=1).about_footer_EN,
+        'de': Helpers.objects.get(id=1).about_footer_DE
+    }
     review = Review.objects.get(pk=pk)
     lang = get_lang(request)
     if request.method == 'GET':
@@ -115,6 +130,9 @@ def review_detail(request, pk=None):
         {'url': '#', 'name': _('Reviews'), 'active': True}
     ]
     context = {
+        'footer': {
+            'about': footer[lang]
+        },
         'categories_list': Category.objects.all(),
         'company': get_company(),
         'breadcrumbs': breadcrumbs,
@@ -126,6 +144,12 @@ def review_detail(request, pk=None):
 
 
 def review_create(request):
+    lang = request.LANGUAGE_CODE
+    footer = {
+        'pt': Helpers.objects.get(id=1).about_footer_PT,
+        'en': Helpers.objects.get(id=1).about_footer_EN,
+        'de': Helpers.objects.get(id=1).about_footer_DE
+    }
     if request.method == 'GET':
         contact_me = ContactMe()
     else:
@@ -159,6 +183,9 @@ def review_create(request):
             return redirect('review:list')
 
         context = {
+            'footer': {
+            'about': footer[lang]
+        },
 
             'categories_list': Category.objects.all(),
             'company': get_company(),
@@ -176,6 +203,12 @@ def review_create(request):
 
 
 def review_update(request, pk=None):
+    lang = request.LANGUAGE_CODE
+    footer = {
+        'pt': Helpers.objects.get(id=1).about_footer_PT,
+        'en': Helpers.objects.get(id=1).about_footer_EN,
+        'de': Helpers.objects.get(id=1).about_footer_DE
+    }
     lang = get_lang(request)
     if request.method == 'GET':
         contact_me = ContactMe()
@@ -211,6 +244,9 @@ def review_update(request, pk=None):
             return redirect('review:list')
 
         context = {
+            'footer': {
+            'about': footer[lang]
+        },
 
             'categories_list': Category.objects.all(),
             'company': get_company(),
@@ -225,6 +261,12 @@ def review_update(request, pk=None):
 
 
 def review_filter(request, slug=None):
+    lang = request.LANGUAGE_CODE
+    footer = {
+        'pt': Helpers.objects.get(id=1).about_footer_PT,
+        'en': Helpers.objects.get(id=1).about_footer_EN,
+        'de': Helpers.objects.get(id=1).about_footer_DE
+    }
     reviews = Review.objects.filter(category__url__contains=slug)
     category = Category.objects.filter(url__icontains=slug)
     if request.method == 'GET':
@@ -246,6 +288,9 @@ def review_filter(request, slug=None):
             return redirect('tour:fail')
 
     context = {
+        'footer': {
+            'about': footer[lang]
+        },
         'categories_list': Category.objects.all(),
         'breadcrumbs': [
             {'url': '/', 'name': _('Home')},

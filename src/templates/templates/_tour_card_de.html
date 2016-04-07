@@ -21,13 +21,15 @@
         <p><small><em class="text-uppercase">{% trans 'category' %}: </em><em><a href="/tours/{{ object.category.url }}">{{ object.category }}</a></em></small></p>
         <a href="{{ object.id }}" class="btn btn-danger text-uppercase" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">{% trans 'book now' %}</a>
         <a class="btn btn-danger-outline" href="/tours/{{ object.id }}" role="button">{% trans 'View details' %} &raquo;</a>
+    </div>
+    <div class="card-footer">
         {% include 'templates/_share.html' %}
         {% if user.is_staff %}
              <a class="btn btn-sm btn-danger-outline" href="{{ request.get_full_path }}{{ object.id }}/edit/">
                     <i class="fa fa-pencil-square-o"></i> {% trans 'Edit' %}</a>
             <a type="button" class="btn btn-sm btn-danger-outline" onclick="delete_contact({{ object.id }})" data-toggle="modal" data-target=".delete_tour"><i class="fa fa-trash"></i> {% trans 'Delete'%}</a></a>
         {% endif %}
-        {% include 'templates/modal/_delete_tour.html' %}
     </div>
+    {% include 'templates/modal/_delete_tour.html' %}
     {% include 'templates/_modal_book_now.html' %}
 </div>

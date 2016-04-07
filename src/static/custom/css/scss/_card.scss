@@ -1,3 +1,4 @@
+@import 'bourbon/bourbon';
 @import 'variables';
 .card {
   min-width: 320px;
@@ -25,9 +26,13 @@
 .fa {
   color: $color_red;
 }
-.card-header, .card-footer {
+.card-header {
   color: $color-sand;
   background-color: $color_blue_light;
+}
+.card-footer {
+  color: $color-sand;
+  @include background(linear-gradient(to right, rgba(128, 128, 128, 0.2), rgba(245, 245, 245, 0.1)));
 }
 .shadow {
   transition: all .3s ease;
@@ -45,9 +50,9 @@
   object-fit: cover;
 }
 .awesome-background{
-
-background: #ECE9E6; /* fallback for old browsers */
-background: -webkit-linear-gradient(to left, #ECE9E6 , #FFFFFF); /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to left, #ECE9E6 , #FFFFFF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  @include background(linear-gradient(to left, #ECE9E6, #FFFFFF));
+}
+.card {
 
 }
+

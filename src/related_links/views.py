@@ -25,6 +25,12 @@ def get_company():
 
 
 def related_links_list(request):
+    lang = request.LANGUAGE_CODE
+    footer = {
+        'pt': Helpers.objects.get(id=1).about_footer_PT,
+        'en': Helpers.objects.get(id=1).about_footer_EN,
+        'de': Helpers.objects.get(id=1).about_footer_DE
+    }
     queryset_list = RelatedLink.objects.all()
     lang = get_lang(request)
     breadcrumbs = [
@@ -61,6 +67,9 @@ def related_links_list(request):
         queryset = paginator.page(paginator.num_pages)
 
     context = {
+        'footer': {
+            'about': footer[lang]
+        },
         'categories_list': Category.objects.all(),
         'company': get_company(),
         'title': _('Related links'),
@@ -74,6 +83,12 @@ def related_links_list(request):
 
 
 def related_links_detail(request, pk=None):
+    lang = request.LANGUAGE_CODE
+    footer = {
+        'pt': Helpers.objects.get(id=1).about_footer_PT,
+        'en': Helpers.objects.get(id=1).about_footer_EN,
+        'de': Helpers.objects.get(id=1).about_footer_DE
+    }
     related_link = RelatedLink.objects.get(pk=pk)
     lang = get_lang(request)
     title = {
@@ -92,6 +107,9 @@ def related_links_detail(request, pk=None):
         {'url': '#', 'name': title[lang], 'active': True}]
 
     context = {
+        'footer': {
+            'about': footer[lang]
+        },
         'categories_list': Category.objects.all(),
         'company': get_company(),
         'breadcrumbs': breadcrumbs,
@@ -110,6 +128,12 @@ def related_links_detail(request, pk=None):
 
 
 def related_links_create(request):
+    lang = request.LANGUAGE_CODE
+    footer = {
+        'pt': Helpers.objects.get(id=1).about_footer_PT,
+        'en': Helpers.objects.get(id=1).about_footer_EN,
+        'de': Helpers.objects.get(id=1).about_footer_DE
+    }
     if not request.user.is_staff or not request.user.is_superuser:
         return redirect('accounts:signup')
     else:
@@ -126,6 +150,9 @@ def related_links_create(request):
             return redirect('related_links:list')
 
     context = {
+        'footer': {
+            'about': footer[lang]
+        },
         'categories_list': Category.objects.all(),
         'company': get_company(),
         'title': _('Create Offer'),
@@ -138,6 +165,12 @@ def related_links_create(request):
 
 
 def related_links_update(request, pk=None):
+    lang = request.LANGUAGE_CODE
+    footer = {
+        'pt': Helpers.objects.get(id=1).about_footer_PT,
+        'en': Helpers.objects.get(id=1).about_footer_EN,
+        'de': Helpers.objects.get(id=1).about_footer_DE
+    }
     if not request.user.is_staff or not request.user.is_superuser:
         return redirect('accounts:signup')
     else:
@@ -159,6 +192,9 @@ def related_links_update(request, pk=None):
             return redirect('related_links:list')
 
         context = {
+            'footer': {
+            'about': footer[lang]
+        },
 
             'categories_list': Category.objects.all(),
             'company': get_company(),

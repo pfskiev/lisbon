@@ -20,6 +20,19 @@ def get_company():
 
 def home(request):
     lang = request.LANGUAGE_CODE
+    footer = {
+        'pt': Helpers.objects.get(id=1).about_footer_PT,
+        'en': Helpers.objects.get(id=1).about_footer_EN,
+        'de': Helpers.objects.get(id=1).about_footer_DE
+    }
+    breadcrumbs = [
+        {'url': '/', 'name': _('Home'), 'active': True},
+    ]
+    header = {
+        'pt': Helpers.objects.get(id=1).start_page_header_pt,
+        'en': Helpers.objects.get(id=1).start_page_header_gb,
+        'de': Helpers.objects.get(id=1).start_page_header_de
+    }
     if request.method == 'GET':
         form = BookNow()
     else:
@@ -38,23 +51,20 @@ def home(request):
         else:
             return redirect('tour:fail')
 
-    breadcrumbs = [
-        {'url': '/', 'name': _('Home'), 'active': True},
-    ]
-    header = {
-        'pt': Helpers.objects.get(id=1).start_page_header_pt,
-        'en': Helpers.objects.get(id=1).start_page_header_gb,
-        'de': Helpers.objects.get(id=1).start_page_header_de
-    }
     context = {
         'form': form,
         'categories_list': Category.objects.all(),
         'audio': Helpers.objects.get(id=1).audio,
         'company': get_company(),
         'header': header[lang],
+        'footer': {
+            'about': footer[lang]
+        },
         'img1': Helpers.objects.get(id=1).img,
         'img2': Helpers.objects.get(id=1).img2,
         'img3': Helpers.objects.get(id=1).img3,
+        'img4': Helpers.objects.get(id=1).img4,
+        'img5': Helpers.objects.get(id=1).img5,
         'lang': lang,
         'object_list': Offer.objects.all(),
         'tour_list': Tour.objects.all(),
@@ -65,11 +75,20 @@ def home(request):
 
 
 def about(request):
+    lang = request.LANGUAGE_CODE
+    footer = {
+        'pt': Helpers.objects.get(id=1).about_footer_PT,
+        'en': Helpers.objects.get(id=1).about_footer_EN,
+        'de': Helpers.objects.get(id=1).about_footer_DE
+    }
     breadcrumbs = [
         {'url': '/', 'name': _('Home')},
         {'url': '#', 'name': _('About'), 'active': True}
     ]
     context = {
+        'footer': {
+            'about': footer[lang]
+        },
         'categories_list': Category.objects.all(),
         'company': get_company(),
         'title': _('About'),
@@ -86,6 +105,12 @@ def login_or_register(request):
 
 
 def email_me(request):
+    lang = request.LANGUAGE_CODE
+    footer = {
+        'pt': Helpers.objects.get(id=1).about_footer_PT,
+        'en': Helpers.objects.get(id=1).about_footer_EN,
+        'de': Helpers.objects.get(id=1).about_footer_DE
+    }
     if request.method == 'GET':
         contact_me = ContactMe()
     else:
@@ -105,6 +130,9 @@ def email_me(request):
             return redirect('tour:fail')
 
     context = {
+        'footer': {
+            'about': footer[lang]
+        },
         'form': contact_me,
         'categories_list': Category.objects.all(),
         'title': 'Contact me',
