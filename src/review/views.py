@@ -184,9 +184,8 @@ def review_create(request):
 
         context = {
             'footer': {
-            'about': footer[lang]
-        },
-
+                'about': footer[lang]
+            },
             'categories_list': Category.objects.all(),
             'company': get_company(),
             'lang': lang,

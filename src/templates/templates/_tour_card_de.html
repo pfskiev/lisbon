@@ -3,10 +3,10 @@
 <div class="card">
 {% load i18n %}
     {% if object.img %}
-        <a href="/tours/{{ object.id }}"><img style="height: 350px;width: 100%; object-fit: cover;" class="img-fluid" src="{% thumbnail object.img|default:'default_profile.png' 350x280 crop %}" alt="{{ object.title_DE }}"></a>
+        <a href="{% url 'tour:list' %}{{ object.id }}"><img style="height: 350px;width: 100%; object-fit: cover;" class="img-fluid" src="{% thumbnail object.img|default:'default_profile.png' 350x280 crop %}" alt="{{ object.title_DE }}"></a>
     {% else %}
         {% if object.url  %}
-            <a href="/tours/{{ object.id }}"><img style="height: 350px;width: 100%;   object-fit: cover;" class="img-fluid" src="{{ object.url }}" alt="{{ object.title_DE }}"></a>
+            <a href="{% url 'tour:list' %}{{ object.id }}"><img style="height: 350px;width: 100%;   object-fit: cover;" class="img-fluid" src="{{ object.url }}" alt="{{ object.title_DE }}"></a>
         {% else %}
             <p style="text-align: center"><small><em>{% trans 'place for image' %}</em></small></p>
         {% endif %}
@@ -25,7 +25,7 @@
     <div class="card-footer">
         {% include 'templates/_share.html' %}
         {% if user.is_staff %}
-             <a class="btn btn-sm btn-danger-outline" href="{{ request.get_full_path }}{{ object.id }}/edit/">
+             <a class="btn btn-sm btn-danger-outline" href="{% url 'tour:list' %}{{ object.id }}/edit/">
                     <i class="fa fa-pencil-square-o"></i> {% trans 'Edit' %}</a>
             <a type="button" class="btn btn-sm btn-danger-outline" onclick="delete_contact({{ object.id }})" data-toggle="modal" data-target=".delete_tour"><i class="fa fa-trash"></i> {% trans 'Delete'%}</a></a>
         {% endif %}

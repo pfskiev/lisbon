@@ -60,28 +60,24 @@
             <p style="text-align: center"><a href="{% url 'tour:list' %}">
                 <em>{% trans 'full tour list' %}</em>
             </a></p>
-            <div class="row">
+            <div class="card-deck-wrapper">
+                <div class="card-deck">
                 {% if 'pt' in request.LANGUAGE_CODE %}
                     {% for object in tour_list %}
-                        <div class="col-md-4 ">
-                            {% include 'templates/_tour_card_pt.html' %}
-                        </div>
+                        {% include 'templates/_tour_card_pt.html' %}
                     {% endfor %}
                 {% endif %}
                 {% if 'en' in request.LANGUAGE_CODE %}
                     {% for object in tour_list %}
-                        <div class="col-md-4 ">
-                            {% include 'templates/_tour_card_gb.html' %}
-                        </div>
+                        {% include 'templates/_tour_card_gb.html' %}
                     {% endfor %}
                 {% endif %}
                 {% if 'de' in request.LANGUAGE_CODE %}
                     {% for object in tour_list %}
-                        <div class="col-md-4 ">
-                            {% include 'templates/_tour_card_de.html' %}
-                        </div>
+                        {% include 'templates/_tour_card_de.html' %}
                     {% endfor %}
                 {% endif %}
+                </div>
             </div>
         </div>
     </article>
