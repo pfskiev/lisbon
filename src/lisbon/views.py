@@ -25,6 +25,16 @@ def home(request):
         'en': Helpers.objects.get(id=1).about_footer_EN,
         'de': Helpers.objects.get(id=1).about_footer_DE
     }
+    tour_header = {
+        'pt': Helpers.objects.get(id=1).tour_header_name_PT,
+        'en': Helpers.objects.get(id=1).tour_header_name_EN,
+        'de': Helpers.objects.get(id=1).tour_header_name_DE
+    }
+    offer_header = {
+        'pt': Helpers.objects.get(id=1).offer_header_name_PT,
+        'en': Helpers.objects.get(id=1).offer_header_name_EN,
+        'de': Helpers.objects.get(id=1).offer_header_name_DE
+    }
     breadcrumbs = [
         {'url': '/', 'name': _('Home'), 'active': True},
     ]
@@ -59,6 +69,10 @@ def home(request):
         'header': header[lang],
         'footer': {
             'about': footer[lang]
+        },
+        'section': {
+            'tour_header': tour_header[lang],
+            'offer_header': offer_header[lang]
         },
         'img1': Helpers.objects.get(id=1).img,
         'img2': Helpers.objects.get(id=1).img2,

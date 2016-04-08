@@ -56,7 +56,10 @@
     </article>
     <article class="tours">
         <div class="container">
-            <h3 class="display-3 text-md-center">{% trans 'Our tours and excursions in Lisbon and in Portugal' %}</h3>
+
+            <h3 class="display-3 text-md-center">{{ section.tour_header }}</h3>
+
+{#            <h3 class="display-3 text-md-center">{% trans 'Our tours and excursions in Lisbon and in Portugal' %}</h3>#}
             <p style="text-align: center"><a href="{% url 'tour:list' %}">
                 <em>{% trans 'full tour list' %}</em>
             </a></p>
@@ -87,7 +90,10 @@
     </article>
     <article style="padding-bottom: 100px;padding-top: 100px" class="offer">
         <div class="container marketing">
-            <h3 class="display-3 text-md-center">{% trans 'Offers' %}</h3>
+
+            <h3 class="display-3 text-md-center">{{ section.offer_header }}</h3>
+
+{#            <h3 class="display-3 text-md-center">{% trans 'Offers' %}</h3>#}
             <p style="text-align: center"><a href="{% url 'offer:list' %}"><em>{% trans 'full offer list' %}</em></a></p>
             <div class="row">
                 {% for object in object_list%}
