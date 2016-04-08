@@ -10,14 +10,35 @@
         {% if 'pt' in request.LANGUAGE_CODE %}
             <h2>{{ object.title_PT }}</h2>
             <p class="text-justify">{{ object.description_PT|truncatechars:200 }}</p>
+
+            <p>
+                <small>
+                    <em class="text-uppercase">{% trans 'category' %}: </em>
+                    <em>
+                        <a href="/tours/{{ object.category.url }}">{{ object.category }}</a>
+                    </em>
+                </small>
+            </p>
+            <p>
+                <small>
+                    <em class="text-uppercase">{% trans 'tour' %}: </em>
+                    <em>
+                        <a href="/tours/{{ object.tour.id }}">{{ object.tour }}</a>
+                    </em>
+                </small>
+            </p>
         {% endif %}
         {% if 'en' in request.LANGUAGE_CODE %}
             <h2>{{ object.title_EN }}</h2>
             <p class="text-justify">{{ object.description_EN|truncatechars:200 }}</p>
+            <p>{{ object.category }}</p>
+            <p>{{ object.tour }}</p>
         {% endif %}
         {% if 'de' in request.LANGUAGE_CODE %}
             <h2>{{ object.title_DE }}</h2>
             <p class="text-justify">{{ object.description_DE|truncatechars:200 }}</p>
+            <p>{{ object.category }}</p>
+            <p>{{ object.tour }}</p>
         {% endif %}
         {% include 'templates/_share.html' %}
         {% include 'templates/_CRUD.html' %}

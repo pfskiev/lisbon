@@ -1,4 +1,5 @@
 from django.db import models
+from tours.models import Category, Tour
 
 
 class Article(models.Model):
@@ -8,13 +9,15 @@ class Article(models.Model):
     description_PT = models.TextField(max_length=1000, blank=True, null=False)
     description_EN = models.TextField(max_length=1000, blank=True, null=False)
     description_DE = models.TextField(max_length=1000, blank=True, null=False)
+    category = models.ForeignKey(Category, default=1, blank=True, null=True)
+    tour = models.ForeignKey(Tour, default=1, blank=True, null=True)
     link = models.URLField(max_length=100, blank=True, null=False)
     img = models.ImageField(null=True, blank=True)
     keywords_SEO = models.TextField(max_length=1000, blank=True, null=False)
     description_SEO = models.TextField(max_length=1000, blank=True, null=False)
 
     def get_absolute_url(self):
-        return "/related-links/%i/" % self.id
+        return "/news/%i/" % self.id
 
     def __str__(self):
         return self.title_EN

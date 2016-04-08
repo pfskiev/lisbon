@@ -6,6 +6,7 @@ from contacts.models import Contact
 from gallery.models import Gallery
 from review.models import Review
 from offer.models import Offer
+from news.models import Article
 
 
 class StaticSitemap(Sitemap):
@@ -25,6 +26,14 @@ class TourSitemap(Sitemap):
 
     def items(self):
         return Tour.objects.all()
+
+
+class NewsSitemap(Sitemap):
+    changefreq = "hourly"
+    priority = 0.5
+
+    def items(self):
+        return Article.objects.all()
 
 
 class ContactSitemap(Sitemap):
@@ -74,5 +83,7 @@ sitemaps = {
     'gallery': GallerySitemap(),
     'offer': OfferSitemap(),
     'review': ReviewSitemap(),
-    'category': CategorySitemap()
+    'category': CategorySitemap(),
+    'news': NewsSitemap()
+
 }
