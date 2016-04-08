@@ -14,4 +14,10 @@
         </form>
     </div>
     </section>
+    <script>
+    _.map(['textarea', 'input', 'label', 'select'], function(el){
+                el === 'label' && $(el).attr('type') !== 'submit' ? $(el).addClass('my-label') : $(el).addClass('form-control');
+            });
+        $('select').css('height', '40px')
+    </script>
 {% endblock %}
