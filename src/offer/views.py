@@ -126,7 +126,10 @@ def offer_detail(request, pk=None):
             'title': title[lang],
             'description': description[lang],
             'img': offer.img,
+            'url': offer.category
+
         },
+        'offer': Offer.objects.get(pk=pk)
     }
 
     return render(request, 'templates/_offer_details.html', context)

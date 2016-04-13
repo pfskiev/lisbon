@@ -105,19 +105,11 @@ ol.breadcrumb > li > a {
   background: #fff;
   background: -webkit-linear-gradient(to left, #ffffff, #eee);
   background: linear-gradient(to left, #ffffff, #eee);
-  -webkit-box-shadow: 0 0 50px -4px rgba(0, 0, 0, 0.55);
-  -moz-box-shadow: 0 0 50px -4px rgba(0, 0, 0, 0.55);
-  box-shadow: 0 0 50px -4px rgba(0, 0, 0, 0.55);
   transition: all .3s ease; }
   .card h4.card-title {
     color: #0E2F56; }
   .card p {
     color: #0E2F56; }
-
-.card:hover {
-  -webkit-box-shadow: 0 0 50px -4px black;
-  -moz-box-shadow: 0 0 50px -4px black;
-  box-shadow: 0 0 50px -4px black; }
 
 .fa {
   color: #FF304F; }
@@ -149,6 +141,13 @@ ol.breadcrumb > li > a {
 .awesome-background {
   background: -webkit-linear-gradient( right , #ECE9E6, #FFFFFF);
   background: linear-gradient(to left, #ECE9E6, #FFFFFF); }
+
+img {
+  -ms-interpolation-mode: nearest-neighbor;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -o-crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges; }
 
 .fa {
   opacity: 0.7;
@@ -313,6 +312,8 @@ article.tours {
   background: linear-gradient(to left, #C9FFBF, #FFAFBD); }
 
 .offer {
+  padding-bottom: 100px;
+  padding-top: 100px;
   background: -webkit-linear-gradient( right , #EFEFBB, #D4D3DD);
   background: linear-gradient(to left, #EFEFBB, #D4D3DD); }
 
@@ -377,5 +378,18 @@ p.goldenlisbon:hover {
 
 .modal {
   z-index: 9999; }
+
+.player {
+  position: absolute;
+  display: block;
+  z-index: 9999;
+  left: 36%;
+  opacity: 0.4;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out; }
+
+.player:hover {
+  opacity: 1; }
 
 /*# sourceMappingURL=styles.css.map */

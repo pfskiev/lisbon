@@ -13,6 +13,7 @@
 @import 'scss/nav';
 @import 'scss/section';
 @import 'scss/variables';
+@import 'scss/bourbon/bourbon';
 
 
 .img {
@@ -74,10 +75,25 @@ p.goldenlisbon {
   z-index: 7000;
 
 }
+
+
 p.goldenlisbon:hover {
   color:darkgoldenrod !important;
 
 }
 .modal {
   z-index: 9999;
+}
+
+.player {
+  position: absolute;
+  display: block;
+  z-index: 9999;
+  left: 36%;
+  opacity: 0.4;
+  @include transition(all .3s ease-in-out);
+}
+
+.player:hover {
+  opacity: 1;
 }

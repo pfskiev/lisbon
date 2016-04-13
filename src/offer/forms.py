@@ -7,6 +7,7 @@ class OfferForm(forms.ModelForm):
         model = Offer
         fields = [
 
+            'category',
             'title_PT',
             'title_EN',
             'title_DE',

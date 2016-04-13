@@ -80,7 +80,7 @@ def home(request):
         'img4': Helpers.objects.get(id=1).img4,
         'img5': Helpers.objects.get(id=1).img5,
         'lang': lang,
-        'object_list': Offer.objects.all(),
+        'offer_list': Offer.objects.all(),
         'tour_list': Tour.objects.all(),
         'breadcrumbs': breadcrumbs
 

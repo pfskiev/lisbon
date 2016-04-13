@@ -15,6 +15,8 @@ article.tours {
   @include background(linear-gradient(to left, #C9FFBF, #FFAFBD));
 }
 .offer {
+  padding-bottom: 100px;
+  padding-top: 100px;
   @include background(linear-gradient(to left, #EFEFBB, #D4D3DD));
 }
 .form-box {

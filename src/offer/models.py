@@ -14,6 +14,7 @@ class Offer(models.Model):
     created_on = models.DateTimeField(auto_now_add=True, auto_created=False)
     img = models.ImageField(null=True, blank=True)
     position = models.IntegerField(default=1, blank=True, null=True)
+    category = models.ForeignKey(Category, default=None, blank=True, null=True)
 
     def get_absolute_url(self):
         return "/offers/%i/" % self.id

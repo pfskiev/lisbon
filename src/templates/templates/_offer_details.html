@@ -21,6 +21,7 @@
                     <p class="card-text"> {{ object.title }}</p>
                     <small><em class="text-uppercase">{% trans 'description' %}:</em></small>
                     <p class="card-text"> {{ object.description }}</p>
+                    <a class="btn btn-danger" href="/tours/">{% trans 'SEE ALL' %}</a>
                     {% if user.is_staff or user.is_superuser %}
                         <a class="btn btn-sm btn-danger-outline" href="/offer/{{ object.id }}/delete/">
                             <i class="fa fa-trash"></i> {% trans 'Delete' %}</a>
