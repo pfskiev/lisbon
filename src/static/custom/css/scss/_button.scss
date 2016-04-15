@@ -1,6 +1,8 @@
 @import 'variables';
+@import 'bourbon/bourbon';
 
 .btn.btn-success-outline {
+  @include transition(all .3s ease-in-out);
   color:darkgoldenrod;
   border:1px solid darkgoldenrod;
   transition:all .3s ease;
@@ -11,6 +13,7 @@
   border:1px solid gold;
 }
 .btn-danger {
+  @include transition(all .3s ease-in-out);
   color: $color_white;
   background-color: #E83F6F;
   border-color: #E83F6F;
@@ -23,6 +26,7 @@
   transition: all .3s ease;
 }
 .btn-danger-outline {
+  @include transition(all .3s ease-in-out);
   color: #E83F6F;
   background-color: $color_white;
   border-color: #E83F6F;
@@ -37,6 +41,7 @@
   }
 }
 .btn-blue {
+  @include transition(all .3s ease-in-out);
   color: $color_white;
   background-color: $btn-primary;
   border-color: $btn-primary;
@@ -48,6 +53,7 @@
   border-color: $color_white;
 }
 .btn-blue-outline {
+  @include transition(all .3s ease-in-out);
   color: $btn-primary;
   background-color: $color_white;
   border-color: $btn-primary;
@@ -59,7 +65,39 @@
   border-color: $color_white;
 }
 .btn-warning {
+  @include transition(all .3s ease-in-out);
   .fa {
     color: $color_white
   }
+}
+.btn-gold {
+  @include transition(all .3s ease-in-out);
+  color: $color_white;
+  background-color: $btn-gold;
+  border-color: $btn-gold;
+}
+.btn-gold {
+  @include transition(all .3s ease-in-out);
+  color: $color_white;
+  background-color: $btn-gold;
+  border-color: $btn-gold;
+}
+.btn-gold:hover{
+  color: $color_white;
+  background-color: $btn-gold-hover;
+  border-color: $btn-gold-hover;
+}
+.btn {
+  margin: 3px 0;
+}
+.btn-contact {
+  opacity: 0.6;
+  position: fixed;
+  z-index: 100;
+  right: 0;
+  top: 50%;
+}
+.btn-contact:hover {
+  opacity: 1;
+  z-index: 100;
 }

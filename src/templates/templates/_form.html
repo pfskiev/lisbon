@@ -4,8 +4,8 @@
     <nav>
         {% include 'templates/_breadcrumbs.html' %}
     </nav>
-    <section ng-app="App">
-    <div class="container" ng-controller="textEditorCtrl">
+    <section>
+    <div class="container">
         <h4 class="display-4">{{ title }}</h4>
 {#        <div text-angular ng-model="htmlVariable"></div>#}
         <form method='POST' action='' enctype='multipart/form-data'>{% csrf_token %}

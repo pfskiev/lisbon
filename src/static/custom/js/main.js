@@ -12,6 +12,7 @@ $('document').ready(function() {
                 el === 'label' && $(el).attr('type') !== 'submit' ? $(el).addClass('my-label') : $(el).addClass('form-control');
             });
         $('select').css('height', '40px')
+
 });
 
 function delete_contact(id) {

@@ -75,8 +75,6 @@ p.goldenlisbon {
   z-index: 7000;
 
 }
-
-
 p.goldenlisbon:hover {
   color:darkgoldenrod !important;
 
@@ -89,7 +87,7 @@ p.goldenlisbon:hover {
   position: absolute;
   display: block;
   z-index: 9999;
-  left: 36%;
+  right:0;
   opacity: 0.4;
   @include transition(all .3s ease-in-out);
 }

@@ -19,6 +19,23 @@ def get_company():
 
 
 def home(request):
+    if request.method == 'GET':
+        contact_me = ContactMe()
+    else:
+        contact_me = ContactMe(request.POST)
+        if contact_me.is_valid():
+            fullname = contact_me.cleaned_data['fullname']
+            message = contact_me.cleaned_data['message']
+            subject = 'Mail from ' + fullname
+            from_email = settings.EMAIL_HOST_USER
+            to_list = settings.EMAIL_TO
+            try:
+                send_mail(subject, message, from_email, to_list, fail_silently=False)
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return redirect('tour:success')
+        else:
+            return redirect('tour:fail')
     lang = request.LANGUAGE_CODE
     footer = {
         'pt': Helpers.objects.get(id=1).about_footer_PT,
@@ -67,6 +84,8 @@ def home(request):
         'audio': Helpers.objects.get(id=1).audio,
         'company': get_company(),
         'header': header[lang],
+        'value': _('Send'),
+        'contact_me': contact_me,
         'footer': {
             'about': footer[lang]
         },
@@ -155,3 +174,30 @@ def email_me(request):
             {'url': '/', 'name': _('Home')},
         ]}
     return render(request, 'partials/email.html', context)
+
+
+def contact_us(request):
+    if request.method == 'GET':
+        contact_me = ContactMe()
+    else:
+        contact_me = ContactMe(request.POST)
+        if contact_me.is_valid():
+            fullname = contact_me.cleaned_data['fullname']
+            message = contact_me.cleaned_data['message']
+            subject = 'Mail from ' + fullname
+            from_email = settings.EMAIL_HOST_USER
+            to_list = settings.EMAIL_TO
+            try:
+                send_mail(subject, message, from_email, to_list, fail_silently=False)
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return redirect('tour:success')
+        else:
+            return redirect('tour:fail')
+
+    context = {
+        'value': _('SEND'),
+        'contact_me': contact_me
+    }
+
+    return render(request, 'templates/_contact_us_form.html', context)

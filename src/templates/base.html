@@ -2,7 +2,7 @@
 {% load thumbnail %}
 {% load i18n %}
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="App">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -35,8 +35,9 @@
     <script src="{% static 'custom/js/main.js' %}"></script>
     <script src="{% static 'custom/js/app/app.js' %}"></script>
     <script src="{% static 'custom/js/app/controller.js' %}"></script>
+    <script src="{% static 'custom/js/app/directive.js' %}"></script>
 </head>
-<body>
+<body ng-controller="textEditorCtrl">
 {% include 'templates/nav/_nav_test.html' %}
 {% include 'templates/_alerts.html' %}
 

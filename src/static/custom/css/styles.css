@@ -30,6 +30,9 @@ ol.breadcrumb > li > a {
   transition: all .5s ease; }
 
 .btn.btn-success-outline {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   color: darkgoldenrod;
   border: 1px solid darkgoldenrod;
   transition: all .3s ease; }
@@ -40,6 +43,9 @@ ol.breadcrumb > li > a {
   border: 1px solid gold; }
 
 .btn-danger {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   color: #FFF;
   background-color: #E83F6F;
   border-color: #E83F6F;
@@ -52,6 +58,9 @@ ol.breadcrumb > li > a {
   transition: all .3s ease; }
 
 .btn-danger-outline {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   color: #E83F6F;
   background-color: #FFF;
   border-color: #E83F6F;
@@ -65,6 +74,9 @@ ol.breadcrumb > li > a {
     color: #FFF; }
 
 .btn-blue {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   color: #FFF;
   background-color: #2274A5;
   border-color: #2274A5;
@@ -76,6 +88,9 @@ ol.breadcrumb > li > a {
   border-color: #FFF; }
 
 .btn-blue-outline {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   color: #2274A5;
   background-color: #FFF;
   border-color: #2274A5;
@@ -86,8 +101,47 @@ ol.breadcrumb > li > a {
   background-color: #2274A5;
   border-color: #FFF; }
 
-.btn-warning .fa {
-  color: #FFF; }
+.btn-warning {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out; }
+  .btn-warning .fa {
+    color: #FFF; }
+
+.btn-gold {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  color: #FFF;
+  background-color: #ffd700;
+  border-color: #ffd700; }
+
+.btn-gold {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  color: #FFF;
+  background-color: #ffd700;
+  border-color: #ffd700; }
+
+.btn-gold:hover {
+  color: #FFF;
+  background-color: #b8860b;
+  border-color: #b8860b; }
+
+.btn {
+  margin: 3px 0; }
+
+.btn-contact {
+  opacity: 0.6;
+  position: fixed;
+  z-index: 100;
+  right: 0;
+  top: 50%; }
+
+.btn-contact:hover {
+  opacity: 1;
+  z-index: 100; }
 
 .contact h5 {
   color: #0E2F56; }
@@ -382,7 +436,7 @@ p.goldenlisbon:hover {
   position: absolute;
   display: block;
   z-index: 9999;
-  left: 36%;
+  right: 0;
   opacity: 0.4;
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;

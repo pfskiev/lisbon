@@ -1,3 +1,7 @@
 (function(){
-    angular.module('App', ['textAngular'])
+    angular.module('App', ['textAngular']).config(
+        function($interpolateProvider) {
+            $interpolateProvider.startSymbol('[[');
+            $interpolateProvider.endSymbol(']]');
+        });
 }());
