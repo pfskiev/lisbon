@@ -134,9 +134,8 @@ ol.breadcrumb > li > a {
 
 .btn-contact {
   opacity: .6;
-  position: fixed;
+  position: absolute;
   z-index: 100;
-  /* right: 0; */
   top: 110px;
   left: 42%; }
 
