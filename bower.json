@@ -28,6 +28,7 @@
     "tether": "^1.2.0",
     "angular": "^1.5.3",
     "textAngular": "^1.5.0",
-    "angular-sanitize": "^1.5.3"
+    "angular-sanitize": "^1.5.3",
+    "intl-tel-input": "^8.4.9"
   }
 }

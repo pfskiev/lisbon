@@ -10,9 +10,6 @@
     {% include 'templates/_breadcrumbs.html' %}
     <article>
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-            <audio autoplay loop controls preload="true" class="player">
-                <source src="media/{{ audio }}" type="audio/mpeg">
-            </audio>
             <ol class="carousel-indicators">
                 <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
                 <li data-target="#carousel-example-generic" data-slide-to="1"></li>
@@ -54,10 +51,15 @@
             </a>
         </div>
     </article>
+    <audio autoplay loop controls preload="true" class="player">
+        <source src="media/{{ audio }}" type="audio/mpeg">
+    </audio>
     <article class="tours">
         <div class="container">
 
             <h3 class="display-3 text-md-center">{{ section.tour_header }}</h3>
+
+        <input type="tel" class="phone" placeholder="">
 
 {#            <h3 class="display-3 text-md-center">{% trans 'Our tours and excursions in Lisbon and in Portugal' %}</h3>#}
             <p style="text-align: center"><a href="{% url 'tour:list' %}">
@@ -98,4 +100,6 @@
     </article>
     <button class="btn btn-lg btn-gold btn-contact" data-toggle="modal" data-target="#contactUs">{% trans 'Contact Us' %}</button>
     {% include 'templates/modal/_contact_us.html' %}
+    <script>
+</script>
 {% endblock content %}
