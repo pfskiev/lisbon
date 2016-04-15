@@ -102,11 +102,11 @@ def offer_detail(request, pk=None):
         'en': offer.title_EN,
         'de': offer.title_DE
     }
-    description = {
-        'pt': offer.description_PT,
-        'en': offer.description_EN,
-        'de': offer.description_DE
-    }
+    # description = {
+    #     'pt': offer.description_PT,
+    #     'en': offer.description_EN,
+    #     'de': offer.description_DE
+    # }
     breadcrumbs = [
         {'url': '/', 'name': _('Home'), 'active': False},
         {'url': '/offer', 'name': _('Offers'), 'active': False},
@@ -119,16 +119,17 @@ def offer_detail(request, pk=None):
         'company': get_company(),
         'breadcrumbs': breadcrumbs,
         'title': title[get_lang(request)],
-        'object': {
-            'id': offer.id,
-            'keywords_SEO': offer.keywords_SEO,
-            'description_SEO': offer.description_SEO,
-            'title': title[lang],
-            'description': description[lang],
-            'img': offer.img,
-            'url': offer.category
-
-        },
+        'object': offer,
+        # 'object': {
+        #     'id': offer.id,
+        #     'keywords_SEO': offer.keywords_SEO,
+        #     'description_SEO': offer.description_SEO,
+        #     'title': title[lang],
+        #     'description': description[lang],
+        #     'img': offer.img,
+        #     'url': offer.category
+        #
+        # },
         'offer': Offer.objects.get(pk=pk)
     }
 

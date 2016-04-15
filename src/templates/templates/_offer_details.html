@@ -17,11 +17,35 @@
                     {% endif %}
                 </div>
                 <div class="col-md-6">
+
+
+                {% if 'pt' in request.LANGUAGE_CODE %}
                     <small><em class="text-uppercase">{% trans 'title' %}:</em></small>
-                    <p class="card-text"> {{ object.title }}</p>
+    <h4 style="margin-top: 20px" class="card-title ">{{ object.title_PT }}</h4>
                     <small><em class="text-uppercase">{% trans 'description' %}:</em></small>
-                    <p class="card-text"> {{ object.description }}</p>
-                    <a class="btn btn-danger" href="/tours/">{% trans 'SEE ALL' %}</a>
+    <p class="card-text ">{{ object.description_PT|truncatechars:200 }}</p>
+    <p class="">
+        <a class="btn btn-danger" href="{% url 'tour:list' %}{{ object.category.url }}">{% trans 'VER TODAS OFERTAS' %}</a>
+    </p>
+{% endif %}
+{% if 'en' in request.LANGUAGE_CODE %}
+    <small><em class="text-uppercase">{% trans 'title' %}:</em></small>
+    <h4 style="margin-top: 20px" class="card-title ">{{ object.title_EN }}</h4>
+    <small><em class="text-uppercase">{% trans 'description' %}:</em></small>
+    <p class="card-text ">{{ object.description_EN|truncatechars:200 }}</p>
+    <p class="">
+        <a class="btn btn-danger" href="{% url 'tour:list' %}{{ object.category.url }}">{% trans 'SEE ALL OFFERS' %}</a>
+    </p>
+{% endif %}
+{% if 'de' in request.LANGUAGE_CODE %}
+    <small><em class="text-uppercase">{% trans 'title' %}:</em></small>
+    <h4 style="margin-top: 20px" class="card-title ">{{ object.title_DE }}</h4>
+    <small><em class="text-uppercase">{% trans 'description' %}:</em></small>
+    <p class="card-text ">{{ object.description_DE|truncatechars:200 }}</p>
+    <p class="">
+        <a class="btn btn-danger" href="{% url 'tour:list' %}{{ object.category.url }}">{% trans 'SEHEN ALLE ANGEBOTE' %}</a>
+    </p>
+{% endif %}
                     {% if user.is_staff or user.is_superuser %}
                         <a class="btn btn-sm btn-danger-outline" href="/offer/{{ object.id }}/delete/">
                             <i class="fa fa-trash"></i> {% trans 'Delete' %}</a>

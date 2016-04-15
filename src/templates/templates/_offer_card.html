@@ -31,7 +31,6 @@
         <a class="btn btn-danger" href="{% url 'tour:list' %}{{ object.category.url }}">{% trans 'SEHEN ALLE ANGEBOTE' %}</a>
     </p>
 {% endif %}
-
 <div class="center-block">
     {% if 'offer' in request.path %}
     {% include 'templates/_CRUD.html' %}
