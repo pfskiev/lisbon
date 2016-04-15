@@ -3,12 +3,7 @@
 .card {
   min-width: 320px;
   border: 0;
-  background: #fff;
-  background: -webkit-linear-gradient(to left, #ffffff , #eee);
-  background: linear-gradient(to left, #ffffff , #eee);
-  //-webkit-box-shadow: 0 0 50px -4px rgba(0,0,0,0.55);
-  //-moz-box-shadow: 0 0 50px -4px rgba(0,0,0,0.55);
-  //box-shadow: 0 0 50px -4px rgba(0,0,0,0.55);
+  @include background(linear-gradient(to right, rgb(255, 255, 255), rgb(238, 238, 238)));
   transition: all .3s ease;
   h4.card-title {
     color: $color_blue;

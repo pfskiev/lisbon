@@ -102,9 +102,8 @@ ol.breadcrumb > li > a {
 .card {
   min-width: 320px;
   border: 0;
-  background: #fff;
-  background: -webkit-linear-gradient(to left, #ffffff, #eee);
-  background: linear-gradient(to left, #ffffff, #eee);
+  background: -webkit-linear-gradient( left , white, #eeeeee);
+  background: linear-gradient(to right, white, #eeeeee);
   transition: all .3s ease; }
   .card h4.card-title {
     color: #0E2F56; }

@@ -14,21 +14,21 @@
     <h4 style="margin-top: 20px" class="card-title text-md-center">{{ object.title_PT }}</h4>
     <p class="card-text text-md-center">{{ object.description_PT|truncatechars:200 }}</p>
     <p class="text-md-center">
-        <a class="btn btn-danger" href="{% url 'tour:list' %}{{ object.category.url }}">{% trans 'VEJA TODOS' %}</a>
+        <a class="btn btn-danger" href="{% url 'tour:list' %}{{ object.category.url }}">{% trans 'VER TODAS OFERTAS' %}</a>
     </p>
 {% endif %}
 {% if 'en' in request.LANGUAGE_CODE %}
     <h4 style="margin-top: 20px" class="card-title text-md-center">{{ object.title_EN }}</h4>
     <p class="card-text text-md-center">{{ object.description_EN|truncatechars:200 }}</p>
     <p class="text-md-center">
-        <a class="btn btn-danger" href="{% url 'tour:list' %}{{ object.category.url }}">{% trans 'SEE ALL' %}</a>
+        <a class="btn btn-danger" href="{% url 'tour:list' %}{{ object.category.url }}">{% trans 'SEE ALL OFFERS' %}</a>
     </p>
 {% endif %}
 {% if 'de' in request.LANGUAGE_CODE %}
     <h4 style="margin-top: 20px" class="card-title text-md-center">{{ object.title_DE }}</h4>
     <p class="card-text text-md-center">{{ object.description_DE|truncatechars:200 }}</p>
     <p class="text-md-center">
-        <a class="btn btn-danger" href="{% url 'tour:list' %}{{ object.category.url }}">{% trans 'SEHEN SIE ALE' %}</a>
+        <a class="btn btn-danger" href="{% url 'tour:list' %}{{ object.category.url }}">{% trans 'SEHEN ALLE ANGEBOTE' %}</a>
     </p>
 {% endif %}
 
