@@ -83,14 +83,12 @@ def news_list(request):
 
 
 def news_detail(request, pk=None):
-    lang = get_lang(request)
     footer = {
         'pt': Helpers.objects.get(id=1).about_footer_PT,
         'en': Helpers.objects.get(id=1).about_footer_EN,
         'de': Helpers.objects.get(id=1).about_footer_DE
     }
     article = Article.objects.get(pk=pk)
-    lang = get_lang(request)
     title = {
         'pt': article.title_PT,
         'en': article.title_EN,
@@ -101,6 +99,7 @@ def news_detail(request, pk=None):
         'en': article.description_EN,
         'de': article.description_DE
     }
+    lang = get_lang(request)
     breadcrumbs = [
         {'url': '/', 'name': _('Home'), 'active': False},
         {'url': '/news', 'name': _('News'), 'active': False},
@@ -113,7 +112,7 @@ def news_detail(request, pk=None):
         'categories_list': Category.objects.all(),
         'company': get_company(),
         'breadcrumbs': breadcrumbs,
-        'title': title[get_lang(request)],
+        'title': title[lang],
         'object': {
             'id': article.id,
             'keywords_SEO': article.keywords_SEO,

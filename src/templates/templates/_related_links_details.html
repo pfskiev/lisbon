@@ -12,6 +12,8 @@
         <div class="container">
             <div class="row">
 
+                {{ object.titlle }}
+
             </div>
             {% if user.is_staff or user.is_superuser %}
                 <a class="btn btn-warning" href="{% url 'news:create' %}"><i class="fa fa-plus"></i> {% trans 'Create Article' %}</a>
