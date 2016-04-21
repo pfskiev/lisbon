@@ -124,7 +124,7 @@ def news_detail(request, pk=None):
         },
     }
 
-    return render(request, 'templates/_related_links_details.html', context)
+    return render(request, 'templates/_news_details.html', context)
 
 
 def news_create(request):
