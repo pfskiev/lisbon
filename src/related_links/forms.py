@@ -23,5 +23,4 @@ class RelatedLinkForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(RelatedLinkForm, self).__init__(*args, **kwargs)
-        super().__init__()
         self.fields['img'].required = True

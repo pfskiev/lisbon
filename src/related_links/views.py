@@ -193,8 +193,8 @@ def related_links_update(request, pk=None):
 
         context = {
             'footer': {
-            'about': footer[lang]
-        },
+                'about': footer[lang]
+            },
 
             'categories_list': Category.objects.all(),
             'company': get_company(),
