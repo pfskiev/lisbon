@@ -164,6 +164,10 @@ ol.breadcrumb > li > a {
     color: #0E2F56; }
   .card p {
     color: #0E2F56; }
+  .card:hover {
+    transition: all .3s ease;
+    background: -webkit-linear-gradient( right , #ECE9E6, #FFFFFF);
+    background: linear-gradient(to left, #ECE9E6, #FFFFFF); }
 
 .fa {
   color: #FF304F; }

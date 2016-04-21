@@ -11,13 +11,11 @@
   p {
     color: $color_blue;
   }
+  &:hover {
+    transition: all .3s ease;
+    @include background(linear-gradient(to left, #ECE9E6, #FFFFFF));
+  }
 }
-.card:hover {
-  //-webkit-box-shadow: 0 0 50px -4px rgb(0, 0, 0);
-  //-moz-box-shadow: 0 0 50px -4px rgb(0, 0, 0);
-  //box-shadow: 0 0 50px -4px rgb(0, 0, 0);
-}
-
 .fa {
   color: $color_red;
 }
