@@ -9,7 +9,7 @@ class RelatedLink(models.Model):
     description_EN = models.TextField(max_length=1000, blank=True, null=False)
     description_DE = models.TextField(max_length=1000, blank=True, null=False)
     link = models.URLField(max_length=100, blank=True, null=False)
-    img = models.FileField(null=True, blank=True)
+    img = models.ImageField(null=True, blank=True)
     keywords_SEO = models.TextField(max_length=1000, blank=True, null=False)
     description_SEO = models.TextField(max_length=1000, blank=True, null=False)
 
