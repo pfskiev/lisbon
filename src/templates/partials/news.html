@@ -10,11 +10,9 @@
             <h1 class="display-3">{{ title }}</h1>
         </div>
         <div class="container">
-            <div class="row">
+            <div class="card-columns">
                 {% for object in object_list %}
-                    <div class="col-md-4">
-                        {% include 'templates/_news_card.html' %}
-                    </div>
+                    {% include 'templates/_news_card.html' %}
                 {% endfor %}
             </div>
             {% if user.is_staff or user.is_superuser %}
