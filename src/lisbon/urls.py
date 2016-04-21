@@ -21,6 +21,7 @@ urlpatterns = [
     url(r'^news/', include('news.urls', namespace='news')),
     url(r'^about/$', views.about, name='about'),
     url(r'^contact-us/$', views.contact_us, name='contact_us'),
+    url(r'^book-form/$', views.book_form, name='book_form'),
     url(r'^login-or-register/$', views.login_or_register, name='login_or_register'),
     url(r'^offer/', include('offer.urls', namespace='offer')),
     url(r'^category/', include('category.urls', namespace='category')),

@@ -1,0 +1,4 @@
+<form method='POST' action='' enctype='multipart/form-data'>{% csrf_token %}
+    {{ form_book_now.as_p }}
+    <input type='submit' class='btn btn-lg btn-primary' value='{{ value }}' />
+</form>

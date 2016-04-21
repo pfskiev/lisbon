@@ -39,39 +39,3 @@
         <p style="padding-top: 50px; text-align: center">{% trans 'All Original Content' %} © 2015-{% now 'Y' %} {{ company }}, {% trans 'All Rights Reserved' %}</p>
     </div>
 </footer>
-<script>
-    $(document).ready(function()
-
-    {
-
-        debugger
-
-        setTimeout(function(){
-            $(".phone").each(function(){
-            $(this).intlTelInput({
-      allowDropdown: true,
-      autoHideDialCode: true,
-      autoPlaceholder: true,
-      dropdownContainer: "body",
-      excludeCountries: ["us"],
-      geoIpLookup: function(callback) {
-        $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
-          var countryCode = (resp && resp.country) ? resp.country : "";
-          callback(countryCode);
-        });
-      },
-      initialCountry: "auto",
-      nationalMode: false,
-      numberType: "MOBILE",
-      onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
-      preferredCountries: ['cn', 'jp'],
-      separateDialCode: true
-  });
-        })
-
-        }, 1000)
-
-
-
-    })
-</script>

@@ -2,7 +2,7 @@
 {% load thumbnail %}
 {% load i18n %}
 <!doctype html>
-<html lang="en" ng-app="App">
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,7 +19,6 @@
     <link rel="stylesheet" href="{% static 'vendor/flag-icon-css/css/flag-icon.min.css' %}">
     <link rel="stylesheet" href="{% static 'custom/css/styles.min.css' %}">
     <link rel="stylesheet" href="{% static 'vendor/jquery-ui/themes/flick/jquery-ui.min.css' %}">
-    <link rel="stylesheet" href="{% static 'vendor/intl-tel-input/build/css/intLTelInput.css' %}">
     <script src="{% static 'vendor/angular/angular.min.js' %}"></script>
     <script src="{% static 'vendor/angular-sanitize/angular-sanitize.min.js' %}"></script>
     <script src="{% static 'vendor/textAngular/dist/textAngular-rangy.min.js' %}"></script>
@@ -33,14 +32,11 @@
     <script src="{% static 'vendor/lodash/dist/lodash.min.js' %}"></script>
     <script src="{% static 'vendor/rxjs/dist/rx.all.min.js' %}"></script>
     <script src="{% static 'vendor/moment/min/moment.min.js' %}"></script>
-    <script src="{% static 'vendor/intl-tel-input/build/js/intLTelInput.min.js' %}"></script>
-    <script src="{% static 'vendor/intl-tel-input/build/js/utils.js' %}"></script>
     <script src="{% static 'custom/js/main.js' %}"></script>
     <script src="{% static 'custom/js/app/app.js' %}"></script>
     <script src="{% static 'custom/js/app/controller.js' %}"></script>
-    <script src="{% static 'custom/js/app/directive.js' %}"></script>
 </head>
-<body ng-controller="textEditorCtrl">
+<body>
 {% include 'templates/nav/_nav_test.html' %}
 {% include 'templates/_alerts.html' %}
 
