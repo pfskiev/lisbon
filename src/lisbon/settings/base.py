@@ -101,7 +101,8 @@ PROJECT_APPS = [
     'helpers',
     'related_links',
     'news',
-    'rent_car'
+    'rent_car',
+    'rent_hotel'
 ]
 
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS + HELPER_APPS

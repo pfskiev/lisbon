@@ -20,6 +20,7 @@ urlpatterns = [
     url(r'^contacts/', include('contacts.urls', namespace='contact')),
     url(r'^news/', include('news.urls', namespace='news')),
     url(r'^rent-car/', include('rent_car.urls', namespace='rent_car')),
+    url(r'^rent-hotel/', include('rent_hotel.urls', namespace='rent_hotel')),
     url(r'^about/$', views.about, name='about'),
     url(r'^contact-us/$', views.contact_us, name='contact_us'),
     url(r'^book-form/$', views.book_form, name='book_form'),
