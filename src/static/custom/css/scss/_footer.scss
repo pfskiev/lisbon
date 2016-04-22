@@ -25,3 +25,81 @@ footer {
     color: white;
   }
 }
+
+.footer {
+  @include background(linear-gradient(to left, $color_blue, $color_blue_light));
+  padding: ($base-spacing * 2) ;
+  width: 100%;
+
+  .footer-logo {
+    margin-bottom: 2em;
+    text-align: center;
+
+    img {
+      height: 3em;
+    }
+  }
+
+  .footer-links {
+    margin-bottom: $base-spacing;
+    @include  display(flex);
+    @include  flex-wrap(wrap);
+    @include justify-content(center);
+
+  }
+
+  .div-ul {
+    @include flex-basis(100%/3);
+    flex-shrink: 0;
+    margin-bottom: $base-spacing * 2;
+    padding: 0;
+  }
+  .div-ul-100 {
+    @include flex-basis(100%);
+    flex-shrink: 0;
+    margin-bottom: $base-spacing * 2;
+    padding: 0;
+  }
+
+  @media screen {
+
+  }
+
+  .div-li {
+    line-height: 1.5em;
+    list-style: none;
+    text-align: center;
+  }
+
+  .div-li a {
+    color: $footer-link-color;
+    text-decoration: none;
+
+    &:focus,
+    &:hover {
+      color: transparentize($footer-color, 0);
+    }
+  }
+
+  .div-li h3 {
+    color: $footer-color;
+    font-size: 1em;
+    margin-bottom: 0.4em;
+  }
+
+
+  hr {
+    border: 1px solid transparentize($footer-disclaimer-color, 0.3);
+    margin: 0 auto $base-spacing;
+    width: 12em;
+  }
+
+  p {
+    color: $footer-disclaimer-color;
+    font-size: 0.9em;
+    line-height: 1.5em;
+    margin: auto;
+    max-width: 35em;
+    text-align: center;
+  }
+}

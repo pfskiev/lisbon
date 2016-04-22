@@ -22,7 +22,7 @@ $btn-gold-hover:           #b8860b;
 
 
 
-// Refills cards
+// Refills Card
 $base-border-color: $color_sand !default;
 $base-border-radius: 3px !default;
 $base-background-color: white !default;
@@ -37,3 +37,14 @@ $refills-card-header-background:$refills-card-background;
 $refills-card-margin: 1em;
 $refills-card-image-hover-opacity: 0.7;
 $refills-card-image-hover-color: $color_sand;
+
+// Refills Footer
+
+$base-spacing: 1.5em !default;
+$action-color: #477DCA !default;
+$medium-screen: 40em !default;
+$large-screen: 53.75em !default;
+$footer-background: desaturate(darken($action-color, 20%), 30%);
+$footer-color: white;
+$footer-link-color: transparentize($footer-color, 0.6);
+$footer-disclaimer-color: transparentize($footer-color, 0.6);
