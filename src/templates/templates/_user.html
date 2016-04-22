@@ -4,7 +4,7 @@
     {% if user.is_staff or user.is_superuser %}
         <a style="text-decoration: none" href="{% url 'profiles:show_self' %}">
             {% if user.profile.picture %}
-                <img title="profile picture" class="img-circle img-responsive" src="{% thumbnail object.img 50x50 crop="smart" %}">
+                <img title="profile picture" class="img-circle img-responsive" src="{% thumbnail user.profile.picture 40x40 crop="smart" %}">
             {% else %}
                 <span class="fa fa-user"></span>
             {% endif %}
