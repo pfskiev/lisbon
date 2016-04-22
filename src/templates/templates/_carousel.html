@@ -11,31 +11,31 @@
     <div class="carousel-inner" role="listbox">
         {%  if object.img %}
         <div class="carousel-item active">
-            <img style="object-fit: cover;width: 100%;" src="{% thumbnail object.img|default:'default_profile.png' 600x400 crop %}" alt="First slide">
+            <img style="object-fit: cover;width: 100%;" src="{% thumbnail object.img 1980x1080 crop="smart" %}" alt="First slide">
         </div>
             {%  if object.img1 %}
         <div class="carousel-item">
-            <img style="object-fit: cover;width: 100%;" src="{% thumbnail object.img1|default:'default_profile.png' 800x600 crop %}" alt="Second slide">
+            <img style="object-fit: cover;width: 100%;" src="{% thumbnail object.img1 1980x1080 crop="smart" %}" alt="Second slide">
         </div>
             {% endif %}
             {%  if object.img2 %}
         <div class="carousel-item">
-            <img style="object-fit: cover;width: 100%;" src="{% thumbnail object.img2 1980X1080 crop="smart" %}" alt="Third slide">
+            <img style="object-fit: cover;width: 100%;" src="{% thumbnail object.img2 1980x1080 crop="smart" %}" alt="Third slide">
         </div>
             {% endif %}
             {%  if object.img3 %}
         <div class="carousel-item">
-            <img style="object-fit: cover;width: 100%;" src="{% thumbnail object.img3 1980X1080 crop="smart" %}" alt="Third slide">
+            <img style="object-fit: cover;width: 100%;" src="{% thumbnail object.img3 1980x1080 crop="smart" %}" alt="Third slide">
         </div>
             {% endif %}
             {%  if object.img4 %}
         <div class="carousel-item">
-            <img style="object-fit: cover;width: 100%;" src="{% thumbnail object.img3 1980X1080 crop="smart" %}" alt="Third slide">
+            <img style="object-fit: cover;width: 100%;" src="{% thumbnail object.img3 1980x1080 crop="smart" %}" alt="Third slide">
         </div>
             {% endif %}
             {%  if object.img5 %}
         <div class="carousel-item">
-            <img style="object-fit: cover;width: 100%;" src="{% thumbnail object.img3 1980X1080 crop="smart" %}" alt="Third slide">
+            <img style="object-fit: cover;width: 100%;" src="{% thumbnail object.img3 1980x1080 crop="smart" %}" alt="Third slide">
         </div>
         {% endif %}
     {% endif %}
