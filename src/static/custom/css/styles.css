@@ -200,12 +200,99 @@ ol.breadcrumb > li > a {
   background: -webkit-linear-gradient( right , #ECE9E6, #FFFFFF);
   background: linear-gradient(to left, #ECE9E6, #FFFFFF); }
 
-img {
-  -ms-interpolation-mode: nearest-neighbor;
-  image-rendering: -moz-crisp-edges;
-  image-rendering: -o-crisp-edges;
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges; }
+.refills-cards {
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  box-direction: normal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-direction: row;
+  -webkit-box-lines: multiple;
+  -moz-box-lines: multiple;
+  box-lines: multiple;
+  -webkit-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: distribute;
+  -moz-box-pack: distribute;
+  box-pack: distribute;
+  -webkit-justify-content: space-around;
+  -moz-justify-content: space-around;
+  -ms-justify-content: space-around;
+  -o-justify-content: space-around;
+  justify-content: space-around;
+  -ms-flex-pack: distribute; }
+
+.refills-card {
+  margin: 0 1em 1.5em 1em;
+  position: relative;
+  min-width: 300px;
+  max-width: 380px;
+  -webkit-flex-basis: 15em;
+  -moz-flex-basis: 15em;
+  flex-basis: 15em;
+  -ms-flex-preferred-size: 15em;
+  -webkit-flex-grow: 1;
+  -moz-flex-grow: 1;
+  flex-grow: 1;
+  -ms-flex-positive: 1;
+  border: 1px solid #ffefd5;
+  border-radius: 3px;
+  box-shadow: 0 2px 4px #e6e6e6;
+  background-color: white;
+  cursor: pointer;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out; }
+  .refills-card .refills-card-image {
+    background-color: #ffefd5;
+    overflow: hidden; }
+    .refills-card .refills-card-image img {
+      -ms-interpolation-mode: nearest-neighbor;
+      image-rendering: -moz-crisp-edges;
+      image-rendering: -o-crisp-edges;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
+      object-fit: cover;
+      opacity: 1;
+      transition: all 0.2s ease-in-out;
+      width: 100%; }
+  .refills-card .refills-card-header {
+    background-color: white;
+    border-bottom: 1px solid #ffefd5;
+    border-radius: 3px 3px 0 0;
+    font-weight: bold;
+    line-height: 1.5em;
+    padding: 0.5em 0.75em;
+    transition: all 0.2s ease-in-out; }
+  .refills-card .refills-card-copy {
+    font-size: 0.9em;
+    line-height: 1.5em;
+    padding: 0.75em 0.75em; }
+    .refills-card .refills-card-copy p {
+      margin: 0 0 0.75em; }
+  .refills-card:focus, .refills-card:hover {
+    cursor: pointer; }
+    .refills-card:focus img, .refills-card:hover img {
+      opacity: 0.7; }
+  .refills-card:active {
+    background-color: white; }
+    .refills-card:active .refills-card-header {
+      background-color: white; }
 
 .fa {
   opacity: 0.7;

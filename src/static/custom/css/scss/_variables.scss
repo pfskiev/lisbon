@@ -19,3 +19,21 @@ $btn-success:              #32936f;
 $btn-success-hover:        #14936f;
 $btn-gold:                 #ffd700;
 $btn-gold-hover:           #b8860b;
+
+
+
+// Refills cards
+$base-border-color: $color_sand !default;
+$base-border-radius: 3px !default;
+$base-background-color: white !default;
+$base-spacing: 1.5em !default;
+$action-color: $btn-info !default;
+$dark-gray: #333 !default;
+$base-font-color:$dark-gray !default;
+$refills-card-border-color:$base-border-color;
+$refills-card-border: 1px solid$refills-card-border-color;
+$refills-card-background: lighten($refills-card-border-color, 10%);
+$refills-card-header-background:$refills-card-background;
+$refills-card-margin: 1em;
+$refills-card-image-hover-opacity: 0.7;
+$refills-card-image-hover-color: $color_sand;

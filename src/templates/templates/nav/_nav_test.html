@@ -51,10 +51,15 @@
                 </div>
             </li>
             <li class="nav-item hidden-sm-down">
-                <a class="nav-link" href="{% url 'review:list' %}">{% trans 'Reviews' %}</a>
-            </li>
-            <li class="nav-item hidden-sm-down">
-                <a class="nav-link" href="{% url 'gallery:list' %}">{% trans 'Gallery' %}</a>
+                <div class="btn-group">
+                    <a style="cursor: pointer;color: gold;"  class=" hidden-sm-down nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {% trans 'Offers' %}</a>
+                    <div class="dropdown-menu" style="margin-top: 9px;">
+                        <a href="{% url 'rent_car:list' %}" class="dropdown-item">{% trans 'Rent Car' %}</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url 'offer:list' %}">{% trans 'Full Offer list' %}</a>
+                    </div>
+                </div>
             </li>
             <li class="nav-item hidden-sm-down">
                 <a class="nav-link" href="{% url 'about' %}">{% trans 'About Us' %}</a>
@@ -63,10 +68,17 @@
                 <a class="nav-link" href="{% url 'contact:list' %}">{% trans 'Contacts' %}</a>
             </li>
             <li class="nav-item hidden-sm-down">
-                <a class="nav-link" href="{% url 'related_links:list' %}">{% trans 'Related Links' %}</a>
-            </li>
-            <li class="nav-item hidden-sm-down">
-                <a class="nav-link" href="{% url 'news:list' %}">{% trans 'News' %}</a>
+                <div class="btn-group">
+                    <a style="cursor: pointer;color: gold;"  class=" hidden-sm-down nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {% trans 'More' %}</a>
+                    <div class="dropdown-menu" style="margin-top: 9px;">
+                        <a href="{% url 'gallery:list' %}" class="dropdown-item">{% trans 'Gallery' %}</a>
+                        <a href="{% url 'related_links:list' %}" class="dropdown-item">{% trans 'Related Links' %}</a>
+                        <a href="{% url 'news:list' %}" class="dropdown-item">{% trans 'News' %}</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="{% url 'review:list' %}" class="dropdown-item">{% trans 'Reviews' %}</a>
+                    </div>
+                </div>
             </li>
             <li class="nav-item">
                 {% include 'templates/_user.html' %}

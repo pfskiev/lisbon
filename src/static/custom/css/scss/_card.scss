@@ -45,11 +45,79 @@
 .awesome-background{
   @include background(linear-gradient(to left, #ECE9E6, #FFFFFF));
 }
-.card {
-
+.refills-cards {
+  @include display(flex);
+  @include flex-direction(row);
+  @include flex-wrap(wrap);
+  @include justify-content(space-around);
 }
 
-img {
-  @include image-rendering (crisp-edges)
+.refills-card {
+  margin: 0 $refills-card-margin $base-spacing $refills-card-margin;
+  position: relative;
+  min-width: 300px;
+  max-width: 380px;
+  @include flex-basis(15em);
+  @include flex-grow(1);
+  border: $refills-card-border;
+  border-radius: $base-border-radius;
+  box-shadow: 0 2px 4px darken($base-background-color, 10%);
+  background-color: $refills-card-background;
+  cursor: pointer;
+  @include transition(all 0.2s ease-in-out);
+
+  .refills-card-image {
+    background-color: $refills-card-image-hover-color;
+    //height: 300px;
+    //max-height: 300px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      @include image-rendering (crisp-edges);
+      @include border-top-radius($base-border-radius);
+      object-fit: cover;
+      opacity: 1;
+      transition: all 0.2s ease-in-out;
+
+    }
+  }
+
+  .refills-card-header {
+    background-color: $refills-card-header-background;
+    border-bottom: $refills-card-border;
+    border-radius: $base-border-radius $base-border-radius 0 0;
+    font-weight: bold;
+    line-height: 1.5em;
+    padding: ($base-spacing / 3) ($base-spacing / 2);
+    transition: all 0.2s ease-in-out;
+  }
+
+  .refills-card-copy {
+    font-size: 0.9em;
+    line-height: 1.5em;
+    padding: ($base-spacing / 2) ($base-spacing / 2);
+
+    p {
+      margin: 0 0 ($base-spacing / 2);
+    }
+  }
+
+  &:focus,
+  &:hover {
+    cursor: pointer;
+
+    img {
+      opacity: $refills-card-image-hover-opacity;
+    }
+  }
+  &:active {
+    background-color: $refills-card-background;
+
+    .refills-card-header {
+      background-color: $refills-card-background;
+    }
+  }
 }
+
 
