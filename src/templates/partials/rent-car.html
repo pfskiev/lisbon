@@ -4,9 +4,10 @@
     {% include 'templates/_breadcrumbs.html' %}
 {% endblock %}
 {% block content %}
-    <section>
-    <div class="container">
-        <h1 class="display-4">{{ title }}</h1>
+    <div id="js-parallax-window" class="parallax-window">
+        <div class="parallax-static-content">
+              <div class="overlay"></div>
+        <h1 style="color: bisque;position: relative" class="display-4">{{ title }}</h1>
         <div class="refills-cards">
             {% for object in object_list %}
                 {% include 'templates/_car_card.html' %}
@@ -16,6 +17,56 @@
 {#            <a class="btn btn-warning" href="{% url 'contact:create' %}"><i class="fa fa-plus"></i> {% trans 'Create Contact' %}</a>#}
         {% endif %}
         {% include 'templates/_pagination.html' %}
+
+
+        </div>
+        <div id="js-parallax-background" class="parallax-background"></div>
     </div>
-    </section>
+    <script>
+    $(document).ready(function() {
+  if ($("#js-parallax-window").length) {
+    parallax();
+  }
+});
+
+$(window).scroll(function(e) {
+  if ($("#js-parallax-window").length) {
+    parallax();
+  }
+});
+
+function parallax(){
+  if( $("#js-parallax-window").length > 0 ) {
+    var plxBackground = $("#js-parallax-background");
+    var plxWindow = $("#js-parallax-window");
+
+    var plxWindowTopToPageTop = $(plxWindow).offset().top;
+    var windowTopToPageTop = $(window).scrollTop();
+    var plxWindowTopToWindowTop = plxWindowTopToPageTop - windowTopToPageTop;
+
+    var plxBackgroundTopToPageTop = $(plxBackground).offset().top;
+    var windowInnerHeight = window.innerHeight;
+    var plxBackgroundTopToWindowTop = plxBackgroundTopToPageTop - windowTopToPageTop;
+    var plxBackgroundTopToWindowBottom = windowInnerHeight - plxBackgroundTopToWindowTop;
+    var plxSpeed = 0.35;
+
+    plxBackground.css('top', - (plxWindowTopToWindowTop * plxSpeed) + 'px');
+  }
+}
+
+    </script>
+{#    <section>#}
+{#    <div class="container">#}
+{#        <h1 class="display-4">{{ title }}</h1>#}
+{#        <div class="refills-cards">#}
+{#            {% for object in object_list %}#}
+{#                {% include 'templates/_car_card.html' %}#}
+{#            {% endfor %}#}
+{#        </div>#}
+{#        {% if user.is_staff or user.is_superuser %}#}
+{#            <a class="btn btn-warning" href="{% url 'contact:create' %}"><i class="fa fa-plus"></i> {% trans 'Create Contact' %}</a>#}
+{#        {% endif %}#}
+{#        {% include 'templates/_pagination.html' %}#}
+{#    </div>#}
+{#    </section>#}
 {% endblock %}

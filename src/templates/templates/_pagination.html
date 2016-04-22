@@ -1,10 +1,10 @@
-<div class="center-block" style="width:100px">
+<div style="color: bisque;position: relative" class="center-block" style="width:100px">
     <nav>
     <ol class="pager">
         {% if object_list.has_previous %}
-            <li><a href="?{{ page_request_var }}={{ object_list.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">Previous</a></li>
+            <li style="color: bisque"><a href="?{{ page_request_var }}={{ object_list.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">Previous</a></li>
         {% endif %}
-        <small><em>PAGE {{ object_list.number }} OF {{ object_list.paginator.num_pages }}</em></small>
+        <small><em style="color: #db4865">PAGE {{ object_list.number }} OF {{ object_list.paginator.num_pages }}</em></small>
         {% if object_list.has_next %}
             <li><a href="?{{ page_request_var }}={{ object_list.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">Next</a></li>
         {% endif %}
