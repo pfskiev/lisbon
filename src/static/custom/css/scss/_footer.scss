@@ -1,32 +1,39 @@
 @import 'bourbon/bourbon';
 @import 'variables';
-
-footer {
-  padding-top: 60px;
-  padding-bottom: 30px;
-  @include background(linear-gradient(to left, $color_blue, $color_blue_light));
-  h4 {
-    color: $color_red;
-  }
-  a {
-    color: white;
-    transition: all .3s ease;
-  }
-  a:hover {
-    color: $color_blue_light;
-  }
-  .fa {
-    display: inline-block;
-    margin-left: auto;
-    margin-right:auto;
-    color: $color_red;
-  }
-  p {
-    color: white;
-  }
-}
+//
+//footer {
+//  padding-top: 60px;
+//  padding-bottom: 30px;
+//  @include background(linear-gradient(to left, $color_blue, $color_blue_light));
+//  h4 {
+//    //color: $color_red;
+//  }
+//  a {
+//    color: white;
+//    transition: all .3s ease;
+//  }
+//  a:hover {
+//    color: $color_blue_light;
+//  }
+//  .fa {
+//    display: inline-block;
+//    margin-left: auto;
+//    margin-right:auto;
+//    //color: $color_red;
+//  }
+//  p {
+//    color: white;
+//  }
+//}
 
 .footer {
+  .fa {
+    color: $footer-link-color;
+    &:hover,
+    &:focus {
+      color: $footer-color
+    }
+  }
   @include background(linear-gradient(to left, $color_blue, $color_blue_light));
   padding: ($base-spacing * 2) ;
   width: 100%;
@@ -74,6 +81,7 @@ footer {
   .div-li a {
     color: $footer-link-color;
     text-decoration: none;
+    cursor: pointer;
 
     &:focus,
     &:hover {

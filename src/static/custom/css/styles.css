@@ -337,31 +337,15 @@ ol.breadcrumb > li > a {
   font-style: normal;
   font-weight: normal;
   src: local("HelveticaNeueCyr-UltraLight"), url("../fonts/HelveticaNeueCyr-UltraLight.woff") format("woff"); }
-footer {
-  padding-top: 60px;
-  padding-bottom: 30px;
-  background: -webkit-linear-gradient( right , #0E2F56, #118DF0);
-  background: linear-gradient(to left, #0E2F56, #118DF0); }
-  footer h4 {
-    color: #FF304F; }
-  footer a {
-    color: white;
-    transition: all .3s ease; }
-  footer a:hover {
-    color: #118DF0; }
-  footer .fa {
-    display: inline-block;
-    margin-left: auto;
-    margin-right: auto;
-    color: #FF304F; }
-  footer p {
-    color: white; }
-
 .footer {
   background: -webkit-linear-gradient( right , #0E2F56, #118DF0);
   background: linear-gradient(to left, #0E2F56, #118DF0);
   padding: 3em;
   width: 100%; }
+  .footer .fa {
+    color: rgba(255, 255, 255, 0.4); }
+    .footer .fa:hover, .footer .fa:focus {
+      color: white; }
   .footer .footer-logo {
     margin-bottom: 2em;
     text-align: center; }
@@ -414,7 +398,8 @@ footer {
     text-align: center; }
   .footer .div-li a {
     color: rgba(255, 255, 255, 0.4);
-    text-decoration: none; }
+    text-decoration: none;
+    cursor: pointer; }
     .footer .div-li a:focus, .footer .div-li a:hover {
       color: white; }
   .footer .div-li h3 {

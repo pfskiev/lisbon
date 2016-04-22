@@ -5,8 +5,10 @@
     </div>
     <div class="footer-links">
         <div class="div-ul">
-            <div class="div-li"><h3>{% trans 'About' %}</h3></div>
-            <div class="div-li"><a href="javascript:void(0)">{{ footer.about }}</a></div>
+            <div class="div-li"><h3>{% trans 'Follow Us' %}</h3></div>
+            <div class="div-li"><a><i class="fa fa-skype"></i> marian.danici</a></div>
+            <div class="div-li"><a><i class="fa fa-mobile"></i> +35 (196) 715 51 13</a></div>
+            <div class="div-li"><a><i class="fa fa-mail-forward"></i> reservationgoldenlisbon@gmail.com</a></div>
         </div>
         <div class="div-ul">
             <div class="div-li"><h3>{% trans 'Site Map' %}</h3></div>
@@ -34,6 +36,10 @@
 {#                {% trans 'Follow on ' %} #}
                 Instagram <i class="fa fa-instagram"></i></a></div>
             <div class="div-li"><a href="{% url 'email_me' %}" >{% trans 'Email me' %} <i class="fa fa-mail-forward"></i></a></div>
+        </div>
+        <div class="div-ul-100">
+            <div class="div-li"><h3>{% trans 'About' %}</h3></div>
+            <div class="div-li"><a href="javascript:void(0)">{{ footer.about }}</a></div>
         </div>
         <div class="div-ul-100">
             <div class="div-li">{%  include 'templates/_languages.html' %}</div>
