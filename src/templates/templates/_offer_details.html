@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% load i18n %}
-{% load thumbnail %}
 {% block description %}{{ object.description_SEO }}{% endblock description %}
 {% block keywords %}{{ object.keywords_SEO }}{% endblock keywords %}
 {% block content %}
@@ -12,7 +11,7 @@
             <div class="row">
                 <div class="col-md-6">
                     {% if object.img %}
-                        <img style="max-height: 500px; object-fit: cover;" class="img-fluid" src="{% thumbnail object.img 720x480 crop="smart" %}" alt="" width="100%">
+                        <img style="max-height: 500px; object-fit: cover;" class="img-fluid" src="{% static '/media/' %}{{ object.img }}" alt="" width="100%">
                     {% else %}
                         <p style="text-align: center"><small><em>{% trans 'place for image' %}</em></small></p>
                     {% endif %}
