@@ -5,8 +5,8 @@
 {% else %}
 {% endif %}
 {% if user.is_staff or user.is_superuser %}
-    <a class="btn btn-sm btn-danger-outline" href="{{ request.get_full_path }}{{ object.id }}/delete/">
+    <a class="btn btn-sm btn-danger-outline" href="{{ request.get_path }}{{ object.id }}/delete/">
         <i class="fa fa-trash"></i> {% trans 'Delete' %}</a>
-    <a class="btn btn-sm btn-danger-outline" href="{{ request.get_full_path }}{{ object.id }}/edit/">
+    <a class="btn btn-sm btn-danger-outline" href="{{ request.get_path }}{{ object.id }}/edit/">
         <i class="fa fa-pencil-square-o"></i> {% trans 'Edit' %}</a>
 {% endif %}
