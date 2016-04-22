@@ -69,13 +69,15 @@
                 <a class="nav-link" href="{% url 'contact:list' %}">{% trans 'Contacts' %}</a>
             </li>
             <li class="nav-item hidden-sm-down">
+                <a class="nav-link" href="{% url 'news:list' %}">{% trans 'News' %}</a>
+            </li>
+            <li class="nav-item hidden-sm-down">
                 <div class="btn-group">
                     <a style="cursor: pointer;color: gold;"  class=" hidden-sm-down nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {% trans 'More' %}</a>
                     <div class="dropdown-menu" style="margin-top: 9px;">
                         <a href="{% url 'gallery:list' %}" class="dropdown-item">{% trans 'Gallery' %}</a>
                         <a href="{% url 'related_links:list' %}" class="dropdown-item">{% trans 'Related Links' %}</a>
-                        <a href="{% url 'news:list' %}" class="dropdown-item">{% trans 'News' %}</a>
                         <div class="dropdown-divider"></div>
                         <a href="{% url 'review:list' %}" class="dropdown-item">{% trans 'Reviews' %}</a>
                     </div>
