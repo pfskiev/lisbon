@@ -7,8 +7,8 @@
             <h6 class="card-subtitle text-muted">{{ object.last_name }}</h6>
         </div>
     {% if object.img  %}
-{#        <img class="img-fluid" src="{% thumbnail object.img 500x500 crop %}">#}
-        <a href="{{ request.path }}{{ object.id }}"><img class="img-fluid" src="/media/{{ object.img }}" alt="{{ object.last_name }} {{ object.first_name }}"></a>
+{#        <img class="img-fluid" src="{% thumbnail object.img 720x480 crop="smart" %}">#}
+        <a href="{{ request.path }}{{ object.id }}"><img class="img-fluid" src="{% thumbnail object.img 720x480 crop="smart" %}" alt="{{ object.last_name }} {{ object.first_name }}"></a>
     {% else %}
         <p style="text-align: center"><small><em>{% trans 'place for image' %}</em></small></p>
     {% endif %}
