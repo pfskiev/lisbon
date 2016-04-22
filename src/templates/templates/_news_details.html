@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% load i18n %}
+{% load thumbnail %}
 {% block content %}
     {% include 'templates/_breadcrumbs.html' %}
     <section class="details">
@@ -11,7 +12,7 @@
                 <div class="col-md-6">
                     <div class="card-block">
                         {% if object.img %}
-                            <img style="max-height: 500px;   object-fit: cover;" class="img-fluid" src="{% static '/media/' %}{{ object.img }}" alt="" width="100%">
+                            <img style="max-height: 500px;   object-fit: cover;" class="img-fluid" src="{% thumbnail object.img 720x480 crop="smart" %}" alt="" width="100%">
                         {% else %}
                             <p style="text-align: center"><small><em>{% trans 'place for image' %}</em></small></p>
                         {% endif %}
