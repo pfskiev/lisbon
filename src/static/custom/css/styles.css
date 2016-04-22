@@ -392,6 +392,14 @@ ol.breadcrumb > li > a {
     flex-shrink: 0;
     margin-bottom: 3em;
     padding: 0; }
+  .footer .div-ul- {
+    -webkit-flex-basis: 100%;
+    -moz-flex-basis: 100%;
+    flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
+    flex-shrink: 0;
+    margin-bottom: 3em;
+    padding: 0; }
   .footer .div-li {
     line-height: 1.5em;
     list-style: none;
