@@ -1,5 +1,6 @@
 from django.db import models
 from tours.models import Category, Tour
+from easy_thumbnails.fields import ThumbnailerImageField
 
 
 class Article(models.Model):
@@ -12,7 +13,7 @@ class Article(models.Model):
     category = models.ForeignKey(Category, default=1, blank=True, null=True)
     tour = models.ForeignKey(Tour, default=1, blank=True, null=True)
     link = models.URLField(max_length=100, blank=True, null=False)
-    img = models.ImageField(null=True, blank=True)
+    img = ThumbnailerImageField(null=True, blank=True)
     keywords_SEO = models.TextField(max_length=1000, blank=True, null=False)
     description_SEO = models.TextField(max_length=1000, blank=True, null=False)
 
