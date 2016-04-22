@@ -23,7 +23,7 @@
                     <small><em class="text-uppercase">{% trans 'title' %}:</em></small>
     <h4 style="margin-top: 20px" class="card-title ">{{ object.title_PT }}</h4>
                     <small><em class="text-uppercase">{% trans 'description' %}:</em></small>
-    <p class="card-text ">{{ object.description_PT|truncatechars:200 }}</p>
+    <p class="card-text ">{{ object.description_PT|truncatechars }}</p>
     <p class="">
         <a class="btn btn-danger" href="{% url 'tour:list' %}{{ object.category.url }}">{% trans 'VER TODAS OFERTAS' %}</a>
     </p>
@@ -32,7 +32,7 @@
     <small><em class="text-uppercase">{% trans 'title' %}:</em></small>
     <h4 style="margin-top: 20px" class="card-title ">{{ object.title_EN }}</h4>
     <small><em class="text-uppercase">{% trans 'description' %}:</em></small>
-    <p class="card-text ">{{ object.description_EN|truncatechars:200 }}</p>
+    <p class="card-text ">{{ object.description_EN|truncatechars }}</p>
     <p class="">
         <a class="btn btn-danger" href="{% url 'tour:list' %}{{ object.category.url }}">{% trans 'SEE ALL OFFERS' %}</a>
     </p>
@@ -41,7 +41,7 @@
     <small><em class="text-uppercase">{% trans 'title' %}:</em></small>
     <h4 style="margin-top: 20px" class="card-title ">{{ object.title_DE }}</h4>
     <small><em class="text-uppercase">{% trans 'description' %}:</em></small>
-    <p class="card-text ">{{ object.description_DE|truncatechars:200 }}</p>
+    <p class="card-text ">{{ object.description_DE|truncatechars }}</p>
     <p class="">
         <a class="btn btn-danger" href="{% url 'tour:list' %}{{ object.category.url }}">{% trans 'SEHEN ALLE ANGEBOTE' %}</a>
     </p>

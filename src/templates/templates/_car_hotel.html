@@ -1,0 +1,22 @@
+{% load thumbnail %}
+{% load i18n %}
+<div class="refills-card">
+    <div class="refills-card-image">
+        <img src="{% thumbnail object.img 720x480 crop="smart" %}" alt="">
+    </div>
+    <div class="refills-card-header">
+        {{ object.title_EN }}{% if object.price %} | {{ object.price }} € {% endif %}
+    </div>
+    <div id="TA_socialButtonIcon567" class="TA_socialButtonIcon">
+{#        <ol id="Dn5cpdS" class="TA_links cZCjgbGLw1E5">#}
+{#            <li id="OSccGy" class="h46wFp7sUxL">#}
+                <a target="_blank" href="{{ object.trip_advisor }}"/></a>
+{#            </li>#}
+{#        </ol>#}
+    </div>
+    <script src="https://www.jscache.com/wejs?wtype=socialButtonIcon&amp;uniq=567&amp;locationId=189158&amp;color=green&amp;size=rect&amp;lang=ru&amp;display_version=2"></script>
+    <div class="refills-card-copy">
+        <p><small class="text-muted text-uppercase">{% trans 'description'%}: </small>{{ object.description_EN }}</p>
+        <p><small class="text-muted text-uppercase">{% trans 'category'%}: </small>{{ object.category }}</p>
+    </div>
+</div>

@@ -23,6 +23,7 @@ class Hotel(models.Model):
     description_DE = models.TextField(max_length=1000, blank=True, null=False)
     category = models.ForeignKey(HotelCategory, default=1, blank=True, null=True)
     price = models.CharField(max_length=100, blank=True, null=False)
+    trip_advisor = models.CharField(max_length=100, blank=True, null=False)
     # tour = models.ForeignKey(Tour, default=1, blank=True, null=True)
     # link = models.URLField(max_length=100, blank=True, null=False)
     img = ThumbnailerImageField(null=True, blank=True)

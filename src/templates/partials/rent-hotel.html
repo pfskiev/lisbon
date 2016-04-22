@@ -1,1 +1,21 @@
-{% extends 'partials/rent-car.html' %}
+{% extends 'base.html' %}
+{% block title %}{{ title }}{% endblock title %}
+{% block beadcrumbs %}
+    {% include 'templates/_breadcrumbs.html' %}
+{% endblock %}
+{% block content %}
+    <section>
+    <div class="container">
+        <h1 class="display-4">{{ title }}</h1>
+        <div class="refills-cards">
+            {% for object in object_list %}
+                {% include 'templates/_car_hotel.html' %}
+            {% endfor %}
+        </div>
+        {% if user.is_staff or user.is_superuser %}
+{#            <a class="btn btn-warning" href="{% url 'contact:create' %}"><i class="fa fa-plus"></i> {% trans 'Create Contact' %}</a>#}
+        {% endif %}
+        {% include 'templates/_pagination.html' %}
+    </div>
+    </section>
+{% endblock %}
