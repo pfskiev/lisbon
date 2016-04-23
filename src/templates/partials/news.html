@@ -5,20 +5,70 @@
     {% include 'templates/_breadcrumbs.html' %}
 {% endblock %}
 {% block content %}
-    <section>
-        <div class="container">
-            <h1 class="display-3">{{ title }}</h1>
-        </div>
-        <div class="container">
-            <div class="card-columns">
-                {% for object in object_list %}
-                    {% include 'templates/_news_card.html' %}
-                {% endfor %}
+    <div id="js-parallax-window" class="parallax-window">
+            <div class="parallax-static-content">
+                <div class="overlay"></div>
+                <div class="container">
+                <h1 style="position: relative;color: bisque" class="display-3">{{ title }}</h1>
+                    <div class="card-columns">
+                        {% for object in object_list %}
+                            {% include 'templates/_news_card.html' %}
+                        {% endfor %}
+                    </div>
+                    {% if user.is_staff or user.is_superuser %}
+                        <a style="position: relative" class="btn btn-warning" href="{% url 'news:create' %}"><i class="fa fa-plus"></i> {% trans 'Create Article' %}</a>
+                    {% endif %}
+                    {% include 'templates/_pagination.html' %}
+                </div>
             </div>
-            {% if user.is_staff or user.is_superuser %}
-                <a class="btn btn-warning" href="{% url 'news:create' %}"><i class="fa fa-plus"></i> {% trans 'Create Article' %}</a>
-            {% endif %}
-            {% include 'templates/_pagination.html' %}
-        </div>
-    </section>
+            <div id="js-parallax-background" class="parallax-background-news"></div>
+
+{#        <div class="container">#}
+{#            <h1 class="display-3">{{ title }}</h1>#}
+{#        </div>#}
+{#        <div class="container">#}
+{#            <div class="card-columns">#}
+{#                {% for object in object_list %}#}
+{#                    {% include 'templates/_news_card.html' %}#}
+{#                {% endfor %}#}
+{#            </div>#}
+{#            {% if user.is_staff or user.is_superuser %}#}
+{#                <a class="btn btn-warning" href="{% url 'news:create' %}"><i class="fa fa-plus"></i> {% trans 'Create Article' %}</a>#}
+{#            {% endif %}#}
+{#            {% include 'templates/_pagination.html' %}#}
+{#        </div>#}
+    </div>
+    <script>
+    $(document).ready(function() {
+  if ($("#js-parallax-window").length) {
+    parallax();
+  }
+});
+
+$(window).scroll(function(e) {
+  if ($("#js-parallax-window").length) {
+    parallax();
+  }
+});
+
+function parallax(){
+  if( $("#js-parallax-window").length > 0 ) {
+    var plxBackground = $("#js-parallax-background");
+    var plxWindow = $("#js-parallax-window");
+
+    var plxWindowTopToPageTop = $(plxWindow).offset().top;
+    var windowTopToPageTop = $(window).scrollTop();
+    var plxWindowTopToWindowTop = plxWindowTopToPageTop - windowTopToPageTop;
+
+    var plxBackgroundTopToPageTop = $(plxBackground).offset().top;
+    var windowInnerHeight = window.innerHeight;
+    var plxBackgroundTopToWindowTop = plxBackgroundTopToPageTop - windowTopToPageTop;
+    var plxBackgroundTopToWindowBottom = windowInnerHeight - plxBackgroundTopToWindowTop;
+    var plxSpeed = 0.35;
+
+    plxBackground.css('top', - (plxWindowTopToWindowTop * plxSpeed) + 'px');
+  }
+}
+
+    </script>
 {% endblock %}
