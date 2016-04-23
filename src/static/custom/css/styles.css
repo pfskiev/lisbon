@@ -519,21 +519,21 @@ body {
   background-position: top;
   background-size: cover;
   background-color: beige;
-  height: 60em;
+  height: 100%;
   left: 0;
   position: absolute;
   top: -10em;
   width: 100%; }
 
 .parallax-background-news {
-  background: url("http://previews.123rf.com/images/miss_j/miss_j1109/miss_j110900013/10694392-Grunge-textured-background-with-old-torn-newspapers-Stock-Photo.jpg") repeat;
+  background: url("http://previews.123rf.com/images/miss_j/miss_j1109/miss_j110900013/10694392-Grunge-textured-background-with-old-torn-newspapers-Stock-Photo.jpg");
   background-position: top;
-  background-size: cover;
+  background-size: contain;
   background-color: beige;
-  height: 60em;
+  height: 100%;
   left: 0;
   position: absolute;
-  top: -10em;
+  /* top: -10em; */
   width: 100%; }
 
 .overlay {
