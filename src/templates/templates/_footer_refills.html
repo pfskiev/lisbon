@@ -23,18 +23,10 @@
         </div>
         <div class="div-ul">
             <div class="div-li"><h3>{% trans 'Follow Us' %}</h3></div>
-            <div class="div-li"><a href="#">
-{#                {% trans 'Follow on ' %} #}
-                Twitter <i class="fa fa-twitter"></i></a></div>
-            <div class="div-li"><a href="#">
-{#                {% trans 'Follow on ' %} #}
-                Facebook <i class="fa fa-facebook"></i></a></div>
-            <div class="div-li"><a href="#">
-{#                {% trans 'Follow on ' %} #}
-                Google + <i class="fa fa-google-plus"></i></a></div>
-            <div class="div-li"><a href="#">
-{#                {% trans 'Follow on ' %} #}
-                Instagram <i class="fa fa-instagram"></i></a></div>
+            <div class="div-li"><a href="#">Twitter <i class="fa fa-twitter"></i></a></div>
+            <div class="div-li"><a href="#">Facebook <i class="fa fa-facebook"></i></a></div>
+            <div class="div-li"><a href="#">Google + <i class="fa fa-google-plus"></i></a></div>
+            <div class="div-li"><a href="#">Instagram <i class="fa fa-instagram"></i></a></div>
             <div class="div-li"><a href="{% url 'email_me' %}" >{% trans 'Email me' %} <i class="fa fa-mail-forward"></i></a></div>
         </div>
         <div class="div-ul-60">
@@ -48,3 +40,15 @@
     <hr>
     <p style="padding-top: 50px; text-align: center">{% trans 'All Original Content' %} © 2015-{% now 'Y' %} {{ company }}, {% trans 'All Rights Reserved' %}</p>
 </footer>
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Organization",
+  "url" : "http://www.goldenlisbon.com",
+  "contactPoint" : [{
+    "@type" : "ContactPoint",
+    "telephone" : "+351 967155113",
+    "contactType" : "customer service"
+  }]
+}
+</script>
