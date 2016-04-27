@@ -9,10 +9,9 @@
     <section>
         <div class="container">
             <h1 class="display-4">{{ title }}</h1>
-            <div class="row">
+            <div class="card-columns">
             {% if 'pt' in request.LANGUAGE_CODE %}
                 {% for object in object_list %}
-                    <div class="col-md-4">
                     <div class="card">
                         <div class="card-block">
                             <h4 class="card-title">{{ object.title_PT }}</h4>
@@ -25,13 +24,10 @@
                             {% include 'templates/_CRUD.html' %}
                         </div>
                     </div>
-                    </div>
-
                 {% endfor %}
             {% endif %}
             {% if 'en' in request.LANGUAGE_CODE %}
                 {% for object in object_list %}
-                    <div class="col-md-4">
                     <div class="card">
                         <div class="card-block">
                             <h4 class="card-title">{{ object.title_EN }}</h4>
@@ -44,12 +40,10 @@
                             {% include 'templates/_CRUD.html' %}
                         </div>
                     </div>
-                    </div>
                 {% endfor %}
             {% endif %}
             {% if 'de' in request.LANGUAGE_CODE %}
                 {% for object in object_list %}
-                    <div class="col-md-4">
                     <div class="card">
                         <div class="card-block">
                             <h4 class="card-title">{{ object.title_DE }}</h4>
@@ -62,8 +56,6 @@
                             {% include 'templates/_CRUD.html' %}
                         </div>
                     </div>
-                    </div>
-
                 {% endfor %}
             {% endif %}
             </div>
