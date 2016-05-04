@@ -293,6 +293,18 @@ ol.breadcrumb > li > a {
     .refills-card:active .refills-card-header {
       background-color: white; }
 
+.card-columns {
+  column-count: 1; }
+
+@media only screen and (min-width: 45em) {
+  .card-columns {
+    column-count: 2; } }
+@media only screen and (min-width: 62em) {
+  .card-columns {
+    column-count: 3; } }
+@media only screen and (min-width: 75em) {
+  .card-columns {
+    column-count: 3; } }
 .fa {
   opacity: 0.7;
   transition: all .3s ease; }

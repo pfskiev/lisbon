@@ -1,7 +1,6 @@
 @import 'bourbon/bourbon';
 @import 'variables';
 .card {
-  //min-width: 320px;
   border: 0;
   @include background(linear-gradient(to right, rgb(255, 255, 255), rgb(238, 238, 238)));
   transition: all .3s ease;
@@ -116,6 +115,19 @@
 
     .refills-card-header {
       background-color: $refills-card-background;
+    }
+  }
+}
+
+
+.card-columns {
+  column-count: 1;
+}
+
+@each $media, $size in (45: 2, 62: 3, 75: 3, 90: 4) {
+  @media only screen and (min-width: #{$media}em) {
+    .card-columns {
+        column-count: $size;
     }
   }
 }
