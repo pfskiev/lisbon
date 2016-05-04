@@ -9,7 +9,7 @@
         <h1 class="display-4">{{ title }}</h1>
         <div class="refills-cards">
             {% for object in object_list %}
-                {% include 'templates/_car_hotel.html' %}
+                {% include 'templates/_rent_hotel.html' %}
             {% endfor %}
         </div>
         {% if user.is_staff or user.is_superuser %}

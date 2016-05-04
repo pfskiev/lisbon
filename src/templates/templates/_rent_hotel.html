@@ -1,0 +1,29 @@
+{% load thumbnail %}
+{% load i18n %}
+<div class="refills-card">
+    <div class="refills-card-image">
+        <img src="{% thumbnail object.img 720x480 crop="smart" %}" alt="{{ object.title_EN }}">
+    </div>
+    <div class="refills-card-header">
+        {% if 'pt' in request.LANGUAGE_CODE %}
+            {{ object.title_PT }}{% if object.price %} | {{ object.price }} € {% endif %}
+        {% elif 'en' in request.LANGUAGE_CODE %}
+            {{ object.title_EN }}{% if object.price %} | {{ object.price }} € {% endif %}
+        {% elif 'de' in request.LANGUAGE_CODE %}
+            {{ object.title_DE }}{% if object.price %} | {{ object.price }} € {% endif %}
+        {% endif %}
+    </div>
+    <div class="refills-card-copy">
+        {% if 'pt' in request.LANGUAGE_CODE %}
+            {{ object.trip_advisor_PT | safe }}
+            <p><small class="text-muted text-uppercase">{% trans 'description'%}: </small>{{ object.description_PT }}</p>
+            {% elif 'en' in request.LANGUAGE_CODE %}
+                {{ object.trip_advisor_EN | safe }}
+                <p><small class="text-muted text-uppercase">{% trans 'description'%}: </small>{{ object.description_EN }}</p>
+                    {% elif 'de' in request.LANGUAGE_CODE %}
+                        {{ object.trip_advisor_DE | safe }}
+                        <p><small class="text-muted text-uppercase">{% trans 'description'%}: </small>{{ object.description_DE }}</p>
+        {% endif %}
+        <p><small class="text-muted text-uppercase">{% trans 'category'%}: </small>{{ object.category }}</p>
+    </div>
+</div>
