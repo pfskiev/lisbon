@@ -3,6 +3,19 @@ from django.utils.translation import ugettext as _
 from autoslug.fields import AutoSlugField
 
 
+class ContactHelpers(models.Model):
+    pagination = models.IntegerField(_('Choose number of cards per Contacts page'), default=5)
+
+    class Meta:
+        verbose_name_plural = _('Contact helpers')
+
+    def __str__(self):
+        return _('Contact helpers')
+
+    def __unicode__(self):
+        return _('Contact helpers')
+
+
 class Contact(models.Model):
     first_name = models.CharField(_('First name'), max_length=100, blank=True, null=False)
     first_name_preview = models.BooleanField(_('Apply if you wan\'t to show this field in contact card'),

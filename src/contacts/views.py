@@ -5,7 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib import messages
 from helpers.models import Helpers
 from tours.models import Category
-from .models import Contact
+from .models import Contact, ContactHelpers
 from .forms import ContactForm
 
 
@@ -31,7 +31,7 @@ def contact_list(request):
             Q(first_name__icontains=query) |
             Q(last_name__icontains=query)
         ).distinct()
-    paginator = Paginator(queryset_list, 5)
+    paginator = Paginator(queryset_list, ContactHelpers.objects.get(id=1).pagination)
     page_request_var = 'page'
     page = request.GET.get(page_request_var)
     try:

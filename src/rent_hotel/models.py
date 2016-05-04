@@ -22,6 +22,7 @@ class Hotel(models.Model):
     description_PT = models.TextField(_('Hotel description PT'), max_length=1000, blank=True, null=False)
     description_EN = models.TextField(_('Hotel description EN'), max_length=1000, blank=True, null=False)
     description_DE = models.TextField(_('Hotel description DE'), max_length=1000, blank=True, null=False)
+    address = models.TextField(_('Hotel address'), max_length=1000, blank=True, null=False)
     category = models.ForeignKey(HotelCategory, default=1, blank=True, null=True)
     price = models.CharField(_('Hotel price per day'), max_length=100, blank=True, null=False)
     trip_advisor_PT = models.TextField(_('Input script for widget from TripAdvisor PT'), max_length=2000, blank=True,
