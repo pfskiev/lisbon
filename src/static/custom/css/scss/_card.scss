@@ -1,7 +1,7 @@
 @import 'bourbon/bourbon';
 @import 'variables';
 .card {
-  min-width: 320px;
+  //min-width: 320px;
   border: 0;
   @include background(linear-gradient(to right, rgb(255, 255, 255), rgb(238, 238, 238)));
   transition: all .3s ease;

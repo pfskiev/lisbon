@@ -14,7 +14,7 @@
         {% endif %}
     </div>
     {% if object.img %}
-        <a  href="{% if 'offer' in request.get_full_path %}{{ request.get_full_path }}{{ object.id }}{% else %}{% url 'offer:list' %}{{ object.id }}{% endif %}">
+        <a  href="{% if 'offer' in request.path %}{{ request.path }}{{ object.id }}{% else %}{% url 'offer:list' %}{{ object.id }}{% endif %}">
             <img width="100%" src="{% thumbnail object.img 720x480 crop="smart" %}" alt="{{ object.title }}" style="object-fit: cover;"></a>
     {% else %}
         <p style="text-align: center"><small><em>{% trans 'place for image' %}</em></small></p>

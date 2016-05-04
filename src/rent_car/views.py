@@ -10,6 +10,7 @@ from django.contrib import messages
 from tours.models import Category
 from helpers.models import Helpers
 from .models import Car
+from django.views.generic import View
 
 
 def get_lang(request):

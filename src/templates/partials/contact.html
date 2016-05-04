@@ -7,8 +7,8 @@
 {% block content %}
     <section>
     <div class="container contact">
-        <div class="row">
-            <h1 class="display-4">{{ title }}</h1>
+        <h1 class="display-4">{{ title }}</h1>
+        <div class="card-columns">
             {% for object in object_list %}
                 {% include 'templates/_contact_card.html' %}
             {% endfor %}

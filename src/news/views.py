@@ -4,12 +4,15 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
 from django.http import BadHeaderError
 from django.http import HttpResponse
+from django.views.generic import View
+from django.views.generic.edit import DeleteView
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.translation import ugettext_lazy as _
 from django.contrib import messages
 from tours.models import Category
 from helpers.models import Helpers
 from .models import Article
+from django.core.urlresolvers import reverse_lazy
 
 
 from .forms import ArticleForm

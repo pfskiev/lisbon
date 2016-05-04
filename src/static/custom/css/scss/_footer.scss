@@ -52,31 +52,31 @@
     @include  display(flex);
     @include  flex-wrap(wrap);
     @include justify-content(center);
-
+    @include flex-direction(row);
   }
-
+  @media all and (max-width: 480px){
+    .footer-links {
+      @include flex-direction(column);
+    }
+  }
   .div-ul {
     @include flex-basis(100%/3);
-    flex-shrink: 0;
+    @include flex-shrink(0);
     margin-bottom: $base-spacing * 2;
     padding: 0;
   }
   .div-ul-100 {
     @include flex-basis(100%);
-    flex-shrink: 0;
+    @include flex-shrink(0);
     margin-bottom: $base-spacing * 2;
     padding: 0;
   }
 
   .div-ul-60 {
     @include flex-basis(60%);
-    flex-shrink: 0;
+    @include flex-shrink(0);
     margin-bottom: $base-spacing * 2;
     padding: 0;
-  }
-
-  @media screen {
-
   }
 
   .div-li {
@@ -94,6 +94,22 @@
     &:hover {
       color: transparentize($footer-color, 0);
     }
+  }
+
+  .div-li.languages {
+    @include display(flex);
+    @include flex-wrap(wrap);
+    @include justify-content(space-around);
+    @include flex-direction(row);
+  }
+  @media all and (max-width: 480px){
+    .div-li.languages {
+      @include flex-direction(column);
+    }
+  }
+  .div-li.languages > form {
+    @include flex-basis(100%/4);
+    @include flex-shrink(0);
   }
 
   .div-li h3 {

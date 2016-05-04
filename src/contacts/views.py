@@ -168,6 +168,6 @@ def contact_delete(request, pk=None):
     if not request.user.is_staff or not request.user.is_superuser:
         return redirect('accounts:signup')
     instance = get_object_or_404(Contact, pk=pk)
-    instance.delete()
+    delete()
     messages.success(request, _('Contact deleted'))
     return redirect('contact:list')

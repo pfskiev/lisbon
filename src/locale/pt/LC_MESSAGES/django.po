@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-07 08:31+0000\n"
+"POT-Creation-Date: 2016-05-04 12:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,158 +42,425 @@ msgstr ""
 msgid "The %(site_name)s team"
 msgstr ""
 
-#: category/views.py:87 contacts/views.py:24 contacts/views.py:58
-#: contacts/views.py:79 contacts/views.py:109 gallery/views.py:24
-#: gallery/views.py:69 gallery/views.py:106 gallery/views.py:135
-#: lisbon/views.py:42 lisbon/views.py:69 lisbon/views.py:84 lisbon/views.py:113
-#: news/views.py:31 news/views.py:90 news/views.py:117 news/views.py:151
-#: offer/views.py:25 offer/views.py:96 offer/views.py:122 offer/views.py:153
-#: related_links/views.py:31 related_links/views.py:90
-#: related_links/views.py:117 related_links/views.py:151 review/views.py:29
-#: review/views.py:114 review/views.py:251 templates/partials/home.html.py:6
+#: category/views.py:95 contacts/views.py:25 contacts/views.py:68
+#: contacts/views.py:103 contacts/views.py:141 gallery/views.py:30
+#: gallery/views.py:83 gallery/views.py:129 gallery/views.py:167
+#: lisbon/views.py:56 lisbon/views.py:118 lisbon/views.py:136
+#: lisbon/views.py:174 news/views.py:37 news/views.py:104 news/views.py:140
+#: news/views.py:183 offer/views.py:31 offer/views.py:111 offer/views.py:150
+#: offer/views.py:190 related_links/views.py:37 related_links/views.py:105
+#: related_links/views.py:141 related_links/views.py:184 rent_car/views.py:26
+#: rent_hotel/views.py:26 review/views.py:35 review/views.py:129
+#: review/views.py:295 templates/partials/home.html.py:6
 #: templates/templates/_breadcrumbs.html:12 templates/templates/_footer.html:12
+#: templates/templates/_footer_refills.html:15
 #: templates/templates/nav/_nav_test.html:8
-#: templates/templates/nav/_nav_test.html:36 tours/views.py:27
-#: tours/views.py:165 tours/views.py:197 tours/views.py:233 tours/views.py:343
-#: tours/views.py:379 tours/views.py:409
+#: templates/templates/nav/_nav_test.html:36 tours/views.py:33
+#: tours/views.py:180 tours/views.py:221 tours/views.py:266 tours/views.py:394
+#: tours/views.py:439 tours/views.py:478
 msgid "Home"
 msgstr "Início"
 
-#: category/views.py:88 tours/views.py:28 tours/views.py:102 tours/views.py:166
-#: tours/views.py:198 tours/views.py:234 tours/views.py:344
+#: category/views.py:96 tours/views.py:34 tours/views.py:111 tours/views.py:181
+#: tours/views.py:222 tours/views.py:267 tours/views.py:395
 msgid "Tours"
 msgstr "Tours"
 
-#: category/views.py:91 review/views.py:255 templates/partials/review.html:16
+#: category/views.py:99 review/views.py:299 templates/partials/review.html:16
+#: templates/templates/_car_card.html:12
 #: templates/templates/_contact_card.html:16
+#: templates/templates/_news_card.html:15
+#: templates/templates/_news_card.html:35
+#: templates/templates/_news_card.html:56
+#: templates/templates/_rent_hotel.html:27
 #: templates/templates/_review_details.html:19
 #: templates/templates/_tour_card_de.html:21
 #: templates/templates/_tour_card_gb.html:20
-#: templates/templates/_tour_card_pt.html:20 tours/views.py:347
+#: templates/templates/_tour_card_pt.html:20
 msgid "category"
 msgstr "Categoria"
 
-#: category/views.py:94 contacts/views.py:95 contacts/views.py:127
-#: gallery/views.py:124 gallery/views.py:151 news/views.py:70 news/views.py:133
-#: news/views.py:169 offer/views.py:75 offer/views.py:135 offer/views.py:170
-#: related_links/views.py:70 related_links/views.py:133
-#: related_links/views.py:169 review/views.py:84 review/views.py:171
-#: review/views.py:222 tours/views.py:221 tours/views.py:251
+#: category/views.py:102 contacts/views.py:122 contacts/views.py:162
+#: gallery/views.py:150 gallery/views.py:186 news/views.py:79 news/views.py:159
+#: news/views.py:203 offer/views.py:84 offer/views.py:166 offer/views.py:210
+#: related_links/views.py:79 related_links/views.py:160
+#: related_links/views.py:205 rent_car/views.py:75 rent_hotel/views.py:75
+#: review/views.py:93 review/views.py:197 review/views.py:257
+#: tours/views.py:248 tours/views.py:287
 msgid "Add"
 msgstr "Adicionar"
 
-#: contacts/views.py:25 contacts/views.py:46 contacts/views.py:59
-#: contacts/views.py:80 contacts/views.py:110
+#: contacts/models.py:7
+msgid "First name"
+msgstr ""
+
+#: contacts/models.py:8 contacts/models.py:11 contacts/models.py:14
+#: contacts/models.py:18 contacts/models.py:21 contacts/models.py:23
+#: contacts/models.py:25 contacts/models.py:28 contacts/models.py:30
+#: contacts/models.py:33 contacts/models.py:35 contacts/models.py:38
+#: contacts/models.py:40 contacts/models.py:43 contacts/models.py:45
+msgid "Apply if you wan't to show this field in contact card"
+msgstr ""
+
+#: contacts/models.py:10
+msgid "Last name"
+msgstr ""
+
+#: contacts/models.py:13
+#, fuzzy
+#| msgid "short bio"
+msgid "Short bio"
+msgstr "Perfil curto"
+
+#: contacts/models.py:16
+msgid "Person photo"
+msgstr ""
+
+#: contacts/models.py:17
+#, fuzzy
+#| msgid "category"
+msgid "Staff category"
+msgstr "Categoria"
+
+#: contacts/models.py:20
+msgid "Mobile number"
+msgstr ""
+
+#: contacts/models.py:22
+#, fuzzy
+#| msgid "Email me"
+msgid "E-mail"
+msgstr "Enviar me email"
+
+#: contacts/models.py:24
+msgid "Whatsapp number"
+msgstr ""
+
+#: contacts/models.py:27
+msgid "Viber number"
+msgstr ""
+
+#: contacts/models.py:29
+msgid "Telegram number"
+msgstr ""
+
+#: contacts/models.py:32
+msgid "Skype"
+msgstr ""
+
+#: contacts/models.py:34
+msgid "Facebook link"
+msgstr ""
+
+#: contacts/models.py:37
+msgid "Twitter link"
+msgstr ""
+
+#: contacts/models.py:39
+msgid "Pinterest link"
+msgstr ""
+
+#: contacts/models.py:42
+msgid "Google + link"
+msgstr ""
+
+#: contacts/models.py:44
+msgid "Instagram link"
+msgstr ""
+
+#: contacts/models.py:47 gallery/models.py:19
+msgid "Keywords SEO"
+msgstr ""
+
+#: contacts/models.py:48 gallery/models.py:20
+#, fuzzy
+#| msgid "description"
+msgid "Description SEO"
+msgstr "Descriçao"
+
+#: contacts/views.py:26 contacts/views.py:55 contacts/views.py:69
+#: contacts/views.py:104 contacts/views.py:142
 #: templates/templates/_footer.html:17
+#: templates/templates/_footer_refills.html:20
 #: templates/templates/nav/_nav_test.html:13
-#: templates/templates/nav/_nav_test.html:63
+#: templates/templates/nav/_nav_test.html:69
 msgid "Contacts"
 msgstr "Contactos"
 
-#: contacts/views.py:81 contacts/views.py:93 templates/partials/contact.html:17
+#: contacts/views.py:105 contacts/views.py:120
+#: templates/partials/contact.html:17
 msgid "Create Contact"
 msgstr "Criar contacto"
 
-#: contacts/views.py:87
+#: contacts/views.py:111
 msgid "Contact Created"
 msgstr "Contacto criado"
 
-#: contacts/views.py:117
+#: contacts/views.py:149
 msgid "Contact saved"
 msgstr "Contacto aguardado"
 
-#: contacts/views.py:123
+#: contacts/views.py:158
 msgid "Contact Edit"
 msgstr "Editar contacto"
 
-#: contacts/views.py:137
+#: contacts/views.py:172
 msgid "Contact deleted"
 msgstr "Contacto apagado"
 
-#: gallery/views.py:25 gallery/views.py:46 gallery/views.py:70
-#: gallery/views.py:107 gallery/views.py:136
+#: gallery/models.py:6 news/models.py:8 rent_hotel/models.py:19
+#: tours/models.py:22
+#, fuzzy
+#| msgid "title"
+msgid "Title PT"
+msgstr "titulo"
+
+#: gallery/models.py:7 news/models.py:9 rent_hotel/models.py:20
+#: tours/models.py:23
+#, fuzzy
+#| msgid "title"
+msgid "Title EN"
+msgstr "titulo"
+
+#: gallery/models.py:8 news/models.py:10 rent_hotel/models.py:21
+#: tours/models.py:24
+#, fuzzy
+#| msgid "title"
+msgid "Title DE"
+msgstr "titulo"
+
+#: gallery/models.py:9 news/models.py:11
+#, fuzzy
+#| msgid "description"
+msgid "Description PT"
+msgstr "Descriçao"
+
+#: gallery/models.py:10 news/models.py:12
+#, fuzzy
+#| msgid "description"
+msgid "Description EN"
+msgstr "Descriçao"
+
+#: gallery/models.py:11 news/models.py:13
+#, fuzzy
+#| msgid "description"
+msgid "Description DE"
+msgstr "Descriçao"
+
+#: gallery/models.py:12
+msgid "Photo # 1"
+msgstr ""
+
+#: gallery/models.py:13
+msgid "Photo # 2"
+msgstr ""
+
+#: gallery/models.py:14
+msgid "Photo # 3"
+msgstr ""
+
+#: gallery/models.py:15
+msgid "Photo # 4"
+msgstr ""
+
+#: gallery/models.py:16 gallery/models.py:17
+msgid "Photo # 5"
+msgstr ""
+
+#: gallery/models.py:18
+msgid "Video url"
+msgstr ""
+
+#: gallery/models.py:23 gallery/views.py:31 gallery/views.py:55
+#: gallery/views.py:84 gallery/views.py:130 gallery/views.py:168
 #: templates/templates/_footer.html:15
+#: templates/templates/_footer_refills.html:18
 #: templates/templates/nav/_nav_test.html:11
-#: templates/templates/nav/_nav_test.html:57
+#: templates/templates/nav/_nav_test.html:79
 msgid "Gallery"
 msgstr "Galeria"
 
-#: gallery/views.py:114
+#: gallery/views.py:137
 msgid "Gallery edited"
 msgstr "Galeria editada"
 
-#: gallery/views.py:120
+#: gallery/views.py:146
 msgid "Gallery edit"
 msgstr "Editar Galeria"
 
-#: gallery/views.py:137 gallery/views.py:149 templates/partials/gallery.html:17
+#: gallery/views.py:169 gallery/views.py:184 templates/partials/gallery.html:17
 msgid "Create Gallery"
 msgstr "Criar Galeria"
 
-#: gallery/views.py:143
+#: gallery/views.py:175
 msgid "Gallery created"
 msgstr "Galeria criado"
 
-#: gallery/views.py:163
+#: gallery/views.py:198
 msgid "Gallery deleted"
 msgstr "Galeria apagado"
 
-#: lisbon/views.py:70 lisbon/views.py:75 templates/templates/_footer.html.py:6
+#: lisbon/views.py:87 tours/forms.py:47 tours/forms.py:63
+msgid "Send"
+msgstr ""
+
+#: lisbon/views.py:119 lisbon/views.py:127 templates/templates/_footer.html:6
+#: templates/templates/_footer_refills.html:33
 msgid "About"
 msgstr "Sobre nos"
 
-#: news/views.py:32 news/views.py:66 templates/templates/_footer.html.py:19
+#: lisbon/views.py:199
+msgid "SEND"
+msgstr ""
+
+#: lisbon/views.py:227 templates/partials/detail.html.py:29
+#: templates/templates/_modal_book_now.html:11
+#: templates/templates/_tour_card_de.html:22
+#: templates/templates/_tour_card_gb.html:21
+#: templates/templates/_tour_card_pt.html:21
+msgid "book now"
+msgstr "Reservar agora"
+
+#: news/models.py:17
+msgid "Article thumbnail"
+msgstr ""
+
+#: news/models.py:18
+msgid "Article keywords for SEO"
+msgstr ""
+
+#: news/models.py:19
+msgid "Article description for SEO"
+msgstr ""
+
+#: news/views.py:38 news/views.py:75 news/views.py:105 news/views.py:141
+#: news/views.py:184 templates/templates/_footer.html.py:19
+#: templates/templates/_footer_refills.html:22
 #: templates/templates/nav/_nav_test.html:14
-#: templates/templates/nav/_nav_test.html:69
+#: templates/templates/nav/_nav_test.html:72
 msgid "News"
 msgstr "Notícias"
 
-#: news/views.py:91 news/views.py:118 news/views.py:152
-#: related_links/views.py:32 related_links/views.py:66
-#: related_links/views.py:91 related_links/views.py:118
-#: related_links/views.py:152 templates/templates/_footer.html.py:18
-msgid "Related links"
-msgstr "Links relacionados"
+#: news/views.py:143 news/views.py:157 templates/partials/news.html.py:19
+#: templates/templates/_related_links_details.html:19
+#, fuzzy
+#| msgid "Create Contact"
+msgid "Create Article"
+msgstr "Criar contacto"
 
-#: news/views.py:120 news/views.py:131 offer/views.py:122 offer/views.py:133
-#: related_links/views.py:120 related_links/views.py:131
-#: templates/partials/home.html:90 templates/partials/offer.html.py:19
-#: templates/partials/offer.html:30
-msgid "Create Offer"
-msgstr "Criar Oferta"
-
-#: news/views.py:153 news/views.py:165 offer/views.py:155 offer/views.py:166
-#: related_links/views.py:153 related_links/views.py:165
+#: news/views.py:185 news/views.py:199 offer/views.py:192 offer/views.py:206
+#: related_links/views.py:186 related_links/views.py:201
 #: templates/partials/detail.html:33 templates/templates/_CRUD.html.py:11
 #: templates/templates/_contact_card.html:84
-#: templates/templates/_offer_card.html:34
-#: templates/templates/_offer_details.html:28
+#: templates/templates/_news_details.html:43
+#: templates/templates/_offer_card.html:50
+#: templates/templates/_offer_details.html:52
 #: templates/templates/_review_details.html:27
-#: templates/templates/_tour_card_de.html:27
-#: templates/templates/_tour_card_gb.html:26
-#: templates/templates/_tour_card_pt.html:26 tours/views.py:217
+#: templates/templates/_tour_card_de.html:29
+#: templates/templates/_tour_card_gb.html:28
+#: templates/templates/_tour_card_pt.html:28 tours/views.py:244
 msgid "Edit"
 msgstr "Editar"
 
-#: news/views.py:158 related_links/views.py:158
+#: news/views.py:190
+#, fuzzy
+#| msgid "Contact saved"
+msgid "Article saved"
+msgstr "Contacto aguardado"
+
+#: offer/views.py:32 offer/views.py:80 offer/views.py:112 offer/views.py:150
+#: offer/views.py:191 templates/templates/nav/_nav_test.html.py:56
+msgid "Offers"
+msgstr "Ofertas"
+
+#: offer/views.py:150 offer/views.py:164 related_links/views.py:144
+#: related_links/views.py:158 templates/partials/home.html.py:92
+#: templates/partials/offer.html:19 templates/partials/offer.html.py:30
+msgid "Create Offer"
+msgstr "Criar Oferta"
+
+#: offer/views.py:197
+msgid "Offer saved"
+msgstr "Oferta aguardado"
+
+#: related_links/views.py:38 related_links/views.py:75
+#: related_links/views.py:106 related_links/views.py:142
+#: related_links/views.py:185 templates/templates/_footer.html.py:18
+#: templates/templates/_footer_refills.html:21
+msgid "Related links"
+msgstr "Links relacionados"
+
+#: related_links/views.py:191
 #, fuzzy
 #| msgid "Contact saved"
 msgid "Link saved"
 msgstr "Contacto aguardado"
 
-#: offer/views.py:26 offer/views.py:71 offer/views.py:97 offer/views.py:122
-#: offer/views.py:154 templates/partials/home.html.py:80
-msgid "Offers"
-msgstr "Ofertas"
+#: rent_car/views.py:27 rent_car/views.py:71
+msgid "Rent Car"
+msgstr ""
 
-#: offer/views.py:160
-msgid "Offer saved"
-msgstr "Oferta aguardado"
+#: rent_hotel/models.py:22
+#, fuzzy
+#| msgid "description"
+msgid "Hotel description PT"
+msgstr "Descriçao"
 
-#: review/views.py:30 review/views.py:82 review/views.py:115
-#: review/views.py:121 review/views.py:252 templates/templates/_footer.html:14
+#: rent_hotel/models.py:23
+#, fuzzy
+#| msgid "description"
+msgid "Hotel description EN"
+msgstr "Descriçao"
+
+#: rent_hotel/models.py:24
+#, fuzzy
+#| msgid "description"
+msgid "Hotel description DE"
+msgstr "Descriçao"
+
+#: rent_hotel/models.py:26
+msgid "Hotel price per day"
+msgstr ""
+
+#: rent_hotel/models.py:27
+msgid "Input script for widget from TripAdvisor PT"
+msgstr ""
+
+#: rent_hotel/models.py:29
+msgid "Input script for widget from TripAdvisor EN"
+msgstr ""
+
+#: rent_hotel/models.py:31
+msgid "Input script for widget from TripAdvisor DE"
+msgstr ""
+
+#: rent_hotel/models.py:35
+msgid "Hotel thumbnail"
+msgstr ""
+
+#: rent_hotel/models.py:36
+msgid "Hotel keywords for SEO"
+msgstr ""
+
+#: rent_hotel/models.py:37
+#, fuzzy
+#| msgid "description"
+msgid "Hotel description for SEO"
+msgstr "Descriçao"
+
+#: rent_hotel/models.py:41
+msgid "Hotel"
+msgstr ""
+
+#: rent_hotel/views.py:27 rent_hotel/views.py:71
+msgid "Rent Hotel"
+msgstr ""
+
+#: review/views.py:36 review/views.py:91 review/views.py:130
+#: review/views.py:139 review/views.py:296 templates/templates/_footer.html:14
+#: templates/templates/_footer_refills.html:17
 #: templates/templates/nav/_nav_test.html:10
-#: templates/templates/nav/_nav_test.html:54
+#: templates/templates/nav/_nav_test.html:82
 msgid "Reviews"
 msgstr "Comentarios"
 
@@ -203,7 +470,9 @@ msgstr "Lisboa"
 
 #: templates/partials/detail.html:21 templates/templates/_contact_card.html:13
 #: templates/templates/_contact_details.html:16
-#: templates/templates/_offer_card.html:9
+#: templates/templates/_news_card.html:7
+#: templates/templates/_news_details.html:31
+#: templates/templates/_offer_card.html:20
 #: templates/templates/_offer_details.html:16
 #: templates/templates/_tour_card_de.html:11
 #: templates/templates/_tour_card_gb.html:10
@@ -211,58 +480,53 @@ msgstr "Lisboa"
 msgid "place for image"
 msgstr "Espaço para imagem"
 
-#: templates/partials/detail.html:29
-#: templates/templates/_modal_book_now.html:11
-#: templates/templates/_tour_card_de.html:22
-#: templates/templates/_tour_card_gb.html:21
-#: templates/templates/_tour_card_pt.html:21
-msgid "book now"
-msgstr "Reservar agora"
-
 #: templates/partials/detail.html:34 templates/templates/_CRUD.html.py:9
 #: templates/templates/_contact_card.html:82
 #: templates/templates/_contact_card.html:101
-#: templates/templates/_offer_card.html:32
-#: templates/templates/_offer_details.html:26
+#: templates/templates/_news_details.html:41
+#: templates/templates/_offer_card.html:48
+#: templates/templates/_offer_details.html:50
 #: templates/templates/_review_details.html:25
-#: templates/templates/_tour_card_de.html:28
-#: templates/templates/_tour_card_gb.html:27
-#: templates/templates/_tour_card_pt.html:27
+#: templates/templates/_tour_card_de.html:30
+#: templates/templates/_tour_card_gb.html:29
+#: templates/templates/_tour_card_pt.html:29
 #: templates/templates/modal/_delete_tour.html:17
 msgid "Delete"
 msgstr "Apagar"
 
-#: templates/partials/email.html:12
+#: templates/partials/email.html:12 templates/templates/_footer_refills.html:30
 #: templates/templates/_modal_email_me_form.html:10
+#: templates/templates/modal/_contact_us.html:10
 #: templates/templates/nav/_follow_us.html:17
 msgid "Email me"
 msgstr "Enviar me email"
 
-#: templates/partials/home.html:39
+#: templates/partials/home.html:46
 msgid "Previous"
 msgstr ""
 
-#: templates/partials/home.html:43
+#: templates/partials/home.html:50
 msgid "Next"
 msgstr ""
 
-#: templates/partials/home.html:49
-msgid "Our tours and excursions in Lisbon and in Portugal"
-msgstr "Todas nossas excursoes e tours em Lisboa e Portugal"
-
-#: templates/partials/home.html:51
+#: templates/partials/home.html:61
 msgid "full tour list"
 msgstr "Lista de todos tours"
 
-#: templates/partials/home.html:81
+#: templates/partials/home.html:85
 msgid "full offer list"
 msgstr "Lista de todas ofertas"
 
-#: templates/partials/related-links.html:23
-#: templates/partials/related-links.html:42
-#: templates/partials/related-links.html:61 templates/partials/review.html:15
+#: templates/partials/home.html:97 templates/templates/_footer_refills.html:8
+#: templates/templates/nav/_follow_us.html:2
+msgid "Contact Us"
+msgstr "Contacte nos"
+
+#: templates/partials/related-links.html:22
+#: templates/partials/related-links.html:38
+#: templates/partials/related-links.html:54 templates/partials/review.html:15
 #: templates/partials/review_filter.html:15
-#: templates/templates/_offer_card.html:28
+#: templates/templates/_offer_card.html:44
 #: templates/templates/_tour_card_de.html:23
 #: templates/templates/_tour_card_gb.html:22
 #: templates/templates/_tour_card_pt.html:22
@@ -270,7 +534,7 @@ msgstr "Lista de todas ofertas"
 msgid "View details"
 msgstr "Ver detalhes"
 
-#: templates/partials/related-links.html:73
+#: templates/partials/related-links.html:64
 #, fuzzy
 #| msgid "Create Contact"
 msgid "Create Link"
@@ -288,9 +552,20 @@ msgid "To reviews list"
 msgstr "Para lista de comentarios"
 
 #: templates/partials/tours.html:34 templates/templates/_tour_cat.html.py:34
-#: tours/views.py:235
+#: tours/views.py:268
 msgid "Create Tour"
 msgstr "Criar tour"
+
+#: templates/templates/_car_card.html:11
+#: templates/templates/_gallery_details.html:12
+#: templates/templates/_offer_details.html:24
+#: templates/templates/_offer_details.html:33
+#: templates/templates/_offer_details.html:42
+#: templates/templates/_rent_hotel.html:19
+#: templates/templates/_rent_hotel.html:22
+#: templates/templates/_rent_hotel.html:25
+msgid "description"
+msgstr "Descriçao"
 
 #: templates/templates/_contact_card.html:19
 msgid "short bio"
@@ -332,22 +607,28 @@ msgstr "Tem a certeza que deseja apagar o contacto?"
 #: templates/templates/_contact_card.html:100
 #: templates/templates/_modal_book_now.html:21
 #: templates/templates/_modal_email_me_form.html:20
+#: templates/templates/modal/_contact_us.html:18
 #: templates/templates/modal/_delete_tour.html:16
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: templates/templates/_footer.html:10 templates/templates/nav/_nav_test.html:6
+#: templates/templates/_footer.html:10
+#: templates/templates/_footer_refills.html:14
+#: templates/templates/nav/_nav_test.html:6
 msgid "Site Map"
 msgstr "Mapa do site"
 
-#: templates/templates/_footer.html:13 templates/templates/nav/_nav_test.html:9
+#: templates/templates/_footer.html:13
+#: templates/templates/_footer_refills.html:16
+#: templates/templates/nav/_nav_test.html:9
 #: templates/templates/nav/_nav_test.html:41
 msgid "Tours & Excursions"
 msgstr ""
 
 #: templates/templates/_footer.html:16
+#: templates/templates/_footer_refills.html:19
 #: templates/templates/nav/_nav_test.html:12
-#: templates/templates/nav/_nav_test.html:60
+#: templates/templates/nav/_nav_test.html:66
 msgid "About Us"
 msgstr "Sobre nos"
 
@@ -357,22 +638,54 @@ msgid "Admin Panel"
 msgstr "Panel do administrador"
 
 #: templates/templates/_footer.html:39
+#: templates/templates/_footer_refills.html:41
 msgid "All Original Content"
 msgstr "Todo conteudo original"
 
 #: templates/templates/_footer.html:39
+#: templates/templates/_footer_refills.html:41
 msgid "All Rights Reserved"
 msgstr "Todos Direitos reservados"
 
-#: templates/templates/_gallery_details.html:12
-#: templates/templates/_offer_details.html:20
+#: templates/templates/_footer_refills.html:25
+#, fuzzy
+#| msgid "Follow on "
+msgid "Follow Us"
+msgstr "Siga em"
+
+#: templates/templates/_gallery_details.html:10
+#: templates/templates/_offer_details.html:22
+#: templates/templates/_offer_details.html:31
+#: templates/templates/_offer_details.html:40
 msgid "title"
 msgstr "titulo"
 
-#: templates/templates/_gallery_details.html:15
-#: templates/templates/_offer_details.html:22
-msgid "description"
-msgstr "Descriçao"
+#: templates/templates/_news_card.html:23
+#: templates/templates/_news_card.html:43
+#: templates/templates/_news_card.html:66
+msgid "tour"
+msgstr ""
+
+#: templates/templates/_news_details.html:50
+#, fuzzy
+#| msgid "Create Offer"
+msgid "Create News"
+msgstr "Criar Oferta"
+
+#: templates/templates/_offer_card.html:26
+#: templates/templates/_offer_details.html:27
+msgid "VER TODAS OFERTAS"
+msgstr ""
+
+#: templates/templates/_offer_card.html:32
+#: templates/templates/_offer_details.html:36
+msgid "SEE ALL OFFERS"
+msgstr ""
+
+#: templates/templates/_offer_card.html:38
+#: templates/templates/_offer_details.html:45
+msgid "SEHEN ALLE ANGEBOTE"
+msgstr ""
 
 #: templates/templates/_user.html:15 templates/templates/_user.html.py:35
 msgid "Profile"
@@ -390,12 +703,14 @@ msgstr "Sair"
 msgid "Login"
 msgstr "Entrar"
 
-#: templates/templates/nav/_follow_us.html:2
-msgid "Contact Us"
-msgstr "Contacte nos"
+#: templates/templates/modal/_delete_tour.html:9
+#, fuzzy
+#| msgid "Contact delete"
+msgid "Tout delete"
+msgstr "Apagar contacto"
 
 #: templates/templates/nav/_nav_test.html:15
-#: templates/templates/nav/_nav_test.html:66
+#: templates/templates/nav/_nav_test.html:80
 msgid "Related Links"
 msgstr ""
 
@@ -403,8 +718,26 @@ msgstr ""
 msgid "All Tours"
 msgstr "Todos tours"
 
-#: templates/templates/nav/_nav_test.html:76
+#: templates/templates/nav/_nav_test.html:58
+msgid "Car rent"
+msgstr ""
+
+#: templates/templates/nav/_nav_test.html:59
+msgid "Hotels in Lisbon"
+msgstr ""
+
+#: templates/templates/nav/_nav_test.html:61
+#, fuzzy
+#| msgid "full offer list"
+msgid "Full Offer list"
+msgstr "Lista de todas ofertas"
+
 #: templates/templates/nav/_nav_test.html:77
+msgid "More"
+msgstr ""
+
+#: templates/templates/nav/_nav_test.html:91
+#: templates/templates/nav/_nav_test.html:92
 msgid "Search"
 msgstr "Procurar"
 
@@ -430,9 +763,64 @@ msgstr "Mensagem"
 msgid "From Date"
 msgstr "De data"
 
-#: tours/forms.py:47 tours/forms.py:63
-msgid "Send"
+#: tours/models.py:7
+msgid "Tours categories"
 msgstr ""
+
+#: tours/models.py:25
+#, fuzzy
+#| msgid "description"
+msgid "Tour description PT"
+msgstr "Descriçao"
+
+#: tours/models.py:26
+#, fuzzy
+#| msgid "description"
+msgid "Tour description EN"
+msgstr "Descriçao"
+
+#: tours/models.py:27
+#, fuzzy
+#| msgid "description"
+msgid "Tour description DE"
+msgstr "Descriçao"
+
+#: tours/models.py:28
+msgid "Tour price"
+msgstr ""
+
+#: tours/models.py:29
+msgid "Tour thumbnail"
+msgstr ""
+
+#: tours/models.py:30
+msgid "Tour thumbnail URL"
+msgstr ""
+
+#: tours/models.py:31
+#, fuzzy
+#| msgid "Create Contact"
+msgid "Creation date"
+msgstr "Criar contacto"
+
+#: tours/models.py:32 tours/models.py:33
+msgid "Tour keywords for SEO"
+msgstr ""
+
+#: tours/models.py:34
+#, fuzzy
+#| msgid "description"
+msgid "Position"
+msgstr "Descriçao"
+
+#: tours/models.py:38
+#, fuzzy
+#| msgid "Tours"
+msgid "Tour"
+msgstr "Tours"
+
+#~ msgid "Our tours and excursions in Lisbon and in Portugal"
+#~ msgstr "Todas nossas excursoes e tours em Lisboa e Portugal"
 
 #~ msgid "Choose Language"
 #~ msgstr "Selecionar idioma"

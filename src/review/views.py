@@ -307,6 +307,6 @@ def review_delete(request, pk=None):
     if not request.user.is_staff or not request.user.is_superuser:
         return redirect('accounts:signup')
     instance = get_object_or_404(Review, pk=pk)
-    instance.delete()
+    delete()
     messages.success(request, 'Review deleted')
     return redirect('review:list')
