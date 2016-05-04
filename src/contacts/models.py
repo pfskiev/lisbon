@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import ugettext as _
+from autoslug.fields import AutoSlugField
 
 
 class Contact(models.Model):

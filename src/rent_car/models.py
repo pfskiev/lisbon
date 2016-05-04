@@ -30,7 +30,7 @@ class Car(models.Model):
     description_SEO = models.TextField(max_length=1000, blank=True, null=False)
 
     def get_absolute_url(self):
-        return "/rent-car/%i/" % self.id
+        return '/rent-car/%i/' % self.id
 
     def __str__(self):
         return self.title_EN

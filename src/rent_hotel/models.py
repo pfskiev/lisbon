@@ -24,7 +24,12 @@ class Hotel(models.Model):
     description_DE = models.TextField(_('Hotel description DE'), max_length=1000, blank=True, null=False)
     category = models.ForeignKey(HotelCategory, default=1, blank=True, null=True)
     price = models.CharField(_('Hotel price per day'), max_length=100, blank=True, null=False)
-    trip_advisor = models.TextField(_('Input script for widget from TripAdvisor'), max_length=2000, blank=True, null=False)
+    trip_advisor_PT = models.TextField(_('Input script for widget from TripAdvisor PT'), max_length=2000, blank=True,
+                                       null=False)
+    trip_advisor_EN = models.TextField(_('Input script for widget from TripAdvisor EN'), max_length=2000, blank=True,
+                                       null=False)
+    trip_advisor_DE = models.TextField(_('Input script for widget from TripAdvisor DE'), max_length=2000, blank=True,
+                                       null=False)
     # tour = models.ForeignKey(Tour, default=1, blank=True, null=True)
     # link = models.URLField(max_length=100, blank=True, null=False)
     img = ThumbnailerImageField(_('Hotel thumbnail'), null=True, blank=True)
@@ -43,4 +48,3 @@ class Hotel(models.Model):
 
     def __unicode__(self):
         return self.title_EN
-
