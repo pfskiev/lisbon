@@ -18,6 +18,7 @@
                 <li data-target="#carousel-example-generic" data-slide-to="4"></li>
             </ol>
             <div style="min-height: 600px; max-height: 600px" class="carousel-inner" role="listbox">
+                <button class="btn btn-lg btn-gold btn-contact" data-toggle="modal" data-target="#contactUs">{% trans 'Contact us' %}</button>
                 <div class="carousel-item active">
                     <div>
                         <img style="width: 100%;object-fit: cover; min-height: 600px" src="{% thumbnail img1 1920x1080 crop="smart" %}">
@@ -94,5 +95,4 @@
         </div>
     </article>
     {% include 'templates/modal/_contact_us.html' %}
-    <button class="btn btn-lg btn-gold btn-contact" data-toggle="modal" data-target="#contactUs">{% trans 'Contact us' %}</button>
 {% endblock content %}

@@ -1,6 +1,10 @@
 @import 'variables';
 @import 'bourbon/bourbon';
 
+.dropdown-menu {
+  margin-top:13px !important;
+}
+
 .navbar {
   border-radius:0;
   background-color:$color_blue_light;
@@ -40,4 +44,12 @@ ol.nav.navbar-nav>{
 .navbar-toggler:hover {
   color: darkgoldenrod;
 }
+.nav-item.toggler {
+  display: none;
+}
+@media only screen and (max-width: 480px) {
+    .nav-item.toggler {
+        display: inline-block;
+    }
+  }
 
