@@ -41,3 +41,4 @@ class ContactForm(forms.ModelForm):
             'keywords_SEO',
             'description_SEO',
         ]
+
