@@ -6,14 +6,14 @@
     <section>
         <div class="container">
         <h1 class="display-4">{{ title }}</h1>
-            {% for review in review_list %}
-                {% if review.confirmed %}
+            {% for object in object_list %}
+                {% if object.confirmed %}
                 <blockquote class="blockquote">
-                    <p class="m-b-0">{{ review.review |truncatechars:200}}</p>
-                    <p class="m-b-0"><span class="text-muted">left by: </span>{{ review.user.name }}</p>
-                    <div class="blockquote-footer">add on: <cite title="Source Title">{{ review.timestamp }}</cite></div>
-                    <a href="{{ request.path }}{{ review.id }}/">{% trans 'View details' %}</a>
-                    <p><small><em class="text-uppercase">{% trans 'category' %}: </em><em><a href="/reviews/{{ review.category.category.url }}">{{ review.category }}</a>
+                    <p class="m-b-0">{{ object.review |truncatechars:200}}</p>
+                    <p class="m-b-0"><span class="text-muted">left by: </span>{{ object.user.name }}</p>
+                    <div class="blockquote-footer">add on: <cite title="Source Title">{{ object.timestamp }}</cite></div>
+                    <a href="{{ request.path }}{{ object.id }}/">{% trans 'View details' %}</a>
+                    <p><small><em class="text-uppercase">{% trans 'category' %}: </em><em><a href="/reviews/{{ object.category.category.url }}">{{ object.category }}</a>
                     </em></small></p>
                 </blockquote>
                 {% endif %}
@@ -26,6 +26,7 @@
             {% if user.is_staff or user.is_superuser %}
                 <a class="btn btn-warning" href="/admin/review/review/"> {% trans 'To reviews list' %}</a>
             {% endif %}
+            {% include 'templates/_pagination.html' %}
             {% if request.user.is_authenticated %}
                 <div style="z-index: 9999" class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">

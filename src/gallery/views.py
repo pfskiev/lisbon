@@ -32,10 +32,26 @@ def gallery_list(request):
     ]
     query = request.GET.get('q')
     if query:
-        queryset_list = queryset_list.filter(
-            Q(title__icontains=query) |
-            Q(text__icontains=query)
-        ).distinct()
+        if 'pt' in lang:
+            queryset_list = queryset_list.filter(
+                Q(title_PT__icontains=query) |
+                Q(description_PT__icontains=query)
+                # Q(category__category__icontains=query)
+            ).distinct()
+        else:
+            if 'en' in lang:
+                queryset_list = queryset_list.filter(
+                    Q(title_EN__icontains=query) |
+                    Q(description_EN__icontains=query)
+                    # Q(category__category__icontains=query)
+                ).distinct()
+            else:
+                if 'de' in lang:
+                    queryset_list = queryset_list.filter(
+                        Q(title_DE__icontains=query) |
+                        Q(description_DE__icontains=query)
+                        # Q(category__category__icontains=query)
+                    ).distinct()
     paginator = Paginator(queryset_list, 5)
     page_request_var = 'page'
     page = request.GET.get(page_request_var)

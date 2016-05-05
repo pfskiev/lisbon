@@ -24,22 +24,24 @@ def get_company():
 
 def review_list(request):
     lang = request.LANGUAGE_CODE
+    breadcrumbs = [
+        {'url': '/', 'name': _('Home')},
+        {'url': '#', 'name': _('Reviews'), 'active': True}
+    ]
     footer = {
         'pt': Helpers.objects.get(id=1).about_footer_PT,
         'en': Helpers.objects.get(id=1).about_footer_EN,
         'de': Helpers.objects.get(id=1).about_footer_DE
     }
     queryset_list = Review.objects.all()
-    breadcrumbs = [
-        {'url': '/', 'name': _('Home')},
-        {'url': '#', 'name': _('Reviews'), 'active': True}
-    ]
     query = request.GET.get('q')
     if query:
         queryset_list = queryset_list.filter(
-            Q(text__icontains=query)
-        ).distinct()
-    paginator = Paginator(queryset_list, 5)
+                Q(review__icontains=query) |
+                Q(user__name__icontains=query)
+                # Q(category__category__icontains=query)
+            ).distinct()
+    paginator = Paginator(queryset_list, 6)
     page_request_var = 'page'
     page = request.GET.get(page_request_var)
     try:
@@ -76,7 +78,7 @@ def review_list(request):
         },
         'categories_list': Category.objects.all(),
         'company': get_company(),
-        'review_list': queryset,
+        'object_list': queryset,
         'title': _('Reviews'),
         'breadcrumbs': breadcrumbs,
         'value': _('Add'),
@@ -232,8 +234,25 @@ def review_filter(request, slug=None):
         'en': Helpers.objects.get(id=1).about_footer_EN,
         'de': Helpers.objects.get(id=1).about_footer_DE
     }
-    reviews = Review.objects.filter(category__category__url__contains=slug)
     category = Category.objects.filter(url__icontains=slug)
+
+    queryset_list = Review.objects.filter(category__category__url__contains=slug)
+    query = request.GET.get('q')
+    if query:
+        queryset_list = queryset_list.filter(
+                Q(review__icontains=query) |
+                Q(user__name__icontains=query)
+                # Q(category__category__icontains=query)
+            ).distinct()
+    paginator = Paginator(queryset_list, 6)
+    page_request_var = 'page'
+    page = request.GET.get(page_request_var)
+    try:
+        queryset = paginator.page(page)
+    except PageNotAnInteger:
+        queryset = paginator.page(1)
+    except EmptyPage:
+        queryset = paginator.page(paginator.num_pages)
 
     if not request.user.is_authenticated():
         return redirect('login_or_register')
@@ -269,9 +288,10 @@ def review_filter(request, slug=None):
             {'url': '#', 'name': category[0], 'active': True}
         ],
         'title': _('category'),
-        'object_list': reviews,
+        'object_list': queryset,
         'form': form,
-        'value': _('Add')
+        'value': _('Add'),
+        'page_request_var': page_request_var
     }
 
     return render(request, 'partials/review_filter.html', context)
