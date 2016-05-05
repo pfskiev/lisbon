@@ -666,6 +666,7 @@ body {
   position: absolute;
   top: 180px;
   left: 15%;
+  right: 15%;
   border-radius: 7px; }
 
 .pager {
