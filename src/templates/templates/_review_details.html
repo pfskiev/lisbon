@@ -23,8 +23,8 @@
             {% if user.is_staff or user.is_superuser %}
                 <a class="btn btn-sm btn-danger-outline" href="/reviews/{{ object.id }}/delete/">
                     <i class="fa fa-trash"></i> {% trans 'Delete' %}</a>
-                <a class="btn btn-sm btn-danger-outline" href="/reviews/{{ object.id }}/edit/">
-                    <i class="fa fa-pencil-square-o"></i> {% trans 'Edit' %}</a>
+{#                <a class="btn btn-sm btn-danger-outline" href="/reviews/{{ object.id }}/edit/">#}
+{#                    <i class="fa fa-pencil-square-o"></i> {% trans 'Edit' %}</a>#}
             {% endif %}
             {% include 'templates/_share.html' %}
         </div>
