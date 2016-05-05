@@ -91,18 +91,17 @@ def review_list(request):
 
 def review_detail(request, pk=None):
     lang = request.LANGUAGE_CODE
+    review = Review.objects.get(pk=pk)
+    breadcrumbs = [
+        {'url': '/', 'name': _('Home')},
+        {'url': '/reviews', 'name': _('Reviews')},
+        {'url': '#', 'name': review.category.category, 'active': True}
+    ]
     footer = {
         'pt': Helpers.objects.get(id=1).about_footer_PT,
         'en': Helpers.objects.get(id=1).about_footer_EN,
         'de': Helpers.objects.get(id=1).about_footer_DE
     }
-    review = Review.objects.get(pk=pk)
-    lang = get_lang(request)
-
-    breadcrumbs = [
-        {'url': '/', 'name': _('Home')},
-        {'url': '#', 'name': _('Reviews'), 'active': True}
-    ]
     context = {
         'footer': {
             'about': footer[lang],
@@ -111,7 +110,7 @@ def review_detail(request, pk=None):
         'categories_list': Category.objects.all(),
         'company': get_company(),
         'breadcrumbs': breadcrumbs,
-        'title': _('Reviews'),
+        'title': review.category.category,
         'object': review,
     }
 
@@ -126,9 +125,10 @@ def review_create(request):
         'de': Helpers.objects.get(id=1).about_footer_DE
     }
     breadcrumbs = [
-                      {'url': '/', 'name': 'Home', 'active': False},
-                      {'url': '/gallery', 'name': 'Review', 'active': False},
-                      {'url': '#', 'name': 'Review creating', 'active': True}],
+
+                      {'url': '/', 'name': _('Home')},
+                      {'url': '/reviews', 'name': _('Review')},
+                      {'url': '#', 'name': _('Review creating'), 'active': True}],
     if not request.user.is_authenticated():
         return redirect('login_or_register')
     else:
@@ -199,8 +199,8 @@ def review_update(request, pk=None):
     else:
         instance = get_object_or_404(Review, pk=pk)
         breadcrumbs = [
-            {'url': '/', 'name': 'Home', 'active': False},
-            {'url': '/gallery', 'name': 'Review', 'active': False},
+            {'url': '/', 'name': _('Home'), 'active': False},
+            {'url': '/reviews', 'name': _('Review'), 'active': False},
             {'url': '#', 'name': instance.title, 'active': True}]
         form = ReviewForm(request.POST or None, request.FILES or None, instance=instance)
         if form.is_valid():
@@ -287,7 +287,7 @@ def review_filter(request, slug=None):
             {'url': '/reviews', 'name': _('Reviews')},
             {'url': '#', 'name': category[0], 'active': True}
         ],
-        'title': _('category'),
+        'title': category[0],
         'object_list': queryset,
         'form': form,
         'value': _('Add'),
