@@ -73,7 +73,8 @@ def offer_list(request):
 
     context = {
         'footer': {
-            'about': footer[lang]
+            'about': footer[lang],
+            'icon': Helpers.objects.get(id=1).footer_icon
         },
         'categories_list': Category.objects.all(),
         'company': get_company(),
@@ -113,7 +114,8 @@ def offer_detail(request, pk=None):
         {'url': '#', 'name': title[lang], 'active': True}]
     context = {
         'footer': {
-            'about': footer[lang]
+            'about': footer[lang],
+            'icon': Helpers.objects.get(id=1).footer_icon
         },
         'categories_list': Category.objects.all(),
         'company': get_company(),
@@ -157,7 +159,8 @@ def offer_create(request):
 
     context = {
         'footer': {
-            'about': footer[lang]
+            'about': footer[lang],
+            'icon': Helpers.objects.get(id=1).footer_icon
         },
         'categories_list': Category.objects.all(),
         'company': get_company(),
@@ -199,7 +202,8 @@ def offer_update(request, pk=None):
 
         context = {
             'footer': {
-                'about': footer[lang]
+                'about': footer[lang],
+                'icon': Helpers.objects.get(id=1).footer_icon
             },
             'categories_list': Category.objects.all(),
             'company': get_company(),

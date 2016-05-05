@@ -89,6 +89,7 @@ def category_list(request, slug=None):
         'form': form,
         'footer': {
             'about': footer[lang],
+            'icon': Helpers.objects.get(id=1).footer_icon
         },
         'categories_list': Category.objects.all(),
         'breadcrumbs': [

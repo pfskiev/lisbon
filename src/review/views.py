@@ -71,7 +71,8 @@ def review_list(request):
 
     context = {
         'footer': {
-            'about': footer[lang]
+            'about': footer[lang],
+            'icon': Helpers.objects.get(id=1).footer_icon
         },
         'categories_list': Category.objects.all(),
         'company': get_company(),
@@ -102,7 +103,8 @@ def review_detail(request, pk=None):
     ]
     context = {
         'footer': {
-            'about': footer[lang]
+            'about': footer[lang],
+            'icon': Helpers.objects.get(id=1).footer_icon
         },
         'categories_list': Category.objects.all(),
         'company': get_company(),
@@ -149,7 +151,8 @@ def review_create(request):
 
         context = {
             'footer': {
-                'about': footer[lang]
+                'about': footer[lang],
+                'icon': Helpers.objects.get(id=1).footer_icon
             },
             'categories_list': Category.objects.all(),
             'company': get_company(),
@@ -206,7 +209,8 @@ def review_update(request, pk=None):
 
         context = {
             'footer': {
-                'about': footer[lang]
+                'about': footer[lang],
+                'icon': Helpers.objects.get(id=1).footer_icon
             },
 
             'categories_list': Category.objects.all(),
@@ -255,7 +259,8 @@ def review_filter(request, slug=None):
 
     context = {
         'footer': {
-            'about': footer[lang]
+            'about': footer[lang],
+            'icon': Helpers.objects.get(id=1).footer_icon
         },
         'categories_list': Category.objects.all(),
         'breadcrumbs': [

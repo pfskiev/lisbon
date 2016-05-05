@@ -68,7 +68,8 @@ def related_links_list(request):
 
     context = {
         'footer': {
-            'about': footer[lang]
+            'about': footer[lang],
+            'icon': Helpers.objects.get(id=1).footer_icon
         },
         'categories_list': Category.objects.all(),
         'company': get_company(),
@@ -108,7 +109,8 @@ def related_links_detail(request, pk=None):
 
     context = {
         'footer': {
-            'about': footer[lang]
+            'about': footer[lang],
+            'icon': Helpers.objects.get(id=1).footer_icon
         },
         'categories_list': Category.objects.all(),
         'company': get_company(),
@@ -151,7 +153,8 @@ def related_links_create(request):
 
     context = {
         'footer': {
-            'about': footer[lang]
+            'about': footer[lang],
+            'icon': Helpers.objects.get(id=1).footer_icon
         },
         'categories_list': Category.objects.all(),
         'company': get_company(),
@@ -193,7 +196,8 @@ def related_links_update(request, pk=None):
 
         context = {
             'footer': {
-                'about': footer[lang]
+                'about': footer[lang],
+                'icon': Helpers.objects.get(id=1).footer_icon
             },
 
             'categories_list': Category.objects.all(),

@@ -103,7 +103,8 @@ def tour_list(request):
 
     context = {
         'footer': {
-            'about': footer[lang]
+            'about': footer[lang],
+            'icon': Helpers.objects.get(id=1).footer_icon
         },
         'form': form,
         'categories_list': Category.objects.all(),
@@ -183,7 +184,8 @@ def tour_detail(request, pk=None):
     ]
     context = {
         'footer': {
-            'about': footer[lang]
+            'about': footer[lang],
+            'icon': Helpers.objects.get(id=1).footer_icon
         },
         'form': form,
         'categories_list': Category.objects.all(),
@@ -236,7 +238,8 @@ def tour_update(request, pk=None):
 
         context = {
             'footer': {
-                'about': footer[lang]
+                'about': footer[lang],
+                'icon': Helpers.objects.get(id=1).footer_icon
             },
 
             'categories_list': Category.objects.all(),
@@ -276,7 +279,8 @@ def tour_create(request):
 
         context = {
             'footer': {
-                'about': footer[lang]
+                'about': footer[lang],
+                'icon': Helpers.objects.get(id=1).footer_icon
             },
 
             'categories_list': Category.objects.all(),
@@ -386,7 +390,8 @@ def tour_category(request, slug=None):
 
     context = {
         'footer': {
-            'about': footer[lang]
+            'about': footer[lang],
+            'icon': Helpers.objects.get(id=1).footer_icon
         },
         'form': form,
         'categories_list': Category.objects.all(),
@@ -430,7 +435,8 @@ def tour_success(request):
 
     context = {
         'footer': {
-            'about': footer[lang]
+            'about': footer[lang],
+            'icon': Helpers.objects.get(id=1).footer_icon
         },
         'categories_list': Category.objects.all(),
         'title': 'Thank you very much for your contact. We will get in touch with you soon!',
@@ -469,7 +475,8 @@ def tour_fail(request):
 
     context = {
         'footer': {
-            'about': footer[lang]
+            'about': footer[lang],
+            'icon': Helpers.objects.get(id=1).footer_icon
         },
         'categories_list': Category.objects.all(),
         'title': 'Sorry, something goes wrong! Please try again.',

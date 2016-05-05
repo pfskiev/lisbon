@@ -87,7 +87,8 @@ def home(request):
         'value': _('Send'),
         'contact_me': contact_me,
         'footer': {
-            'about': footer[lang]
+            'about': footer[lang],
+            'icon': Helpers.objects.get(id=1).footer_icon
         },
         'section': {
             'tour_header': tour_header[lang],
@@ -120,7 +121,8 @@ def about(request):
     ]
     context = {
         'footer': {
-            'about': footer[lang]
+            'about': footer[lang],
+            'icon': Helpers.objects.get(id=1).footer_icon
         },
         'categories_list': Category.objects.all(),
         'company': get_company(),
@@ -164,7 +166,8 @@ def email_me(request):
 
     context = {
         'footer': {
-            'about': footer[lang]
+            'about': footer[lang],
+            'icon': Helpers.objects.get(id=1).footer_icon
         },
         'form': contact_me,
         'categories_list': Category.objects.all(),

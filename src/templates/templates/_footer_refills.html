@@ -1,7 +1,9 @@
 {% load i18n %}
+{% load thumbnail %}
 <footer class="footer" role="contentinfo">
     <div class="footer-logo">
-        <img src="http://www.e-allmoney.ru/capitals/eur/arm/Lissabon.png">
+{#        <img src="http://www.e-allmoney.ru/capitals/eur/arm/Lissabon.png">#}
+        {% if footer.icon %}<img src="{% thumbnail footer.icon 720x480  %}" alt="">{% else %}{% endif %}
     </div>
     <div class="footer-links">
         <div class="div-ul">

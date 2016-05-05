@@ -11,6 +11,7 @@ class Helpers(models.Model):
     about_footer_PT = models.TextField(max_length=500, blank=True, null=False)
     about_footer_EN = models.TextField(max_length=500, blank=True, null=False)
     about_footer_DE = models.TextField(max_length=500, blank=True, null=False)
+    footer_icon = models.FileField(blank=True, null=True)
     company_name = models.CharField(max_length=200, blank=True, null=True)
     main_keywords = models.TextField(max_length=2000, blank=True, null=True)
     tour_header_name_PT = models.CharField(max_length=200, blank=True, null=True)

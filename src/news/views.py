@@ -71,7 +71,8 @@ def news_list(request):
 
     context = {
         'footer': {
-            'about': footer[lang]
+            'about': footer[lang],
+            'icon': Helpers.objects.get(id=1).footer_icon
         },
         'categories_list': Category.objects.all(),
         'company': get_company(),
@@ -110,7 +111,8 @@ def news_detail(request, pk=None):
 
     context = {
         'footer': {
-            'about': footer[lang]
+            'about': footer[lang],
+            'icon': Helpers.objects.get(id=1).footer_icon
         },
         'categories_list': Category.objects.all(),
         'company': get_company(),
@@ -153,7 +155,8 @@ def news_create(request):
 
     context = {
         'footer': {
-            'about': footer[lang]
+            'about': footer[lang],
+            'icon': Helpers.objects.get(id=1).footer_icon
         },
         'categories_list': Category.objects.all(),
         'company': get_company(),
@@ -195,7 +198,8 @@ def news_update(request, pk=None):
 
         context = {
             'footer': {
-                'about': footer[lang]
+                'about': footer[lang],
+                'icon': Helpers.objects.get(id=1).footer_icon
             },
             'categories_list': Category.objects.all(),
             'company': get_company(),

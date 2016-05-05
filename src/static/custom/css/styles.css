@@ -304,7 +304,7 @@ ol.breadcrumb > li > a {
 @media only screen and (min-width: 60em) {
   .card-columns {
     column-count: 3; } }
-@media only screen and (min-width: 75em) {
+@media only screen and (min-width: 70em) {
   .card-columns {
     column-count: 3; } }
 @media only screen and (min-width: 90em) {
@@ -664,7 +664,7 @@ body {
 .main-header {
   position: absolute;
   top: 180px;
-  left: 10%;
+  left: 15%;
   border-radius: 7px; }
 
 .pager {
