@@ -55,7 +55,7 @@ def tour_list(request):
                         Q(description_DE__icontains=query) |
                         Q(category__category__icontains=query)
                     )
-    paginator = Paginator(queryset_list, 5)
+    paginator = Paginator(queryset_list, 6)
     page_request_var = "page"
     page = request.GET.get(page_request_var)
     try:
@@ -359,7 +359,7 @@ def tour_category(request, slug=None):
                         Q(description_DE__icontains=query)
                         # Q(category__category__icontains=query)
                     ).distinct()
-    paginator = Paginator(queryset_list, 5)
+    paginator = Paginator(queryset_list, 6)
     page_request_var = "page"
     page = request.GET.get(page_request_var)
     try:
