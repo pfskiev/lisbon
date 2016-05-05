@@ -25,7 +25,7 @@ def get_company():
 def rent_car_list(request):
     breadcrumbs = [
         {'url': '/', 'name': _('Home')},
-        {'url': '#', 'name': _('Rent Car'), 'active': True}
+        {'url': '#', 'name': _('Car Rent in Lisbon'), 'active': True}
     ]
     footer = {
         'pt': Helpers.objects.get(id=1).about_footer_PT,
@@ -69,7 +69,7 @@ def rent_car_list(request):
         },
         'categories_list': Category.objects.all(),
         'company': get_company(),
-        'title': _('Rent Car'),
+        'title': _('Car Rent in Lisbon'),
         'object_list': queryset,
         'breadcrumbs': breadcrumbs,
         'page_request_var': page_request_var,

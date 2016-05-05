@@ -24,7 +24,7 @@ def get_company():
 def rent_hotel_list(request):
     breadcrumbs = [
         {'url': '/', 'name': _('Home')},
-        {'url': '#', 'name': _('Rent Hotel'), 'active': True}
+        {'url': '#', 'name': _('Hotels in Lisbon'), 'active': True}
     ]
     footer = {
         'pt': Helpers.objects.get(id=1).about_footer_PT,
@@ -68,7 +68,7 @@ def rent_hotel_list(request):
         },
         'categories_list': Category.objects.all(),
         'company': get_company(),
-        'title': _('Rent Hotel'),
+        'title': _('Hotels in Lisbon'),
         'object_list': queryset,
         'breadcrumbs': breadcrumbs,
         'page_request_var': page_request_var,
