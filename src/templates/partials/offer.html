@@ -7,8 +7,8 @@
 {% block content %}
     <section>
     <div class="container contact">
+        <h1 class="display-4">{{ title }}</h1>
         <div class="card-columns">
-            <h1 class="display-4">{{ title }}</h1>
             {% for object in object_list %}
                 {% include 'templates/_offer_card.html' %}
             {% endfor %}
