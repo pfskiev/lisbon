@@ -298,10 +298,10 @@ ol.breadcrumb > li > a {
 .card-columns {
   column-count: 1; }
 
-@media only screen and (min-width: 45em) {
+@media only screen and (min-width: 40em) {
   .card-columns {
     column-count: 2; } }
-@media only screen and (min-width: 62em) {
+@media only screen and (min-width: 60em) {
   .card-columns {
     column-count: 3; } }
 @media only screen and (min-width: 75em) {
