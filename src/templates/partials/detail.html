@@ -24,7 +24,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <h4 class="card-title">{{ object.title|upper }}</h4>
+                    <h4 class="card-title">{{ object.title|upper }}{% if object.price %} | {{ object.price }} €{% endif %}</h4>
                     <p class="card-text text-justify">{{ object.description }}</p>
                     <a href="{{ object.id }}" class="btn btn-danger text-uppercase" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">{% trans 'book now' %}</a>
                     {% include 'templates/_share.html' %}

@@ -113,7 +113,7 @@ def contact_create(request):
 
         context = {
             'footer': {
-            'about': footer[lang]
+                'about': footer[lang]
             },
             'categories_list': Category.objects.all(),
             'company': get_company(),
@@ -151,7 +151,7 @@ def contact_update(request, pk=None):
 
         context = {
             'footer': {
-            'about': footer[lang]
+                'about': footer[lang]
             },
             'categories_list': Category.objects.all(),
             'company': get_company(),
@@ -168,6 +168,6 @@ def contact_delete(request, pk=None):
     if not request.user.is_staff or not request.user.is_superuser:
         return redirect('accounts:signup')
     instance = get_object_or_404(Contact, pk=pk)
-    delete()
+    instance.delete()
     messages.success(request, _('Contact deleted'))
     return redirect('contact:list')

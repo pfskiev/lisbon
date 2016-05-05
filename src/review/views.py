@@ -6,7 +6,6 @@ from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.translation import ugettext_lazy as _
-
 from tours.forms import ContactMe
 from .models import Review
 from .forms import ReviewForm
@@ -59,27 +58,16 @@ def review_list(request):
             instance.user = request.user
             instance.save()
             messages.success(request, 'Review Created')
-            send_mail('Hello!', 'Check new review!', 'kostiantyn.pidlisnyi@customertimes.com',
-                      settings.EMAIL_TO, fail_silently=False)
-            return redirect('review:list')
-
-    if request.method == 'GET':
-        contact_me = ContactMe()
-    else:
-        contact_me = ContactMe(request.POST)
-        if contact_me.is_valid():
-            fullname = contact_me.cleaned_data['fullname']
-            message = contact_me.cleaned_data['message']
-            subject = 'Mail from ' + fullname
+            message = 'Please check and approve new review: "' + request.POST.get('review', '') \
+                      + '" on http://www.goldenlisbon.com/admin/review/review/'
+            subject = 'New review!'
             from_email = settings.EMAIL_HOST_USER
             to_list = settings.EMAIL_TO
             try:
                 send_mail(subject, message, from_email, to_list, fail_silently=False)
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
-            return redirect('tour:success')
-        else:
-            return redirect('tour:fail')
+            return redirect('review:list')
 
     context = {
         'footer': {
@@ -107,23 +95,6 @@ def review_detail(request, pk=None):
     }
     review = Review.objects.get(pk=pk)
     lang = get_lang(request)
-    if request.method == 'GET':
-        contact_me = ContactMe()
-    else:
-        contact_me = ContactMe(request.POST)
-        if contact_me.is_valid():
-            fullname = contact_me.cleaned_data['fullname']
-            message = contact_me.cleaned_data['message']
-            subject = 'Mail from ' + fullname
-            from_email = settings.EMAIL_HOST_USER
-            to_list = settings.EMAIL_TO
-            try:
-                send_mail(subject, message, from_email, to_list, fail_silently=False)
-            except BadHeaderError:
-                return HttpResponse('Invalid header found.')
-            return redirect('tour:success')
-        else:
-            return redirect('tour:fail')
 
     breadcrumbs = [
         {'url': '/', 'name': _('Home')},
@@ -150,36 +121,30 @@ def review_create(request):
         'en': Helpers.objects.get(id=1).about_footer_EN,
         'de': Helpers.objects.get(id=1).about_footer_DE
     }
-    if request.method == 'GET':
-        contact_me = ContactMe()
+    breadcrumbs = [
+                      {'url': '/', 'name': 'Home', 'active': False},
+                      {'url': '/gallery', 'name': 'Review', 'active': False},
+                      {'url': '#', 'name': 'Review creating', 'active': True}],
+    if not request.user.is_authenticated():
+        return redirect('login_or_register')
     else:
-        contact_me = ContactMe(request.POST)
-        if contact_me.is_valid():
-            fullname = contact_me.cleaned_data['fullname']
-            message = contact_me.cleaned_data['message']
-            subject = 'Mail from ' + fullname
+
+        form = ReviewForm(request.POST or None, request.FILES or None)
+
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.user = request.user
+            instance.save()
+            messages.success(request, 'Review Created')
+            message = 'Please check and approve new review: "' + request.POST.get('review', '') \
+                      + '" on http://www.goldenlisbon.com/admin/review/review/'
+            subject = 'New review!'
             from_email = settings.EMAIL_HOST_USER
             to_list = settings.EMAIL_TO
             try:
                 send_mail(subject, message, from_email, to_list, fail_silently=False)
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
-            return redirect('tour:success')
-        else:
-            return redirect('tour:fail')
-
-    if not request.user.is_authenticated():
-        return redirect('login_or_register')
-    else:
-        lang = get_lang(request)
-        form = ReviewForm(request.POST or None, request.FILES or None)
-        if form.is_valid():
-            instance = form.save(commit=False)
-            instance.user = request.user
-            instance.save()
-            messages.success(request, 'Review Created')
-            send_mail('Hello!', 'Check new review!', 'kostiantyn.pidlisnyi@customertimes.com',
-                      settings.EMAIL_TO, fail_silently=False)
             return redirect('review:list')
 
         context = {
@@ -190,15 +155,12 @@ def review_create(request):
             'company': get_company(),
             'lang': lang,
             'title': 'Review creating',
-            'breadcrumbs': [
-                {'url': '/', 'name': 'Home', 'active': False},
-                {'url': '/gallery', 'name': 'Review', 'active': False},
-                {'url': '#', 'name': 'Review creating', 'active': True}],
+            'breadcrumbs': breadcrumbs,
             'value': _('Add'),
             'form': form
         }
 
-    return render(request, 'templates/_form.html', context)
+        return render(request, 'templates/_form.html', context)
 
 
 def review_update(request, pk=None):
@@ -244,8 +206,8 @@ def review_update(request, pk=None):
 
         context = {
             'footer': {
-            'about': footer[lang]
-        },
+                'about': footer[lang]
+            },
 
             'categories_list': Category.objects.all(),
             'company': get_company(),
@@ -266,25 +228,30 @@ def review_filter(request, slug=None):
         'en': Helpers.objects.get(id=1).about_footer_EN,
         'de': Helpers.objects.get(id=1).about_footer_DE
     }
-    reviews = Review.objects.filter(category__url__contains=slug)
+    reviews = Review.objects.filter(category__category__url__contains=slug)
     category = Category.objects.filter(url__icontains=slug)
-    if request.method == 'GET':
-        contact_me = ContactMe()
+
+    if not request.user.is_authenticated():
+        return redirect('login_or_register')
     else:
-        contact_me = ContactMe(request.POST)
-        if contact_me.is_valid():
-            fullname = contact_me.cleaned_data['fullname']
-            message = contact_me.cleaned_data['message']
-            subject = 'Mail from ' + fullname
+
+        form = ReviewForm(request.POST or None, request.FILES or None)
+
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.user = request.user
+            instance.save()
+            messages.success(request, 'Review Created')
+            message = 'Please check and approve new review: "' + request.POST.get('review', '') \
+                      + '" on http://www.goldenlisbon.com/admin/review/review/'
+            subject = 'New review!'
             from_email = settings.EMAIL_HOST_USER
             to_list = settings.EMAIL_TO
             try:
                 send_mail(subject, message, from_email, to_list, fail_silently=False)
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
-            return redirect('tour:success')
-        else:
-            return redirect('tour:fail')
+            return redirect('review:list')
 
     context = {
         'footer': {
@@ -293,11 +260,13 @@ def review_filter(request, slug=None):
         'categories_list': Category.objects.all(),
         'breadcrumbs': [
             {'url': '/', 'name': _('Home')},
-            {'url': '/', 'name': _('Reviews')},
+            {'url': '/reviews', 'name': _('Reviews')},
             {'url': '#', 'name': category[0], 'active': True}
         ],
         'title': _('category'),
-        'object_list': reviews
+        'object_list': reviews,
+        'form': form,
+        'value': _('Add')
     }
 
     return render(request, 'partials/review_filter.html', context)
@@ -307,6 +276,6 @@ def review_delete(request, pk=None):
     if not request.user.is_staff or not request.user.is_superuser:
         return redirect('accounts:signup')
     instance = get_object_or_404(Review, pk=pk)
-    delete()
+    instance.delete()
     messages.success(request, 'Review deleted')
     return redirect('review:list')

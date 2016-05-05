@@ -16,7 +16,7 @@
                     <p class="m-b-0">{{ object.review }}</p>
                     <p class="m-b-0"><span class="text-muted">left by: </span>{{ object.user.name }}</p>
                     <div class="blockquote-footer">add on: <cite title="Source Title">{{ object.timestamp }}</cite></div>
-                    <p><small><em class="text-uppercase">{% trans 'category' %}: </em><em><a href="/reviews/{{ object.category.url }}">{{ object.category }}</a>
+                    <p><small><em class="text-uppercase">{% trans 'category' %}: </em><em><a href="/reviews/{{ object.category.category.url }}">{{ object.category }}</a>
                     </em></small></p>
                 </blockquote>
             {% endif %}

@@ -301,7 +301,7 @@ def tour_delete(request, pk=None):
     if not request.user.is_staff or not request.user.is_superuser:
         return redirect('accounts:signup')
     instance = get_object_or_404(Tour, pk=pk)
-    delete()
+    instance.delete()
     messages.success(request, 'Tour deleted')
     return redirect('tour:list')
 

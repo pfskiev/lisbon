@@ -9,10 +9,10 @@
             {% for object in object_list %}
                 {% if object.confirmed %}
                 <blockquote class="blockquote">
-                    <p class="m-b-0">{{ object.object }}</p>
+                    <p class="m-b-0">{{ object.review|truncatechars:200 }}</p>
                     <p class="m-b-0"><span class="text-muted">left by: </span>{{ object.user.name }}</p>
                     <div class="blockquote-footer">add on: <cite title="Source Title">{{ object.timestamp }}</cite></div>
-                    <a href="{{ request.path }}{{ object.id }}/">{% trans 'View details' %}</a>
+                    <a href="{% url 'review:list' %}{{ object.id }}/">{% trans 'View details' %}</a>
                 </blockquote>
                 {% endif %}
             {% endfor %}

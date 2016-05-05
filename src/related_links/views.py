@@ -211,6 +211,6 @@ def related_links_delete(request, pk=None):
     if not request.user.is_staff or not request.user.is_superuser:
         return redirect('accounts:signup')
     instance = get_object_or_404(RelatedLink, pk=pk)
-    delete()
+    instance.delete()
     messages.success(request, 'Link deleted')
     return redirect('related_links:list')
