@@ -27,6 +27,7 @@
   @include background(linear-gradient(to right, rgba(128, 128, 128, 0.2), rgba(245, 245, 245, 0.1)));
 }
 .shadow {
+
   transition: all .3s ease;
   -webkit-box-shadow: 0 0 50px -4px rgba(0,0,0,0.2);
   -moz-box-shadow: 0 0 50px -4px rgba(0,0,0,0.2);

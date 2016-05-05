@@ -94,6 +94,7 @@
   position: absolute;
   top: 400px;
   left: 15%;
+  right: 15%;
   z-index: 100;
   opacity: 0.8;
   @include transition(all .3s ease-in-out);
@@ -102,5 +103,6 @@
   opacity: 1;
   z-index: 100;
 }
+
 
 

@@ -4,7 +4,9 @@
 section {
   padding-top: 100px;
   padding-bottom: 100px;
-  @include background(linear-gradient(to left, #EFEFBB, #D4D3DD));
+  @include background(linear-gradient(to left, #F6CAC9, #91A7D0));
+
+  //@include background(linear-gradient(to left, #EFEFBB, #D4D3DD));
 }
 article {
   @include transition(all .5s ease-in-out);

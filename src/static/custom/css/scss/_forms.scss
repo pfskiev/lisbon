@@ -1,3 +1,4 @@
+@import 'bourbon/bourbon';
 @import 'variables';
 
 .form-control {
@@ -5,7 +6,7 @@
   transition: all .3s ease;
 }
 .form-control:hover {
-  border-color: $color_blue_light;
+  border-color: $color_sand;
 }
 .form-control:focus {
   border-color: $color_blue_light;
@@ -19,5 +20,4 @@ select.form-language {
   width: 152px;
   color: darkgoldenrod;
   border: 1px solid darkgoldenrod;
-
 }
