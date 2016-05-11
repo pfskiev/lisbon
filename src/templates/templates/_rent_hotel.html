@@ -15,13 +15,34 @@
     </div>
     <div class="refills-card-copy">
         {% if 'pt' in request.LANGUAGE_CODE %}
-            {{ object.trip_advisor_PT | safe }}
+            <div class="row">
+                <div class="col-md-6">
+                    {{ object.trip_advisor_PT | safe }}
+                </div>
+                <div class="col-md-6">
+                    {% include 'templates/buttons/_booking.html' %}
+                </div>
+            </div>
             <p><small class="text-muted text-uppercase">{% trans 'description'%}: </small>{{ object.description_PT }}</p>
             {% elif 'en' in request.LANGUAGE_CODE %}
-                {{ object.trip_advisor_EN | safe }}
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ object.trip_advisor_EN | safe }}
+                    </div>
+                    <div class="col-md-6">
+                        {% include 'templates/buttons/_booking.html' %}
+                    </div>
+                </div>
                 <p><small class="text-muted text-uppercase">{% trans 'description'%}: </small>{{ object.description_EN }}</p>
                     {% elif 'de' in request.LANGUAGE_CODE %}
-                        {{ object.trip_advisor_DE | safe }}
+                        <div class="row">
+                            <div class="col-md-6">
+                                {{ object.trip_advisor_DE | safe }}
+                            </div>
+                            <div class="col-md-6">
+                                {% include 'templates/buttons/_booking.html' %}
+                            </div>
+                        </div>
                         <p><small class="text-muted text-uppercase">{% trans 'description'%}: </small>{{ object.description_DE }}</p>
         {% endif %}
         <p><small class="text-muted text-uppercase">{% trans 'address'%}: </small>{{ object.address }}</p>

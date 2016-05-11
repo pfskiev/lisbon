@@ -13,39 +13,36 @@
   border:1px solid gold;
 }
 .btn-danger {
-  @include transition(all .3s ease-in-out);
   color: $color_white;
-  background-color: #E83F6F;
-  border-color: #E83F6F;
-  transition: all .3s ease;
+  background-color: $color-danger;
+  border-color: $color-danger;
+  @include transition(all .3s ease-in-out);
 }
 .btn-danger:hover {
   color: $color_white;
   background-color: #C83560;
   border-color: #C83560;
-  transition: all .3s ease;
 }
 .btn-danger-outline {
-  @include transition(all .3s ease-in-out);
-  color: #E83F6F;
+  color: $color-danger;
   background-color: $color_white;
-  border-color: #E83F6F;
-  transition: all .3s ease;
+  border-color: $color-danger;
+  @include transition(all .3s ease-in-out);
 }
 .btn-danger-outline:hover{
   color: $color_white;
-  background-color: #E83F6F;
-  border-color: #E83F6F;
+  background-color: $color-danger;
+  border-color: $color-danger;
   .fa {
     color: $color_white;;
   }
 }
 .btn-blue {
-  @include transition(all .3s ease-in-out);
   color: $color_white;
   background-color: $btn-primary;
   border-color: $btn-primary;
   transition: all .3s ease;
+  @include transition(all .3s ease-in-out);
 }
 .btn-blue:hover{
   color: $btn-primary;
@@ -53,11 +50,11 @@
   border-color: $color_white;
 }
 .btn-blue-outline {
-  @include transition(all .3s ease-in-out);
   color: $btn-primary;
   background-color: $color_white;
   border-color: $btn-primary;
   transition: all .3s ease;
+  @include transition(all .3s ease-in-out);
 }
 .btn-blue-outline:hover {
   color: $color_white;
@@ -71,16 +68,16 @@
   }
 }
 .btn-gold {
-  @include transition(all .3s ease-in-out);
   color: $color_white;
   background-color: $btn-gold;
   border-color: $btn-gold;
+  @include transition(all .3s ease-in-out);
 }
 .btn-gold {
-  @include transition(all .3s ease-in-out);
   color: $color_white;
   background-color: $btn-gold;
   border-color: $btn-gold;
+  @include transition(all .3s ease-in-out);
 }
 .btn-gold:hover{
   color: $color_white;
@@ -96,13 +93,25 @@
   left: 15%;
   right: 15%;
   z-index: 100;
-  opacity: 0.8;
   @include transition(all .3s ease-in-out);
+  opacity: 0.8;
 }
 .btn-contact:hover {
-  opacity: 1;
   z-index: 100;
+  opacity: 1;
 }
-
-
-
+.btn-booking {
+  margin-top: 10px;
+  background-color: $btn-booking;
+  border-color: $btn-booking;
+  color: #FFFFFF;
+  @include transition(all .3s ease-in-out);
+  .text-blue {
+    color: #009FE2;
+  }
+}
+.btn-booking:hover {
+  background-color: lighten($btn-booking, 10%);
+  border-color: lighten($btn-booking, 10%);
+  color: #FFFFFF;
+}

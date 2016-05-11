@@ -2,10 +2,10 @@ $color_blue_light:         #118DF0;
 $color_blue:               #0E2F56;
 $color_sand:               #ffefd5;
 $color_red:                #FF304F;
-$color_white:              #FFF;
+$color-danger:             #E83F6F;
+$color_white:              #FFFFFF;
 
 $color_red_opacity:        rgba(255, 48, 79, 0.7);
-
 
 $btn-primary:              #2274A5;
 $btn-primary-hover:        #0474a5;
@@ -19,8 +19,7 @@ $btn-success:              #32936f;
 $btn-success-hover:        #14936f;
 $btn-gold:                 #ffd700;
 $btn-gold-hover:           #b8860b;
-
-
+$btn-booking:              #003580;
 
 // Refills Card
 $base-border-color: $color_sand !default;

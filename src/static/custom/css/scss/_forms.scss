@@ -14,10 +14,13 @@
 .form-control:active {
   border-color: $color_blue_light;
 }
+.form-control:visited {
+  border-color: $color_blue_light;
+}
 select.form-language {
   margin-bottom: 8px;
-  height: 37px;
   width: 152px;
+  height: 37px;
   color: darkgoldenrod;
   border: 1px solid darkgoldenrod;
 }
