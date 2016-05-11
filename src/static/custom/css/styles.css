@@ -160,6 +160,43 @@ ol.breadcrumb > li > a {
   border-color: #004ab3;
   color: #FFFFFF; }
 
+.btn-car-rentals {
+  margin-top: 10px;
+  background-color: #FFFFFF;
+  border-color: #F37121;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out; }
+  .btn-car-rentals .car {
+    color: #F37121;
+    font-size: 18px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out; }
+  .btn-car-rentals .rentals {
+    color: #FAA819;
+    font-size: 18px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out; }
+  .btn-car-rentals .com {
+    color: #808283;
+    font-size: 11px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out; }
+
+.btn-car-rentals:hover {
+  background-color: #f8af82;
+  border-color: #f8af82; }
+  .btn-car-rentals:hover .car {
+    border-color: #a54409;
+    font-size: 18px; }
+  .btn-car-rentals:hover .rentals {
+    color: #FFFFFF; }
+  .btn-car-rentals:hover .com {
+    border-color: #4e4f4f; }
+
 .contact h5 {
   color: #0E2F56; }
 .contact h4 {
