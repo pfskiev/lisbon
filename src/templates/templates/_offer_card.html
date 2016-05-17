@@ -45,9 +45,9 @@
             <p class="text-md-center"><a class="btn btn-danger-outline" href="{{ object.get_absolute_url }}" role="button">{% trans 'View details' %} &raquo;</a></p>
             {% if user.is_staff or user.is_superuser %}
                 <p class="text-md-center">
-                    <a class="btn btn-sm btn-danger-outline" href="{{ object.get_absolute_url }}delete/">
+                    <a class="btn btn-sm btn-danger-outline" href="{{ object.get_delete_url }}">
                         <i class="fa fa-trash"></i> {% trans 'Delete' %}</a>
-                    <a class="btn btn-sm btn-danger-outline" href="{{ object.get_absolute_url }}edit/">
+                    <a class="btn btn-sm btn-danger-outline" href="{{ object.get_edit_url }}">
                         <i class="fa fa-pencil-square-o"></i> {% trans 'Edit' %}</a>
                 </p>
             {% endif %}

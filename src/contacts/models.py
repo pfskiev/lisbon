@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import ugettext as _
+from django.core.urlresolvers import reverse
 from autoslug.fields import AutoSlugField
 
 
@@ -61,7 +62,7 @@ class Contact(models.Model):
     description_SEO = models.TextField(_('Description SEO'), max_length=1000, blank=True, null=False)
 
     def get_absolute_url(self):
-        return '/contacts/%i/' % self.id
+        return reverse('contact:detail', args=[str(self.id)])
 
     def __str__(self):
         return self.first_name + ' ' + self.last_name

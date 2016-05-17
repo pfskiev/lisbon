@@ -1,5 +1,7 @@
 from django.conf import settings
 from django.db import models
+from django.core.urlresolvers import reverse
+from django.utils.translation import ugettext as _
 from tours.models import Tour
 
 

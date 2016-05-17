@@ -1,7 +1,8 @@
 from django.db import models
+from django.core.urlresolvers import reverse
+from django.utils.translation import ugettext as _
 from easy_thumbnails.fields import *
 from autoslug.fields import *
-from django.utils.translation import ugettext as _
 
 
 class HotelCategory(models.Model):

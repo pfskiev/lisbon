@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import ugettext as _
+from django.core.urlresolvers import reverse
 from autoslug.fields import AutoSlugField
 
 
@@ -8,7 +9,7 @@ class Category(models.Model):
     url = AutoSlugField(populate_from='category', unique=True, max_length=255)
 
     def get_absolute_url(self):
-        return '/tours/' + self.url
+        return '/tours/%s/' % self.url
 
     def __str__(self):
         return self.category
@@ -38,7 +39,7 @@ class Tour(models.Model):
         verbose_name_plural = _('Tour')
 
     def get_absolute_url(self):
-        return '/tours/%i/' % self.id
+        return reverse('tour:detail', args=[str(self.id)])
 
     def __str__(self):
         return self.title_EN
@@ -64,8 +65,8 @@ class About(models.Model):
     keywords_SEO = models.TextField(max_length=1000, blank=True, null=False)
     description_SEO = models.TextField(max_length=1000, blank=True, null=False)
 
-    # def __str__(self):
-    #     return self.paragraph
+    def __str__(self):
+        return _('Paragraph')
 
     def __unicode__(self):
-        return self.paragraph
+        return _('Paragraph')

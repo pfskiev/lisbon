@@ -271,13 +271,14 @@ button {
   border: 0;
   background: -webkit-linear-gradient( left , white, #eeeeee);
   background: linear-gradient(to right, white, #eeeeee);
-  transition: all .3s ease; }
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  transition: all 0.3s ease; }
   .card h4.card-title {
     color: #0E2F56; }
   .card p {
     color: #0E2F56; }
   .card:hover {
-    transition: all .3s ease;
     background: -webkit-linear-gradient( right , #ECE9E6, #FFFFFF);
     background: linear-gradient(to left, #ECE9E6, #FFFFFF); }
 
@@ -465,7 +466,9 @@ button {
   font-weight: normal;
   src: local("HelveticaNeueCyr-UltraLight"), url("../fonts/HelveticaNeueCyr-UltraLight.woff") format("woff"); }
 .footer {
-  @includetransition : all .3s ease;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  transition: all 0.3s ease;
   background: -webkit-linear-gradient( right , #0E2F56, #118DF0);
   background: linear-gradient(to left, #0E2F56, #118DF0);
   padding: 3em;

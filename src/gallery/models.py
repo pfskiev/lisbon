@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import ugettext as _
+from django.core.urlresolvers import reverse
 
 
 class Gallery(models.Model):
@@ -23,7 +24,7 @@ class Gallery(models.Model):
         verbose_name_plural = _('Gallery')
 
     def get_absolute_url(self):
-        return '/gallery/%i/' % self.id
+        return reverse('gallery:detail', args=[str(self.id)])
 
     def __str__(self):
         return self.title_EN

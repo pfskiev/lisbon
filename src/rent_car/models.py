@@ -1,6 +1,7 @@
 from django.db import models
 from easy_thumbnails.fields import *
 from autoslug.fields import *
+from django.core.urlresolvers import reverse
 
 
 class CarCategory(models.Model):
@@ -37,4 +38,3 @@ class Car(models.Model):
 
     def __unicode__(self):
         return self.title_EN
-

@@ -2,6 +2,7 @@ from django.db import models
 from tours.models import Category, Tour
 from easy_thumbnails.fields import ThumbnailerImageField
 from django.utils.translation import ugettext as _
+from django.core.urlresolvers import reverse
 
 
 class Article(models.Model):
@@ -19,7 +20,7 @@ class Article(models.Model):
     description_SEO = models.TextField(_('Article description for SEO'), max_length=1000, blank=True, null=False)
 
     def get_absolute_url(self):
-        return '/news/%i/' % self.id
+        return reverse('news:detail', args=[str(self.id)])
 
     def __str__(self):
         return self.title_EN

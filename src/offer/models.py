@@ -40,6 +40,12 @@ class Offer(models.Model):
     def get_absolute_url(self):
         return reverse('offer:detail', args=[str(self.id)])
 
+    def get_edit_url(self):
+        return reverse('offer:edit', args=[str(self.id)])
+
+    def get_delete_url(self):
+        return reverse('offer:delete', args=[str(self.id)])
+
     def __str__(self):
         return self.title_EN
 
