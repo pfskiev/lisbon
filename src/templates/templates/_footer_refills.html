@@ -37,7 +37,7 @@
                 </div>
                         {% if nav.offer_categories_list %}
                             {% for offer in nav.offer_categories_list %}
-                                <div class="div-li"><em><a href="{{ offer.get_absolute_url }}">{{ offer.category }}</a></em></div>
+                                <div class="div-li"><em><a href="{% if 'car' in offer.get_absolute_url  %}{% url 'rent_car:list' %}{% else %}{% if 'hotel' in offer.get_absolute_url %}{% url 'rent_hotel:list' %}{% else %}{% url 'offer:list' %}{{ offer.get_absolute_url }}{% endif %}{% endif %}"">{{ offer.category }}</a></em></div>
                             {% endfor %}
                         {% endif %}
                     </div>
