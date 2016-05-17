@@ -27,6 +27,7 @@
 //}
 
 .footer {
+   @include transition(all .3s ease);
   .fa {
     color: $footer-link-color;
     &:hover,

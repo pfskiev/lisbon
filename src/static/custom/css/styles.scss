@@ -172,4 +172,11 @@ input.btn.btn-lg.btn-primary.form-control {
   border: none !important;
 }
 
+.js-accordion-trigger:hover .fa.fa-chevron-down,
+.js-accordion-trigger:focus .fa.fa-chevron-down,
+.js-accordion-trigger:visited .fa.fa-chevron-down,
+.js-accordion-trigger:active .fa.fa-chevron-down{
+  color: transparentize($footer-color, 0);
+}
+
 

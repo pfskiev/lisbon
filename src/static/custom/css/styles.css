@@ -465,6 +465,7 @@ button {
   font-weight: normal;
   src: local("HelveticaNeueCyr-UltraLight"), url("../fonts/HelveticaNeueCyr-UltraLight.woff") format("woff"); }
 .footer {
+  @includetransition : all .3s ease;
   background: -webkit-linear-gradient( right , #0E2F56, #118DF0);
   background: linear-gradient(to left, #0E2F56, #118DF0);
   padding: 3em;
@@ -932,7 +933,13 @@ p.goldenlisbon:hover {
 .player:hover {
   opacity: 1; }
 
-.btn.btn-lg.btn-primary.form-control {
+input.btn.btn-lg.btn-primary.form-control {
   border: none !important; }
+
+.js-accordion-trigger:hover .fa.fa-chevron-down,
+.js-accordion-trigger:focus .fa.fa-chevron-down,
+.js-accordion-trigger:visited .fa.fa-chevron-down,
+.js-accordion-trigger:active .fa.fa-chevron-down {
+  color: white; }
 
 /*# sourceMappingURL=styles.css.map */

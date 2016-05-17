@@ -17,7 +17,7 @@
             <div class="div-li"><a href="{% url 'home' %}">{% trans 'Home' %}</a></div>
 {#            <div class="div-li"><a href="{% url 'tour:list' %}">{% trans 'Tours & Excursions' %}</a>#}
             <div class="div-li">
-                <a href="javascript:void(0)" class="js-accordion-trigger">{% trans 'Tours & Excursions' %}</a>
+                <a href="javascript:void(0)" class="js-accordion-trigger">{% trans 'Tours & Excursions' %} <i class="fa fa-chevron-down" aria-hidden="true"></i></a>
                 <div class="submenu" style="display: none;">
                 <div class="div-li">
                     <a href="{% url 'tour:list' %}"><em>{% trans 'full tour list' %}</em></a>
@@ -30,21 +30,28 @@
                 </div>
             </div>
             <div class="div-li">
-                    <a href="javascript:void(0)" class="js-accordion-trigger">{% trans 'Offers' %}</a>
+                    <a href="javascript:void(0)" class="js-accordion-trigger">{% trans 'Offers' %} <i class="fa fa-chevron-down" aria-hidden="true"></i></a>
                     <div class="submenu" style="display: none;">
                     <div class="div-li">
                     <a href="{% url 'offer:list' %}"><em>{% trans 'full offer list' %}</em></a>
                 </div>
                         {% if nav.offer_categories_list %}
                             {% for offer in nav.offer_categories_list %}
-                                <div class="div-li"><em><a href="{% if 'car' in offer.get_absolute_url  %}{% url 'rent_car:list' %}{% else %}{% if 'hotel' in offer.get_absolute_url %}{% url 'rent_hotel:list' %}{% else %}{% url 'offer:list' %}{{ offer.get_absolute_url }}{% endif %}{% endif %}"">{{ offer.category }}</a></em></div>
+                                <div class="div-li"><em><a href="{% if 'car' in offer.get_absolute_url  %}{% url 'rent_car:list' %}{% else %}{% if 'hotel' in offer.get_absolute_url %}{% url 'rent_hotel:list' %}{% else %}{% url 'offer:list' %}{{ offer.get_absolute_url }}{% endif %}{% endif %}">{{ offer.category }} </a></em></div>
                             {% endfor %}
                         {% endif %}
                     </div>
             </div>
             <script>
                 $('.js-accordion-trigger').bind('click', function(e){
-                    $(this).parent().find('.submenu').slideToggle('fast');
+                    var $parent = $(this).parent();
+                    $parent.find('.submenu').slideToggle('fast');
+                    if($parent.find('.fa-chevron-down').attr('style') == "transform: rotate(-180deg);") {
+                        $parent.find('.fa-chevron-down').css('transform', 'rotate(-0deg)')
+                    }
+                    else {
+                        $parent.find('.fa-chevron-down').css('transform', 'rotate(-180deg)');
+                    }
                     e.preventDefault();
 
                 });
