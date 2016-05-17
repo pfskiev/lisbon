@@ -2,6 +2,8 @@
 {% load staticfiles %}
 {% load i18n %}
 {% load thumbnail %}
+{% block description %}{{ object.description_SEO }}{% endblock description %}
+{% block keywords %}{{ object.keywords_SEO }}{% endblock keywords %}
 {% block content %}
     {% include 'templates/_breadcrumbs.html' %}
     <section class="details">

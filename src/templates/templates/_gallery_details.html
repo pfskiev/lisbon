@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% block description %}{{ object.description_SEO }}{% endblock description %}
+{% block keywords %}{{ object.keywords_SEO }}{% endblock keywords %}
 {% block content %}
     {% load staticfiles %}
     {% include 'templates/_breadcrumbs.html' %}
