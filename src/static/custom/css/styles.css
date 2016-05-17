@@ -932,4 +932,7 @@ p.goldenlisbon:hover {
 .player:hover {
   opacity: 1; }
 
+.btn.btn-lg.btn-primary.form-control {
+  border: none !important; }
+
 /*# sourceMappingURL=styles.css.map */

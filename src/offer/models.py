@@ -38,7 +38,7 @@ class Offer(models.Model):
                                    blank=True, null=True)
 
     def get_absolute_url(self):
-        return "/offer/%i/" % self.id
+        return reverse('offer:detail', args=[str(self.id)])
 
     def __str__(self):
         return self.title_EN
