@@ -227,7 +227,7 @@ def offer_category(request, slug=None):
         'en': Helpers.objects.get(id=1).about_footer_EN,
         'de': Helpers.objects.get(id=1).about_footer_DE
     }
-    queryset_list = Offer.objects.filter(category__url__contains=slug)
+    queryset_list = Offer.objects.filter(category__slug__contains=slug)
     lang = get_lang(request)
     query = request.GET.get('q')
     if query:
