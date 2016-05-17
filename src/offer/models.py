@@ -22,19 +22,20 @@ class OfferCategory(models.Model):
 
 
 class Offer(models.Model):
-    title_PT = models.CharField(max_length=100, blank=True, null=False)
-    title_EN = models.CharField(max_length=100, blank=True, null=False)
-    title_DE = models.CharField(max_length=100, blank=True, null=False)
-    description_PT = models.TextField(max_length=1000, blank=True, null=False)
-    description_EN = models.TextField(max_length=1000, blank=True, null=False)
-    description_DE = models.TextField(max_length=1000, blank=True, null=False)
-    keywords_SEO = models.TextField(max_length=1000, blank=True, null=False)
-    description_SEO = models.TextField(max_length=1000, blank=True, null=False)
-    created_on = models.DateTimeField(auto_now_add=True, auto_created=False)
-    img = models.ImageField(null=True, blank=True)
-    position = models.IntegerField(default=1, blank=True, null=True)
     category = models.ForeignKey(OfferCategory, default=None, blank=True, null=True)
     tour_category = models.ForeignKey(Category, default=None, blank=True, null=True)
+    title_PT = models.CharField(_('Title PT'), max_length=100, blank=True, null=False)
+    title_EN = models.CharField(_('Title EN'), max_length=100, blank=True, null=False)
+    title_DE = models.CharField(_('Title DE'), max_length=100, blank=True, null=False)
+    description_PT = models.TextField(_('description PT'), max_length=1000, blank=True, null=False)
+    description_EN = models.TextField(_('description EN'), max_length=1000, blank=True, null=False)
+    description_DE = models.TextField(_('description DE'), max_length=1000, blank=True, null=False)
+    keywords_SEO = models.TextField(_('keywords for SEO'), max_length=1000, blank=True, null=False)
+    description_SEO = models.TextField(_('description for SEO'), max_length=1000, blank=True, null=False)
+    created_on = models.DateTimeField(auto_now_add=True, auto_created=False)
+    img = models.ImageField(_('Offer thumbnail'), null=True, blank=True)
+    position = models.IntegerField(_('Choose position of this offer to filter it on home page (number)'), default=1,
+                                   blank=True, null=True)
 
     def get_absolute_url(self):
         return "/offer/%i/" % self.id
