@@ -51,7 +51,7 @@
                 <div class="dropdown-menu">
                     {% if nav.tour_categories_list %}
                         {% for tour in nav.tour_categories_list %}
-                            <a href="{% if 'car' in tour.get_absolute_url  %}{% url 'rent_car:list' %}{% else %}{% if 'hotel' in tour.get_absolute_url %}{% url 'rent_hotel:list' %}{% else %}{% url 'offer:list' %}{{ tour.get_absolute_url }}{% endif %}{% endif %}" class="dropdown-item">{{ tour.category }}</a>
+                            <a href="{{ tour.get_absolute_url }}" class="dropdown-item">{{ tour.category }}</a>
                         {% endfor %}
                     {% endif %}
                     <div class="dropdown-divider"></div>
