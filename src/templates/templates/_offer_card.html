@@ -12,9 +12,10 @@
         {% if 'de' in request.LANGUAGE_CODE %}
             <h4 style="margin-top: 20px" class="card-title text-md-center">{{ object.title_DE }}</h4>
         {% endif %}
+
     </div>
     {% if object.img %}
-        <a  href="{% if 'offer' in request.path %}{{ request.path }}{{ object.id }}{% else %}{% url 'offer:list' %}{{ object.id }}{% endif %}">
+        <a href="{{ object.get_absolute_url }}">
             <img width="100%" src="{% thumbnail object.img 720x480 crop="smart" %}" alt="{{ object.title }}" style="object-fit: cover;"></a>
     {% else %}
         <p style="text-align: center"><small><em>{% trans 'place for image' %}</em></small></p>
@@ -23,30 +24,30 @@
         {% if 'pt' in request.LANGUAGE_CODE %}
             <p class="card-text text-md-center">{{ object.description_PT|truncatechars:200 }}</p>
             <p class="text-md-center">
-                <a class="btn btn-danger" href="{% url 'tour:list' %}{{ object.category.url }}">{% trans 'VER TODAS OFERTAS' %}</a>
+                <a class="btn btn-danger" href="{% if 'car' in object.category.url  %}{% url 'rent_car:list' %}{% else %}{% if 'hotel' in object.category.url %}{% url 'rent_hotel:list' %}{% else %}{% url 'offer:list' %}{{ object.category.url }}{% endif %}{% endif %}">{% trans 'VER TODAS OFERTAS' %}</a>
             </p>
         {% endif %}
         {% if 'en' in request.LANGUAGE_CODE %}
             <p class="card-text text-md-center">{{ object.description_EN|truncatechars:200 }}</p>
             <p class="text-md-center">
-                <a class="btn btn-danger" href="{% url 'tour:list' %}{{ object.category.url }}">{% trans 'SEE ALL OFFERS' %}</a>
+                <a class="btn btn-danger" href="{% if 'car' in object.category.url  %}{% url 'rent_car:list' %}{% else %}{% if 'hotel' in object.category.url %}{% url 'rent_hotel:list' %}{% else %}{% url 'offer:list' %}{{ object.category.url }}{% endif %}{% endif %}">{% trans 'SEE ALL OFFERS' %}</a>
             </p>
         {% endif %}
         {% if 'de' in request.LANGUAGE_CODE %}
             <p class="card-text text-md-center">{{ object.description_DE|truncatechars:200 }}</p>
             <p class="text-md-center">
-                <a class="btn btn-danger" href="{% url 'tour:list' %}{{ object.category.url }}">{% trans 'SEHEN ALLE ANGEBOTE' %}</a>
+                <a class="btn btn-danger" href="{% if 'car' in object.category.url  %}{% url 'rent_car:list' %}{% else %}{% if 'hotel' in object.category.url %}{% url 'rent_hotel:list' %}{% else %}{% url 'offer:list' %}{{ object.category.url }}{% endif %}{% endif %}">{% trans 'SEHEN ALLE ANGEBOTE' %}</a>
             </p>
         {% endif %}
         {% if 'offer' in request.path %}
             {% include 'templates/_CRUD.html' %}
         {% else %}
-            <p class="text-md-center"><a class="btn btn-danger-outline" href="{% url 'offer:list' %}{{ object.id }}" role="button">{% trans 'View details' %} &raquo;</a></p>
+            <p class="text-md-center"><a class="btn btn-danger-outline" href="{{ object.get_absolute_url }}" role="button">{% trans 'View details' %} &raquo;</a></p>
             {% if user.is_staff or user.is_superuser %}
                 <p class="text-md-center">
-                    <a class="btn btn-sm btn-danger-outline" href="{% url 'offer:list' %}{{ object.id }}/delete/">
+                    <a class="btn btn-sm btn-danger-outline" href="{{ object.get_absolute_url }}delete/">
                         <i class="fa fa-trash"></i> {% trans 'Delete' %}</a>
-                    <a class="btn btn-sm btn-danger-outline" href="{% url 'offer:list' %}{{ object.id }}/edit/">
+                    <a class="btn btn-sm btn-danger-outline" href="{{ object.get_absolute_url }}edit/">
                         <i class="fa fa-pencil-square-o"></i> {% trans 'Edit' %}</a>
                 </p>
             {% endif %}

@@ -1,0 +1,15 @@
+{% load i18n %}
+<article class="offer">
+    <div class="container marketing">
+        <h3 class="display-3 text-md-center">{{ section.offer_header }}</h3>
+        <p style="text-align: center"><a href="{% url 'offer:list' %}"><em>{% trans 'full offer list' %}</em></a></p>
+        <div class="card-columns">
+            {% for object in offer_list%}
+                {% include 'templates/_offer_card.html' %}
+            {% endfor %}
+        </div>
+        {% if user.is_staff or user.is_superuser %}
+            <a class="btn btn-warning" href="{% url 'offer:create' %}"><i class="fa fa-plus"></i> {% trans  'Create Offer' %}</a>
+        {% endif %}
+    </div>
+</article>

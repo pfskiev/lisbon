@@ -45,7 +45,7 @@ class Hotel(models.Model):
         return '/rent-hotel/%i/' % self.id
 
     def __str__(self):
-        return self.title_EN
+        return '%s at %s' % (self.title_EN, self.address)
 
     def __unicode__(self):
-        return self.title_EN
+        return '%s at %s' % (self.title_EN, self.address)

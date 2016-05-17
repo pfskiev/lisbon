@@ -7,5 +7,6 @@ urlpatterns = [
     url(r'^(?P<pk>[0-9]+)/$', views.offer_detail, name='detail'),
     url(r'^(?P<pk>[0-9]+)/edit/$', views.offer_update, name='edit'),
     url(r'^(?P<pk>[0-9]+)/delete/$', views.offer_delete, name='delete'),
+    url(r'^(?P<slug>[\w-]+)/$', views.offer_category, name='category'),
 
 ]

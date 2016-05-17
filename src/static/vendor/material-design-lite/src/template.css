@@ -1,0 +1,104 @@
+/*
+Error: Invalid US-ASCII character "\xE2"
+        on line 171 of _mixins.scss
+        from line 21 of material-design-lite.scss
+        from line 17 of styleguide.scss
+        from line 21 of template.scss
+
+166:   letter-spacing: 0.08em;
+167: 
+168:   &:before {
+169:     position: absolute;
+170:     left: -0.5em;
+171:     content: '“';
+172:   }
+173: 
+174:   &:after {
+175:     content: '”';
+176:     margin-left: -0.05em;
+
+Backtrace:
+_mixins.scss:171
+material-design-lite.scss:21
+styleguide.scss:17
+template.scss:21
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/util.rb:1300:in `rescue in block in find_encoding_error'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/util.rb:1297:in `block in find_encoding_error'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/util.rb:1296:in `each'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/util.rb:1296:in `each_with_index'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/util.rb:1296:in `find_encoding_error'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/util.rb:905:in `check_sass_encoding'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/engine.rb:436:in `check_encoding!'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/engine.rb:392:in `_to_tree'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/engine.rb:312:in `to_tree'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:326:in `block in visit_import'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/stack.rb:88:in `block in with_import'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/stack.rb:115:in `with_frame'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/stack.rb:88:in `with_import'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:325:in `visit_import'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:160:in `block in visit'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/stack.rb:79:in `block in with_base'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/stack.rb:115:in `with_frame'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/stack.rb:79:in `with_base'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:160:in `visit'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:328:in `block (2 levels) in visit_import'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:328:in `map'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:328:in `block in visit_import'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/stack.rb:88:in `block in with_import'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/stack.rb:115:in `with_frame'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/stack.rb:88:in `with_import'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:325:in `visit_import'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:160:in `block in visit'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/stack.rb:79:in `block in with_base'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/stack.rb:115:in `with_frame'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/stack.rb:79:in `with_base'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:160:in `visit'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:328:in `block (2 levels) in visit_import'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:328:in `map'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:328:in `block in visit_import'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/stack.rb:88:in `block in with_import'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/stack.rb:115:in `with_frame'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/stack.rb:88:in `with_import'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:325:in `visit_import'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:160:in `block in visit'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/stack.rb:79:in `block in with_base'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/stack.rb:115:in `with_frame'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/stack.rb:79:in `with_base'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:160:in `visit'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:52:in `map'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:169:in `block in visit_children'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:181:in `with_environment'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:168:in `visit_children'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:188:in `visit_root'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:159:in `visit'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:8:in `visit'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/tree/root_node.rb:36:in `css_tree'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/engine.rb:381:in `_render_with_sourcemap'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/engine.rb:298:in `render_with_sourcemap'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:492:in `update_stylesheet'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:209:in `each'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/plugin.rb:82:in `update_stylesheets'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/exec/sass_scss.rb:340:in `watch_or_update'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/exec/sass_scss.rb:51:in `process_result'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/exec/base.rb:52:in `parse'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/lib/sass/exec/base.rb:19:in `parse!'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/gems/sass-3.4.22/bin/scss:13:in `<top (required)>'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/bin/scss:22:in `load'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/bin/scss:22:in `<main>'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/bin/ruby_executable_hooks:15:in `eval'
+/Users/konstantin/.rvm/gems/ruby-2.2.1/bin/ruby_executable_hooks:15:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Invalid US-ASCII character \"\xE2\"\A         on line 171 of _mixins.scss\A         from line 21 of material-design-lite.scss\A         from line 17 of styleguide.scss\A         from line 21 of template.scss\A \A 166:   letter-spacing: 0.08em;\A 167: \A 168:   &:before {\A 169:     position: absolute;\A 170:     left: -0.5em;\A 171:     content: '“';\A 172:   }\A 173: \A 174:   &:after {\A 175:     content: '”';\A 176:     margin-left: -0.05em;"; }

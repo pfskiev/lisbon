@@ -7,6 +7,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.translation import ugettext_lazy as _
 from .models import Tour, Category
+from offer.models import OfferCategory
 from .forms import TourForm, BookNow, ContactMe
 from helpers.models import Helpers
 
@@ -107,7 +108,10 @@ def tour_list(request):
             'icon': Helpers.objects.get(id=1).footer_icon
         },
         'form': form,
-        'categories_list': Category.objects.all(),
+        'nav': {
+            'tour_categories_list': Category.objects.all(),
+            'offer_categories_list': OfferCategory.objects.all(),
+        },
         'company': get_company(),
         'title': _('Tours'),
         'breadcrumbs': breadcrumbs,
@@ -188,7 +192,10 @@ def tour_detail(request, pk=None):
             'icon': Helpers.objects.get(id=1).footer_icon
         },
         'form': form,
-        'categories_list': Category.objects.all(),
+        'nav': {
+            'tour_categories_list': Category.objects.all(),
+            'offer_categories_list': OfferCategory.objects.all(),
+        },
         'company': get_company(),
         'title': title[lang],
         'breadcrumbs': breadcrumbs,
@@ -242,7 +249,10 @@ def tour_update(request, pk=None):
                 'icon': Helpers.objects.get(id=1).footer_icon
             },
 
-            'categories_list': Category.objects.all(),
+            'nav': {
+            'tour_categories_list': Category.objects.all(),
+            'offer_categories_list': OfferCategory.objects.all(),
+        },
             'company': get_company(),
             'title': _('Edit') + ' ' + tour_title[lang],
             'breadcrumbs': breadcrumbs,
@@ -283,7 +293,10 @@ def tour_create(request):
                 'icon': Helpers.objects.get(id=1).footer_icon
             },
 
-            'categories_list': Category.objects.all(),
+            'nav': {
+            'tour_categories_list': Category.objects.all(),
+            'offer_categories_list': OfferCategory.objects.all(),
+        },
             'company': get_company(),
             'lang': lang,
             'title': 'Tour create',
@@ -394,7 +407,10 @@ def tour_category(request, slug=None):
             'icon': Helpers.objects.get(id=1).footer_icon
         },
         'form': form,
-        'categories_list': Category.objects.all(),
+        'nav': {
+            'tour_categories_list': Category.objects.all(),
+            'offer_categories_list': OfferCategory.objects.all(),
+        },
         'breadcrumbs': [
             {'url': '/', 'name': _('Home')},
             {'url': '/tours', 'name': _('Tours')},
@@ -438,7 +454,10 @@ def tour_success(request):
             'about': footer[lang],
             'icon': Helpers.objects.get(id=1).footer_icon
         },
-        'categories_list': Category.objects.all(),
+        'nav': {
+            'tour_categories_list': Category.objects.all(),
+            'offer_categories_list': OfferCategory.objects.all(),
+        },
         'title': 'Thank you very much for your contact. We will get in touch with you soon!',
         'company': get_company(),
         'breadcrumbs': [
@@ -478,7 +497,10 @@ def tour_fail(request):
             'about': footer[lang],
             'icon': Helpers.objects.get(id=1).footer_icon
         },
-        'categories_list': Category.objects.all(),
+        'nav': {
+            'tour_categories_list': Category.objects.all(),
+            'offer_categories_list': OfferCategory.objects.all(),
+        },
         'title': 'Sorry, something goes wrong! Please try again.',
         'company': get_company(),
         'breadcrumbs': [

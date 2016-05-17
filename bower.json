@@ -29,6 +29,7 @@
     "angular": "^1.5.3",
     "textAngular": "^1.5.0",
     "angular-sanitize": "^1.5.3",
-    "intl-tel-input": "^8.4.9"
+    "intl-tel-input": "^8.4.9",
+    "material-design-lite": "^1.1.3"
   }
 }

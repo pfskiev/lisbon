@@ -6,6 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 from helpers.models import Helpers
 from offer.models import Offer
 from tours.models import Category, Tour, About
+from offer.models import OfferCategory
 from tours.forms import BookNow, ContactMe
 
 
@@ -37,10 +38,13 @@ def home(request):
         else:
             return redirect('tour:fail')
     lang = request.LANGUAGE_CODE
-    footer = {
-        'pt': Helpers.objects.get(id=1).about_footer_PT,
-        'en': Helpers.objects.get(id=1).about_footer_EN,
-        'de': Helpers.objects.get(id=1).about_footer_DE
+    breadcrumbs = [
+        {'url': '/', 'name': _('Home'), 'active': True},
+    ]
+    header = {
+        'pt': Helpers.objects.get(id=1).start_page_header_pt,
+        'en': Helpers.objects.get(id=1).start_page_header_gb,
+        'de': Helpers.objects.get(id=1).start_page_header_de
     }
     tour_header = {
         'pt': Helpers.objects.get(id=1).tour_header_name_PT,
@@ -52,13 +56,10 @@ def home(request):
         'en': Helpers.objects.get(id=1).offer_header_name_EN,
         'de': Helpers.objects.get(id=1).offer_header_name_DE
     }
-    breadcrumbs = [
-        {'url': '/', 'name': _('Home'), 'active': True},
-    ]
-    header = {
-        'pt': Helpers.objects.get(id=1).start_page_header_pt,
-        'en': Helpers.objects.get(id=1).start_page_header_gb,
-        'de': Helpers.objects.get(id=1).start_page_header_de
+    footer = {
+        'pt': Helpers.objects.get(id=1).about_footer_PT,
+        'en': Helpers.objects.get(id=1).about_footer_EN,
+        'de': Helpers.objects.get(id=1).about_footer_DE
     }
     if request.method == 'GET':
         form = BookNow()
@@ -80,7 +81,10 @@ def home(request):
 
     context = {
         'form': form,
-        'categories_list': Category.objects.all(),
+        'nav': {
+            'tour_categories_list': Category.objects.all(),
+            'offer_categories_list': OfferCategory.objects.all(),
+        },
         'audio': Helpers.objects.get(id=1).audio,
         'company': get_company(),
         'header': header[lang],
@@ -124,7 +128,10 @@ def about(request):
             'about': footer[lang],
             'icon': Helpers.objects.get(id=1).footer_icon
         },
-        'categories_list': Category.objects.all(),
+        'nav': {
+            'tour_categories_list': Category.objects.all(),
+            'offer_categories_list': OfferCategory.objects.all(),
+        },
         'company': get_company(),
         'title': _('About'),
         'breadcrumbs': breadcrumbs,
@@ -170,7 +177,10 @@ def email_me(request):
             'icon': Helpers.objects.get(id=1).footer_icon
         },
         'form': contact_me,
-        'categories_list': Category.objects.all(),
+        'nav': {
+            'tour_categories_list': Category.objects.all(),
+            'offer_categories_list': OfferCategory.objects.all(),
+        },
         'title': 'Contact me',
         'company': get_company(),
         'breadcrumbs': [

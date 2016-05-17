@@ -5,6 +5,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.translation import ugettext_lazy as _
 from helpers.models import Helpers
 from tours.models import Category
+from offer.models import OfferCategory
 from .models import Gallery
 from .forms import GalleryForm
 
@@ -67,7 +68,10 @@ def gallery_list(request):
             'about': footer[lang],
             'icon': Helpers.objects.get(id=1).footer_icon
         },
-        'categories_list': Category.objects.all(),
+        'nav': {
+            'tour_categories_list': Category.objects.all(),
+            'offer_categories_list': OfferCategory.objects.all(),
+        },
         'company': get_company(),
         'title': _('Gallery'),
         'breadcrumbs': breadcrumbs,
@@ -116,7 +120,10 @@ def gallery_detail(request, pk=None):
             'about': footer[lang],
             'icon': Helpers.objects.get(id=1).footer_icon
         },
-        'categories_list': Category.objects.all(),
+        'nav': {
+            'tour_categories_list': Category.objects.all(),
+            'offer_categories_list': OfferCategory.objects.all(),
+        },
         'company': get_company(),
         'breadcrumbs': breadcrumbs,
         'title': gallery_title[lang],
@@ -160,7 +167,10 @@ def gallery_update(request, pk=None):
                 'about': footer[lang],
                 'icon': Helpers.objects.get(id=1).footer_icon
             },
-            'categories_list': Category.objects.all(),
+            'nav': {
+                'tour_categories_list': Category.objects.all(),
+                'offer_categories_list': OfferCategory.objects.all(),
+            },
             'company': get_company(),
             'title': _('Gallery edit'),
             'breadcrumbs': breadcrumbs,
@@ -199,7 +209,10 @@ def gallery_create(request):
                 'about': footer[lang],
                 'icon': Helpers.objects.get(id=1).footer_icon
             },
-            'categories_list': Category.objects.all(),
+            'nav': {
+                'tour_categories_list': Category.objects.all(),
+                'offer_categories_list': OfferCategory.objects.all(),
+            },
             'company': get_company(),
             'title': _('Create Gallery'),
             'breadcrumbs': breadcrumbs,

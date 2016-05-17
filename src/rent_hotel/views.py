@@ -8,6 +8,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.translation import ugettext_lazy as _
 from django.contrib import messages
 from tours.models import Category
+from offer.models import OfferCategory
 from helpers.models import Helpers
 from .models import Hotel
 
@@ -67,7 +68,10 @@ def rent_hotel_list(request):
             'about': footer[lang],
             'icon': Helpers.objects.get(id=1).footer_icon
         },
-        'categories_list': Category.objects.all(),
+        'nav': {
+            'tour_categories_list': Category.objects.all(),
+            'offer_categories_list': OfferCategory.objects.all(),
+        },
         'company': get_company(),
         'title': _('Hotels in Lisbon'),
         'object_list': queryset,

@@ -10,10 +10,10 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.translation import ugettext_lazy as _
 from django.contrib import messages
 from tours.models import Category
+from offer.models import OfferCategory
 from helpers.models import Helpers
 from .models import Article
 from django.core.urlresolvers import reverse_lazy
-
 
 from .forms import ArticleForm
 
@@ -74,7 +74,10 @@ def news_list(request):
             'about': footer[lang],
             'icon': Helpers.objects.get(id=1).footer_icon
         },
-        'categories_list': Category.objects.all(),
+        'nav': {
+            'tour_categories_list': Category.objects.all(),
+            'offer_categories_list': OfferCategory.objects.all(),
+        },
         'company': get_company(),
         'title': _('News'),
         'object_list': queryset,
@@ -114,7 +117,10 @@ def news_detail(request, pk=None):
             'about': footer[lang],
             'icon': Helpers.objects.get(id=1).footer_icon
         },
-        'categories_list': Category.objects.all(),
+        'nav': {
+            'tour_categories_list': Category.objects.all(),
+            'offer_categories_list': OfferCategory.objects.all(),
+        },
         'company': get_company(),
         'breadcrumbs': breadcrumbs,
         'title': title[lang],
@@ -158,7 +164,10 @@ def news_create(request):
             'about': footer[lang],
             'icon': Helpers.objects.get(id=1).footer_icon
         },
-        'categories_list': Category.objects.all(),
+        'nav': {
+            'tour_categories_list': Category.objects.all(),
+            'offer_categories_list': OfferCategory.objects.all(),
+        },
         'company': get_company(),
         'title': _('Create Article'),
         'breadcrumbs': breadcrumbs,
@@ -201,7 +210,10 @@ def news_update(request, pk=None):
                 'about': footer[lang],
                 'icon': Helpers.objects.get(id=1).footer_icon
             },
-            'categories_list': Category.objects.all(),
+            'nav': {
+                'tour_categories_list': Category.objects.all(),
+                'offer_categories_list': OfferCategory.objects.all(),
+            },
             'company': get_company(),
             'title': _('Edit') + ' ' + title[lang],
             'breadcrumbs': breadcrumbs,

@@ -15,7 +15,40 @@
         <div class="div-ul">
             <div class="div-li"><h3>{% trans 'Site Map' %}</h3></div>
             <div class="div-li"><a href="{% url 'home' %}">{% trans 'Home' %}</a></div>
-            <div class="div-li"><a href="{% url 'tour:list' %}">{% trans 'Tours & Excursions' %}</a></div>
+{#            <div class="div-li"><a href="{% url 'tour:list' %}">{% trans 'Tours & Excursions' %}</a>#}
+            <div class="div-li">
+                <a href="javascript:void(0)" class="js-accordion-trigger">{% trans 'Tours & Excursions' %}</a>
+                <div class="submenu" style="display: none;">
+                <div class="div-li">
+                    <a href="{% url 'tour:list' %}"><em>{% trans 'full tour list' %}</em></a>
+                </div>
+                    {% if nav.tour_categories_list %}
+                        {% for tour in nav.tour_categories_list %}
+                            <div class="div-li"><em><a href="{{ tour.get_absolute_url }}">{{ tour.category }}</a></em></div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+            <div class="div-li">
+                    <a href="javascript:void(0)" class="js-accordion-trigger">{% trans 'Offers' %}</a>
+                    <div class="submenu" style="display: none;">
+                    <div class="div-li">
+                    <a href="{% url 'offer:list' %}"><em>{% trans 'full offer list' %}</em></a>
+                </div>
+                        {% if nav.offer_categories_list %}
+                            {% for offer in nav.offer_categories_list %}
+                                <div class="div-li"><em><a href="{{ offer.get_absolute_url }}">{{ offer.category }}</a></em></div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+            </div>
+            <script>
+                $('.js-accordion-trigger').bind('click', function(e){
+                    $(this).parent().find('.submenu').slideToggle('fast');
+                    e.preventDefault();
+
+                });
+            </script>
             <div class="div-li"><a href="{% url 'review:list' %}">{% trans 'Reviews' %}</a></div>
             <div class="div-li"><a href="{% url 'gallery:list' %}">{% trans 'Gallery' %}</a></div>
             <div class="div-li"><a href="{% url 'rent_car:list' %}">{% trans 'Car Rent in Lisbon' %}</a></div>

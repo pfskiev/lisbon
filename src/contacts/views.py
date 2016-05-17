@@ -5,6 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib import messages
 from helpers.models import Helpers
 from tours.models import Category
+from offer.models import OfferCategory
 from .models import Contact, ContactHelpers
 from .forms import ContactForm
 
@@ -51,7 +52,10 @@ def contact_list(request):
             'about': footer[lang],
             'icon': Helpers.objects.get(id=1).footer_icon
         },
-        'categories_list': Category.objects.all(),
+        'nav': {
+            'tour_categories_list': Category.objects.all(),
+            'offer_categories_list': OfferCategory.objects.all(),
+        },
         'company': get_company(),
         'title': _('Contacts'),
         'breadcrumbs': breadcrumbs,
@@ -80,7 +84,10 @@ def contact_detail(request, pk=None):
             'about': footer[lang],
             'icon': Helpers.objects.get(id=1).footer_icon
         },
-        'categories_list': Category.objects.all(),
+        'nav': {
+            'tour_categories_list': Category.objects.all(),
+            'offer_categories_list': OfferCategory.objects.all(),
+        },
         'company': get_company(),
         'title': contact.first_name + ' ' + contact.last_name,
         'breadcrumbs': breadcrumbs,
@@ -118,7 +125,10 @@ def contact_create(request):
                 'about': footer[lang],
                 'icon': Helpers.objects.get(id=1).footer_icon
             },
-            'categories_list': Category.objects.all(),
+            'nav': {
+                'tour_categories_list': Category.objects.all(),
+                'offer_categories_list': OfferCategory.objects.all(),
+            },
             'company': get_company(),
             'title': _('Create Contact'),
             'breadcrumbs': breadcrumbs,
@@ -157,7 +167,10 @@ def contact_update(request, pk=None):
                 'about': footer[lang],
                 'icon': Helpers.objects.get(id=1).footer_icon
             },
-            'categories_list': Category.objects.all(),
+            'nav': {
+                'tour_categories_list': Category.objects.all(),
+                'offer_categories_list': OfferCategory.objects.all(),
+            },
             'company': get_company(),
             'title': _('Contact Edit'),
             'breadcrumbs': breadcrumbs,

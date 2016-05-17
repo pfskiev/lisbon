@@ -9,8 +9,8 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib import messages
 from tours.models import Category
 from helpers.models import Helpers
-
 from tours.forms import ContactMe
+from offer.models import OfferCategory
 from .models import RelatedLink
 from .forms import RelatedLinkForm
 
@@ -71,7 +71,10 @@ def related_links_list(request):
             'about': footer[lang],
             'icon': Helpers.objects.get(id=1).footer_icon
         },
-        'categories_list': Category.objects.all(),
+        'nav': {
+            'tour_categories_list': Category.objects.all(),
+            'offer_categories_list': OfferCategory.objects.all(),
+        },
         'company': get_company(),
         'title': _('Related links'),
         'object_list': queryset,
@@ -112,7 +115,10 @@ def related_links_detail(request, pk=None):
             'about': footer[lang],
             'icon': Helpers.objects.get(id=1).footer_icon
         },
-        'categories_list': Category.objects.all(),
+        'nav': {
+            'tour_categories_list': Category.objects.all(),
+            'offer_categories_list': OfferCategory.objects.all(),
+        },
         'company': get_company(),
         'breadcrumbs': breadcrumbs,
         'title': title[get_lang(request)],
@@ -156,7 +162,10 @@ def related_links_create(request):
             'about': footer[lang],
             'icon': Helpers.objects.get(id=1).footer_icon
         },
-        'categories_list': Category.objects.all(),
+        'nav': {
+            'tour_categories_list': Category.objects.all(),
+            'offer_categories_list': OfferCategory.objects.all(),
+        },
         'company': get_company(),
         'title': _('Create Offer'),
         'breadcrumbs': breadcrumbs,
@@ -200,7 +209,10 @@ def related_links_update(request, pk=None):
                 'icon': Helpers.objects.get(id=1).footer_icon
             },
 
-            'categories_list': Category.objects.all(),
+            'nav': {
+                'tour_categories_list': Category.objects.all(),
+                'offer_categories_list': OfferCategory.objects.all(),
+            },
             'company': get_company(),
             'title': _('Edit') + ' ' + title[lang],
             'breadcrumbs': breadcrumbs,

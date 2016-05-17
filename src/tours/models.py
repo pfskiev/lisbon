@@ -8,7 +8,7 @@ class Category(models.Model):
     url = AutoSlugField(populate_from='category', unique=True, max_length=255)
 
     def get_absolute_url(self):
-        return '/category/' + self.url
+        return '/tours/' + self.url
 
     def __str__(self):
         return self.category

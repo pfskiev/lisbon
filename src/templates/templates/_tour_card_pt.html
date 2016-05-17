@@ -2,10 +2,10 @@
 {% load i18n %}
 <div class="card">
     {% if object.img %}
-        <a href="{% url 'tour:list' %}{{ object.id }}"><img style="height: 350px;width: 100%; object-fit: cover;" class="img-fluid" src="{% thumbnail object.img 720x480 crop="smart" %}" alt="{{ object.title_PT }}"></a>
+        <a href="{{ object.get_absolute_url }}"><img style="height: 350px;width: 100%; object-fit: cover;" class="img-fluid" src="{% thumbnail object.img 720x480 crop="smart" %}" alt="{{ object.title_PT }}"></a>
     {% else %}
         {% if object.url  %}
-            <a href="{% url 'tour:list' %}{{ object.id }}"><img style="height: 350px;width: 100%;   object-fit: cover;" class="img-fluid" src="{{ object.url }}" alt="{{ object.title_PT }}"></a>
+            <a href="{{ object.get_absolute_url }}"><img style="height: 350px;width: 100%;   object-fit: cover;" class="img-fluid" src="{{ object.url }}" alt="{{ object.title_PT }}"></a>
         {% else %}
             <p style="text-align: center"><small><em>{% trans 'place for image' %}</em></small></p>
         {% endif %}
@@ -19,12 +19,12 @@
         <p>{{ object.created_on }}</p>
         <p><small><em class="text-uppercase">{% trans 'category' %}: </em><em><a href="/tours/{{ object.category.url }}">{{ object.category }}</a></em></small></p>
         <a class="btn btn-danger text-uppercase" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">{% trans 'book now' %}</a>
-        <a class="btn btn-danger-outline" href="{% url 'tour:list' %}{{ object.id }}" role="button">{% trans 'View details' %} &raquo;</a>
+        <a class="btn btn-danger-outline" href="{{ object.get_absolute_url }}" role="button">{% trans 'View details' %} &raquo;</a>
     </div>
     <div class="card-footer">
         {% include 'templates/_share.html' %}
         {% if user.is_staff %}
-             <a class="btn btn-sm btn-danger-outline" href="{% url 'tour:list' %}{{ object.id }}/edit/">
+             <a class="btn btn-sm btn-danger-outline" href="{{ object.get_absolute_url }}edit/">
                     <i class="fa fa-pencil-square-o"></i> {% trans 'Edit' %}</a>
             <a type="button" class="btn btn-sm btn-danger-outline" onclick="delete_contact({{ object.id }})" data-toggle="modal" data-target=".delete_tour"><i class="fa fa-trash"></i> {% trans 'Delete'%}</a></a>
         {% endif %}

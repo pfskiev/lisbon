@@ -54,9 +54,7 @@
             </a>
         </div>
     </article>
-    <audio autoplay loop controls preload="true" class="player">
-        <source src="media/{{ audio }}" type="audio/mpeg">
-    </audio>
+    {% include 'templates/_audio.html' %}
     <article class="tours">
         <div class="container">
             <h3 class="display-3 text-md-center">{{ section.tour_header }}</h3>
@@ -82,19 +80,6 @@
             </div>
         </div>
     </article>
-    <article class="offer">
-        <div class="container marketing">
-            <h3 class="display-3 text-md-center">{{ section.offer_header }}</h3>
-            <p style="text-align: center"><a href="{% url 'offer:list' %}"><em>{% trans 'full offer list' %}</em></a></p>
-            <div class="card-columns">
-                {% for object in offer_list%}
-                    {% include 'templates/_offer_card.html' %}
-                {% endfor %}
-            </div>
-            {% if user.is_staff or user.is_superuser %}
-                <a class="btn btn-warning" href="{% url 'offer:create' %}"><i class="fa fa-plus"></i> {% trans  'Create Offer' %}</a>
-            {% endif %}
-        </div>
-    </article>
+    {% include 'templates/_offers_home.html' %}
     {% include 'templates/modal/_contact_us.html' %}
 {% endblock content %}

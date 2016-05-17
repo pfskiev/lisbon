@@ -49,9 +49,9 @@
                 <a style="cursor: pointer;color: gold;"  class=" hidden-sm-down nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {% trans 'Tours & Excursions' %}</a>
                 <div class="dropdown-menu">
-                    {% if categories_list %}
-                        {% for category in categories_list %}
-                            <a href="/tours/{{ category.url }}" class="dropdown-item">{{ category.category }}</a>
+                    {% if nav.tour_categories_list %}
+                        {% for tour in nav.tour_categories_list %}
+                            <a href="{{ tour.get_absolute_url }}" class="dropdown-item">{{ tour.category }}</a>
                         {% endfor %}
                     {% endif %}
                     <div class="dropdown-divider"></div>
@@ -64,8 +64,14 @@
                     <a style="cursor: pointer;color: gold;"  class=" hidden-sm-down nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {% trans 'Offers' %}</a>
                     <div class="dropdown-menu">
-                        <a href="{% url 'rent_car:list' %}" class="dropdown-item">{% trans 'Car Rent in Lisbon' %}</a>
+                        {% if nav.offer_categories_list %}
+                            {% for offer in nav.offer_categories_list %}
+                                <a href="{{ offer.get_absolute_url }}" class="dropdown-item">{{ offer.category }}</a>
+                            {% endfor %}
+                            {% else %}
+                            <a href="{% url 'rent_car:list' %}" class="dropdown-item">{% trans 'Car Rent in Lisbon' %}</a>
                         <a href="{% url 'rent_hotel:list' %}" class="dropdown-item">{% trans 'Hotels in Lisbon' %}</a>
+                        {% endif %}
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{% url 'offer:list' %}">{% trans 'Full Offer list' %}</a>
                     </div>

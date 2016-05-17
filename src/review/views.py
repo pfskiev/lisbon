@@ -11,6 +11,7 @@ from .models import Review
 from .forms import ReviewForm
 from helpers.models import Helpers
 from tours.models import Category
+from offer.models import OfferCategory
 
 
 def get_lang(request):
@@ -76,7 +77,10 @@ def review_list(request):
             'about': footer[lang],
             'icon': Helpers.objects.get(id=1).footer_icon
         },
-        'categories_list': Category.objects.all(),
+        'nav': {
+            'tour_categories_list': Category.objects.all(),
+            'offer_categories_list': OfferCategory.objects.all(),
+        },
         'company': get_company(),
         'object_list': queryset,
         'title': _('Reviews'),
@@ -107,7 +111,10 @@ def review_detail(request, pk=None):
             'about': footer[lang],
             'icon': Helpers.objects.get(id=1).footer_icon
         },
-        'categories_list': Category.objects.all(),
+        'nav': {
+            'tour_categories_list': Category.objects.all(),
+            'offer_categories_list': OfferCategory.objects.all(),
+        },
         'company': get_company(),
         'breadcrumbs': breadcrumbs,
         'title': review.category.category,
@@ -156,7 +163,10 @@ def review_create(request):
                 'about': footer[lang],
                 'icon': Helpers.objects.get(id=1).footer_icon
             },
-            'categories_list': Category.objects.all(),
+            'nav': {
+            'tour_categories_list': Category.objects.all(),
+            'offer_categories_list': OfferCategory.objects.all(),
+        },
             'company': get_company(),
             'lang': lang,
             'title': 'Review creating',
@@ -215,7 +225,10 @@ def review_update(request, pk=None):
                 'icon': Helpers.objects.get(id=1).footer_icon
             },
 
-            'categories_list': Category.objects.all(),
+            'nav': {
+            'tour_categories_list': Category.objects.all(),
+            'offer_categories_list': OfferCategory.objects.all(),
+        },
             'company': get_company(),
             'lang': lang,
             'title': 'Review Edit',
@@ -281,7 +294,10 @@ def review_filter(request, slug=None):
             'about': footer[lang],
             'icon': Helpers.objects.get(id=1).footer_icon
         },
-        'categories_list': Category.objects.all(),
+        'nav': {
+            'tour_categories_list': Category.objects.all(),
+            'offer_categories_list': OfferCategory.objects.all(),
+        },
         'breadcrumbs': [
             {'url': '/', 'name': _('Home')},
             {'url': '/reviews', 'name': _('Reviews')},
