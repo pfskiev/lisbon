@@ -34,6 +34,7 @@ class Offer(models.Model):
     img = models.ImageField(null=True, blank=True)
     position = models.IntegerField(default=1, blank=True, null=True)
     category = models.ForeignKey(OfferCategory, default=None, blank=True, null=True)
+    tour_category = models.ForeignKey(Category, default=None, blank=True, null=True)
 
     def get_absolute_url(self):
         return "/offer/%i/" % self.id
