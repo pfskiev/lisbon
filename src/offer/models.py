@@ -9,10 +9,10 @@ from rent_hotel.models import Hotel
 
 class OfferCategory(models.Model):
     category = models.CharField(_('Tours categories'), max_length=100, blank=True, null=False)
-    url = AutoSlugField(populate_from='category', unique=True, max_length=255)
+    slug = AutoSlugField(populate_from='category', unique=True, max_length=255)
 
     def get_absolute_url(self):
-        return "/offer/%s/" % self.url
+        return "/offer/%s/" % self.slug
 
     def __str__(self):
         return self.category
