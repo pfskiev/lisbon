@@ -258,7 +258,7 @@ def offer_category(request, slug=None):
     except EmptyPage:
         queryset = paginator.page(paginator.num_pages)
 
-    category = OfferCategory.objects.filter(url__icontains=slug)
+    category = OfferCategory.objects.filter(slug__icontains=slug)
 
     context = {
         'nav': {
