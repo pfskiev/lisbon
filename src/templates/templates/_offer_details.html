@@ -24,7 +24,7 @@
                     <small><em class="text-uppercase">{% trans 'description' %}:</em></small>
     <p class="card-text ">{{ object.description_PT }}</p>
     <p class="">
-        <a class="btn btn-danger" href="{% if 'car' in object.get_absolute_url  %}{% url 'rent_car:list' %}{% else %}{% if 'hotel' in object.get_absolute_url %}{% url 'rent_hotel:list' %}{% else %}{% url 'offer:list' %}{{ object.category.url }}{% endif %}{% endif %}">{% trans 'VER TODAS OFERTAS' %}</a>
+        <a class="btn btn-danger" href="{% if 'car' in object.category.url  %}{% url 'rent_car:list' %}{% else %}{% if 'hotel' in object.category.url %}{% url 'rent_hotel:list' %}{% else %}{% url 'offer:list' %}{{ object.category.url }}{% endif %}{% endif %}">{% trans 'VER TODAS OFERTAS' %}</a>
     </p>
 {% endif %}
 {% if 'en' in request.LANGUAGE_CODE %}
@@ -33,7 +33,7 @@
     <small><em class="text-uppercase">{% trans 'description' %}:</em></small>
     <p class="card-text ">{{ object.description_EN }}</p>
     <p class="">
-        <a class="btn btn-danger" href="{% if 'car' in object.get_absolute_url  %}{% url 'rent_car:list' %}{% else %}{% if 'hotel' in object.get_absolute_url %}{% url 'rent_hotel:list' %}{% else %}{% url 'offer:list' %}{{ object.category.url }}{% endif %}{% endif %}">{% trans 'SEE ALL OFFERS' %}</a>
+        <a class="btn btn-danger" href="{% if 'car' in object.category.url  %}{% url 'rent_car:list' %}{% else %}{% if 'hotel' in object.category.url %}{% url 'rent_hotel:list' %}{% else %}{% url 'offer:list' %}{{ object.category.url }}{% endif %}{% endif %}">{% trans 'SEE ALL OFFERS' %}</a>
     </p>
 {% endif %}
 {% if 'de' in request.LANGUAGE_CODE %}
@@ -42,7 +42,7 @@
     <small><em class="text-uppercase">{% trans 'description' %}:</em></small>
     <p class="card-text ">{{ object.description_DE }}</p>
     <p class="">
-        <a class="btn btn-danger" href="{% if 'car' in object.get_absolute_url  %}{% url 'rent_car:list' %}{% else %}{% if 'hotel' in object.get_absolute_url %}{% url 'rent_hotel:list' %}{% else %}{% url 'offer:list' %}{{ object.category.url }}{% endif %}{% endif %}">{% trans 'SEHEN ALLE ANGEBOTE' %}</a>
+        <a class="btn btn-danger" href="{% if 'car' in object.category.url  %}{% url 'rent_car:list' %}{% else %}{% if 'hotel' in object.category.url %}{% url 'rent_hotel:list' %}{% else %}{% url 'offer:list' %}{{ object.category.url }}{% endif %}{% endif %}">{% trans 'SEHEN ALLE ANGEBOTE' %}</a>
     </p>
 {% endif %}
                     {% if user.is_staff or user.is_superuser %}
