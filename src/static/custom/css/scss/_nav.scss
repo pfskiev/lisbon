@@ -1,7 +1,6 @@
 @import "../sources/bourbon/bourbon";
 @import "variables";
 
-
 .dropdown-menu {
   margin-top:13px !important;
 }
@@ -24,12 +23,16 @@
     color: $color-blue
   }
 }
+.activate {
+    color: darkgoldenrod !important;
+  }
 ol.nav.navbar-nav>{
   li>a.nav-link {
     color: gold;
     @include transition(all .3s ease-in-out);
   }
-  li>a.nav-link:hover, div.btn-group>a:hover{
+  li>a.nav-link:hover,
+  div.btn-group>a:hover {
     color: darkgoldenrod;
   }
   a.hidden-sm-down.nav-link.dropdown-toggle {

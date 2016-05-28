@@ -4,18 +4,14 @@
 .form-control {
   border-color: $color_sand;
   transition: all .3s ease;
-}
-.form-control:hover {
-  border-color: $color_sand;
-}
-.form-control:focus {
-  border-color: $color_blue_light;
-}
-.form-control:active {
-  border-color: $color_blue_light;
-}
-.form-control:visited {
-  border-color: $color_blue_light;
+  &:hover {
+    border-color: $color_sand;
+  }
+  &:focus,
+  &:active,
+  &:visited {
+    border-color: $color_blue_light;
+  }
 }
 select.form-language {
   width: 152px;

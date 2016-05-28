@@ -16,7 +16,6 @@
 @import "../scss/variables";
 @import "../sources/bourbon/bourbon";
 
-
 .img {
   display: flex;
   min-height: 600px;
@@ -102,8 +101,4 @@ input.btn.btn-lg.btn-primary.form-control {
 .js-accordion-trigger:visited .fa.fa-chevron-down,
 .js-accordion-trigger:active .fa.fa-chevron-down {
   color: transparentize($footer-color, 0);
-}
-
-.form-control {
-  font-size: 1.2rem !important;
 }
