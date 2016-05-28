@@ -26,6 +26,12 @@ class Gallery(models.Model):
     def get_absolute_url(self):
         return reverse('gallery:detail', args=[str(self.id)])
 
+    def get_edit_url(self):
+        return reverse('gallery:edit', args=[str(self.id)])
+
+    def get_delete_url(self):
+        return reverse('gallery:delete', args=[str(self.id)])
+
     def __str__(self):
         return self.title_EN
 

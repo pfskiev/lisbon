@@ -25,7 +25,6 @@ def get_company():
 
 
 def related_links_list(request):
-    lang = request.LANGUAGE_CODE
     footer = {
         'pt': Helpers.objects.get(id=1).about_footer_PT,
         'en': Helpers.objects.get(id=1).about_footer_EN,

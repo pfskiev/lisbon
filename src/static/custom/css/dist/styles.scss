@@ -1,0 +1,109 @@
+@import "../scss/alerts";
+@import "../scss/breadcrumbs";
+@import "../scss/button";
+@import "../scss/md-button";
+@import "../scss/contact";
+@import "../scss/card";
+@import "../scss/icons";
+@import "../scss/fonts";
+@import "../scss/footer";
+@import "../scss/forms";
+@import "../scss/general";
+@import "../scss/typography";
+@import "../scss/pagination";
+@import "../scss/nav";
+@import "../scss/section";
+@import "../scss/variables";
+@import "../sources/bourbon/bourbon";
+
+
+.img {
+  display: flex;
+  min-height: 600px;
+  flex-direction: row;
+
+  align-items: center;
+}
+.img:after {
+  opacity: .5;
+}
+
+@media all and (max-width: 1000px) {
+  /* screen size until 1000px */
+  .display-3 {
+    font-size: 3.2em;
+    text-align: center;
+  }
+}
+@media all and (max-width: 500px) {
+  /* screen size until 500px */
+  .display-3 {
+    font-size: 2.8em;
+    text-align: center;
+  }
+}
+.my-label {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: $btn-primary;
+}
+.details {
+  padding-top: 90px;
+  padding-bottom: 120px;
+}
+.marketing .col-lg-4 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.marketing h2 {
+  font-weight: normal;
+}
+.marketing .col-lg-4 p {
+  margin-right: .75rem;
+  margin-left: .75rem;
+}
+p.goldenlisbon {
+  position: relative;
+  left: 40%;
+  z-index: 7000;
+  display: inline-block;
+  padding-top: 10px;
+  padding-bottom: 11px;
+  margin-bottom: 0;
+  font-size: 19px;
+  color: darkgoldenrod;
+  transition: all .3s ease;
+}
+p.goldenlisbon:hover {
+  color: darkgoldenrod !important;
+}
+.modal {
+  z-index: 9999;
+}
+.player {
+  position: absolute;
+  right: 0;
+  z-index: 9999;
+  display: block;
+  opacity: .4;
+
+  @include transition(all .3s ease-in-out);
+}
+
+.player:hover {
+  opacity: 1;
+}
+input.btn.btn-lg.btn-primary.form-control {
+  border: none !important;
+}
+
+.js-accordion-trigger:hover .fa.fa-chevron-down,
+.js-accordion-trigger:focus .fa.fa-chevron-down,
+.js-accordion-trigger:visited .fa.fa-chevron-down,
+.js-accordion-trigger:active .fa.fa-chevron-down {
+  color: transparentize($footer-color, 0);
+}
+
+.form-control {
+  font-size: 1.2rem !important;
+}

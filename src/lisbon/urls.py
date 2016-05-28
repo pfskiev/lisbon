@@ -30,7 +30,6 @@ urlpatterns = [
     url(r'^related-links/', include('related_links.urls', namespace='related_links')),
     url(r'^email-me/', views.email_me, name='email_me'),
 
-
 ]
 
 # User-uploaded files like profile pics need to be served in development

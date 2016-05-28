@@ -22,6 +22,12 @@ class Article(models.Model):
     def get_absolute_url(self):
         return reverse('news:detail', args=[str(self.id)])
 
+    def get_edit_url(self):
+        return reverse('news:edit', args=[str(self.id)])
+
+    def get_delete_url(self):
+        return reverse('news:delete', args=[str(self.id)])
+
     def __str__(self):
         return self.title_EN
 

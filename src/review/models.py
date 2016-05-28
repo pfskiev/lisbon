@@ -14,7 +14,13 @@ class Review(models.Model):
     confirmed = models.BooleanField(default=False)
 
     def get_absolute_url(self):
-        return "/reviews/%i/" % self.id
+        return reverse('review:detail', args=[str(self.id)])
+
+    def get_edit_url(self):
+        return reverse('review:edit', args=[str(self.id)])
+
+    def get_delete_url(self):
+        return reverse('review:delete', args=[str(self.id)])
 
     def __unicode__(self):
         return self.review

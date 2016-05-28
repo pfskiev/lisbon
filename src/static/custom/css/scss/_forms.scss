@@ -1,5 +1,5 @@
-@import 'bourbon/bourbon';
-@import 'variables';
+@import "../sources/bourbon/bourbon";
+@import "variables";
 
 .form-control {
   border-color: $color_sand;
@@ -18,9 +18,9 @@
   border-color: $color_blue_light;
 }
 select.form-language {
-  margin-bottom: 8px;
   width: 152px;
   height: 37px;
+  margin-bottom: 8px;
   color: darkgoldenrod;
   border: 1px solid darkgoldenrod;
 }

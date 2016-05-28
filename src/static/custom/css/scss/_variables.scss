@@ -1,25 +1,23 @@
-$color_blue_light:         #118DF0;
-$color_blue:               #0E2F56;
-$color_sand:               #ffefd5;
-$color_red:                #FF304F;
-$color-danger:             #E83F6F;
-$color_white:              #FFFFFF;
-
-$color_red_opacity:        rgba(255, 48, 79, 0.7);
-
-$btn-primary:              #2274A5;
-$btn-primary-hover:        #0474a5;
-$btn-info:                 #118DF0;
-$btn-info-hover:           #008df0;
-$btn-danger:               #E83F6F;
-$btn-danger-hover:         #CA3863;
-$btn-warning:              #FFBF00;
-$btn-warning-hover:        #FFBF00;
-$btn-success:              #32936f;
-$btn-success-hover:        #14936f;
-$btn-gold:                 #ffd700;
-$btn-gold-hover:           #b8860b;
-$btn-booking:              #003580;
+$color_blue_light: #118df0;
+$color_blue: #0e2f56;
+$color_sand: #ffefd5;
+$color_red: #ff304f;
+$color-danger: #e83f6f;
+$color_white: #fff;
+$color_red_opacity: rgba(255, 48, 79, .7);
+$btn-primary: #2274a5;
+$btn-primary-hover: #0474a5;
+$btn-info: #118df0;
+$btn-info-hover: #008df0;
+$btn-danger: #e83f6f;
+$btn-danger-hover: #ca3863;
+$btn-warning: #ffbf00;
+$btn-warning-hover: #ffbf00;
+$btn-success: #32936f;
+$btn-success-hover: #14936f;
+$btn-gold: #ffd700;
+$btn-gold-hover: #b8860b;
+$btn-booking: #003580;
 
 // Refills Card
 $base-border-color: $color_sand !default;
@@ -28,22 +26,22 @@ $base-background-color: white !default;
 $base-spacing: 1.5em !default;
 $action-color: $btn-info !default;
 $dark-gray: #333 !default;
-$base-font-color:$dark-gray !default;
-$refills-card-border-color:$base-border-color;
+$base-font-color: $dark-gray !default;
+$refills-card-border-color: $base-border-color;
 $refills-card-border: 1px solid$refills-card-border-color;
 $refills-card-background: lighten($refills-card-border-color, 10%);
-$refills-card-header-background:$refills-card-background;
+$refills-card-header-background: $refills-card-background;
 $refills-card-margin: 1em;
-$refills-card-image-hover-opacity: 0.7;
+$refills-card-image-hover-opacity: .7;
 $refills-card-image-hover-color: $color_sand;
 
 // Refills Footer
 
 $base-spacing: 1.5em !default;
-$action-color: #477DCA !default;
+$action-color: #477dca !default;
 $medium-screen: 40em !default;
 $large-screen: 53.75em !default;
 $footer-background: desaturate(darken($action-color, 20%), 30%);
 $footer-color: white;
-$footer-link-color: transparentize($footer-color, 0.6);
-$footer-disclaimer-color: transparentize($footer-color, 0.6);
+$footer-link-color: transparentize($footer-color, .6);
+$footer-disclaimer-color: transparentize($footer-color, .6);

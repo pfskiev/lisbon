@@ -1,4 +1,5 @@
-@import 'variables';
+@import "../sources/bourbon/bourbon";
+@import "variables";
 
 .pager {
   color: $color_blue;

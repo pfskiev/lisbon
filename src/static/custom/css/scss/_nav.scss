@@ -1,5 +1,6 @@
-@import 'variables';
-@import 'bourbon/bourbon';
+@import "../sources/bourbon/bourbon";
+@import "variables";
+
 
 .dropdown-menu {
   margin-top:13px !important;
@@ -52,4 +53,3 @@ ol.nav.navbar-nav>{
         display: inline-block;
     }
   }
-

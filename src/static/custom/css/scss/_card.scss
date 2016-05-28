@@ -1,7 +1,9 @@
-@import 'bourbon/bourbon';
-@import 'variables';
+@import "../sources/bourbon/bourbon";
+@import "variables";
+
 .card {
   border: 0;
+
   @include background(linear-gradient(to right, rgb(255, 255, 255), rgb(238, 238, 238)));
   @include transition(all .3s ease);
   h4.card-title {
@@ -11,7 +13,7 @@
     color: $color_blue;
   }
   &:hover {
-    @include background(linear-gradient(to left, #ECE9E6, #FFFFFF));
+    @include background(linear-gradient(to left, #ece9e6, #fff));
   }
 }
 .fa {
@@ -23,26 +25,27 @@
 }
 .card-footer {
   color: $color-sand;
-  @include background(linear-gradient(to right, rgba(128, 128, 128, 0.2), rgba(245, 245, 245, 0.1)));
+
+  @include background(linear-gradient(to right, rgba(128, 128, 128, .2), rgba(245, 245, 245, .1)));
 }
 .shadow {
-
+  -webkit-box-shadow: 0 0 50px -4px rgba(0,0,0,.2);
+     -moz-box-shadow: 0 0 50px -4px rgba(0,0,0,.2);
+          box-shadow: 0 0 50px -4px rgba(0,0,0,.2);
   transition: all .3s ease;
-  -webkit-box-shadow: 0 0 50px -4px rgba(0,0,0,0.2);
-  -moz-box-shadow: 0 0 50px -4px rgba(0,0,0,0.2);
-  box-shadow: 0 0 50px -4px rgba(0,0,0,0.2);
 }
 .shadow:hover {
   -webkit-box-shadow: 0 0 50px -4px rgb(0, 0, 0);
-  -moz-box-shadow: 0 0 50px -4px rgb(0, 0, 0);
-  box-shadow: 0 0 50px -4px rgb(0, 0, 0);
+     -moz-box-shadow: 0 0 50px -4px rgb(0, 0, 0);
+          box-shadow: 0 0 50px -4px rgb(0, 0, 0);
 }
 .img-fluid {
   width: 100%;
+
   object-fit: cover;
 }
-.awesome-background{
-  @include background(linear-gradient(to left, #ECE9E6, #FFFFFF));
+.awesome-background {
+  @include background(linear-gradient(to left, #ece9e6, #fff));
 }
 .refills-cards {
   @include display(flex);
@@ -52,50 +55,51 @@
 }
 
 .refills-card {
-  margin: 0 $refills-card-margin $base-spacing $refills-card-margin;
   position: relative;
   min-width: 300px;
   max-width: 380px;
-  @include flex-basis(15em);
-  @include flex-grow(1);
+  margin: 0 $refills-card-margin $base-spacing $refills-card-margin;
+  cursor: pointer;
+  background-color: $refills-card-background;
   border: $refills-card-border;
   border-radius: $base-border-radius;
   box-shadow: 0 2px 4px darken($base-background-color, 10%);
-  background-color: $refills-card-background;
-  cursor: pointer;
-  @include transition(all 0.2s ease-in-out);
+
+  @include flex-basis(15em);
+  @include flex-grow(1);
+  @include transition(all .2s ease-in-out);
 
   .refills-card-image {
-    background-color: $refills-card-image-hover-color;
     //height: 300px;
     //max-height: 300px;
     overflow: hidden;
+    background-color: $refills-card-image-hover-color;
 
     img {
       width: 100%;
+      opacity: 1;
+      transition: all .2s ease-in-out;
+
       @include image-rendering (crisp-edges);
       @include border-top-radius($base-border-radius);
       object-fit: cover;
-      opacity: 1;
-      transition: all 0.2s ease-in-out;
-
     }
   }
 
   .refills-card-header {
+    padding: ($base-spacing / 3) ($base-spacing / 2);
+    font-weight: bold;
+    line-height: 1.5em;
     background-color: $refills-card-header-background;
     border-bottom: $refills-card-border;
     border-radius: $base-border-radius $base-border-radius 0 0;
-    font-weight: bold;
-    line-height: 1.5em;
-    padding: ($base-spacing / 3) ($base-spacing / 2);
-    transition: all 0.2s ease-in-out;
+    transition: all .2s ease-in-out;
   }
 
   .refills-card-copy {
-    font-size: 0.9em;
-    line-height: 1.5em;
     padding: ($base-spacing / 2) ($base-spacing / 2);
+    font-size: .9em;
+    line-height: 1.5em;
 
     p {
       margin: 0 0 ($base-spacing / 2);
@@ -127,9 +131,7 @@
 @each $media, $size in (40: 2, 60: 3, 70: 3, 90: 4) {
   @media only screen and (min-width: #{$media}em) {
     .card-columns {
-        column-count: $size;
+      column-count: $size;
     }
   }
 }
-
-

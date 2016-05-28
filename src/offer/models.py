@@ -12,7 +12,7 @@ class OfferCategory(models.Model):
     slug = AutoSlugField(populate_from='category', unique=True, max_length=255)
 
     def get_absolute_url(self):
-        return "/offer/%s/" % self.slug
+        return reverse('offer:category', args=[str(self.slug)])
 
     def __str__(self):
         return self.category

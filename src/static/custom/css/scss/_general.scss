@@ -1,6 +1,7 @@
-@import 'variables';
-@import "bourbon/bourbon";
-@import "neat/neat";
+@import "../sources/bourbon/bourbon";
+@import "../sources/neat/neat";
+@import "variables";
+
 
 body {
   font-family: 'HelveticaNeueCyr-Light', sans-serif;
@@ -8,72 +9,71 @@ body {
 }
 
 .side-image {
+  /*background: $side-image-content-background;*/
   $base-line-height: 1.5em !default;
-  $action-color: #477DCA !default;
+  $action-color: #477dca !default;
   $dark-gray: #333 !default;
   $large-screen: 53.75em !default;
   $base-font-color: $dark-gray !default;
-  $side-image-background-top: #B5EBEB;
-  $side-image-background-bottom: #5DAC5D;
-  $side-image-content-background: #F9F9F9;
-  $side-image-border: 1px solid darken(transparentize($side-image-background-bottom, 0.8), 30%);
-
-  background: $side-image-content-background;
-
+  $side-image-background-top: #b5ebeb;
+  $side-image-background-bottom: #5dac5d;
+  $side-image-content-background: #f9f9f9;
+  $side-image-border: 1px solid darken(transparentize($side-image-background-bottom, .8), 30%);
   @include media($large-screen) {
     @include row(table);
   }
+  @include reset-display();
 
   .images-wrapper {
-    background: url("https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/mountains.png"),
-                linear-gradient($side-image-background-top, $side-image-background-bottom),
-                no-repeat $side-image-background-top scroll;
-    background-color: $side-image-background-top;
-    background-size: cover;
-    border-bottom: $side-image-border;
     display: block;
     min-height: 12em;
     padding: 3em;
+    background: url("https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/mountains.png"),
+    linear-gradient($side-image-background-top, $side-image-background-bottom),
+    no-repeat $side-image-background-top scroll;
+    background-color: $side-image-background-top;
+    background-size: cover;
+    border-bottom: $side-image-border;
 
     @include media($large-screen) {
-      @include span-columns(4);
       background-position: bottom;
       background-size: cover;
       border-right: $side-image-border;
+
+      @include span-columns(4);
     }
   }
 
   .side-image-content {
-    @include span-columns(12);
     padding: 1em 1em 4em 1em;
 
+    @include span-columns(12);
     @include media($large-screen) {
-      @include span-columns(8);
       padding: 4em 4em 8em 4em;
+
+      @include span-columns(8);
     }
 
     h1 {
-      margin-bottom: 0.9em;
+      margin-bottom: .9em;
     }
 
     h4 {
-      background: #BBB;
-      color: white;
       display: inline-block;
-      font-size: 0.75em;
-      margin-bottom: 1.3em;
       padding: 3px 8px;
+      margin-bottom: 1.3em;
+      font-size: .75em;
+      color: white;
       text-transform: uppercase;
+      background: #bbb;
     }
 
     p {
-      color: $base-font-color;
-      line-height: $base-line-height;
       margin-bottom: 3em;
+      line-height: $base-line-height;
+      color: $base-font-color;
     }
   }
-
-  @include reset-display();
 }
 
 
@@ -82,63 +82,64 @@ $parallax-window-height: 30em;
 $parallax-background-height: $parallax-window-height * 2;
 
 .parallax-window {
+  position: relative;
+  width: 100%;
   //max-height: $parallax-window-height;
   overflow: hidden;
-  position: relative;
   text-align: center;
-  width: 100%;
 }
 .parallax-static-content {
-  color: #9A9A8A;
-  padding: 8em 0;
   position: relative;
   z-index: 9;
+  padding: 8em 0;
+  color: #9a9a8a;
 }
 
 .parallax-background {
-  background: url("http://ic.pics.livejournal.com/lytdybr/14634326/164115/164115_original.jpg") repeat;
-  background-position: top;
-  background-size: cover;
-  background-color: beige;
-  height: 100%;
-  left: 0;
   position: absolute;
   top: - $parallax-window-height / 3;
+  left: 0;
   width: 100%;
+  height: 100%;
+  background: url("http://ic.pics.livejournal.com/lytdybr/14634326/164115/164115_original.jpg") repeat;
+  background-color: beige;
+  background-position: top;
+  background-size: cover;
 }
 .parallax-background-news {
+  position: absolute;
+  left: 0;
+  /* top: -10em; */
+  width: 100%;
+  height: 100%;
   background: url("http://previews.123rf.com/images/miss_j/miss_j1109/miss_j110900013/10694392-Grunge-textured-background-with-old-torn-newspapers-Stock-Photo.jpg");
-    background-position: top;
-    background-size: contain;
-    background-color: beige;
-    height: 100%;
-    left: 0;
-    position: absolute;
-    /* top: -10em; */
-    width: 100%;
+  background-color: beige;
+  background-position: top;
+  background-size: contain;
 }
 
 // Based on http://codepen.io/skeurentjes/
 
 $image-gradient-color-top: $color_sand;
-  $transparency-top: 0.9;
-  $image-gradient-color-bottom: $color_blue_light;
-  $transparency-bottom: 0.6;
-  $vertical-angle: 0deg;
-  $image-gradient-color-left: $color_blue_light;
-  $transparency-left: 0.8;
-  $image-gradient-color-right: $color_sand;
-  $transparency-right: 0.8;
-  $horizontal-angle: 90deg;
+$transparency-top: .9;
+$image-gradient-color-bottom: $color_blue_light;
+$transparency-bottom: .6;
+$vertical-angle: 0deg;
+$image-gradient-color-left: $color_blue_light;
+$transparency-left: .8;
+$image-gradient-color-right: $color_sand;
+$transparency-right: .8;
+$horizontal-angle: 90deg;
 
 .overlay {
-  @include position(absolute, 0);
-  background: transparentize(
-                  $image-gradient-color-top,
-                  $transparency-top
-  ) linear-gradient($vertical-angle,
-                  transparentize($image-gradient-color-top, $transparency-top),
-                  transparentize($image-gradient-color-bottom, $transparency-bottom)
-  );
   display: block;
+  background: transparentize(
+  $image-gradient-color-top,
+  $transparency-top
+  ) linear-gradient($vertical-angle,
+  transparentize($image-gradient-color-top, $transparency-top),
+  transparentize($image-gradient-color-bottom, $transparency-bottom)
+  );
+
+  @include position(absolute, 0);
 }

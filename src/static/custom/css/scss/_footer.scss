@@ -1,5 +1,5 @@
-@import 'bourbon/bourbon';
-@import 'variables';
+@import "../sources/bourbon/bourbon";
+@import "variables";
 //
 //footer {
 //  padding-top: 60px;
@@ -27,17 +27,18 @@
 //}
 
 .footer {
-   @include transition(all .3s ease);
+  width: 100%;
+  padding: ($base-spacing * 2) ;
+
+  @include transition(all .3s ease);
+  @include background(linear-gradient(to left, $color_blue, $color_blue_light));
   .fa {
     color: $footer-link-color;
     &:hover,
     &:focus {
-      color: $footer-color
+      color: $footer-color;
     }
   }
-  @include background(linear-gradient(to left, $color_blue, $color_blue_light));
-  padding: ($base-spacing * 2) ;
-  width: 100%;
 
   .footer-logo {
     margin-bottom: 2em;
@@ -50,40 +51,44 @@
 
   .footer-links {
     margin-bottom: $base-spacing;
+
     @include  display(flex);
     @include  flex-wrap(wrap);
     @include justify-content(center);
     @include flex-direction(row);
   }
-  @media all and (max-width: 480px){
+  @media all and (max-width: 480px) {
     .footer-links {
       @include flex-direction(column);
     }
   }
   .div-ul {
+    padding: 0;
+    margin-bottom: $base-spacing * 2;
+
     @include flex-basis(100%/3);
     @include flex-shrink(0);
-    margin-bottom: $base-spacing * 2;
-    padding: 0;
   }
   .div-ul-100 {
+    padding: 0;
+    margin-bottom: $base-spacing * 2;
+
     @include flex-basis(100%);
     @include flex-shrink(0);
-    margin-bottom: $base-spacing * 2;
-    padding: 0;
   }
 
   .div-ul-60 {
+    padding: 0;
+    margin-bottom: $base-spacing * 2;
+
     @include flex-basis(60%);
     @include flex-shrink(0);
-    margin-bottom: $base-spacing * 2;
-    padding: 0;
   }
 
   .div-li {
     line-height: 1.5em;
-    list-style: none;
     text-align: center;
+    list-style: none;
   }
 
   .div-li a {
@@ -103,7 +108,7 @@
     @include justify-content(space-around);
     @include flex-direction(row);
   }
-  @media all and (max-width: 480px){
+  @media all and (max-width: 480px) {
     .div-li.languages {
       @include flex-direction(column);
     }
@@ -114,24 +119,24 @@
   }
 
   .div-li h3 {
-    color: $footer-color;
+    margin-bottom: .4em;
     font-size: 1em;
-    margin-bottom: 0.4em;
+    color: $footer-color;
   }
 
 
   hr {
-    border: 1px solid transparentize($footer-disclaimer-color, 0.3);
-    margin: 0 auto $base-spacing;
     width: 12em;
+    margin: 0 auto $base-spacing;
+    border: 1px solid transparentize($footer-disclaimer-color, .3);
   }
 
   p {
-    color: $footer-disclaimer-color;
-    font-size: 0.9em;
-    line-height: 1.5em;
-    margin: auto;
     max-width: 35em;
+    margin: auto;
+    font-size: .9em;
+    line-height: 1.5em;
+    color: $footer-disclaimer-color;
     text-align: center;
   }
 }

@@ -1,15 +1,18 @@
+@import "../sources/bourbon/bourbon";
+@import "variables";
+
 .breadcrumb {
+  position: absolute;
+  z-index: 500;
   width: 100%;
   height: 50px;
-  position: absolute;
   margin-bottom: 0;
-  border-radius: 0;
   background-color: rgb(255, 255, 255);
+  border-radius: 0;
+  -webkit-box-shadow: 0 0 50px -4px rgba(0,0,0,.55);
+     -moz-box-shadow: 0 0 50px -4px rgba(0,0,0,.55);
+          box-shadow: 0 0 50px -4px rgba(0,0,0,.55);
   transition: all .5s ease;
-  z-index: 500;
-  -webkit-box-shadow: 0 0 50px -4px rgba(0,0,0,0.55);
-  -moz-box-shadow: 0 0 50px -4px rgba(0,0,0,0.55);
-  box-shadow: 0 0 50px -4px rgba(0,0,0,0.55);
 }
 .breadcrumb:hover {
   color: darkgoldenrod;
@@ -18,11 +21,11 @@
 .btn-group.pull-right {
   z-index: 8000;
 }
-.open>.dropdown-menu {
+.open > .dropdown-menu {
   z-index: 9999;
   display: block;
 }
-ol.breadcrumb>li>a{
+ol.breadcrumb > li > a {
   color: darkgoldenrod;
   transition: all .5s ease;
 }

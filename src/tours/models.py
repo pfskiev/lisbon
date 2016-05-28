@@ -9,7 +9,7 @@ class Category(models.Model):
     url = AutoSlugField(populate_from='category', unique=True, max_length=255)
 
     def get_absolute_url(self):
-        return '/tours/%s/' % self.url
+        return reverse('tour:category', args=[str(self.url)])
 
     def __str__(self):
         return self.category
@@ -40,6 +40,12 @@ class Tour(models.Model):
 
     def get_absolute_url(self):
         return reverse('tour:detail', args=[str(self.id)])
+
+    def get_edit_url(self):
+        return reverse('tour:edit', args=[str(self.id)])
+
+    def get_delete_url(self):
+        return reverse('tour:delete', args=[str(self.id)])
 
     def __str__(self):
         return self.title_EN

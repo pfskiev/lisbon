@@ -7,7 +7,10 @@ from autoslug.fields import *
 
 class HotelCategory(models.Model):
     category = models.CharField(max_length=100, blank=True, null=False)
-    url = AutoSlugField(populate_from='category', unique=True, max_length=255)
+    slug = AutoSlugField(populate_from='category', unique=True, max_length=255)
+
+    def get_absolute_url(self):
+        return reverse('rent_hotel:detail', args=[str(self.slug)])
 
     def __str__(self):
         return self.category
@@ -43,7 +46,13 @@ class Hotel(models.Model):
         verbose_name_plural = _('Hotel')
 
     def get_absolute_url(self):
-        return '/rent-hotel/%i/' % self.id
+        return reverse('rent_hotel:detail', args=[str(self.id)])
+
+    def get_edit_url(self):
+        return reverse('rent_hotel:edit', args=[str(self.id)])
+
+    def get_delete_url(self):
+        return reverse('rent_hotel:delete', args=[str(self.id)])
 
     def __str__(self):
         return '%s at %s' % (self.title_EN, self.address)

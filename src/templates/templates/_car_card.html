@@ -11,5 +11,6 @@
     <div class="refills-card-copy">
         <p><small class="text-muted text-uppercase">{% trans 'description'%}: </small>{{ object.description_EN }}</p>
         <p><small class="text-muted text-uppercase">{% trans 'category'%}: </small>{{ object.category }}</p>
+        {% include 'templates/_CRUD.html' %}
     </div>
 </div>

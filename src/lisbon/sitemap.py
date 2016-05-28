@@ -5,7 +5,7 @@ from tours.models import Tour, Category
 from contacts.models import Contact
 from gallery.models import Gallery
 from review.models import Review
-from offer.models import Offer
+from offer.models import Offer, OfferCategory
 from news.models import Article
 
 
@@ -60,6 +60,14 @@ class OfferSitemap(Sitemap):
         return Offer.objects.all()
 
 
+class OfferCategorySitemap(Sitemap):
+    changefreq = "hourly"
+    priority = 0.5
+
+    def items(self):
+        return OfferCategory.objects.all()
+
+
 class ReviewSitemap(Sitemap):
     changefreq = "hourly"
     priority = 0.5
@@ -77,6 +85,7 @@ class CategorySitemap(Sitemap):
 
 
 sitemaps = {
+
     'static': StaticSitemap(),
     'tour': TourSitemap(),
     'contact': ContactSitemap(),
@@ -84,6 +93,7 @@ sitemaps = {
     'offer': OfferSitemap(),
     'review': ReviewSitemap(),
     'category': CategorySitemap(),
-    'news': NewsSitemap()
+    'news': NewsSitemap(),
+    'offer_category': OfferCategorySitemap()
 
 }

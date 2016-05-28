@@ -1,20 +1,20 @@
-@import 'variables';
+@import "../sources/bourbon/bourbon";
+@import "variables";
 
 .type {
-  background: rgba(184, 134, 11, 0.3);
-  color: #fff;
+  padding: 30px 30px 30px 30px;
   font-family: 'HelveticaNeueCyr-Light', sans-serif;
   font-weight: 100;
+  color: #fff;
+  background: rgba(184, 134, 11, .3);
   transition: all .3s ease;
-  padding: 30px 30px 30px 30px;
 }
 .type:hover {
-  background:rgba(184, 134, 11, 0.7);
+  background: rgba(184, 134, 11, .7);
 }
 
 .blockquote {
-
-    border-left: .25rem solid $color-blue-light;
+  border-left: .25rem solid $color-blue-light;
 }
 .main-header {
   position: absolute;
@@ -22,5 +22,3 @@
   left: 15%;
   border-radius: 7px;
 }
-
-
