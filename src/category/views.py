@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.core.mail import send_mail, BadHeaderError
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.core.urlresolvers import reverse
 from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -47,26 +48,7 @@ def category_list(request, slug=None):
     lang = get_lang(request)
     query = request.GET.get('q')
     if query:
-        if 'pt' in lang:
-            queryset_list = queryset_list.filter(
-                Q(title_PT__icontains=query) |
-                Q(description_PT__icontains=query) |
-                Q(category__category__icontains=query)
-            ).distinct()
-        else:
-            if 'en' in lang:
-                queryset_list = queryset_list.filter(
-                    Q(title_EN__icontains=query) |
-                    Q(description_EN__icontains=query) |
-                    Q(category__category__icontains=query)
-                ).distinct()
-            else:
-                if 'de' in lang:
-                    queryset_list = queryset_list.filter(
-                        Q(title_DE__icontains=query) |
-                        Q(description_DE__icontains=query) |
-                        Q(category__category__icontains=query)
-                    )
+        return redirect(reverse('search') + '?q=' + query)
     paginator = Paginator(queryset_list, 6)
     page_request_var = "page"
     page = request.GET.get(page_request_var)

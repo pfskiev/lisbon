@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{{ title }}{% endblock title %}
+{% block beadcrumbs %}
+    {% include 'templates/_breadcrumbs.html' %}
+{% endblock %}
+{% block content %}
+    <section>
+    <div class="container contact">
+        <div class="row">
+        <h2>Search results</h2>
+            {% if  offer_object_list or tour_object_list%}
+                {% for object in offer_object_list %}
+                    <a href="{{ object.get_absolute_url }}">{{ object.title_EN }}</a>
+                    <p>{{ object.description_EN }}</p>
+                {% endfor %}
+                {% for object in tour_object_list %}
+                    <a href="{{ object.get_absolute_url }}">{{ object.title_EN }}</a>
+                    <p>{{ object.description_EN }}</p>
+                {% endfor %}
+            {% else %}
+                <p>No matches</p>
+            {% endif %}
+        </div>
+    </div>
+    </section>
+{% endblock %}

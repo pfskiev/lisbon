@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.core.mail import send_mail, BadHeaderError
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.core.urlresolvers import reverse
 from django.db.models import Q
 from django.http import BadHeaderError
 from django.http import HttpResponse
@@ -28,6 +29,9 @@ def get_company():
 
 
 def news_list(request):
+    query = request.GET.get('q')
+    if query:
+        return redirect(reverse('search') + '?q=' + query)
     if request.method == 'GET':
         contact_me = ContactMe()
     else:
@@ -56,24 +60,6 @@ def news_list(request):
         {'url': '/', 'name': _('Home')},
         {'url': '#', 'name': _('News'), 'active': True}
     ]
-    query = request.GET.get('q')
-    if query:
-        if 'pt' in lang:
-            queryset_list = queryset_list.filter(
-                Q(title_PT__icontains=query) |
-                Q(description_PT__icontains=query)
-            ).distinct()
-        else:
-            if 'en' in lang:
-                queryset_list = queryset_list.filter(
-                    Q(title_EN__icontains=query) |
-                    Q(description_EN__icontains=query)
-                ).distinct()
-            else:
-                if 'de' in lang:
-                    queryset_list = queryset_list.filter(
-                        Q(title_DE__icontains=query) |
-                        Q(description_DE__icontains=query))
 
     paginator = Paginator(queryset_list, 6)
     page_request_var = 'page'
@@ -107,6 +93,9 @@ def news_list(request):
 
 
 def news_detail(request, pk=None):
+    query = request.GET.get('q')
+    if query:
+        return redirect(reverse('search') + '?q=' + query)
     if request.method == 'GET':
         contact_me = ContactMe()
     else:
@@ -173,23 +162,9 @@ def news_detail(request, pk=None):
 
 
 def news_create(request):
-    if request.method == 'GET':
-        contact_me = ContactMe()
-    else:
-        contact_me = ContactMe(request.POST)
-        if contact_me.is_valid():
-            fullname = contact_me.cleaned_data['fullname']
-            message = contact_me.cleaned_data['message']
-            subject = 'Mail from ' + fullname
-            from_email = settings.EMAIL_HOST_USER
-            to_list = settings.EMAIL_TO
-            try:
-                send_mail(subject, message, from_email, to_list, fail_silently=False)
-            except BadHeaderError:
-                return HttpResponse('Invalid header found.')
-            return redirect('tour:success')
-        else:
-            return redirect('tour:fail')
+    query = request.GET.get('q')
+    if query:
+        return redirect(reverse('search') + '?q=' + query)
     lang = get_lang(request)
     footer = {
         'pt': Helpers.objects.get(id=1).about_footer_PT,
@@ -212,7 +187,6 @@ def news_create(request):
             return redirect('news:list')
 
     context = {
-        'contact_me': contact_me,
         'footer': {
             'about': footer[lang],
             'icon': Helpers.objects.get(id=1).footer_icon
@@ -232,23 +206,9 @@ def news_create(request):
 
 
 def news_update(request, pk=None):
-    if request.method == 'GET':
-        contact_me = ContactMe()
-    else:
-        contact_me = ContactMe(request.POST)
-        if contact_me.is_valid():
-            fullname = contact_me.cleaned_data['fullname']
-            message = contact_me.cleaned_data['message']
-            subject = 'Mail from ' + fullname
-            from_email = settings.EMAIL_HOST_USER
-            to_list = settings.EMAIL_TO
-            try:
-                send_mail(subject, message, from_email, to_list, fail_silently=False)
-            except BadHeaderError:
-                return HttpResponse('Invalid header found.')
-            return redirect('tour:success')
-        else:
-            return redirect('tour:fail')
+    query = request.GET.get('q')
+    if query:
+        return redirect(reverse('search') + '?q=' + query)
     lang = get_lang(request)
     footer = {
         'pt': Helpers.objects.get(id=1).about_footer_PT,
@@ -275,7 +235,6 @@ def news_update(request, pk=None):
             return redirect('news:list')
 
         context = {
-            'contact_me': contact_me,
             'footer': {
                 'about': footer[lang],
                 'icon': Helpers.objects.get(id=1).footer_icon
@@ -295,6 +254,9 @@ def news_update(request, pk=None):
 
 
 def news_delete(request, pk=None):
+    query = request.GET.get('q')
+    if query:
+        return redirect(reverse('search') + '?q=' + query)
     if not request.user.is_staff or not request.user.is_superuser:
         return redirect('accounts:signup')
     instance = get_object_or_404(Article, pk=pk)

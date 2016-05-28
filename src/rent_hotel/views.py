@@ -2,6 +2,7 @@ from django.conf import settings
 from django.core.mail import send_mail, BadHeaderError
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
+from django.core.urlresolvers import reverse
 from django.http import BadHeaderError
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
@@ -24,6 +25,9 @@ def get_company():
 
 
 def rent_hotel_list(request):
+    query = request.GET.get('q')
+    if query:
+        return redirect(reverse('search') + '?q=' + query)
     if request.method == 'GET':
         contact_me = ContactMe()
     else:
@@ -52,25 +56,6 @@ def rent_hotel_list(request):
     }
     queryset_list = Hotel.objects.all()
     lang = get_lang(request)
-    query = request.GET.get('q')
-    if query:
-        if 'pt' in lang:
-            queryset_list = queryset_list.filter(
-                Q(title_PT__icontains=query) |
-                Q(description_PT__icontains=query)
-            ).distinct()
-        else:
-            if 'en' in lang:
-                queryset_list = queryset_list.filter(
-                    Q(title_EN__icontains=query) |
-                    Q(description_EN__icontains=query)
-                ).distinct()
-            else:
-                if 'de' in lang:
-                    queryset_list = queryset_list.filter(
-                        Q(title_DE__icontains=query) |
-                        Q(description_DE__icontains=query))
-
     paginator = Paginator(queryset_list, 6)
     page_request_var = 'page'
     page = request.GET.get(page_request_var)

@@ -28,7 +28,8 @@ urlpatterns = [
     url(r'^offer/', include('offer.urls', namespace='offer')),
     url(r'^category/', include('category.urls', namespace='category')),
     url(r'^related-links/', include('related_links.urls', namespace='related_links')),
-    url(r'^email-me/', views.email_me, name='email_me'),
+    url(r'^email-me/$', views.email_me, name='email_me'),
+    url(r'^search/$', views.search, name='search'),
 
 ]
 

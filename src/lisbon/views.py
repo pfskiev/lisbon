@@ -1,13 +1,22 @@
 from django.conf import settings
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse
+from django.core.urlresolvers import reverse
 from django.shortcuts import render, redirect
 from django.utils.translation import ugettext_lazy as _
 from helpers.models import Helpers
 from offer.models import Offer
 from tours.models import Category, Tour, About
+from contacts.models import Contact
+from gallery.models import Gallery
+from news.models import Article
+from offer.models import Offer
+from related_links.models import RelatedLink
+from rent_car.models import Car
+from rent_hotel.models import Hotel
 from offer.models import OfferCategory
 from tours.forms import BookNow, ContactMe
+from django.db.models import Q
 
 
 def get_lang(request):
@@ -20,6 +29,9 @@ def get_company():
 
 
 def home(request):
+    query = request.GET.get('q')
+    if query:
+        return redirect(reverse('search') + '?q=' + query)
     lang = request.LANGUAGE_CODE
     if request.method == 'GET':
         contact_me = ContactMe()
@@ -113,6 +125,9 @@ def home(request):
 
 
 def about(request):
+    query = request.GET.get('q')
+    if query:
+        return redirect(reverse('search') + '?q=' + query)
     lang = request.LANGUAGE_CODE
     if request.method == 'GET':
         contact_me = ContactMe()
@@ -160,6 +175,9 @@ def about(request):
 
 
 def login_or_register(request):
+    query = request.GET.get('q')
+    if query:
+        return redirect(reverse('search') + '?q=' + query)
     if request.method == 'GET':
         contact_me = ContactMe()
     else:
@@ -179,6 +197,92 @@ def login_or_register(request):
             return redirect('tour:fail')
     breadcrumbs = [{'url': '/', 'name': _('Home'), 'active': True}]
     return render(request, 'partials/login_or_register.html', {'breadcrumbs': breadcrumbs, 'contact_me': contact_me})
+
+
+def search(request):
+    lang = request.LANGUAGE_CODE
+    if request.method == 'GET':
+        contact_me = ContactMe()
+    else:
+        contact_me = ContactMe(request.POST)
+        if contact_me.is_valid():
+            fullname = contact_me.cleaned_data['fullname']
+            message = contact_me.cleaned_data['message']
+            subject = 'Mail from ' + fullname
+            from_email = settings.EMAIL_HOST_USER
+            to_list = settings.EMAIL_TO
+            try:
+                send_mail(subject, message, from_email, to_list, fail_silently=False)
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return redirect('tour:success')
+        else:
+            return redirect('tour:fail')
+    footer = {
+        'pt': Helpers.objects.get(id=1).about_footer_PT,
+        'en': Helpers.objects.get(id=1).about_footer_EN,
+        'de': Helpers.objects.get(id=1).about_footer_DE
+    }
+
+    offer_queryset = Offer.objects.all()
+    tour_queryset = Tour.objects.all()
+    query = request.GET.get('q')
+    offer_object_list = ()
+    tour_object_list = ()
+
+    if 'pt' in lang:
+        offer_object_list = offer_queryset.filter(
+            Q(title_PT__icontains=query) |
+            Q(description_PT__icontains=query)
+        ).distinct()
+    else:
+        if 'en' in lang:
+            offer_object_list = offer_queryset.filter(
+                Q(title_EN__icontains=query) |
+                Q(description_EN__icontains=query)
+            ).distinct()
+        else:
+            if 'de' in lang:
+                offer_object_list = offer_queryset.filter(
+                    Q(title_DE__icontains=query) |
+                    Q(description_DE__icontains=query))
+
+    if 'pt' in lang:
+        tour_object_list = tour_queryset.filter(
+            Q(title_PT__icontains=query) |
+            Q(description_PT__icontains=query)
+        ).distinct()
+    else:
+        if 'en' in lang:
+            tour_object_list = tour_queryset.filter(
+                Q(title_EN__icontains=query) |
+                Q(description_EN__icontains=query)
+            ).distinct()
+        else:
+            if 'de' in lang:
+                tour_object_list = tour_queryset.filter(
+                    Q(title_DE__icontains=query) |
+                    Q(description_DE__icontains=query))
+
+    context = {
+        'offer_object_list': offer_object_list,
+        'tour_object_list': tour_object_list,
+        'contact_me': contact_me,
+        'footer': {
+            'about': footer[lang],
+            'icon': Helpers.objects.get(id=1).footer_icon
+        },
+        'form': contact_me,
+        'nav': {
+            'tour_categories_list': Category.objects.all(),
+            'offer_categories_list': OfferCategory.objects.all(),
+        },
+        'title': 'Contact me',
+        'company': get_company(),
+        'breadcrumbs': [
+            {'url': '/', 'name': _('Home')},
+        ]}
+    return render(request, 'partials/search.html', context)
 
 
 def email_me(request):
@@ -226,6 +330,9 @@ def email_me(request):
 
 
 def contact_us(request):
+    query = request.GET.get('q')
+    if query:
+        return redirect(reverse('search') + '?q=' + query)
     if request.method == 'GET':
         contact_me = ContactMe()
     else:
@@ -253,6 +360,9 @@ def contact_us(request):
 
 
 def book_form(request):
+    query = request.GET.get('q')
+    if query:
+        return redirect(reverse('search') + '?q=' + query)
     if request.method == 'GET':
         contact_me = ContactMe()
     else:

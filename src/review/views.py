@@ -2,6 +2,7 @@ from django.conf import settings
 from django.core.mail import send_mail, BadHeaderError
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
+from django.core.urlresolvers import reverse
 from django.contrib import messages
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse
@@ -25,6 +26,9 @@ def get_company():
 
 
 def review_list(request):
+    query = request.GET.get('q')
+    if query:
+        return redirect(reverse('search') + '?q=' + query)
     lang = request.LANGUAGE_CODE
     breadcrumbs = [
         {'url': '/', 'name': _('Home')},
@@ -36,13 +40,6 @@ def review_list(request):
         'de': Helpers.objects.get(id=1).about_footer_DE
     }
     queryset_list = Review.objects.all()
-    query = request.GET.get('q')
-    if query:
-        queryset_list = queryset_list.filter(
-                Q(review__icontains=query) |
-                Q(user__name__icontains=query)
-                # Q(category__category__icontains=query)
-            ).distinct()
     paginator = Paginator(queryset_list, 6)
     page_request_var = 'page'
     page = request.GET.get(page_request_var)
@@ -74,7 +71,6 @@ def review_list(request):
             return redirect('review:list')
 
     context = {
-        'contact_me': contact_me,
         'footer': {
             'about': footer[lang],
             'icon': Helpers.objects.get(id=1).footer_icon
@@ -96,8 +92,28 @@ def review_list(request):
 
 
 def review_detail(request, pk=None):
+    query = request.GET.get('q')
+    if query:
+        return redirect(reverse('search') + '?q=' + query)
     lang = request.LANGUAGE_CODE
     review = Review.objects.get(pk=pk)
+    if request.method == 'GET':
+        contact_me = ContactMe()
+    else:
+        contact_me = ContactMe(request.POST)
+        if contact_me.is_valid():
+            fullname = contact_me.cleaned_data['fullname']
+            message = contact_me.cleaned_data['message']
+            subject = 'Mail from ' + fullname
+            from_email = settings.EMAIL_HOST_USER
+            to_list = settings.EMAIL_TO
+            try:
+                send_mail(subject, message, from_email, to_list, fail_silently=False)
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return redirect('tour:success')
+        else:
+            return redirect('tour:fail')
     breadcrumbs = [
         {'url': '/', 'name': _('Home')},
         {'url': '/reviews', 'name': _('Reviews')},
@@ -109,7 +125,6 @@ def review_detail(request, pk=None):
         'de': Helpers.objects.get(id=1).about_footer_DE
     }
     context = {
-        'contact_me': contact_me,
         'footer': {
             'about': footer[lang],
             'icon': Helpers.objects.get(id=1).footer_icon
@@ -128,6 +143,9 @@ def review_detail(request, pk=None):
 
 
 def review_create(request):
+    query = request.GET.get('q')
+    if query:
+        return redirect(reverse('search') + '?q=' + query)
     lang = request.LANGUAGE_CODE
     footer = {
         'pt': Helpers.objects.get(id=1).about_footer_PT,
@@ -162,15 +180,14 @@ def review_create(request):
             return redirect('review:list')
 
         context = {
-            'contact_me': contact_me,
             'footer': {
                 'about': footer[lang],
                 'icon': Helpers.objects.get(id=1).footer_icon
             },
             'nav': {
-            'tour_categories_list': Category.objects.all(),
-            'offer_categories_list': OfferCategory.objects.all(),
-        },
+                'tour_categories_list': Category.objects.all(),
+                'offer_categories_list': OfferCategory.objects.all(),
+            },
             'company': get_company(),
             'lang': lang,
             'title': 'Review creating',
@@ -183,31 +200,15 @@ def review_create(request):
 
 
 def review_update(request, pk=None):
+    query = request.GET.get('q')
+    if query:
+        return redirect(reverse('search') + '?q=' + query)
     lang = request.LANGUAGE_CODE
     footer = {
         'pt': Helpers.objects.get(id=1).about_footer_PT,
         'en': Helpers.objects.get(id=1).about_footer_EN,
         'de': Helpers.objects.get(id=1).about_footer_DE
     }
-    lang = get_lang(request)
-    if request.method == 'GET':
-        contact_me = ContactMe()
-    else:
-        contact_me = ContactMe(request.POST)
-        if contact_me.is_valid():
-            fullname = contact_me.cleaned_data['fullname']
-            message = contact_me.cleaned_data['message']
-            subject = 'Mail from ' + fullname
-            from_email = settings.EMAIL_HOST_USER
-            to_list = settings.EMAIL_TO
-            try:
-                send_mail(subject, message, from_email, to_list, fail_silently=False)
-            except BadHeaderError:
-                return HttpResponse('Invalid header found.')
-            return redirect('tour:success')
-        else:
-            return redirect('tour:fail')
-
     if not request.user.is_staff or not request.user.is_superuser:
         return redirect('accounts:signup')
     else:
@@ -224,16 +225,15 @@ def review_update(request, pk=None):
             return redirect('review:list')
 
         context = {
-            'contact_me': contact_me,
             'footer': {
                 'about': footer[lang],
                 'icon': Helpers.objects.get(id=1).footer_icon
             },
 
             'nav': {
-            'tour_categories_list': Category.objects.all(),
-            'offer_categories_list': OfferCategory.objects.all(),
-        },
+                'tour_categories_list': Category.objects.all(),
+                'offer_categories_list': OfferCategory.objects.all(),
+            },
             'company': get_company(),
             'lang': lang,
             'title': 'Review Edit',
@@ -246,6 +246,9 @@ def review_update(request, pk=None):
 
 
 def review_filter(request, slug=None):
+    query = request.GET.get('q')
+    if query:
+        return redirect(reverse('search') + '?q=' + query)
     lang = request.LANGUAGE_CODE
     footer = {
         'pt': Helpers.objects.get(id=1).about_footer_PT,
@@ -258,10 +261,10 @@ def review_filter(request, slug=None):
     query = request.GET.get('q')
     if query:
         queryset_list = queryset_list.filter(
-                Q(review__icontains=query) |
-                Q(user__name__icontains=query)
-                # Q(category__category__icontains=query)
-            ).distinct()
+            Q(review__icontains=query) |
+            Q(user__name__icontains=query)
+            # Q(category__category__icontains=query)
+        ).distinct()
     paginator = Paginator(queryset_list, 6)
     page_request_var = 'page'
     page = request.GET.get(page_request_var)
@@ -295,7 +298,6 @@ def review_filter(request, slug=None):
             return redirect('review:list')
 
     context = {
-        'contact_me': contact_me,
         'footer': {
             'about': footer[lang],
             'icon': Helpers.objects.get(id=1).footer_icon
@@ -320,6 +322,9 @@ def review_filter(request, slug=None):
 
 
 def review_delete(request, pk=None):
+    query = request.GET.get('q')
+    if query:
+        return redirect(reverse('search') + '?q=' + query)
     if not request.user.is_staff or not request.user.is_superuser:
         return redirect('accounts:signup')
     instance = get_object_or_404(Review, pk=pk)

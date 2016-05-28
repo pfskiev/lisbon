@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.core.mail import send_mail, BadHeaderError
+from django.core.urlresolvers import reverse
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
@@ -31,10 +32,7 @@ def contact_list(request):
     ]
     query = request.GET.get('q')
     if query:
-        queryset_list = queryset_list.filter(
-            Q(first_name__icontains=query) |
-            Q(last_name__icontains=query)
-        ).distinct()
+        return redirect(reverse('search') + '?q=' + query)
     paginator = Paginator(queryset_list, ContactHelpers.objects.get(id=1).pagination)
     page_request_var = 'page'
     page = request.GET.get(page_request_var)
@@ -91,6 +89,9 @@ def contact_list(request):
 def contact_detail(request, pk=None):
     lang = get_lang(request)
     contact = Contact.objects.get(pk=pk)
+    query = request.GET.get('q')
+    if query:
+        return redirect(reverse('search') + '?q=' + query)
     if request.method == 'GET':
         contact_me = ContactMe()
     else:
@@ -138,6 +139,9 @@ def contact_detail(request, pk=None):
 
 
 def contact_create(request):
+    query = request.GET.get('q')
+    if query:
+        return redirect(reverse('search') + '?q=' + query)
     if request.method == 'GET':
         contact_me = ContactMe()
     else:
@@ -198,24 +202,10 @@ def contact_create(request):
 
 
 def contact_update(request, pk=None):
+    query = request.GET.get('q')
+    if query:
+        return redirect(reverse('search') + '?q=' + query)
     lang = get_lang(request)
-    if request.method == 'GET':
-        contact_me = ContactMe()
-    else:
-        contact_me = ContactMe(request.POST)
-        if contact_me.is_valid():
-            fullname = contact_me.cleaned_data['fullname']
-            message = contact_me.cleaned_data['message']
-            subject = 'Mail from ' + fullname
-            from_email = settings.EMAIL_HOST_USER
-            to_list = settings.EMAIL_TO
-            try:
-                send_mail(subject, message, from_email, to_list, fail_silently=False)
-            except BadHeaderError:
-                return HttpResponse('Invalid header found.')
-            return redirect('tour:success')
-        else:
-            return redirect('tour:fail')
     footer = {
         'pt': Helpers.objects.get(id=1).about_footer_PT,
         'en': Helpers.objects.get(id=1).about_footer_EN,
@@ -238,7 +228,6 @@ def contact_update(request, pk=None):
             return redirect('contact:list')
 
         context = {
-            'contact_me': contact_me,
             'footer': {
                 'about': footer[lang],
                 'icon': Helpers.objects.get(id=1).footer_icon

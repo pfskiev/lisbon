@@ -2,6 +2,7 @@ from django.conf import settings
 from django.core.mail import send_mail, BadHeaderError
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
+from django.core.urlresolvers import reverse
 from django.contrib import messages
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
@@ -22,6 +23,9 @@ def get_company():
 
 
 def tour_list(request):
+    query = request.GET.get('q')
+    if query:
+        return redirect(reverse('search') + '?q=' + query)
     if request.method == 'GET':
         contact_me = ContactMe()
     else:
@@ -141,23 +145,9 @@ def tour_list(request):
 
 
 def tour_detail(request, pk=None):
-    if request.method == 'GET':
-        contact_me = ContactMe()
-    else:
-        contact_me = ContactMe(request.POST)
-        if contact_me.is_valid():
-            fullname = contact_me.cleaned_data['fullname']
-            message = contact_me.cleaned_data['message']
-            subject = 'Mail from ' + fullname
-            from_email = settings.EMAIL_HOST_USER
-            to_list = settings.EMAIL_TO
-            try:
-                send_mail(subject, message, from_email, to_list, fail_silently=False)
-            except BadHeaderError:
-                return HttpResponse('Invalid header found.')
-            return redirect('tour:success')
-        else:
-            return redirect('tour:fail')
+    query = request.GET.get('q')
+    if query:
+        return redirect(reverse('search') + '?q=' + query)
     lang = request.LANGUAGE_CODE
     footer = {
         'pt': Helpers.objects.get(id=1).about_footer_PT,
@@ -165,7 +155,6 @@ def tour_detail(request, pk=None):
         'de': Helpers.objects.get(id=1).about_footer_DE
     }
     tour = Tour.objects.get(pk=pk)
-    lang = get_lang(request)
     if request.method == 'GET':
         form = BookNow()
     else:
@@ -249,30 +238,15 @@ def tour_detail(request, pk=None):
 
 
 def tour_update(request, pk=None):
-    if request.method == 'GET':
-        contact_me = ContactMe()
-    else:
-        contact_me = ContactMe(request.POST)
-        if contact_me.is_valid():
-            fullname = contact_me.cleaned_data['fullname']
-            message = contact_me.cleaned_data['message']
-            subject = 'Mail from ' + fullname
-            from_email = settings.EMAIL_HOST_USER
-            to_list = settings.EMAIL_TO
-            try:
-                send_mail(subject, message, from_email, to_list, fail_silently=False)
-            except BadHeaderError:
-                return HttpResponse('Invalid header found.')
-            return redirect('tour:success')
-        else:
-            return redirect('tour:fail')
+    query = request.GET.get('q')
+    if query:
+        return redirect(reverse('search') + '?q=' + query)
     lang = request.LANGUAGE_CODE
     footer = {
         'pt': Helpers.objects.get(id=1).about_footer_PT,
         'en': Helpers.objects.get(id=1).about_footer_EN,
         'de': Helpers.objects.get(id=1).about_footer_DE
     }
-    lang = get_lang(request)
     tour = Tour.objects.get(pk=pk)
     tour_title = {
         'pt': tour.title_PT,
@@ -297,16 +271,15 @@ def tour_update(request, pk=None):
             return redirect('tour:list')
 
         context = {
-            'contact_me': contact_me,
             'footer': {
                 'about': footer[lang],
                 'icon': Helpers.objects.get(id=1).footer_icon
             },
 
             'nav': {
-            'tour_categories_list': Category.objects.all(),
-            'offer_categories_list': OfferCategory.objects.all(),
-        },
+                'tour_categories_list': Category.objects.all(),
+                'offer_categories_list': OfferCategory.objects.all(),
+            },
             'company': get_company(),
             'title': _('Edit') + ' ' + tour_title[lang],
             'breadcrumbs': breadcrumbs,
@@ -318,6 +291,9 @@ def tour_update(request, pk=None):
 
 
 def tour_create(request):
+    query = request.GET.get('q')
+    if query:
+        return redirect(reverse('search') + '?q=' + query)
     if request.method == 'GET':
         contact_me = ContactMe()
     else:
@@ -366,9 +342,9 @@ def tour_create(request):
             },
 
             'nav': {
-            'tour_categories_list': Category.objects.all(),
-            'offer_categories_list': OfferCategory.objects.all(),
-        },
+                'tour_categories_list': Category.objects.all(),
+                'offer_categories_list': OfferCategory.objects.all(),
+            },
             'company': get_company(),
             'lang': lang,
             'title': 'Tour create',
@@ -381,6 +357,9 @@ def tour_create(request):
 
 
 def tour_delete(request, pk=None):
+    query = request.GET.get('q')
+    if query:
+        return redirect(reverse('search') + '?q=' + query)
     if request.method == 'GET':
         contact_me = ContactMe()
     else:
@@ -413,6 +392,9 @@ def tour_delete(request, pk=None):
 
 
 def tour_category(request, slug=None):
+    query = request.GET.get('q')
+    if query:
+        return redirect(reverse('search') + '?q=' + query)
     if request.method == 'GET':
         contact_me = ContactMe()
     else:
@@ -455,29 +437,6 @@ def tour_category(request, slug=None):
             return redirect('tour:fail')
 
     queryset_list = Tour.objects.filter(category__url__contains=slug)
-    lang = get_lang(request)
-    query = request.GET.get('q')
-    if query:
-        if 'pt' in lang:
-            queryset_list = queryset_list.filter(
-                Q(title_PT__icontains=query) |
-                Q(description_PT__icontains=query)
-                # Q(category__category__icontains=query)
-            ).distinct()
-        else:
-            if 'en' in lang:
-                queryset_list = queryset_list.filter(
-                    Q(title_EN__icontains=query) |
-                    Q(description_EN__icontains=query)
-                    # Q(category__category__icontains=query)
-                ).distinct()
-            else:
-                if 'de' in lang:
-                    queryset_list = queryset_list.filter(
-                        Q(title_DE__icontains=query) |
-                        Q(description_DE__icontains=query)
-                        # Q(category__category__icontains=query)
-                    ).distinct()
     paginator = Paginator(queryset_list, 6)
     page_request_var = "page"
     page = request.GET.get(page_request_var)
@@ -532,6 +491,9 @@ def tour_category(request, slug=None):
 
 
 def tour_success(request):
+    query = request.GET.get('q')
+    if query:
+        return redirect(reverse('search') + '?q=' + query)
     lang = request.LANGUAGE_CODE
     footer = {
         'pt': Helpers.objects.get(id=1).about_footer_PT,
@@ -576,6 +538,9 @@ def tour_success(request):
 
 
 def tour_fail(request):
+    query = request.GET.get('q')
+    if query:
+        return redirect(reverse('search') + '?q=' + query)
     lang = request.LANGUAGE_CODE
     footer = {
         'pt': Helpers.objects.get(id=1).about_footer_PT,

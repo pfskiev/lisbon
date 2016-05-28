@@ -12,6 +12,7 @@ from tours.models import Category
 from tours.forms import ContactMe
 from offer.models import OfferCategory
 from helpers.models import Helpers
+from django.core.urlresolvers import reverse
 from .models import Car, CarCategory
 from .forms import CarForm
 
@@ -26,6 +27,9 @@ def get_company():
 
 
 def rent_car_list(request):
+    query = request.GET.get('q')
+    if query:
+        return redirect(reverse('search') + '?q=' + query)
     if request.method == 'GET':
         contact_me = ContactMe()
     else:
@@ -54,25 +58,6 @@ def rent_car_list(request):
     }
     queryset_list = Car.objects.all()
     lang = get_lang(request)
-    query = request.GET.get('q')
-    if query:
-        if 'pt' in lang:
-            queryset_list = queryset_list.filter(
-                Q(title_PT__icontains=query) |
-                Q(description_PT__icontains=query)
-            ).distinct()
-        else:
-            if 'en' in lang:
-                queryset_list = queryset_list.filter(
-                    Q(title_EN__icontains=query) |
-                    Q(description_EN__icontains=query)
-                ).distinct()
-            else:
-                if 'de' in lang:
-                    queryset_list = queryset_list.filter(
-                        Q(title_DE__icontains=query) |
-                        Q(description_DE__icontains=query))
-
     paginator = Paginator(queryset_list, 6)
     page_request_var = 'page'
     page = request.GET.get(page_request_var)
@@ -105,6 +90,9 @@ def rent_car_list(request):
 
 
 def rent_car_detail(request, pk=None):
+    query = request.GET.get('q')
+    if query:
+        return redirect(reverse('search') + '?q=' + query)
     if request.method == 'GET':
         contact_me = ContactMe()
     else:
@@ -159,23 +147,9 @@ def rent_car_detail(request, pk=None):
 
 
 def rent_car_create(request):
-    if request.method == 'GET':
-        contact_me = ContactMe()
-    else:
-        contact_me = ContactMe(request.POST)
-        if contact_me.is_valid():
-            fullname = contact_me.cleaned_data['fullname']
-            message = contact_me.cleaned_data['message']
-            subject = 'Mail from ' + fullname
-            from_email = settings.EMAIL_HOST_USER
-            to_list = settings.EMAIL_TO
-            try:
-                send_mail(subject, message, from_email, to_list, fail_silently=False)
-            except BadHeaderError:
-                return HttpResponse('Invalid header found.')
-            return redirect('tour:success')
-        else:
-            return redirect('tour:fail')
+    query = request.GET.get('q')
+    if query:
+        return redirect(reverse('search') + '?q=' + query)
     lang = request.LANGUAGE_CODE
     footer = {
         'pt': Helpers.objects.get(id=1).about_footer_PT,
@@ -197,7 +171,6 @@ def rent_car_create(request):
             return redirect('rent_car:list')
 
     context = {
-        'contact_me': contact_me,
         'footer': {
             'about': footer[lang],
             'icon': Helpers.objects.get(id=1).footer_icon
@@ -217,23 +190,9 @@ def rent_car_create(request):
 
 
 def rent_car_update(request, pk=None):
-    if request.method == 'GET':
-        contact_me = ContactMe()
-    else:
-        contact_me = ContactMe(request.POST)
-        if contact_me.is_valid():
-            fullname = contact_me.cleaned_data['fullname']
-            message = contact_me.cleaned_data['message']
-            subject = 'Mail from ' + fullname
-            from_email = settings.EMAIL_HOST_USER
-            to_list = settings.EMAIL_TO
-            try:
-                send_mail(subject, message, from_email, to_list, fail_silently=False)
-            except BadHeaderError:
-                return HttpResponse('Invalid header found.')
-            return redirect('tour:success')
-        else:
-            return redirect('tour:fail')
+    query = request.GET.get('q')
+    if query:
+        return redirect(reverse('search') + '?q=' + query)
     footer = {
         'pt': Helpers.objects.get(id=1).about_footer_PT,
         'en': Helpers.objects.get(id=1).about_footer_EN,
@@ -260,7 +219,6 @@ def rent_car_update(request, pk=None):
             return redirect('rent_car:list')
 
         context = {
-            'contact_me': contact_me,
             'footer': {
                 'about': footer[lang],
                 'icon': Helpers.objects.get(id=1).footer_icon
@@ -280,6 +238,9 @@ def rent_car_update(request, pk=None):
 
 
 def rent_car_delete(request, pk=None):
+    query = request.GET.get('q')
+    if query:
+        return redirect(reverse('search') + '?q=' + query)
     if not request.user.is_staff or not request.user.is_superuser:
         return redirect('accounts:signup')
     instance = get_object_or_404(Car, pk=pk)
@@ -289,6 +250,9 @@ def rent_car_delete(request, pk=None):
 
 
 def rent_car_category(request, slug=None):
+    query = request.GET.get('q')
+    if query:
+        return redirect(reverse('search') + '?q=' + query)
     if request.method == 'GET':
         contact_me = ContactMe()
     else:
