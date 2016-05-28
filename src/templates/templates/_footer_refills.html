@@ -71,7 +71,7 @@
             <div class="div-li"><a href="#">Facebook <i class="fa fa-facebook"></i></a></div>
             <div class="div-li"><a href="#">Google + <i class="fa fa-google-plus"></i></a></div>
             <div class="div-li"><a href="#">Instagram <i class="fa fa-instagram"></i></a></div>
-            <div class="div-li"><a href="{% url 'email_me' %}" >{% trans 'Email me' %} <i class="fa fa-mail-forward"></i></a></div>
+            <div class="div-li"><a data-toggle="modal" data-target="#email_me">{% trans 'Email me' %} <i class="fa fa-mail-forward"></i></a></div>
         </div>
         <div class="div-ul-100">
             <div class="div-li languages">{%  include 'templates/_languages.html' %}</div>
@@ -101,3 +101,6 @@
   }]
 }
 </script>
+{% if contact_me %}
+{% include 'templates/_modal_email_me_form.html' %}
+{% endif %}

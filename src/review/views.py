@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.core.mail import send_mail, BadHeaderError
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
 from django.contrib import messages
@@ -73,6 +74,7 @@ def review_list(request):
             return redirect('review:list')
 
     context = {
+        'contact_me': contact_me,
         'footer': {
             'about': footer[lang],
             'icon': Helpers.objects.get(id=1).footer_icon
@@ -107,6 +109,7 @@ def review_detail(request, pk=None):
         'de': Helpers.objects.get(id=1).about_footer_DE
     }
     context = {
+        'contact_me': contact_me,
         'footer': {
             'about': footer[lang],
             'icon': Helpers.objects.get(id=1).footer_icon
@@ -159,6 +162,7 @@ def review_create(request):
             return redirect('review:list')
 
         context = {
+            'contact_me': contact_me,
             'footer': {
                 'about': footer[lang],
                 'icon': Helpers.objects.get(id=1).footer_icon
@@ -220,6 +224,7 @@ def review_update(request, pk=None):
             return redirect('review:list')
 
         context = {
+            'contact_me': contact_me,
             'footer': {
                 'about': footer[lang],
                 'icon': Helpers.objects.get(id=1).footer_icon
@@ -290,6 +295,7 @@ def review_filter(request, slug=None):
             return redirect('review:list')
 
     context = {
+        'contact_me': contact_me,
         'footer': {
             'about': footer[lang],
             'icon': Helpers.objects.get(id=1).footer_icon

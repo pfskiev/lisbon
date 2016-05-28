@@ -1,5 +1,5 @@
 from django.conf import settings
-from django.core.mail import send_mail
+from django.core.mail import send_mail, BadHeaderError
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
 from django.http import BadHeaderError
@@ -66,6 +66,7 @@ def related_links_list(request):
         queryset = paginator.page(paginator.num_pages)
 
     context = {
+        'contact_me': contact_me,
         'footer': {
             'about': footer[lang],
             'icon': Helpers.objects.get(id=1).footer_icon
@@ -110,6 +111,7 @@ def related_links_detail(request, pk=None):
         {'url': '#', 'name': title[lang], 'active': True}]
 
     context = {
+        'contact_me': contact_me,
         'footer': {
             'about': footer[lang],
             'icon': Helpers.objects.get(id=1).footer_icon
@@ -157,6 +159,7 @@ def related_links_create(request):
             return redirect('related_links:list')
 
     context = {
+        'contact_me': contact_me,
         'footer': {
             'about': footer[lang],
             'icon': Helpers.objects.get(id=1).footer_icon
@@ -203,6 +206,7 @@ def related_links_update(request, pk=None):
             return redirect('related_links:list')
 
         context = {
+            'contact_me': contact_me,
             'footer': {
                 'about': footer[lang],
                 'icon': Helpers.objects.get(id=1).footer_icon
