@@ -128,7 +128,6 @@ def about(request):
     query = request.GET.get('q')
     if query:
         return redirect(reverse('search') + '?q=' + query)
-    lang = request.LANGUAGE_CODE
     if request.method == 'GET':
         contact_me = ContactMe()
     else:
@@ -155,6 +154,7 @@ def about(request):
         {'url': '/', 'name': _('Home')},
         {'url': '#', 'name': _('About'), 'active': True}
     ]
+    lang = request.LANGUAGE_CODE
     context = {
         'footer': {
             'about': footer[lang],

@@ -148,7 +148,7 @@ def tour_detail(request, pk=None):
     query = request.GET.get('q')
     if query:
         return redirect(reverse('search') + '?q=' + query)
-    lang = request.LANGUAGE_CODE
+    lang = get_lang(request)
     footer = {
         'pt': Helpers.objects.get(id=1).about_footer_PT,
         'en': Helpers.objects.get(id=1).about_footer_EN,
@@ -227,6 +227,7 @@ def tour_detail(request, pk=None):
         'object': {
             'keywords': tour.keywords_SEO,
             'description_SEO': tour.description_SEO,
+            'price': tour.price,
             'title': title[lang],
             'id': tour.id,
             'img': tour.img,
@@ -291,6 +292,7 @@ def tour_update(request, pk=None):
 
 
 def tour_create(request):
+    lang = request.LANGUAGE_CODE
     query = request.GET.get('q')
     if query:
         return redirect(reverse('search') + '?q=' + query)
@@ -311,13 +313,11 @@ def tour_create(request):
             return redirect('tour:success')
         else:
             return redirect('tour:fail')
-    lang = request.LANGUAGE_CODE
     footer = {
         'pt': Helpers.objects.get(id=1).about_footer_PT,
         'en': Helpers.objects.get(id=1).about_footer_EN,
         'de': Helpers.objects.get(id=1).about_footer_DE
     }
-    lang = get_lang(request)
     if not request.user.is_staff or not request.user.is_superuser:
         return redirect('accounts:signup')
     else:
