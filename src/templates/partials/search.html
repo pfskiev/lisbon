@@ -8,7 +8,9 @@
     <section>
     <div class="container contact">
         <div class="row">
-        <h2>Search results</h2>
+        <h2>{% trans 'Search results'%}</h2>
+
+        {% if 'en' in request.LANGUAGE_CODE %}
             {% if  offer_object_list or tour_object_list%}
                 {% for object in offer_object_list %}
                     <a href="{{ object.get_absolute_url }}">{{ object.title_EN }}</a>
@@ -21,6 +23,38 @@
             {% else %}
                 <p>No matches</p>
             {% endif %}
+        {% endif %}
+
+        {% if 'pt' in request.LANGUAGE_CODE %}
+            {% if  offer_object_list or tour_object_list%}
+                {% for object in offer_object_list %}
+                    <a href="{{ object.get_absolute_url }}">{{ object.title_PT }}</a>
+                    <p>{{ object.description_PT }}</p>
+                {% endfor %}
+                {% for object in tour_object_list %}
+                    <a href="{{ object.get_absolute_url }}">{{ object.title_PT }}</a>
+                    <p>{{ object.description_PT }}</p>
+                {% endfor %}
+            {% else %}
+                <p>No matches</p>
+            {% endif %}
+        {% endif %}
+
+        {% if 'de' in request.LANGUAGE_CODE %}
+            {% if  offer_object_list or tour_object_list%}
+                {% for object in offer_object_list %}
+                    <a href="{{ object.get_absolute_url }}">{{ object.title_DE }}</a>
+                    <p>{{ object.description_DE }}</p>
+                {% endfor %}
+                {% for object in tour_object_list %}
+                    <a href="{{ object.get_absolute_url }}">{{ object.title_DE }}</a>
+                    <p>{{ object.description_DE }}</p>
+                {% endfor %}
+            {% else %}
+                <p>No matches</p>
+            {% endif %}
+        {% endif %}
+
         </div>
     </div>
     </section>
