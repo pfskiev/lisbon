@@ -227,8 +227,8 @@ def search(request):
     offer_queryset = Offer.objects.all()
     tour_queryset = Tour.objects.all()
     query = request.GET.get('q')
-    offer_object_list = ()
-    tour_object_list = ()
+    offer_object_list = []
+    tour_object_list = []
 
     if 'pt' in lang:
         offer_object_list = offer_queryset.filter(

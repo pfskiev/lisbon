@@ -12,7 +12,6 @@
         {% if 'de' in request.LANGUAGE_CODE %}
             <h4 style="margin-top: 20px" class="card-title text-md-center">{{ object.title_DE }}</h4>
         {% endif %}
-
     </div>
     {% if object.img %}
         <a href="{{ object.get_absolute_url }}">

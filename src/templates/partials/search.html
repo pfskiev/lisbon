@@ -13,10 +13,12 @@
         {% if 'en' in request.LANGUAGE_CODE %}
             {% if  offer_object_list or tour_object_list%}
                 {% for object in offer_object_list %}
+                    {% include 'templates/search/_img.html' %}
                     <a href="{{ object.get_absolute_url }}">{{ object.title_EN }}</a>
                     <p>{{ object.description_EN }}</p>
                 {% endfor %}
                 {% for object in tour_object_list %}
+                    {% include 'templates/search/_img.html' %}
                     <a href="{{ object.get_absolute_url }}">{{ object.title_EN }}</a>
                     <p>{{ object.description_EN }}</p>
                 {% endfor %}
@@ -28,10 +30,12 @@
         {% if 'pt' in request.LANGUAGE_CODE %}
             {% if  offer_object_list or tour_object_list%}
                 {% for object in offer_object_list %}
+                    {% include 'templates/search/_img.html' %}
                     <a href="{{ object.get_absolute_url }}">{{ object.title_PT }}</a>
                     <p>{{ object.description_PT }}</p>
                 {% endfor %}
                 {% for object in tour_object_list %}
+                    {% include 'templates/search/_img.html' %}
                     <a href="{{ object.get_absolute_url }}">{{ object.title_PT }}</a>
                     <p>{{ object.description_PT }}</p>
                 {% endfor %}
@@ -43,10 +47,12 @@
         {% if 'de' in request.LANGUAGE_CODE %}
             {% if  offer_object_list or tour_object_list%}
                 {% for object in offer_object_list %}
+                    {% include 'templates/search/_img.html' %}
                     <a href="{{ object.get_absolute_url }}">{{ object.title_DE }}</a>
                     <p>{{ object.description_DE }}</p>
                 {% endfor %}
                 {% for object in tour_object_list %}
+                    {% include 'templates/search/_img.html' %}
                     <a href="{{ object.get_absolute_url }}">{{ object.title_DE }}</a>
                     <p>{{ object.description_DE }}</p>
                 {% endfor %}

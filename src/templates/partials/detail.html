@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% block keywords %}{{ object.keywords_SEO }}{%  endblock %}
+{% block description %}{{ object.description_SEO }}{% endblock %} }}
 {% block title %}{{ title }}{% endblock title %}
-{% block description %}{{ object.description_SEO }}{% endblock description %}
-{% block keywords %}{{ object.keywords }}{% endblock keywords %}
 {% block content %}
     {% load staticfiles %}
     {% include 'templates/_breadcrumbs.html' %}

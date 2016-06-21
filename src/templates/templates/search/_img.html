@@ -1,0 +1,8 @@
+{% load i18n %}
+{% load thumbnail %}
+{% if object.img %}
+    <a href="{{ object.get_absolute_url }}">
+        <img width="100px" src="{% thumbnail object.img 720x480 crop="smart" %}" alt="{{ object.title }}" style="object-fit: cover;"></a>
+{% else %}
+    <p style="text-align: center"><small><em>{% trans 'place for image' %}</em></small></p>
+{% endif %}
