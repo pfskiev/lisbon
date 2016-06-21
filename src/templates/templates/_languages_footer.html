@@ -1,0 +1,10 @@
+{% load i18n %}
+{% for lang in LANGUAGES %}
+    <form style="display: inline-block" id="setLang_{{ lang.1}}_footer" class="form-inline" action="/i18n/setlang/" method="POST">
+        {% csrf_token %}
+        <input name="next" type="hidden" value="{{ request.path }}">
+        <input type="hidden" name="language" value="{{ lang.0 }}">
+        <a href="#" onclick="$('#setLang_{{ lang.1 }}_footer').submit();
+                return false;"><i class="flag-icon flag-icon-{% if lang.0 == 'en' %}gb{% else %}{{ lang.0 }}{% endif %}"></i>  <span>{{ lang.1 }}</span></a>
+    </form>
+{% endfor %}
