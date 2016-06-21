@@ -19,13 +19,12 @@
                         <li style="padding: 20px" class="hidden-md-up text-md-center text-sm-center text-xs-center"><a href="/admin/">{% trans 'Admin Panel' %}</a></li>
                     {% endif %}
                     <li style="padding: 20px" class="text-md-center text-sm-center text-xs-center">
-                        <form class="" method='GET' action=''>
-            <input class="form-control" type='text' name='q' placeholder='{% trans 'Search' %}' value='{{ request.GET.q }}'/>
-            <input class="btn btn-success-outline" type='submit' value='{% trans 'Search' %}' />
-        </form>
+                        <form method="GET" action="/search/">
+                            <input class="form-control" type="text" name="q" placeholder="{% trans 'Search' %}" value="{{ request.GET.q }}"/>
+                            <input class="btn btn-success-outline" type="submit" value='{% trans 'Search' %}' />
+                        </form>
                     </li>
                 </ol>
-
 {#            </div>#}
 {#            <div class="col-md-6">#}
 {#                {% include 'templates/nav/_follow_us.html' %}#}
@@ -106,9 +105,9 @@
                 {% include 'templates/_user.html' %}
             </li>
         </ol>
-        <form class="form-inline pull-xs-right hidden-md-down" method='GET' action=''>
-            <input class="form-control" type='text' name='q' placeholder='{% trans 'Search' %}' value='{{ request.GET.q }}'/>
-            <input class="btn btn-success-outline" type='submit' value='{% trans 'Search' %}' />
+        <form class="form-inline pull-xs-right hidden-md-down" method="GET" action="/search/">
+            <input class="form-control" type="text" name="q" placeholder="{% trans 'Search' %}" value="{{ request.GET.q }}"/>
+            <input class="btn btn-success-outline" type="submit" value='{% trans 'Search' %}' />
         </form>
     </div>
 </div>
