@@ -296,6 +296,27 @@ def tour_create(request):
     query = request.GET.get('q')
     if query:
         return redirect(reverse('search') + '?q=' + query)
+    footer = {
+        'pt': Helpers.objects.get(id=1).about_footer_PT,
+        'en': Helpers.objects.get(id=1).about_footer_EN,
+        'de': Helpers.objects.get(id=1).about_footer_DE
+    }
+    breadcrumbs = [
+                      {'url': '/', 'name': _('Home')},
+              {'url': '/', 'name': _('Tours')},
+                          {'url': '#', 'name': _('Create Tour'), 'active': True},
+                      ],
+    if not request.user.is_staff or not request.user.is_superuser:
+        return redirect('accounts:signup')
+    else:
+        form = TourForm(request.POST or None, request.FILES or None)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.user = request.user
+            instance.save()
+            messages.success(request, 'Successfully Created')
+            return redirect('tour:list')
+
     if request.method == 'GET':
         contact_me = ContactMe()
     else:
@@ -313,28 +334,8 @@ def tour_create(request):
             return redirect('tour:success')
         else:
             return redirect('tour:fail')
-    footer = {
-        'pt': Helpers.objects.get(id=1).about_footer_PT,
-        'en': Helpers.objects.get(id=1).about_footer_EN,
-        'de': Helpers.objects.get(id=1).about_footer_DE
-    }
-    if not request.user.is_staff or not request.user.is_superuser:
-        return redirect('accounts:signup')
-    else:
-        form = TourForm(request.POST or None, request.FILES or None)
-        breadcrumbs = [
-                          {'url': '/', 'name': _('Home')},
-                          {'url': '/', 'name': _('Tours')},
-                          {'url': '#', 'name': _('Create Tour'), 'active': True},
-                      ],
-        if form.is_valid():
-            instance = form.save(commit=False)
-            instance.user = request.user
-            instance.save()
-            messages.success(request, 'Successfully Created')
-            return redirect('tour:list')
 
-        context = {
+    context = {
             'contact_me': contact_me,
             'footer': {
                 'about': footer[lang],
@@ -353,36 +354,10 @@ def tour_create(request):
             'form': form
         }
 
-        return render(request, 'templates/_form.html', context)
+    return render(request, 'templates/_form.html', context)
 
 
 def tour_delete(request, pk=None):
-    query = request.GET.get('q')
-    if query:
-        return redirect(reverse('search') + '?q=' + query)
-    if request.method == 'GET':
-        contact_me = ContactMe()
-    else:
-        contact_me = ContactMe(request.POST)
-        if contact_me.is_valid():
-            fullname = contact_me.cleaned_data['fullname']
-            message = contact_me.cleaned_data['message']
-            subject = 'Mail from ' + fullname
-            from_email = settings.EMAIL_HOST_USER
-            to_list = settings.EMAIL_TO
-            try:
-                send_mail(subject, message, from_email, to_list, fail_silently=False)
-            except BadHeaderError:
-                return HttpResponse('Invalid header found.')
-            return redirect('tour:success')
-        else:
-            return redirect('tour:fail')
-    lang = request.LANGUAGE_CODE
-    footer = {
-        'pt': Helpers.objects.get(id=1).about_footer_PT,
-        'en': Helpers.objects.get(id=1).about_footer_EN,
-        'de': Helpers.objects.get(id=1).about_footer_DE
-    }
     if not request.user.is_staff or not request.user.is_superuser:
         return redirect('accounts:signup')
     instance = get_object_or_404(Tour, pk=pk)

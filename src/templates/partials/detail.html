@@ -29,7 +29,7 @@
                     <a href="{{ object.id }}" class="btn btn-danger text-uppercase" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">{% trans 'book now' %}</a>
                     {% include 'templates/_share.html' %}
                     {% if user.is_staff %}
-                        <a class="btn btn-sm btn-danger-outline" href="/tours/{{ object.id }}/edit/">
+                        <a class="btn btn-sm btn-danger-outline" href="{{ object.get_edit_url }}">
                             <i class="fa fa-pencil-square-o"></i> {% trans 'Edit' %}</a>
                         <a type="button" class="btn btn-sm btn-danger-outline" onclick="delete_contact({{ object.id }})" data-toggle="modal" data-target=".delete_tour"><i class="fa fa-trash"></i> {% trans 'Delete'%}</a></a>
                     {% endif %}

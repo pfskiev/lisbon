@@ -33,11 +33,11 @@
         </li>
         {% if user.is_staff or user.is_superuser %}
             <li style="padding: 20px" class="hidden-md-up text-md-center text-sm-center text-xs-center">
-                <a href="/admin/">{% trans 'Admin Panel' %}</a>
+                <a href="{% url 'admin:index' %}">{% trans 'Admin Panel' %}</a>
             </li>
         {% endif %}
         <li style="padding: 20px" class="text-md-center text-sm-center text-xs-center">
-            <form method="GET" action="/search/">
+            <form method="GET" action="{% url 'search' %}">
                 <input class="form-control" type="text" name="q" placeholder="{% trans 'Search' %}" value="{{ request.GET.q }}"/>
                 <input class="btn btn-success-outline" type="submit" value="{% trans 'Search' %}"/>
             </form>
@@ -117,7 +117,7 @@
                 {% include 'templates/_user.html' %}
             </li>
         </ol>
-        <form class="form-inline pull-xs-right hidden-md-down" method="GET" action="/search/">
+        <form class="form-inline pull-xs-right hidden-md-down" method="GET" action="{% url 'search' %}">
             <input class="form-control" type="text" name="q" placeholder="{% trans 'Search' %}" value="{{ request.GET.q }}"/>
             <input class="btn btn-success-outline" type="submit" value="{% trans 'Search' %}"/>
         </form>

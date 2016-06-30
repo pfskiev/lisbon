@@ -16,7 +16,10 @@
             {% endfor %}
         </div>
         {% if user.is_staff or user.is_superuser %}
-            <a class="btn btn-warning" href="{% url 'contact:create' %}"><i class="fa fa-plus"></i> {% trans 'Create Contact' %}</a>
+            <a class="btn btn-warning" href="{% url 'contact:create' %}">
+                <i class="fa fa-plus"></i>
+                {% trans 'Create Contact' %}
+            </a>
         {% endif %}
         {% include 'templates/_pagination.html' %}
     </div>

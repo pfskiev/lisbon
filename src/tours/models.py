@@ -4,6 +4,21 @@ from django.core.urlresolvers import reverse
 from autoslug.fields import AutoSlugField
 
 
+class BaseClass(models.Model):
+    title_PT = models.CharField(_('Title PT'), max_length=100, blank=True, null=False)
+    title_EN = models.CharField(_('Title EN'), max_length=100, blank=True, null=False)
+    title_DE = models.CharField(_('Title DE'), max_length=100, blank=True, null=False)
+    description_PT = models.TextField(_('Description PT'), max_length=1000, blank=True, null=False)
+    description_EN = models.TextField(_('Description EN'), max_length=1000, blank=True, null=False)
+    description_DE = models.TextField(_('Description DE'), max_length=1000, blank=True, null=False)
+    keywords_SEO = models.TextField(_('Keywords for SEO'), max_length=2000, blank=True, null=False)
+    description_SEO = models.TextField(_('Description for SEO'), max_length=2000, blank=True, null=False)
+
+    class Meta:
+        abstract = True
+        ordering = ['name']
+
+
 class Category(models.Model):
     category = models.CharField(_('Tours categories'), max_length=100, blank=True, null=False)
     url = AutoSlugField(populate_from='category', unique=True, max_length=255)
@@ -18,20 +33,12 @@ class Category(models.Model):
         return self.category
 
 
-class Tour(models.Model):
+class Tour(BaseClass):
     category = models.ForeignKey(Category, default=1, blank=True, null=True)
-    title_PT = models.CharField(_('Title PT'), max_length=100, blank=True, null=False)
-    title_EN = models.CharField(_('Title EN'), max_length=100, blank=True, null=False)
-    title_DE = models.CharField(_('Title DE'), max_length=100, blank=True, null=False)
-    description_PT = models.TextField(_('Tour description PT'), max_length=1000, blank=True, null=False)
-    description_EN = models.TextField(_('Tour description EN'), max_length=1000, blank=True, null=False)
-    description_DE = models.TextField(_('Tour description DE'), max_length=1000, blank=True, null=False)
     price = models.CharField(_('Tour price'), max_length=100, blank=True, null=False)
     img = models.FileField(_('Tour thumbnail'), null=True, blank=True)
     url = models.URLField(_('Tour thumbnail URL'), max_length=200, blank=True, null=False)
     created_on = models.DateTimeField(_('Creation date'), auto_now_add=True, auto_created=False)
-    keywords_SEO = models.TextField(_('Tour keywords for SEO'), max_length=2000, blank=True, null=False)
-    description_SEO = models.TextField(_('Tour keywords for SEO'), max_length=2000, blank=True, null=False)
     position = models.IntegerField(_('Position'), default=1, blank=True, null=True)
 
     class Meta:

@@ -16,15 +16,14 @@
                     <p class="m-b-0">{{ object.review }}</p>
                     <p class="m-b-0"><span class="text-muted">left by: </span>{{ object.user.name }}</p>
                     <div class="blockquote-footer">add on: <cite title="Source Title">{{ object.timestamp }}</cite></div>
-                    <p><small><em class="text-uppercase">{% trans 'category' %}: </em><em><a href="/reviews/{{ object.category.category.url }}">{{ object.category }}</a>
+                    <p><small><em class="text-uppercase">{% trans 'category' %}: </em><em><a href="{{ object.category.category.get_absolute_url }}">{{ object.category }}</a>
                     </em></small></p>
                 </blockquote>
             {% endif %}
             {% if user.is_staff or user.is_superuser %}
-                <a class="btn btn-sm btn-danger-outline" href="/reviews/{{ object.id }}/delete/">
-                    <i class="fa fa-trash"></i> {% trans 'Delete' %}</a>
-{#                <a class="btn btn-sm btn-danger-outline" href="/reviews/{{ object.id }}/edit/">#}
-{#                    <i class="fa fa-pencil-square-o"></i> {% trans 'Edit' %}</a>#}
+                <a class="btn btn-sm btn-danger-outline" href="{{ object.get_delete_url }}">
+                    <i class="fa fa-trash"></i> {% trans 'Delete' %}
+                </a>
             {% endif %}
             {% include 'templates/_share.html' %}
         </div>

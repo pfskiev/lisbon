@@ -79,10 +79,10 @@
                 <p><a class="card-link" href="{{ object.google }}">{% trans 'Follow on ' %} Google + <span class="fa fa-google-plus"></span></a></p>
         {% endif %}
             {% if user.is_staff or user.is_superuser %}
-                <a class="btn btn-sm btn-danger-outline" href="/contacts/{{ object.id }}/delete/">
-                    <i class="fa fa-trash"></i> Delete</a>
-                <a class="btn btn-sm btn-danger-outline" href="/contacts/{{ object.id }}/edit/">
-                    <i class="fa fa-pencil-square-o"></i> Edit</a>
+                <a class="btn btn-sm btn-danger-outline" href="{{ object.get_delete_url }}">
+                    <i class="fa fa-trash"></i> {% trans 'Delete' %}</a>
+                <a class="btn btn-sm btn-danger-outline" href="{{ object.get_edit_url }}">
+                    <i class="fa fa-pencil-square-o"></i> {% trans 'Edit' %}</a>
             {% endif %}
                     {% include 'templates/_share.html' %}
 

@@ -43,4 +43,3 @@ class TestLink(BaseClass):
 
     def __unicode__(self):
         return self.title_EN
-
