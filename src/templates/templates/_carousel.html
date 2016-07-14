@@ -11,7 +11,9 @@
     <div class="carousel-inner" role="listbox">
         {%  if object.img %}
         <div class="carousel-item active">
+        {% if object.img %}
             <img style="object-fit: cover;width: 100%;" src="{% thumbnail object.img 1980x1080 crop="smart" %}" alt="First slide">
+        {% endif %}
         </div>
             {%  if object.img1 %}
         <div class="carousel-item">

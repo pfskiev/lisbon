@@ -13,37 +13,22 @@
     <meta name="yandex-verification" content="471fbee9d9a63df4" />
     <title>{% trans 'Lisbon '%} : {% block title %}{% endblock title%}</title>
     <link rel="shortcut icon" href="{% static 'custom/ico/favicon.ico' %}">
-    <link rel="stylesheet" href="{% static 'vendor/tether/dist/css/tether.min.css' %}">
-    <link rel="stylesheet" href="{% static 'vendor/bootstrap/dist/css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'vendor/components-font-awesome/css/font-awesome.min.css' %}">
-    <link rel="stylesheet" href="{% static 'vendor/flag-icon-css/css/flag-icon.min.css' %}">
+{#    <link rel="stylesheet" href="{% static 'vendor/tether/dist/css/tether.min.css' %}">#}
+{#    <link rel="stylesheet" href="{% static 'vendor/bootstrap/dist/css/bootstrap.min.css' %}">#}
+{#    <link rel="stylesheet" href="{% static 'vendor/components-font-awesome/css/font-awesome.min.css' %}">#}
+{#    <link rel="stylesheet" href="{% static 'vendor/jquery-ui/themes/flick/jquery-ui.min.css' %}">#}
+{#    <link rel="stylesheet" href="{% static 'vendor/flag-icon-css/css/flag-icon.min.css' %}">#}
+    <link rel="stylesheet" href="{% static 'vendor/vendor.min.css' %}">
     <link rel="stylesheet" href="{% static 'custom/css/dist/styles.min.css' %}">
-    <link rel="stylesheet" href="{% static 'vendor/jquery-ui/themes/flick/jquery-ui.min.css' %}">
-    <script src="{% static 'vendor/angular/angular.min.js' %}"></script>
-    <script src="{% static 'vendor/angular-sanitize/angular-sanitize.min.js' %}"></script>
-    <script src="{% static 'vendor/jquery/dist/jquery.min.js' %}"></script>
-    <script src="{% static 'vendor/jquery-ui/jquery-ui.min.js' %}"></script>
-    <script src="{% static 'vendor/jquery-mask/jquery.mask.min.js' %}"></script>
-    <script src="{% static 'vendor/tether/dist/js/tether.min.js' %}"></script>
-    <script src="{% static 'vendor/bootstrap/dist/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'vendor/lodash/dist/lodash.min.js' %}"></script>
-    <script src="{% static 'vendor/rxjs/dist/rx.all.min.js' %}"></script>
-    <script src="{% static 'vendor/moment/min/moment.min.js' %}"></script>
+    <script src="{% static 'vendor/vendor.min.js' %}"></script>
     <script src="{% static 'custom/js/main.js' %}"></script>
-    <script src="{% static 'custom/js/app/app.js' %}"></script>
-    <script src="{% static 'custom/js/app/controller.js' %}"></script>
 </head>
 <body>
 {% include 'templates/nav/_navbar.html' %}
 {% include 'templates/_alerts.html' %}
-
-{% block beadcrumbs %}
-{% endblock beadcrumbs %}
-
-{% block content %}
-{% endblock content %}
+{% block beadcrumbs %}{% endblock beadcrumbs %}
+{% block content %}{% endblock content %}
 {% include 'templates/_footer_refills.html' %}
-
 <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -51,9 +36,6 @@
     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
     ga('create', 'UA-75045829-1', 'auto');
     ga('send', 'pageview');
-
 </script>
 </body>
 </html>
-
-
