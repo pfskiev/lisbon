@@ -41,20 +41,6 @@
                         {% endif %}
                     </div>
             </div>
-            <script>
-                $('.js-accordion-trigger').bind('click', function(e){
-                    var $parent = $(this).parent();
-                    $parent.find('.submenu').slideToggle('fast');
-                    if($parent.find('.fa-chevron-down').attr('style') == "transform: rotate(-180deg);") {
-                        $parent.find('.fa-chevron-down').css('transform', 'rotate(-0deg)')
-                    }
-                    else {
-                        $parent.find('.fa-chevron-down').css('transform', 'rotate(-180deg)');
-                    }
-                    e.preventDefault();
-
-                });
-            </script>
             <div class="div-li"><a href="{% url 'review:list' %}">{% trans 'Reviews' %}</a></div>
             <div class="div-li"><a href="{% url 'gallery:list' %}">{% trans 'Gallery' %}</a></div>
             <div class="div-li"><a href="{% url 'rent_car:list' %}">{% trans 'Car Rent in Lisbon' %}</a></div>

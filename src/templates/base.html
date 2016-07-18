@@ -13,15 +13,9 @@
     <meta name="yandex-verification" content="471fbee9d9a63df4" />
     <title>{% trans 'Lisbon '%} : {% block title %}{% endblock title%}</title>
     <link rel="shortcut icon" href="{% static 'custom/ico/favicon.ico' %}">
-{#    <link rel="stylesheet" href="{% static 'vendor/tether/dist/css/tether.min.css' %}">#}
-{#    <link rel="stylesheet" href="{% static 'vendor/bootstrap/dist/css/bootstrap.min.css' %}">#}
-{#    <link rel="stylesheet" href="{% static 'vendor/components-font-awesome/css/font-awesome.min.css' %}">#}
-{#    <link rel="stylesheet" href="{% static 'vendor/jquery-ui/themes/flick/jquery-ui.min.css' %}">#}
-{#    <link rel="stylesheet" href="{% static 'vendor/flag-icon-css/css/flag-icon.min.css' %}">#}
     <link rel="stylesheet" href="{% static 'vendor/vendor.min.css' %}">
     <link rel="stylesheet" href="{% static 'custom/css/dist/styles.min.css' %}">
     <script src="{% static 'vendor/vendor.min.js' %}"></script>
-    <script src="{% static 'custom/js/main.js' %}"></script>
 </head>
 <body>
 {% include 'templates/nav/_navbar.html' %}
@@ -37,5 +31,6 @@
     ga('create', 'UA-75045829-1', 'auto');
     ga('send', 'pageview');
 </script>
+<script src="{% static 'custom/js/main.js' %}"></script>
 </body>
 </html>

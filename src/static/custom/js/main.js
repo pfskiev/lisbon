@@ -13,7 +13,48 @@ $('document').ready(function() {
             });
         $('select').css('height', '40px')
 
+    $('.js-accordion-trigger').bind('click', function(e){
+        var $parent = $(this).parent();
+        $parent.find('.submenu').slideToggle('fast');
+        if($parent.find('.fa-chevron-down').attr('style') == "transform: rotate(-180deg);") {
+            $parent.find('.fa-chevron-down').css('transform', 'rotate(-0deg)')
+        }
+        else {
+            $parent.find('.fa-chevron-down').css('transform', 'rotate(-180deg)');
+        }
+        e.preventDefault();
+    });
+
+    if ($("#js-parallax-window").length) {
+        parallax();
+    }
+
 });
+
+$(window).scroll(function(e) {
+  if ($("#js-parallax-window").length) {
+    parallax();
+  }
+});
+
+function parallax(){
+  if( $("#js-parallax-window").length > 0 ) {
+    var plxBackground = $("#js-parallax-background");
+    var plxWindow = $("#js-parallax-window");
+
+    var plxWindowTopToPageTop = $(plxWindow).offset().top;
+    var windowTopToPageTop = $(window).scrollTop();
+    var plxWindowTopToWindowTop = plxWindowTopToPageTop - windowTopToPageTop;
+
+    var plxBackgroundTopToPageTop = $(plxBackground).offset().top;
+    var windowInnerHeight = window.innerHeight;
+    var plxBackgroundTopToWindowTop = plxBackgroundTopToPageTop - windowTopToPageTop;
+    var plxBackgroundTopToWindowBottom = windowInnerHeight - plxBackgroundTopToWindowTop;
+    var plxSpeed = 0.35;
+
+    plxBackground.css('top', - (plxWindowTopToWindowTop * plxSpeed) + 'px');
+  }
+}
 
 function delete_contact(id) {
     _id = id
@@ -21,60 +62,3 @@ function delete_contact(id) {
 function confirm_delete() {
     window.location.pathname = '/tours/' + _id + '/delete/'
 }
-
-//$(document).ready(function(){
-//    var ripplyScott = (function() {
-//  var circle = document.getElementById('js-ripple'),
-//      ripple = document.querySelectorAll('.js-ripple');
-//
-//  function rippleAnimation(event, timing) {
-//    var tl           = new TimelineMax();
-//        x            = event.offsetX,
-//        y            = event.offsetY,
-//        w            = event.target.offsetWidth,
-//        h            = event.target.offsetHeight,
-//        offsetX      = Math.abs( (w / 2) - x ),
-//        offsetY      = Math.abs( (h / 2) - y ),
-//        deltaX       = (w / 2) + offsetX,
-//        deltaY       = (h / 2) + offsetY,
-//        scale_ratio  = Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2));
-//
-//    console.log('x is:' + x);
-//    console.log('y is:' + y);
-//    console.log('offsetX is:' + offsetX);
-//    console.log('offsetY is:' + offsetY);
-//    console.log('deltaX is:' + deltaX);
-//    console.log('deltaY is:' + deltaY);
-//    console.log('width is:' + w);
-//    console.log('height is:' + h);
-//    console.log('scale ratio is:' + scale_ratio);
-//
-//    tl.fromTo(ripple, timing, {
-//      x: x,
-//      y: y,
-//      transformOrigin: '50% 50%',
-//      scale: 0,
-//      opacity: 1,
-//      ease: Linear.easeIn
-//    },{
-//      scale: scale_ratio,
-//      opacity: 0
-//    });
-//
-//    return tl;
-//  }
-//
-//  return {
-//    init: function(target, timing) {
-//      var button = document.getElementById(target);
-//
-//      button.addEventListener('click', function(event) {
-//        rippleAnimation.call(this, event, timing);
-//      });
-//    }
-//  };
-//})();
-//
-//ripplyScott.init('js-ripple-btn', 0.1);
-//
-//})
