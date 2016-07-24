@@ -407,6 +407,12 @@ button {
     .refills-card:active .refills-card-header {
       background-color: white; }
 
+.social-wrapper {
+  width: 200px; }
+.social-link > i {
+  margin: 0 5px;
+  font-size: 24px; }
+
 .card-columns {
   column-count: 1; }
 

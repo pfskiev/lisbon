@@ -123,6 +123,14 @@
   }
 }
 
+.social {
+  &-wrapper {
+    width: 200px;
+  }
+  &-link > i {
+  margin:0 5px; font-size: 24px;
+  }
+}
 
 .card-columns {
   column-count: 1;

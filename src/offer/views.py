@@ -23,23 +23,23 @@ def get_company():
 
 
 def offer_list(request):
-    if request.method == 'GET':
-        contact_me = ContactMe()
-    else:
-        contact_me = ContactMe(request.POST)
-        if contact_me.is_valid():
-            fullname = contact_me.cleaned_data['fullname']
-            message = contact_me.cleaned_data['message']
-            subject = 'Mail from ' + fullname
-            from_email = settings.EMAIL_HOST_USER
-            to_list = settings.EMAIL_TO
-            try:
-                send_mail(subject, message, from_email, to_list, fail_silently=False)
-            except BadHeaderError:
-                return HttpResponse('Invalid header found.')
-            return redirect('tour:success')
-        else:
-            return redirect('tour:fail')
+    # if request.method == 'GET':
+    #     contact_me = ContactMe()
+    # else:
+    #     contact_me = ContactMe(request.POST)
+    #     if contact_me.is_valid():
+    #         fullname = contact_me.cleaned_data['fullname']
+    #         message = contact_me.cleaned_data['message']
+    #         subject = 'Mail from ' + fullname
+    #         from_email = settings.EMAIL_HOST_USER
+    #         to_list = settings.EMAIL_TO
+    #         try:
+    #             send_mail(subject, message, from_email, to_list, fail_silently=False)
+    #         except BadHeaderError:
+    #             return HttpResponse('Invalid header found.')
+    #         return redirect('tour:success')
+    #     else:
+    #         return redirect('tour:fail')
     footer = {
         'pt': Helpers.objects.get(id=1).about_footer_PT,
         'en': Helpers.objects.get(id=1).about_footer_EN,
@@ -65,19 +65,21 @@ def offer_list(request):
     except EmptyPage:
         queryset = paginator.page(paginator.num_pages)
 
-    if not request.user.is_staff or not request.user.is_superuser:
-        return redirect('accounts:signup')
-    else:
-        form = OfferForm(request.POST or None, request.FILES or None)
-        if form.is_valid():
-            instance = form.save(commit=False)
-            instance.user = request.user
-            instance.save()
-            messages.success(request, 'Offer Created')
-            return redirect('offer:list')
+    # if not request.user.is_staff or not request.user.is_superuser:
+    #     return redirect('accounts:signup')
+    # else:
+    #
+
+    form = OfferForm(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.user = request.user
+        instance.save()
+        messages.success(request, 'Offer Created')
+        return redirect('offer:list')
 
     context = {
-        'contact_me': contact_me,
+        # 'contact_me': contact_me,
         'footer': {
             'about': footer[lang],
             'icon': Helpers.objects.get(id=1).footer_icon
