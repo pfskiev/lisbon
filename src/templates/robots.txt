@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: /
 Host: excursions-lisbon.com
-Sitemap: http://www.excursions-lisbon.com/sitemap.xml
+Sitemap: http://excursions-lisbon.com/sitemap.xml
