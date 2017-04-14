@@ -12,7 +12,9 @@ class RelatedLink(models.Model):
     description_EN = models.TextField(_('Description EN'), max_length=1000, blank=True, null=False)
     description_DE = models.TextField(_('Description DE'), max_length=1000, blank=True, null=False)
     link = models.URLField(_('Insert url to related link source'), max_length=100, blank=True, null=False)
-    img = models.ImageField(_('Choose image'), null=True, blank=False)
+    img = models.ImageField(_('Choose image'), null=False, blank=True)
+    html = models.TextField(_('Input any html code'), max_length=2000, blank=True,
+                                       null=False)
     keywords_SEO = models.TextField(_('Keywords for SEO'), max_length=1000, blank=True, null=False)
     description_SEO = models.TextField(_('Description for SEO'), max_length=1000, blank=True, null=False)
 

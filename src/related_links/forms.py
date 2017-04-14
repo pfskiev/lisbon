@@ -16,6 +16,7 @@ class RelatedLinkForm(forms.ModelForm):
             'description_DE',
             'link',
             'img',
+            'html',
             'keywords_SEO',
             'description_SEO',
 
