@@ -1,6 +1,20 @@
 .alert {
   margin-bottom: 0; }
 
+.dashboard__breadcrumbs {
+  background-color: white;
+  border-radius: 0;
+  -webkit-box-shadow: 0 0 50px -4px rgba(0, 0, 0, 0.55);
+  -moz-box-shadow: 0 0 50px -4px rgba(0, 0, 0, 0.55);
+  box-shadow: 0 0 50px -4px rgba(0, 0, 0, 0.55);
+  transition: all .5s ease; }
+  .dashboard__breadcrumbs > li > a {
+    color: darkgoldenrod;
+    transition: all .5s ease; }
+  .dashboard__breadcrumbs:hover {
+    color: darkgoldenrod;
+    background-color: white; }
+
 .breadcrumb {
   position: absolute;
   z-index: 500;
@@ -259,10 +273,13 @@ button {
 
 .contact h5 {
   color: #0e2f56; }
+
 .contact h4 {
   color: #0e2f56; }
+
 .contact p {
   color: #0e2f56; }
+
 .contact span {
   font-weight: bold;
   color: #ff304f; }
@@ -409,6 +426,7 @@ button {
 
 .social-wrapper {
   width: 200px; }
+
 .social-link > i {
   margin: 0 5px;
   font-size: 24px; }
@@ -419,15 +437,19 @@ button {
 @media only screen and (min-width: 40em) {
   .card-columns {
     column-count: 2; } }
+
 @media only screen and (min-width: 60em) {
   .card-columns {
     column-count: 3; } }
+
 @media only screen and (min-width: 70em) {
   .card-columns {
     column-count: 3; } }
+
 @media only screen and (min-width: 90em) {
   .card-columns {
     column-count: 4; } }
+
 .fa {
   opacity: .7;
   transition: all .3s ease; }
@@ -461,16 +483,19 @@ button {
   font-style: normal;
   font-weight: normal;
   src: local("HelveticaNeueCyr-Light"), url("../../fonts/HelveticaNeueCyr-Light.woff") format("woff"); }
+
 @font-face {
   font-family: 'HelveticaNeueCyr-Roman';
   font-style: normal;
   font-weight: normal;
   src: local("HelveticaNeueCyr-Roman"), url("../../fonts/HelveticaNeueCyr-Roman.woff") format("woff"); }
+
 @font-face {
   font-family: 'HelveticaNeueCyr-UltraLight';
   font-style: normal;
   font-weight: normal;
   src: local("HelveticaNeueCyr-UltraLight"), url("../../fonts/HelveticaNeueCyr-UltraLight.woff") format("woff"); }
+
 .footer {
   width: 100%;
   padding: 3em;
@@ -828,9 +853,11 @@ ol.nav.navbar-nav > li > a.nav-link {
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out; }
+
 ol.nav.navbar-nav > li > a.nav-link:hover,
 ol.nav.navbar-nav > div.btn-group > a:hover {
   color: darkgoldenrod; }
+
 ol.nav.navbar-nav > a.hidden-sm-down.nav-link.dropdown-toggle {
   color: gold;
   -webkit-transition: all 0.3s ease-in-out;
@@ -852,6 +879,7 @@ ol.nav.navbar-nav > a.hidden-sm-down.nav-link.dropdown-toggle {
 @media only screen and (max-width: 480px) {
   .nav-item.toggler {
     display: inline-block; } }
+
 section {
   padding-top: 100px;
   padding-bottom: 100px;
@@ -894,11 +922,13 @@ article.tours {
   .display-3 {
     font-size: 3.2em;
     text-align: center; } }
+
 @media all and (max-width: 500px) {
   /* screen size until 500px */
   .display-3 {
     font-size: 2.8em;
     text-align: center; } }
+
 .my-label {
   padding-top: 10px;
   padding-bottom: 10px;
@@ -958,5 +988,3 @@ input.btn.btn-lg.btn-primary.form-control {
 .js-accordion-trigger:visited .fa.fa-chevron-down,
 .js-accordion-trigger:active .fa.fa-chevron-down {
   color: white; }
-
-/*# sourceMappingURL=styles.css.map */

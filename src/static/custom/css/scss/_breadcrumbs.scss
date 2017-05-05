@@ -1,18 +1,71 @@
 @import "../sources/bourbon/bourbon";
 @import "variables";
 
-.breadcrumb {
+//
+//ul {
+//  list-style: none;
+//}
+//ul > li {
+//  display: inline-block;
+//}
+//
+//ul > li:hover {
+//
+//  color: blue;
+//}
+//
+//
+//ul > li + li::before {
+//  padding: 0 5px;
+//  content: '/'
+//}
+
+.dashboard {
   position: absolute;
-  z-index: 500;
+  display: block;
   width: 100%;
-  height: 50px;
-  margin-bottom: 0;
+  z-index: 5000;
   background-color: rgb(255, 255, 255);
-  border-radius: 0;
   -webkit-box-shadow: 0 0 50px -4px rgba(0,0,0,.55);
-     -moz-box-shadow: 0 0 50px -4px rgba(0,0,0,.55);
-          box-shadow: 0 0 50px -4px rgba(0,0,0,.55);
+  -moz-box-shadow: 0 0 50px -4px rgba(0,0,0,.55);
+  box-shadow: 0 0 50px -4px rgba(0,0,0,.55);
   transition: all .5s ease;
+  &__breadcrumb {
+    margin: 0;
+  }
+  &__title {
+    margin: 0;
+    padding: .75rem 1rem;
+    font-size: 19px;
+    color: darkgoldenrod;
+    text-align: center;
+    text-transform: uppercase;
+    transition: all .3s ease;
+  }
+  &__languages {
+    margin: 0;
+    padding: .75rem 1rem;
+  }
+}
+
+.language-form {
+  display: inline-block;
+  float: right;
+  padding: 0 1rem 0 0;
+}
+
+.breadcrumb {
+  //position: absolute;
+  //z-index: 500;
+  //width: 100%;
+  //height: 50px;
+  //margin-bottom: 0;
+  background-color: rgb(255, 255, 255);
+  //border-radius: 0;
+  //-webkit-box-shadow: 0 0 50px -4px rgba(0,0,0,.55);
+  //-moz-box-shadow: 0 0 50px -4px rgba(0,0,0,.55);
+  //box-shadow: 0 0 50px -4px rgba(0,0,0,.55);
+  //transition: all .5s ease;
 }
 .breadcrumb:hover {
   color: darkgoldenrod;

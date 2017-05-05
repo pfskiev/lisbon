@@ -1,6 +1,9 @@
 {% load i18n %}
 {% for lang in LANGUAGES %}
-    <form style="display: inline-block" id="setLang{{ lang.1}}" class="form-inline" action="/i18n/setlang/" method="POST">
+    <form id="setLang{{ lang.1}}"
+          class="col-xs-12 col-md-4"
+          action="/i18n/setlang/"
+          method="POST">
         {% csrf_token %}
         <input name="next" type="hidden" value="{{ request.path }}">
         <input type="hidden" name="language" value="{{ lang.0 }}">

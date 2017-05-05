@@ -3,38 +3,48 @@ var gulp   = require('gulp'),
     concat = require('gulp-concat'),
     cssmin = require('gulp-cssmin'),
     rename = require('gulp-rename'),
-    vendor = {
-        path: 'vendor'
+    sass   = require('gulp-sass');
+    path = {
+        vendor: './vendor',
+        custom: './custom/css/dist/'
     };
 
 gulp.task('default', ['js', 'css']);
 
 gulp.task('css', function () {
     gulp.src([
-        vendor.path + '/tether/dist/css/tether.css',
-        vendor.path + '/bootstrap/dist/css/bootstrap.css',
-        vendor.path + '/components-font-awesome/css/font-awesome.css',
-        vendor.path + '/jquery-ui/themes/flick/jquery-ui.css',
-        vendor.path + '/flag-icon-css/css/flag-icon.css'
+        path.vendor + '/tether/dist/css/tether.css',
+        path.vendor + '/bootstrap/dist/css/bootstrap.css',
+        path.vendor + '/components-font-awesome/css/font-awesome.css',
+        path.vendor + '/jquery-ui/themes/flick/jquery-ui.css',
+        path.vendor + '/flag-icon-css/css/flag-icon.css'
     ])
         .pipe(concat('vendor.min.css'))
-		.pipe(gulp.dest(vendor.path));
+		.pipe(gulp.dest(path.vendor));
     console.log('[' + new Date().getHours() + ':' + new Date().getMinutes() + ':' + new Date().getSeconds() + ']' + ' css task is done')
+});
+
+gulp.task('sass', function () {
+    return gulp.src(path.custom + '*.scss')
+        .pipe(sass().on('error', sass.logError))
+        .pipe(cssmin())
+        .pipe(rename({suffix: '.min'}))
+        .pipe(gulp.dest(path.custom));
 });
 
 gulp.task('js', function () {
     gulp.src([
-        vendor.path + '/jquery/dist/jquery.js',
-        vendor.path + '/jquery-ui/jquery-ui.js',
-        vendor.path + '/jquery-mask/jquery.mask.js',
-        vendor.path + '/tether/dist/js/tether.js',
-        vendor.path + '/bootstrap/dist/js/bootstrap.js',
-        vendor.path + '/lodash/dist/lodash.js',
-        vendor.path + '/moment/min/moment.min.js'
+        path.vendor + '/jquery/dist/jquery.js',
+        path.vendor + '/jquery-ui/jquery-ui.js',
+        path.vendor + '/jquery-mask/jquery.mask.js',
+        path.vendor + '/tether/dist/js/tether.js',
+        path.vendor + '/bootstrap/dist/js/bootstrap.js',
+        path.vendor + '/lodash/dist/lodash.js',
+        path.vendor + '/moment/min/moment.min.js'
     ])
         .pipe(uglify('vendor.min.js', {
             outSourceMap: true
         }))
-        .pipe(gulp.dest(vendor.path));
+        .pipe(gulp.dest(path.vendor));
     console.log('[' + new Date().getHours() + ':' + new Date().getMinutes() + ':' + new Date().getSeconds() + ']' + ' js task is done')
 });
