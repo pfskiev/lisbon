@@ -1,6 +1,6 @@
 {% load i18n %}
 <div class="dashboard">
-    <ol class="dashboard__breadcrumb breadcrumb col-sm-4">
+    <ol class="dashboard__breadcrumb breadcrumb col-xs-6 col-sm-6 col-md-4">
         {% if breadcrumbs %}
             {% for breadcrumb in breadcrumbs %}
                 {% if breadcrumb.active %}
@@ -13,8 +13,9 @@
             <li><a href="/">{% trans 'Home' %}</a></li>
         {% endif %}
     </ol>
-    <p class="dashboard__title col-sm-4">excursions-lisbon.com</p>
-    <div class="dashboard__languages col-sm-4">
+    <p class="dashboard__title col-sm-4 col-md-4 hidden-sm-down">excursions-lisbon.com</p>
+    <div class="dashboard__languages col-xs-6 col-sm-6 col-md-4">
         {% include 'templates/_languages.html' %}
     </div>
+    <p class="dashboard__title col-xs-12 col-md-4 hidden-md-up">excursions-lisbon.com</p>
 </div>
