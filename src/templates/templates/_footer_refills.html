@@ -5,8 +5,8 @@
 {#        <img src="http://www.e-allmoney.ru/capitals/eur/arm/Lissabon.png">#}
         {% if footer.icon %}<img src="{% thumbnail footer.icon 720x480  %}" alt="">{% else %}{% endif %}
     </div>
-    <div class="footer-links">
-        <div class="div-ul">
+    <div class="container">
+        <div class="col-xs-12 sol-sm-12 col-md-4 col-lg-4">
             <div class="div-li"><h3>{% trans 'Contact Us' %}</h3></div>
             <div class="div-li"><a><i class="fa fa-skype"></i> marian.danici</a></div>
             <div class="div-li"><a><i class="fa fa-mobile"></i> +(351) 96-71-55-113</a></div>
@@ -14,7 +14,7 @@
             <div class="div-li"><a><span>viber:</span> +(351) 96-71-55-113</a></div>
             <div class="div-li"><a><i class="fa fa-mail-forward"></i>  exlisbon@gmail.com</a></div>
         </div>
-        <div class="div-ul">
+        <div class="col-xs-12 sol-sm-12 col-md-4 col-lg-4">
             <div class="div-li"><h3>{% trans 'Site Map' %}</h3></div>
             <div class="div-li"><a href="{% url 'home' %}">{% trans 'Home' %}</a></div>
             <div class="div-li">
@@ -52,7 +52,7 @@
             <div class="div-li"><a href="{% url 'related_links:list' %}">{% trans 'Related links' %}</a></div>
             <div class="div-li"><a href="{% url 'news:list' %}">{% trans 'News' %}</a></div>
         </div>
-        <div class="div-ul">
+        <div class="col-xs-12 sol-sm-12 col-md-4 col-lg-4">
             <div class="div-li"><h3>{% trans 'Follow Us' %}</h3></div>
             <div class="div-li"><a href="#">Twitter <i class="fa fa-twitter"></i></a></div>
             <div class="div-li"><a href="#">Facebook <i class="fa fa-facebook"></i></a></div>
@@ -60,12 +60,12 @@
             <div class="div-li"><a href="#">Instagram <i class="fa fa-instagram"></i></a></div>
             <div class="div-li"><a data-toggle="modal" data-target="#email_me">{% trans 'Email me' %} <i class="fa fa-mail-forward"></i></a></div>
         </div>
-        <div class="div-ul-100">
-            <div class="div-li languages">{%  include 'templates/_languages_footer.html' %}</div>
+        <div class="col-md-12 sol-sm-12 col-md-12 col-lg-12">
+            <div class="div-li">{%  include 'templates/_languages_footer.html' %}</div>
         </div>
     </div>
     <hr>
-    <div class="div-ul-100">
+    <div class="col-md-12 sol-sm-12 col-md-12 col-lg-12">
         <div class="div-li">
             <h3>{% trans 'About' %}</h3>
         </div>
