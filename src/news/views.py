@@ -61,7 +61,7 @@ def news_list(request):
         {'url': '#', 'name': _('News'), 'active': True}
     ]
 
-    paginator = Paginator(queryset_list, 6)
+    paginator = Paginator(queryset_list, 12)
     page_request_var = 'page'
     page = request.GET.get(page_request_var)
     try:
