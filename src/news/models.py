@@ -1,3 +1,4 @@
+import datetime
 from django.db import models
 from tours.models import Category, Tour
 from easy_thumbnails.fields import ThumbnailerImageField
@@ -18,6 +19,7 @@ class Article(models.Model):
     img = ThumbnailerImageField(_('Article thumbnail'), null=True, blank=True)
     keywords_SEO = models.TextField(_('Article keywords for SEO'), max_length=1000, blank=True, null=False)
     description_SEO = models.TextField(_('Article description for SEO'), max_length=1000, blank=True, null=False)
+    created_on = models.DateTimeField(default=datetime.datetime.now(), blank=True)
 
     def get_absolute_url(self):
         return reverse('news:detail', args=[str(self.id)])
@@ -33,4 +35,7 @@ class Article(models.Model):
 
     def __unicode__(self):
         return self.title_EN
+
+    class Meta:
+        ordering = ['-created_on']
 

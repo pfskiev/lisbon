@@ -1,24 +1,12 @@
 from django import forms
+from django.forms import DateTimeField
 
 from .models import Article
 
 
 class ArticleForm(forms.ModelForm):
+    created_on = DateTimeField(widget=forms.widgets.DateTimeInput())
+
     class Meta:
         model = Article
-        fields = [
-
-            'title_PT',
-            'title_EN',
-            'title_DE',
-            'category',
-            'tour',
-            'description_PT',
-            'description_EN',
-            'description_DE',
-            'link',
-            'img',
-            'keywords_SEO',
-            'description_SEO',
-
-        ]
+        fields = '__all__'
