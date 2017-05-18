@@ -28,6 +28,20 @@ def get_company():
     return Helpers.objects.get(id=1).company_name
 
 
+def init_contact_me_form(contact_me):
+    fullname = contact_me.cleaned_data['fullname']
+    message = contact_me.cleaned_data['message']
+    email = contact_me.cleaned_data['email']
+    phone = contact_me.cleaned_data['phone']
+    subject = 'Mail from ' + fullname + ', ' + 'phone: ' + phone + ', ' + 'email: ' + email
+    from_email = settings.EMAIL_HOST_USER
+    to_list = settings.EMAIL_TO
+    try:
+        send_mail(subject, message, from_email, to_list, fail_silently=False)
+    except BadHeaderError:
+        return HttpResponse('Invalid header found.')
+
+
 def home(request):
     query = request.GET.get('q')
     if query:
@@ -38,18 +52,11 @@ def home(request):
     else:
         contact_me = ContactMe(request.POST)
         if contact_me.is_valid():
-            fullname = contact_me.cleaned_data['fullname']
-            message = contact_me.cleaned_data['message']
-            subject = 'Mail from ' + fullname
-            from_email = settings.EMAIL_HOST_USER
-            to_list = settings.EMAIL_TO
-            try:
-                send_mail(subject, message, from_email, to_list, fail_silently=False)
-            except BadHeaderError:
-                return HttpResponse('Invalid header found.')
+            init_contact_me_form(contact_me)
             return redirect('tour:success')
         else:
             return redirect('tour:fail')
+
     breadcrumbs = [
         {'url': '/', 'name': _('Home'), 'active': True},
     ]
@@ -80,7 +87,8 @@ def home(request):
         if form.is_valid():
             fullname = form.cleaned_data['fullname']
             message = form.cleaned_data['message']
-            subject = 'BOOK REQUEST from ' + fullname
+            phone = form.cleaned_data['phone']
+            subject = 'BOOK REQUEST from ' + fullname + phone
             from_email = settings.EMAIL_HOST_USER
             to_list = settings.EMAIL_TO
             try:
@@ -133,15 +141,7 @@ def about(request):
     else:
         contact_me = ContactMe(request.POST)
         if contact_me.is_valid():
-            fullname = contact_me.cleaned_data['fullname']
-            message = contact_me.cleaned_data['message']
-            subject = 'Mail from ' + fullname
-            from_email = settings.EMAIL_HOST_USER
-            to_list = settings.EMAIL_TO
-            try:
-                send_mail(subject, message, from_email, to_list, fail_silently=False)
-            except BadHeaderError:
-                return HttpResponse('Invalid header found.')
+            init_contact_me_form(contact_me)
             return redirect('tour:success')
         else:
             return redirect('tour:fail')
@@ -183,15 +183,7 @@ def login_or_register(request):
     else:
         contact_me = ContactMe(request.POST)
         if contact_me.is_valid():
-            fullname = contact_me.cleaned_data['fullname']
-            message = contact_me.cleaned_data['message']
-            subject = 'Mail from ' + fullname
-            from_email = settings.EMAIL_HOST_USER
-            to_list = settings.EMAIL_TO
-            try:
-                send_mail(subject, message, from_email, to_list, fail_silently=False)
-            except BadHeaderError:
-                return HttpResponse('Invalid header found.')
+            init_contact_me_form(contact_me)
             return redirect('tour:success')
         else:
             return redirect('tour:fail')
@@ -206,15 +198,7 @@ def search(request):
     else:
         contact_me = ContactMe(request.POST)
         if contact_me.is_valid():
-            fullname = contact_me.cleaned_data['fullname']
-            message = contact_me.cleaned_data['message']
-            subject = 'Mail from ' + fullname
-            from_email = settings.EMAIL_HOST_USER
-            to_list = settings.EMAIL_TO
-            try:
-                send_mail(subject, message, from_email, to_list, fail_silently=False)
-            except BadHeaderError:
-                return HttpResponse('Invalid header found.')
+            init_contact_me_form(contact_me)
             return redirect('tour:success')
         else:
             return redirect('tour:fail')
@@ -297,15 +281,7 @@ def email_me(request):
     else:
         contact_me = ContactMe(request.POST)
         if contact_me.is_valid():
-            fullname = contact_me.cleaned_data['fullname']
-            message = contact_me.cleaned_data['message']
-            subject = 'Mail from ' + fullname
-            from_email = settings.EMAIL_HOST_USER
-            to_list = settings.EMAIL_TO
-            try:
-                send_mail(subject, message, from_email, to_list, fail_silently=False)
-            except BadHeaderError:
-                return HttpResponse('Invalid header found.')
+            init_contact_me_form(contact_me)
             return redirect('tour:success')
         else:
             return redirect('tour:fail')
@@ -338,15 +314,7 @@ def contact_us(request):
     else:
         contact_me = ContactMe(request.POST)
         if contact_me.is_valid():
-            fullname = contact_me.cleaned_data['fullname']
-            message = contact_me.cleaned_data['message']
-            subject = 'Mail from ' + fullname
-            from_email = settings.EMAIL_HOST_USER
-            to_list = settings.EMAIL_TO
-            try:
-                send_mail(subject, message, from_email, to_list, fail_silently=False)
-            except BadHeaderError:
-                return HttpResponse('Invalid header found.')
+            init_contact_me_form(contact_me)
             return redirect('tour:success')
         else:
             return redirect('tour:fail')
@@ -368,15 +336,7 @@ def book_form(request):
     else:
         contact_me = ContactMe(request.POST)
         if contact_me.is_valid():
-            fullname = contact_me.cleaned_data['fullname']
-            message = contact_me.cleaned_data['message']
-            subject = 'Mail from ' + fullname
-            from_email = settings.EMAIL_HOST_USER
-            to_list = settings.EMAIL_TO
-            try:
-                send_mail(subject, message, from_email, to_list, fail_silently=False)
-            except BadHeaderError:
-                return HttpResponse('Invalid header found.')
+            init_contact_me_form(contact_me)
             return redirect('tour:success')
         else:
             return redirect('tour:fail')

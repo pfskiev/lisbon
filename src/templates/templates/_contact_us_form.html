@@ -1,4 +1,8 @@
-<form method='POST' action='' enctype='multipart/form-data'>{% csrf_token %}
+{% load i18n %}
+<form method='POST'
+      enctype='multipart/form-data'>{% csrf_token %}
     {{ contact_me.as_p }}
-    <input type='submit' class='btn btn-lg btn-primary' value='{{ value }}' />
+    <input type='submit'
+           class='btn btn-lg btn-primary'
+           value='{% trans 'Send' %}' />
 </form>

@@ -52,6 +52,7 @@ class ContactMe(forms.Form):
 
     fullname = forms.CharField(label=_('Name'), required=True)
     email = forms.EmailField(label=_('Email'), required=True)
+    phone = forms.CharField(label=_('Phone'), required=True)
     message = forms.CharField(label=_('Message'), widget=forms.Textarea(), required=True)
     helper = FormHelper()
     helper.form_method = 'POST'
@@ -59,6 +60,7 @@ class ContactMe(forms.Form):
     helper.layout = Layout(
         Field('fullname', css_class='form-control', placeholder='Enter you\'re name'),
         Field('email', css_class='form-control', placeholder='Enter you\'re email'),
+        Field('phone', css_class='form-control', placeholder='Enter you\'re phone'),
         Field('message', css_class='form-control'),
         FormActions(Submit('purchase', _('Send'), css_class='text-uppercase form-control btn btn-lg btn-primary'))
     )

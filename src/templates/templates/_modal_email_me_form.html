@@ -11,9 +11,10 @@
             </div>
             <div class="modal-body">
                 <div class="container">
-                    <form method="post">{% csrf_token %}
-                        {% crispy contact_me %}
-                </form>
+                    <form method='POST' action='' enctype='multipart/form-data'>{% csrf_token %}
+                        {{ contact_me.as_p }}
+                        <input type='submit' class='btn btn-lg btn-primary' value='{% trans 'Email me' %}' />
+                    </form>
                 </div>
             </div>
             <div class="modal-footer">
