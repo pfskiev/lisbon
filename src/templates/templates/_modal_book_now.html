@@ -1,5 +1,4 @@
 {% load i18n %}
-{% load crispy_forms_tags %}
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -8,12 +7,16 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title text-uppercase" id="exampleModalLabel">{% trans 'book now' %}</h4>
+                <h4 class="modal-title text-uppercase">{% trans 'book now' %}</h4>
             </div>
             <div class="modal-body">
                 <div class="container">
-                    <form method="post">{% csrf_token %}
-                        {% crispy form %}
+                    <form method="post" action="/booking/info">{% csrf_token %}
+                        {{ booking_form.as_p }}
+                        <input type='submit'
+                               class='btn btn-lg btn-primary'
+                               style="text-transform: uppercase"
+                               value='{% trans 'book now' %}' />
                     </form>
                 </div>
             </div>

@@ -79,23 +79,7 @@ def tour_list(request):
     except EmptyPage:
         queryset = paginator.page(paginator.num_pages)
 
-    if request.method == 'GET':
-        form = BookNow()
-    else:
-        form = BookNow(request.POST)
-        if form.is_valid():
-            fullname = form.cleaned_data['fullname']
-            message = form.cleaned_data['message']
-            subject = 'BOOK REQUEST from ' + fullname
-            from_email = settings.EMAIL_HOST_USER
-            to_list = settings.EMAIL_TO
-            try:
-                send_mail(subject, message, from_email, to_list, fail_silently=False)
-            except BadHeaderError:
-                return HttpResponse('Invalid header found.')
-            return redirect('tour:success')
-        else:
-            return redirect('tour:fail')
+    booking_form = BookNow()
 
     context = {
         'contact_me': contact_me,
@@ -103,7 +87,7 @@ def tour_list(request):
             'about': footer[lang],
             'icon': Helpers.objects.get(id=1).footer_icon
         },
-        'form': form,
+        'booking_form': booking_form,
         'nav': {
             'tour_categories_list': Category.objects.all(),
             'offer_categories_list': OfferCategory.objects.all(),
@@ -122,27 +106,7 @@ def tour_detail(request, pk=None):
     query = request.GET.get('q')
     if query:
         return redirect(reverse('search') + '?q=' + query)
-    if request.method == 'GET':
-        form = BookNow()
-    else:
-        form = BookNow(request.POST)
-        if form.is_valid():
-            fullname = form.cleaned_data['fullname']
-            phone = form.cleaned_data['phone']
-            message = form.cleaned_data['message']
-            subject = 'BOOK REQUEST from ' + fullname
-            from_email = settings.EMAIL_HOST_USER
-            to_list = settings.EMAIL_TO
-            try:
-                send_mail(subject, message, from_email, to_list, fail_silently=False)
-                # send_mail('Subject here', message, settings.EMAIL_HOST_USER,
-                #           ['podlesny@outlook.com'], fail_silently=True)
-                # send_mail(subject=fullname, body=phone, message, ['podlesny@outlook.com'])
-            except BadHeaderError:
-                return HttpResponse('Invalid header found.')
-            return redirect('tour:success')
-        else:
-            return redirect('tour:fail')
+
     if request.method == 'GET':
         contact_me = ContactMe()
     else:
@@ -152,7 +116,7 @@ def tour_detail(request, pk=None):
             return redirect('tour:success')
         else:
             return redirect('tour:fail')
-
+    booking_form = BookNow()
     lang = get_lang(request)
     footer = {
         'pt': Helpers.objects.get(id=1).about_footer_PT,
@@ -182,7 +146,7 @@ def tour_detail(request, pk=None):
             'about': footer[lang],
             'icon': Helpers.objects.get(id=1).footer_icon
         },
-        'form': form,
+        'booking_form': booking_form,
         'nav': {
             'tour_categories_list': Category.objects.all(),
             'offer_categories_list': OfferCategory.objects.all(),
@@ -363,32 +327,13 @@ def tour_category(request, slug=None):
     except EmptyPage:
         queryset = paginator.page(paginator.num_pages)
     category = Category.objects.filter(url__icontains=slug)
-
-    if request.method == 'GET':
-        form = BookNow()
-    else:
-        form = BookNow(request.POST)
-        if form.is_valid():
-            fullname = form.cleaned_data['fullname']
-            message = form.cleaned_data['message']
-            subject = 'BOOK REQUEST from ' + fullname
-            from_email = settings.EMAIL_HOST_USER
-            to_list = settings.EMAIL_TO
-            try:
-                send_mail(subject, message, from_email, to_list, fail_silently=False)
-            except BadHeaderError:
-                return HttpResponse('Invalid header found.')
-            return redirect('tour:success')
-        else:
-            return redirect('tour:fail')
-
     context = {
         'contact_me': contact_me,
         'footer': {
             'about': footer[lang],
             'icon': Helpers.objects.get(id=1).footer_icon
         },
-        'form': form,
+        'booking_form ': BookNow(),
         'nav': {
             'tour_categories_list': Category.objects.all(),
             'offer_categories_list': OfferCategory.objects.all(),

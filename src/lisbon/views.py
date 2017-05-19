@@ -47,6 +47,7 @@ def home(request):
     if query:
         return redirect(reverse('search') + '?q=' + query)
     lang = request.LANGUAGE_CODE
+    booking_form = BookNow()
     if request.method == 'GET':
         contact_me = ContactMe()
     else:
@@ -80,28 +81,9 @@ def home(request):
         'en': Helpers.objects.get(id=1).about_footer_EN,
         'de': Helpers.objects.get(id=1).about_footer_DE
     }
-    if request.method == 'GET':
-        form = BookNow()
-    else:
-        form = BookNow(request.POST)
-        if form.is_valid():
-            fullname = form.cleaned_data['fullname']
-            message = form.cleaned_data['message']
-            phone = form.cleaned_data['phone']
-            subject = 'BOOK REQUEST from ' + fullname + phone
-            from_email = settings.EMAIL_HOST_USER
-            to_list = settings.EMAIL_TO
-            try:
-                send_mail(subject, message, from_email, to_list, fail_silently=False)
-            except BadHeaderError:
-                return HttpResponse('Invalid header found.')
-            return redirect('tour:success')
-        else:
-            return redirect('tour:fail')
-
     context = {
         'contact_me': contact_me,
-        'form': form,
+        'booking_form': booking_form,
         'nav': {
             'tour_categories_list': Category.objects.all(),
             'offer_categories_list': OfferCategory.objects.all(),
@@ -127,7 +109,6 @@ def home(request):
         'offer_list': Offer.objects.all(),
         'tour_list': Tour.objects.all(),
         'breadcrumbs': breadcrumbs
-
     }
     return render(request, 'partials/home.html', context)
 
