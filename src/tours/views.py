@@ -155,7 +155,7 @@ def tour_detail(request, pk=None):
         'title': title[lang],
         'breadcrumbs': breadcrumbs,
         'object': {
-            'keywords': tour.keywords_SEO,
+            'keywords_SEO': tour.keywords_SEO,
             'description_SEO': tour.description_SEO,
             'price': tour.price,
             'title': title[lang],
