@@ -9,7 +9,7 @@ var gulp   = require('gulp'),
         custom: './custom/css/dist/'
     };
 
-gulp.task('default', ['js', 'css']);
+gulp.task('default', ['js', 'css', 'sass']);
 
 gulp.task('css', function () {
     gulp.src([

@@ -33,7 +33,6 @@ urlpatterns = [
     url(r'^booking/', include('booking.urls', namespace='booking')),
     url(r'^email-me/$', views.email_me, name='email_me'),
     url(r'^search/$', views.search, name='search'),
-
 ]
 
 # User-uploaded files like profile pics need to be served in development

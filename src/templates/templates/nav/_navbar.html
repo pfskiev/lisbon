@@ -116,6 +116,26 @@
             <li class="nav-item">
                 {% include 'templates/_user.html' %}
             </li>
+            <li class="nav-item">
+                <div class="btn-group">
+                    <a style="cursor: pointer;color: gold;" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="flag-icon flag-icon-{% if request.LANGUAGE_CODE == 'en' %}gb{% else %}{{ request.LANGUAGE_CODE }}{% endif %}"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        {% for lang in LANGUAGES %}
+                            <form id="setLang{{ lang.1}}" class="dropdown-item" style="display: {% if lang.0 == request.LANGUAGE_CODE  %}none{% else %}block{% endif %}" action="/i18n/setlang/" method="POST">
+                                {% csrf_token %}
+                                <input name="next" type="hidden" value="{{ request.path }}">
+                                <input type="hidden" name="language" value="{{ lang.0 }}">
+                                <a style="text-decoration: none" href="#" onclick="$('#setLang{{ lang.1 }}').submit(); return false;">
+                                    <i class="flag-icon flag-icon-{% if lang.0 == 'en' %}gb{% else %}{{ lang.0 }}{% endif %}"></i>
+                                    <span>{{ lang.1 }}</span>
+                                </a>
+                            </form>
+                        {% endfor %}
+                    </div>
+                </div>
+            </li>
         </ol>
         <form class="form-inline pull-xs-right hidden-md-down" method="GET" action="{% url 'search' %}">
             <input class="form-control" type="text" name="q" placeholder="{% trans 'Search' %}" value="{{ request.GET.q }}"/>
