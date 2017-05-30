@@ -19,6 +19,11 @@
                             ? $(el).addClass('my-label')
                             : $(el).addClass('form-control');
                 });
-            $('select').css('height', '40px')
+            $('select').css('height', '40px');
+
+            const datePicker = $('#id_created_on');
+            if (datePicker !== null || datePicker !== undefined) {
+                datePicker.datepicker();
+            }
     </script>
 {% endblock %}
