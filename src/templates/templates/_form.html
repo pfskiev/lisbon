@@ -13,6 +13,7 @@
             </form>
         </div>
     </section>
+    <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
     <script>
         _.map(['textarea', 'input', 'label', 'select'], function(el){
                     el === 'label' && $(el).attr('type') !== 'submit'
@@ -25,5 +26,11 @@
             if (datePicker !== null || datePicker !== undefined) {
                 datePicker.datepicker();
             }
+    </script>
+
+    <script>
+    _.map(['#id_description_PT', '#id_description_EN', '#id_description_DE'], function(element) {
+        tinymce.init({ selector: element })
+    })
     </script>
 {% endblock %}
