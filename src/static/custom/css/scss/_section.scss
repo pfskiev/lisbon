@@ -6,7 +6,7 @@ section {
   padding-top: 200px;
   padding-bottom: 100px;
 
-  @include background(linear-gradient(to left, #f6cac9, #91a7d0));
+  @include background(linear-gradient(to left, #FFFFFF, #ECE9E6));
 }
 article {
   @include transition(all .5s ease-in-out);
@@ -15,13 +15,13 @@ article.tours {
   padding-top: 100px;
   padding-bottom: 100px;
 
-  @include background(linear-gradient(to left, #c9ffbf, #ffafbd));
+  @include background(linear-gradient(to left, #FFFFFF, #ECE9E6));
 }
 .offer {
   padding-top: 100px;
   padding-bottom: 100px;
 
-  @include background(linear-gradient(to left, #efefbb, #d4d3dd));
+  @include background(linear-gradient(to left, #FFFFFF, #ECE9E6));
 }
 .form-box {
   display: block;

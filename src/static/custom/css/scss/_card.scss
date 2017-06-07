@@ -4,8 +4,8 @@
 .card {
   border: 0;
 
-  @include background(linear-gradient(to right, rgb(255, 255, 255), rgb(238, 238, 238)));
-  @include transition(all .3s ease);
+  background: rgb(255, 255, 255);
+  @include transition(all .2s ease);
   h4.card-title {
     color: $color_blue;
   }
@@ -13,7 +13,11 @@
     color: $color_blue;
   }
   &:hover {
-    @include background(linear-gradient(to left, #ece9e6, #fff));
+    -webkit-box-shadow: 0 0 50px -4px rgba(0,0,0,.2);
+     -moz-box-shadow: 0 0 50px -4px rgba(0,0,0,.2);
+          box-shadow: 0 0 50px -4px rgba(0,0,0,.2);
+  transition: all .2s ease;
+    //@include background(linear-gradient(to left, #ece9e6, #fff));
   }
 }
 .fa {
@@ -25,8 +29,9 @@
 }
 .card-footer {
   color: $color-sand;
+  background: rgb(255, 255, 255);
 
-  @include background(linear-gradient(to right, rgba(128, 128, 128, .2), rgba(245, 245, 245, .1)));
+  //@include background(linear-gradient(to right, rgba(128, 128, 128, .2), rgba(245, 245, 245, .1)));
 }
 .shadow {
   -webkit-box-shadow: 0 0 50px -4px rgba(0,0,0,.2);
