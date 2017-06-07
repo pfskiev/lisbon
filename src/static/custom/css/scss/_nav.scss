@@ -1,6 +1,10 @@
 @import "../sources/bourbon/bourbon";
 @import "variables";
 
+
+.company--logo {
+  height: 2em;
+}
 .dropdown-menu {
   margin-top:13px !important;
 }

@@ -1,6 +1,15 @@
 {% load i18n %}
 <div class="dashboard">
-    <ol class="dashboard__breadcrumb breadcrumb col-xs-12 col-sm-12 col-md-4">
+
+{#    style="display: flex; justify-content: space-between; align-items: center"#}
+    <div class="col-xs-12 col-sm-12 col-md-12">
+    <a class="col-xs-12 col-sm-6 col-md-6 col-lg-2" style="font-size: 14px;padding: 10px" href="skype:"><i class="fa fa-skype"></i> marian.danici</a>
+    <a class="col-xs-12 col-sm-6 col-md-6 col-lg-2" style="font-size: 14px;padding: 10px" href="tel:+351967155113"><i class="fa fa-mobile"></i> +(351) 96-71-55-113</a>
+    <a class="col-xs-12 col-sm-6 col-md-6 col-lg-2" style="font-size: 14px;padding: 10px" href="https://api.whatsapp.com/send?phone=351967155113"><i class="fa fa-whatsapp"></i> +(351) 96-71-55-113</a>
+    <a class="col-xs-12 col-sm-6 col-md-6 col-lg-2" style="font-size: 14px;padding: 10px" href="viber://add?number=351967155113"><span>viber:</span> +(351) 96-71-55-113</a>
+    <a class="col-xs-12 col-sm-6 col-md-6 col-lg-2" style="font-size: 14px;padding: 10px" href="mailto:exlisbon@gmail.com"><i class="fa fa-mail-forward"></i> exlisbon@gmail.com</a>
+</div>
+    <ol class="dashboard__breadcrumb breadcrumb col-xs-12 col-sm-12 col-md-12">
         {% if breadcrumbs %}
             {% for breadcrumb in breadcrumbs %}
                 {% if breadcrumb.active %}
@@ -13,14 +22,5 @@
             <li><a href="/">{% trans 'Home' %}</a></li>
         {% endif %}
     </ol>
-    <p class="dashboard__title col-sm-4 col-md-4 hidden-sm-down">excursions-lisbon.com</p>
-{#    <div class="dashboard__languages col-xs-6 col-sm-6 col-md-4">#}
-{#        {% include 'templates/_languages.html' %}#}
-{#    </div>#}
-    <a class="col-xs-12 col-sm-4 col-md-2" href="skype:"><i class="fa fa-skype"></i> marian.danici</a>
-    <a class="col-xs-12 col-sm-4 col-md-2" href="tel:+351967155113"><i class="fa fa-mobile"></i> +(351) 96-71-55-113</a>
-    <a class="col-xs-12 col-sm-4 col-md-2" href="https://api.whatsapp.com/send?phone=351967155113"><i class="fa fa-whatsapp"></i> +(351) 96-71-55-113</a>
-    <a class="col-xs-12 col-sm-4 col-md-2" href="viber://add?number=351967155113"><span>viber:</span> +(351) 96-71-55-113</a>
-    <a class="col-xs-12 col-sm-4 col-md-2" href="mailto:exlisbon@gmail.com"><i class="fa fa-mail-forward"></i> exlisbon@gmail.com</a>
-{#    <p class="dashboard__title col-xs-12 col-md-4 hidden-md-up">excursions-lisbon.com</p>#}
+{#    <p class="dashboard__title col-sm-4 col-md-6 hidden-sm-down">excursions-lisbon.com</p>#}
 </div>
