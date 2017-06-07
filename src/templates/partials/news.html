@@ -5,22 +5,18 @@
     {% include 'templates/_breadcrumbs.html' %}
 {% endblock %}
 {% block content %}
-    <div id="js-parallax-window" class="parallax-window">
-        <div class="parallax-static-content">
-            <div class="overlay"></div>
-            <div class="container">
-                <h1 style="position: relative;color: bisque" class="display-3">{{ title }}</h1>
-                <div class="card-columns">
-                    {% for object in object_list %}
-                        {% include 'templates/_news_card.html' %}
-                    {% endfor %}
-                </div>
-                {% if user.is_staff or user.is_superuser %}
-                    <a style="position: relative" class="btn btn-warning" href="{% url 'news:create' %}"><i class="fa fa-plus"></i> {% trans 'Create Article' %}</a>
-                {% endif %}
-                {% include 'templates/_pagination.html' %}
-            </div>
-        </div>
-        <div id="js-parallax-background" class="parallax-background-news"></div>
-    </div>
+  <section>
+      <div class="container">
+          <h1 style="position: relative;color: bisque" class="display-3">{{ title }}</h1>
+          <div class="card-columns">
+              {% for object in object_list %}
+                  {% include 'templates/_news_card.html' %}
+              {% endfor %}
+          </div>
+          {% if user.is_staff or user.is_superuser %}
+              <a style="position: relative" class="btn btn-warning" href="{% url 'news:create' %}"><i class="fa fa-plus"></i> {% trans 'Create Article' %}</a>
+          {% endif %}
+          {% include 'templates/_pagination.html' %}
+      </div>
+  </section>
 {% endblock %}
