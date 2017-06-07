@@ -137,7 +137,7 @@
   column-count: 1;
 }
 
-@each $media, $size in (40: 2, 60: 3, 70: 3, 90: 4) {
+@each $media, $size in (40: 2, 60: 3, 70: 3, 90: 3) {
   @media only screen and (min-width: #{$media}em) {
     .card-columns {
       column-count: $size;
