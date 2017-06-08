@@ -22,7 +22,7 @@
                     <small><em class="text-uppercase">{% trans 'title' %}:</em></small>
     <h4 style="margin-top: 20px" class="card-title ">{{ object.title_PT }}</h4>
                     <small><em class="text-uppercase">{% trans 'description' %}:</em></small>
-    <p class="card-text ">{{ object.description_PT }}</p>
+    <p class="card-text ">{{ object.description_PT|safe }}</p>
     <p class="">
         <a class="btn btn-danger" href="{% if 'car' in object.category.slug %}{% url 'rent_car:list' %}{% else %}{% if 'hotel' in object.category.slug %}{% url 'rent_hotel:list' %}{% else %}{% url 'offer:list' %}{{ object.category.slug }}{% endif %}{% endif %}">{% trans 'VER TODAS OFERTAS' %}</a>
     </p>

@@ -21,19 +21,19 @@
     {% endif %}
     <div class="card-block">
         {% if 'pt' in request.LANGUAGE_CODE %}
-            <p class="card-text text-md-center">{{ object.description_PT|truncatechars:200 }}</p>
+            <p class="card-text text-md-center">{{ object.description_PT|truncatechars:200|safe }}</p>
             <p class="text-md-center">
                 <a class="btn btn-danger" href="{% if 'car' in object.category.slug  %}{% url 'rent_car:list' %}{% else %}{% if 'hotel' in object.category.slug %}{% url 'rent_hotel:list' %}{% else %}{% if object.category.slug %}{{ object.category.get_absolute_url }}{% else %}{% url 'tour:list' %}{{ object.tour_category.url }}{% endif %}{% endif %}{% endif %}">{% trans 'VER TODAS OFERTAS' %}</a>
             </p>
         {% endif %}
         {% if 'en' in request.LANGUAGE_CODE %}
-            <p class="card-text text-md-center">{{ object.description_EN|truncatechars:200 }}</p>
+            <p class="card-text text-md-center">{{ object.description_EN|truncatechars:200|safe }}</p>
             <p class="text-md-center">
                 <a class="btn btn-danger" href="{% if 'car' in object.category.slug  %}{% url 'rent_car:list' %}{% else %}{% if 'hotel' in object.category.slug %}{% url 'rent_hotel:list' %}{% else %}{% if object.category.slug %}{{ object.category.get_absolute_url }}{% else %}{% url 'tour:list' %}{{ object.tour_category.url }}{% endif %}{% endif %}{% endif %}">{% trans 'SEE ALL OFFERS' %}</a>
             </p>
         {% endif %}
         {% if 'de' in request.LANGUAGE_CODE %}
-            <p class="card-text text-md-center">{{ object.description_DE|truncatechars:200 }}</p>
+            <p class="card-text text-md-center">{{ object.description_DE|truncatechars:200|safe }}</p>
             <p class="text-md-center">
                 <a class="btn btn-danger" href="{% if 'car' in object.category.slug  %}{% url 'rent_car:list' %}{% else %}{% if 'hotel' in object.category.slug %}{% url 'rent_hotel:list' %}{% else %}{% if object.category.slug %}{{ object.category.get_absolute_url }}{% else %}{% url 'tour:list' %}{{ object.tour_category.url }}{% endif %}{% endif %}{% endif %}">{% trans 'SEHEN ALLE ANGEBOTE' %}</a>
             </p>
