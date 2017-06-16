@@ -12,7 +12,7 @@
             <small><em class="text-uppercase">{% trans 'title' %}</em></small>
             <h4 class="card-title">{{ object.title|upper }}</h4>
             <small><em class="text-uppercase">{% trans 'description' %}</em></small>
-            <p class="card-text text-justify">{{ object.description }}</p>
+            <p class="card-text text-justify">{{ object.description|safe }}</p>
             {% if user.is_staff or user.is_superuser %}
                 <a class="btn btn-sm btn-danger-outline" href="/gallery/{{ object.id }}/delete/">
                     <i class="fa fa-trash"></i> Delete</a>
