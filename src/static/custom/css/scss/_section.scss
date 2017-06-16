@@ -12,17 +12,29 @@ article {
   @include transition(all .5s ease-in-out);
 }
 article.tours {
-  padding-top: 100px;
-  padding-bottom: 100px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  &-header {
+    @media all and (min-width: 980px) {
+      padding-top: 150px;
+    }
+    @media all and (max-width: 980px) {
+      padding-top: 300px;
+    }
+  }
 
   @include background(linear-gradient(to left, #FFFFFF, #ECE9E6));
 }
 .offer {
-  padding-top: 100px;
-  padding-bottom: 100px;
+  padding-top: 50px;
+  padding-bottom: 50px;
 
   @include background(linear-gradient(to left, #FFFFFF, #ECE9E6));
 }
+.carousel {
+    @include background(linear-gradient(to left, #FFFFFF, #ECE9E6));
+}
+
 .form-box {
   display: block;
   max-width: 330px;
