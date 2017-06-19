@@ -8,36 +8,8 @@
 {% block description %}Excursions Lisbon – hello there dear visitors of Lisbon, my name is Marian Danici and I am professional interpreter-guide and also CEO of my family travel firm.{% endblock description %}
 {% block content %}
     {% include 'templates/_breadcrumbs.html' %}
-    {# tours section #}
-    <article class="tours tours-header">
-        <div class="container">
-            <h3 class="display-3 text-md-center">{{ section.tour_header }}</h3>
-            <p style="text-align: center"><a href="{% url 'tour:list' %}">
-                <em>{% trans 'full tour list' %}</em>
-            </a></p>
-            <div class="card-columns">
-                {% if 'pt' in request.LANGUAGE_CODE %}
-                    {% for object in tour_list %}
-                        {% include 'templates/_tour_card_pt.html' %}
-                    {% endfor %}
-                {% endif %}
-                {% if 'en' in request.LANGUAGE_CODE %}
-                    {% for object in tour_list %}
-                        {% include 'templates/_tour_card_gb.html' %}
-                    {% endfor %}
-                {% endif %}
-                {% if 'de' in request.LANGUAGE_CODE %}
-                    {% for object in tour_list %}
-                        {% include 'templates/_tour_card_de.html' %}
-                    {% endfor %}
-                {% endif %}
-            </div>
-        </div>
-    </article>
-    {# offers section #}
-    {% include 'templates/_offers_home.html' %}
     {# descriptions #}
-    <article class="offer">
+    <article class="tours-header offer">
         <div class="container">
             <div class="col-xs-12 col-sm-12 col-md-6">
                 <a href="http://excursions-lisbon.com/">
@@ -68,7 +40,33 @@
         </div>
         </div>
     </article>
+    {# tours section #}
     <article class="tours">
+        <div class="container">
+            <h3 class="display-3 text-md-center">{{ section.tour_header }}</h3>
+            <p style="text-align: center"><a href="{% url 'tour:list' %}">
+                <em>{% trans 'full tour list' %}</em>
+            </a></p>
+            <div class="card-columns">
+                {% if 'pt' in request.LANGUAGE_CODE %}
+                    {% for object in tour_list %}
+                        {% include 'templates/_tour_card_pt.html' %}
+                    {% endfor %}
+                {% endif %}
+                {% if 'en' in request.LANGUAGE_CODE %}
+                    {% for object in tour_list %}
+                        {% include 'templates/_tour_card_gb.html' %}
+                    {% endfor %}
+                {% endif %}
+                {% if 'de' in request.LANGUAGE_CODE %}
+                    {% for object in tour_list %}
+                        {% include 'templates/_tour_card_de.html' %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </article>
+        <article class="tours">
         <div class="container">
             <div class="col-xs-12 col-sm-12 col-md-6">
                 <a href="http://excursions-lisbon.com/">
@@ -94,6 +92,9 @@
         </div>
         </div>
     </article>
+
+    {# offers section #}
+    {% include 'templates/_offers_home.html' %}
     <article class="offer">
         <div class="container">
             <h3 style="text-align: center;"><a href="http://excursions-lisbon.com/">Tours and excursions in Lisbon</a></h3>
