@@ -8,9 +8,13 @@
   @include transition(all .2s ease);
   h4.card-title {
     color: $color_blue;
+    font-weight: 100;
+    font-style: normal;
   }
   p {
     color: $color_blue;
+    font-weight: 100;
+    font-style: normal;
   }
   &:hover {
     //@include background(linear-gradient(to left, #ece9e6, #fff));
