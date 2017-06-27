@@ -11,7 +11,7 @@
     <a href="https://www.instagram.com/" class="social-link">
         <i class="fa fa-instagram"></i>
     </a>
-    <g:plus action="share"></g:plus>
+    <g:plus action="share" data-href="{{ request.get_host }}{{ object.get_absolute_url }}"></g:plus>
 {#    <a href="https://plus.google.com/share?url={{ request.get_host }}{{ object.get_absolute_url }}" class="social-link">#}
 {#        <i class="fa fa-google-plus"></i>#}
 {#    </a>#}
