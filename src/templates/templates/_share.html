@@ -1,4 +1,4 @@
-<div class="center-block social-wrapper">
+<div class="center-block">
     <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.get_host }}{{ object.get_absolute_url }}" class="social-link">
         <i class="fa fa-facebook"></i>
     </a>
@@ -11,15 +11,5 @@
     <a href="https://www.instagram.com/" class="social-link">
         <i class="fa fa-instagram"></i>
     </a>
-{#    <a href="https://plus.google.com/share?url={{ request.get_host }}{{ object.get_absolute_url }}" onclick="javascript:window.open(this.href,#}
-{#  '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"><img#}
-{#  src="https://www.gstatic.com/images/icons/gplus-32.png" alt="Share on Google+"/></a>#}
-
     <div class="g-plus" data-action="share" data-height="24" data-href="{{ object.get_absolute_url }}"></div>
-
-{#    {{ request.get_host }}{{ object.get_absolute_url }}#}
-
-{#    <a href="https://plus.google.com/share?url={{ request.get_host }}{{ object.get_absolute_url }}" class="social-link">#}
-{#        <i class="fa fa-google-plus"></i>#}
-{#    </a>#}
 </div>

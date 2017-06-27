@@ -426,6 +426,8 @@ button {
 
 .social-wrapper {
   width: 200px; }
+.social .social-wrapper {
+  width: 250px; }
 
 .social-link > i {
   margin: 0 5px;
