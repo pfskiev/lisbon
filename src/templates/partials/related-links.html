@@ -22,7 +22,7 @@
                                      alt="{{ object.title_PT }}">
                             </a>
                             <div class="card-block">
-                                <p class="card-text">{{ object.description_PT }}</p>
+                                <p class="card-text">{{ object.description_PT|safe }}</p>
                                 <a href="{{ object.link }}" class="card-link">{% trans 'View details' %}</a>
                                 {% include 'templates/_share.html' %}
                                 {% include 'templates/_CRUD.html' %}
@@ -47,7 +47,7 @@
                                 </div>
                             {% endif %}
                             <div class="card-block">
-                                <p class="card-text">{{ object.description_EN }}</p>
+                                <p class="card-text">{{ object.description_EN|safe }}</p>
                                 <a href="{{ object.link }}" class="card-link">{% trans 'View details' %}</a>
                                 {% include 'templates/_share.html' %}
                                 {% include 'templates/_CRUD.html' %}
@@ -65,7 +65,7 @@
                                                              src="{% thumbnail object.img 720x480 crop="smart" %}"
                                                              alt="{{ object.title_DE }}"></a>
                             <div class="card-block">
-                                <p class="card-text">{{ object.description_DE }}</p>
+                                <p class="card-text">{{ object.description_DE|safe }}</p>
                                 <a href="{{ object.link }}" class="card-link">{% trans 'View details' %}</a>
                                 {% include 'templates/_share.html' %}
                                 {% include 'templates/_CRUD.html' %}
