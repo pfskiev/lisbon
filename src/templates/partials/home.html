@@ -48,7 +48,8 @@
             <p style="text-align: center">
                 <a href="{% url 'tour:list' %}"><em>{% trans 'full tour list' %}</em></a>
             </p>
-            <div style="display: flex; align-items: flex-start; justify-content: space-around; flex-wrap: wrap;">
+{#            <div style="display: flex; align-items: flex-start; justify-content: space-around; flex-wrap: wrap;">#}
+               <div class="card-columns">
                 {% if 'pt' in request.LANGUAGE_CODE %}
                     {% for object in tour_list %}
                         {% include 'templates/_tour_card_pt.html' %}
