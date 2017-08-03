@@ -40,6 +40,9 @@ gulp.task('js', function () {
         path.vendor + '/tether/dist/js/tether.js',
         path.vendor + '/bootstrap/dist/js/bootstrap.js',
         path.vendor + '/lodash/dist/lodash.js',
+        path.vendor + '/angular/angular.js',
+        path.vendor + '/angular-messages/angular-messages.js',
+        path.vendor + '/angular-cookies/angular-cookies.js',
         path.vendor + '/moment/min/moment.min.js'
     ])
         .pipe(uglify('vendor.min.js', {

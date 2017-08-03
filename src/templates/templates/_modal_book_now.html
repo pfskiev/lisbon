@@ -1,6 +1,6 @@
 {% load i18n %}
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" ng-app="root" ng-controller="FormController">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -11,21 +11,87 @@
             </div>
             <div class="modal-body">
                 <div class="container">
-                    <form method="post" action="/booking/info">{% csrf_token %}
-                        {{ booking_form.as_p }}
-                        <input type='submit'
-                               class='btn btn-lg btn-primary'
-                               style="text-transform: uppercase"
-                               value='{% trans 'book now' %}' />
+                    <form method="post" action="/booking/info" name="bookingForm">{% csrf_token %}
+{#                        {{ booking_form.as_p }}#}
+                        <p><label for="id_fullname">Name:</label> <input id="id_fullname" ng-model="fullname" name="fullname" type="text" required/></p>
+                        <div ng-messages="bookingForm.fullname.$error" ng-show="bookingForm.fullname.$touched" style="color:maroon" role="alert">
+                            <div ng-message="required">This field is required</div>
+                        </div>
+                        <p><label for="id_email">Email:</label> <input id="id_email" ng-model="email" name="email" type="email" required/></p>
+                        <div ng-messages="bookingForm.email.$error" ng-show="bookingForm.email.$touched" style="color:maroon" role="alert">
+                            <div ng-message="required">This field is required</div>
+                        </div>
+                        <p><label for="id_phone">Phone:</label> <input id="id_phone" ng-model="phone" name="phone" type="text" required/></p>
+                        <div ng-messages="bookingForm.phone.$error" ng-show="bookingForm.phone.$touched" style="color:maroon" role="alert">
+                            <div ng-message="required">This field is required</div>
+                        </div>
+                        <p><label for="id_message">Message:</label> <textarea cols="40" id="id_message" ng-model="message" name="message" rows="10" required></textarea></p>
+                        <div ng-messages="bookingForm.message.$error" ng-show="bookingForm.message.$touched" style="color:maroon" role="alert">
+                            <div ng-message="required">This field is required</div>
+                        </div>
+                        <p><label for="id_date">From Date:</label> <input id="id_date" ng-model="date" name="date" type="text" required/></p>
+                        <div ng-messages="bookingForm.date.$error" ng-show="bookingForm.date.$touched" style="color:maroon" role="alert">
+                            <div ng-message="required">This field is required</div>
+                        </div>
+{#                        <button class="btn btn-lg btn-primary text-uppercase" style="width: 100%;" ng-disabled="bookingForm.$invalid" ng-click="submit()">#}
+{#                            {% trans 'book now' %}#}
+{#                        </button>#}
+                        <button type="submit" class="btn btn-lg btn-primary text-uppercase" style="width: 100%;" ng-disabled="bookingForm.$invalid">
+                            {% trans 'book now' %}
+                        </button>
                     </form>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans 'Cancel' %}</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="cancel()">{% trans 'Cancel' %}</button>
             </div>
         </div>
     </div>
 </div>
 <script>
     $( "#id_date" ).datepicker();
+</script>
+<script>
+    angular.module('root', ['ngMessages', 'ngCookies'])
+        .controller('FormController', ['$scope', '$http', '$cookies', function($scope, $http, $cookies) {
+            $scope.csrfmiddlewaretoken = $cookies.get('csrftoken');
+            $scope.fullname = '';
+            $scope.email = '';
+            $scope.phone = '';
+            $scope.message = '';
+            $scope.date = '';
+            $scope.formData = {
+                csrfmiddlewaretoken: $scope.csrfmiddlewaretoken,
+                fullname: $scope.fullname,
+                email: $scope.email,
+                phone: $scope.phone,
+                message: $scope.message,
+                date: $scope.date
+            };
+{#            $scope.req = {#}
+{#                method: 'POST',#}
+{#                url: '/booking/info',#}
+{#                headers: {#}
+{#                    'Content-Type': false#}
+{#                },#}
+{#                data: $scope.formData#}
+{#            }#}
+
+{#            $scope.submit = function () {#}
+{#                $http.post($scope.req, $scope.formData).then(t, function () {#}
+{#                    $scope.fullname = '';#}
+{#                    $scope.email = '';#}
+{#                    $scope.phone = '';#}
+{#                    $scope.message = '';#}
+{#                    $scope.date = '';#}
+{#                })#}
+{#            };#}
+            $scope.cancel = function () {
+                $scope.fullname = '';
+                $scope.email = '';
+                $scope.phone = '';
+                $scope.message = '';
+                $scope.date = '';
+            };
+        }]);
 </script>
