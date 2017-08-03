@@ -3,6 +3,7 @@ from . import views
 
 urlpatterns = [
     url(r'^info', views.booking_info, name='info'),
+    url(r'^contact', views.contact, name='contact'),
     # url(r'^$', views.contact_list, name='list'),
     # url(r'^(?P<pk>[0-9]+)/$', views.contact_detail, name='detail'),
     # url(r'^create/$', views.contact_create, name='create'),

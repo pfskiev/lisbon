@@ -1,10 +1,10 @@
 {% load i18n %}
 {% load crispy_forms_tags %}
-<div class="modal fade" id="contactUs" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div ng-controller="ContactFormController" class="modal fade" id="contactUs" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancel()">
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <h4 class="modal-title text-uppercase" id="exampleModalLabel">{% trans 'Email me' %}</h4>
@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans 'Cancel' %}</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="cancel()">{% trans 'Cancel' %}</button>
             </div>
         </div>
     </div>

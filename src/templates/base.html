@@ -22,7 +22,7 @@
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="{% static 'vendor/vendor.min.js' %}"></script>
 </head>
-<body>
+<body ng-app="root">
 {% include 'templates/nav/_navbar.html' %}
 {% include 'templates/_alerts.html' %}
 {% block beadcrumbs %}{% endblock beadcrumbs %}

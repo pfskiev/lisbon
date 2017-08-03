@@ -1,10 +1,10 @@
 {% load i18n %}
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" ng-app="root" ng-controller="FormController">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" ng-controller="FormController">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancel()">
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <h4 class="modal-title text-uppercase">{% trans 'book now' %}</h4>
@@ -33,9 +33,6 @@
                         <div ng-messages="bookingForm.date.$error" ng-show="bookingForm.date.$touched" style="color:maroon" role="alert">
                             <div ng-message="required">This field is required</div>
                         </div>
-{#                        <button class="btn btn-lg btn-primary text-uppercase" style="width: 100%;" ng-disabled="bookingForm.$invalid" ng-click="submit()">#}
-{#                            {% trans 'book now' %}#}
-{#                        </button>#}
                         <button type="submit" class="btn btn-lg btn-primary text-uppercase" style="width: 100%;" ng-disabled="bookingForm.$invalid">
                             {% trans 'book now' %}
                         </button>
@@ -53,45 +50,39 @@
 </script>
 <script>
     angular.module('root', ['ngMessages', 'ngCookies'])
-        .controller('FormController', ['$scope', '$http', '$cookies', function($scope, $http, $cookies) {
-            $scope.csrfmiddlewaretoken = $cookies.get('csrftoken');
+        .controller('FormController', ['$scope', function($scope) {
             $scope.fullname = '';
             $scope.email = '';
             $scope.phone = '';
             $scope.message = '';
             $scope.date = '';
-            $scope.formData = {
-                csrfmiddlewaretoken: $scope.csrfmiddlewaretoken,
-                fullname: $scope.fullname,
-                email: $scope.email,
-                phone: $scope.phone,
-                message: $scope.message,
-                date: $scope.date
-            };
-{#            $scope.req = {#}
-{#                method: 'POST',#}
-{#                url: '/booking/info',#}
-{#                headers: {#}
-{#                    'Content-Type': false#}
-{#                },#}
-{#                data: $scope.formData#}
-{#            }#}
-
-{#            $scope.submit = function () {#}
-{#                $http.post($scope.req, $scope.formData).then(t, function () {#}
-{#                    $scope.fullname = '';#}
-{#                    $scope.email = '';#}
-{#                    $scope.phone = '';#}
-{#                    $scope.message = '';#}
-{#                    $scope.date = '';#}
-{#                })#}
-{#            };#}
             $scope.cancel = function () {
                 $scope.fullname = '';
                 $scope.email = '';
                 $scope.phone = '';
                 $scope.message = '';
                 $scope.date = '';
+                $scope.bookingForm.fullname.$touched = false;
+                $scope.bookingForm.email.$touched = false;
+                $scope.bookingForm.phone.$touched = false;
+                $scope.bookingForm.message.$touched = false;
+                $scope.bookingForm.date.$touched = false;
             };
-        }]);
+        }])
+    .controller('ContactFormController', ['$scope', function($scope) {
+            $scope.fullname = '';
+            $scope.email = '';
+            $scope.phone = '';
+            $scope.message = '';
+            $scope.cancel = function () {
+                $scope.fullname = '';
+                $scope.email = '';
+                $scope.phone = '';
+                $scope.message = '';
+                $scope.contactForm.fullname.$touched = false;
+                $scope.contactForm.email.$touched = false;
+                $scope.contactForm.phone.$touched = false;
+                $scope.contactForm.message.$touched = false;
+            };
+        }])
 </script>
