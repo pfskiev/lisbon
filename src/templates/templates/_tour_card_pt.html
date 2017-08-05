@@ -19,7 +19,7 @@
             {% if object.price %}
                 | {{ object.price }} €
             {% endif %}</h4>
-        <p class="card-text text-justify">{{ object.description_PT|truncatechars:200}}</p>
+        <p class="card-text text-justify">{{ object.description_PT|safe}}</p>
         <p>{{ object.created_on }}</p>
         <p><small><em class="text-uppercase">{% trans 'category' %}: </em><em><a href="{{ object.category.get_absolute_url }}">{{ object.category }}</a></em></small></p>
         <a class="btn btn-danger text-uppercase" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">{% trans 'book now' %}</a>
