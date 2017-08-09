@@ -29,7 +29,13 @@
     </script>
 
     <script>
-    _.map(['#id_description_PT', '#id_description_EN', '#id_description_DE'], function(element) {
+    _.map([
+        '#id_description_PT',
+        '#id_description_EN',
+        '#id_description_DE',
+        '#id_short_description_PT',
+        '#id_short_description_EN',
+        '#id_short_description_DE'], function(element) {
         tinymce.init({ selector: element })
     })
     </script>

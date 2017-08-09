@@ -6,7 +6,8 @@
     <section>
         <div class="container">
             <h1 class="display-4">{{ title }}</h1>
-            <div class="card-columns">
+            <div style="display: flex; align-items: flex-start; justify-content: space-around; flex-wrap: wrap;">
+
                 {% if 'pt' in request.LANGUAGE_CODE %}
                     {% for object in object_list %}
                         {% include 'templates/_tour_card_pt.html' %}

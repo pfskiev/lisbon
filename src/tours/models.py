@@ -35,6 +35,9 @@ class Category(models.Model):
 
 class Tour(BaseClass):
     category = models.ForeignKey(Category, default=1, blank=True, null=True)
+    short_description_EN = models.TextField(_('Short description EN'), max_length=5000, blank=True, null=False)
+    short_description_DE = models.TextField(_('Short description DE'), max_length=5000, blank=True, null=False)
+    short_description_PT = models.TextField(_('Short description PT'), max_length=5000, blank=True, null=False)
     price = models.CharField(_('Tour price'), max_length=100, blank=True, null=False)
     img = models.FileField(_('Tour thumbnail'), null=True, blank=True)
     url = models.URLField(_('Tour thumbnail URL'), max_length=200, blank=True, null=False)
