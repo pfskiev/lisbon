@@ -69,6 +69,44 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 })();
 
 </script>
+<script>
+    angular.module('root', ['ngMessages', 'ngCookies'])
+        .controller('FormController', ['$scope', function($scope) {
+            $scope.fullname = '';
+            $scope.email = '';
+            $scope.phone = '';
+            $scope.message = '';
+            $scope.date = '';
+            $scope.cancel = function () {
+                $scope.fullname = '';
+                $scope.email = '';
+                $scope.phone = '';
+                $scope.message = '';
+                $scope.date = '';
+                $scope.bookingForm.fullname.$touched = false;
+                $scope.bookingForm.email.$touched = false;
+                $scope.bookingForm.phone.$touched = false;
+                $scope.bookingForm.message.$touched = false;
+                $scope.bookingForm.date.$touched = false;
+            };
+        }])
+    .controller('ContactFormController', ['$scope', function($scope) {
+            $scope.fullname = '';
+            $scope.email = '';
+            $scope.phone = '';
+            $scope.message = '';
+            $scope.cancel = function () {
+                $scope.fullname = '';
+                $scope.email = '';
+                $scope.phone = '';
+                $scope.message = '';
+                $scope.contactForm.fullname.$touched = false;
+                $scope.contactForm.email.$touched = false;
+                $scope.contactForm.phone.$touched = false;
+                $scope.contactForm.message.$touched = false;
+            };
+        }])
+</script>
 
 </body>
 </html>
