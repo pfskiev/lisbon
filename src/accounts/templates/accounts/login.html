@@ -4,68 +4,93 @@
 {% block form_heading %}Please Log In{% endblock %}
 {% block form %}
     <style>
-    .form-signin {
-  max-width: 330px;
-  padding: 15px;
-  margin: 0 auto;
-}
-.form-signin .form-signin-heading,
-.form-signin .checkbox {
-  margin-bottom: 10px;
-}
-.form-signin .checkbox {
-  font-weight: normal;
-}
-.form-signin .form-group {
-  margin-bottom: 0;
-}
-.form-signin .form-control {
-  position: relative;
-  height: auto;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  padding: 10px;
-  font-size: 16px;
-}
-.form-signin .form-control:focus {
-  z-index: 2;
-}
-.form-signin label {
-    display: none;
-}
+        .form-signin {
+            max-width: 330px;
+            padding: 15px;
+            margin: 0 auto;
+        }
 
-.form-signin input[type="email"] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-}
-.form-signin input[type="password"] {
-  margin-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
+        .form-signin .form-signin-heading,
+        .form-signin .checkbox {
+            margin-bottom: 10px;
+        }
+
+        .form-signin .checkbox {
+            font-weight: normal;
+        }
+
+        .form-signin .form-group {
+            margin-bottom: 0;
+        }
+
+        .form-signin .form-control {
+            position: relative;
+            height: auto;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        .form-signin .form-control:focus {
+            z-index: 2;
+        }
+
+        .form-signin label {
+            display: none;
+        }
+
+        .form-signin input[type="email"] {
+            margin-bottom: -1px;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        .form-signin input[type="password"] {
+            margin-bottom: 10px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
     </style>
     <div class="form-signin">
-{#        <h2 class="text-center">Please Log In:</h2>#}
-        {% crispy form %}
+        <form method="post" action="{{ request.get_full_path }}?next=/">
+            {% csrf_token %}
+            <div id="div_id_username" class="form-group">
+                <label for="id_username" class="control-label requiredField">
+                    Email address<span class="asteriskField">*</span>
+                </label>
+                <div class="controls">
+                    <input autofocus="" class="textinput textInput form-control" id="id_username" maxlength="254"
+                           name="username" placeholder="Enter Email" type="email"/></div>
+            </div>
+            <div id="div_id_password" class="form-group"><label for="id_password" class="control-label  requiredField">
+                Password<span class="asteriskField">*</span> </label>
+                <div class="controls "><input class="textinput textInput form-control" id="id_password" name="password"
+                                              placeholder="Enter Password" type="password"/></div>
+            </div>
+            <a href="/password-reset/">Forgot Password?</a>
+            <div class="form-group">
+                <div id="div_id_remember_me" class="checkbox"><label for="id_remember_me" class=""> <input
+                        class="checkboxinput" id="id_remember_me" name="remember_me" type="checkbox"/>
+                    Remember me
+                </label></div>
+            </div>
+            <input type="submit"
+                   name="sign_in"
+                   value="Log in"
+
+                   class="btn btn-primary btn btn-lg btn-primary btn-block"
+                   id="submit-id-sign_in"/>
+        </form>
         <p>Don't have an account? <a href="{% url 'accounts:signup' %}">Sign up</a>.</p>
     </div>
     <div class="form-message">
 
     </div>
-
     <script>
-    $('h2').each(function(){
-        $(this).css('text-align', 'center')
+        $('h2').each(function () {
+            $(this).css('text-align', 'center')
 
-    })
-
-
+        })
     </script>
-
-
-
-
-
-
 {% endblock form %}
