@@ -12,6 +12,7 @@ urlpatterns = [
     url(r'^$', views.home, name='home'),
     url(r'^robots\.txt$', TemplateView.as_view(template_name="robots.txt", content_type="text/plain"), name="robots_file"),
     url(r'^BingSiteAuth\.xml$', TemplateView.as_view(template_name="BingSiteAuth.xml", content_type="text/xml"), name="BingSiteAuth"),
+    url(r'^googled15ef6cfc26e20bd\.html$', TemplateView.as_view(template_name="googled15ef6cfc26e20bd.html", content_type="text/html"), name="googled15ef6cfc26e20bd"),
     url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
     url(r'^', include('accounts.urls', namespace='accounts')),
     url(r'^i18n/', include('django.conf.urls.i18n')),
