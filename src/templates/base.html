@@ -106,7 +106,6 @@
             $scope.email = '';
             $scope.phone = '';
             $scope.message = '';
-            $scope.disabled = true;
             $scope.cancel = function () {
                 $scope.fullname = '';
                 $scope.email = '';
@@ -117,11 +116,11 @@
                 $scope.contactForm.phone.$touched = false;
                 $scope.contactForm.message.$touched = false;
             };
-            var enableBtn = function () {
-                $scope.disabled = false;
-            };
-            window.enableBtn = enableBtn;
         }])
+    window.wrongCaptchaResponse = true;
+    window.recaptchaResponse = function(key) {
+        window.wrongCaptchaResponse = false;
+    };
 </script>
 
 </body>

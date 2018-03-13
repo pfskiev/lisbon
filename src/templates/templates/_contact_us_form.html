@@ -20,6 +20,6 @@
     </div>
     <input type='submit'
            class='btn btn-lg btn-primary'
-           value='{% trans 'Send' %}' ng-disabled="contactForm.$invalid || disabled"/>
-    <div class="g-recaptcha" data-sitekey="6LfDoCMUAAAAAAomUjyHcUDKcFj833NuvBNlX2D3" data-callback="enableBtn"></div>
+           value='{% trans 'Send' %}' ng-disabled="contactForm.$invalid || wrongCaptchaResponse"/>
+    <div class="g-recaptcha" data-sitekey="6LfDoCMUAAAAAAomUjyHcUDKcFj833NuvBNlX2D3" data-callback="recaptchaResponse"></div>
 </form>
