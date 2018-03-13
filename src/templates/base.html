@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="{% static 'custom/css/dist/styles.min.css' %}">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="{% static 'vendor/vendor.min.js' %}"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 <body ng-app="root">
 {% include 'templates/nav/_navbar.html' %}
@@ -95,6 +96,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
             $scope.email = '';
             $scope.phone = '';
             $scope.message = '';
+            $scope.disabled = true;
             $scope.cancel = function () {
                 $scope.fullname = '';
                 $scope.email = '';
@@ -105,6 +107,9 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
                 $scope.contactForm.phone.$touched = false;
                 $scope.contactForm.message.$touched = false;
             };
+            $scope.enableBtn = function () {
+                $scope.disabled = false;
+            }
         }])
 </script>
 
