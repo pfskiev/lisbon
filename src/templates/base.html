@@ -109,7 +109,7 @@
             $scope.wrongCaptchaResponse = true;
             $scope.recaptchaResponse = function(key) {
                 $scope.wrongCaptchaResponse = false;
-                $scope.apply();
+                $scope.$apply();
             };
             window.recaptchaResponse = $scope.recaptchaResponse;
             $scope.cancel = function () {
