@@ -6,7 +6,7 @@
             <a href="{% url 'home' %}">{% trans 'Home' %}</a>
         </li>
         <li style="padding: 20px" class="hidden-md-up text-md-center text-sm-center text-xs-center">
-            <a href="{% url 'tour:list' %}" >{% trans 'Tours & Excursions' %}</a>
+            <a href="{% url 'tour:list' %}">{% trans 'Tours & Excursions' %}</a>
         </li>
         <li style="padding: 20px" class="hidden-md-up text-md-center text-sm-center text-xs-center">
             <a href="{% url 'review:list' %}">{% trans 'Reviews' %}</a>
@@ -39,7 +39,8 @@
         {% endif %}
         <li style="padding: 20px" class="text-md-center text-sm-center text-xs-center">
             <form method="GET" action="{% url 'search' %}">
-                <input class="form-control" type="text" name="q" placeholder="{% trans 'Search' %}" value="{{ request.GET.q }}"/>
+                <input class="form-control" type="text" name="q" placeholder="{% trans 'Search' %}"
+                       value="{{ request.GET.q }}"/>
                 <input class="btn btn-success-outline" type="submit" value="{% trans 'Search' %}"/>
             </form>
         </li>
@@ -55,41 +56,50 @@
             </li>
             <li class="nav-item hidden-sm-down">
                 {% if footer.icon %}
-                    <img class="company--logo" src="{% thumbnail footer.icon 720x480  %}" alt="logo">
+                    <img class="company--logo" src="{% thumbnail footer.icon 720x480 %}" alt="logo">
                 {% else %}
                 {% endif %}
             </li>
             {% url 'home' as home %}
             <li class="nav-item hidden-sm-down">
-                <a class="nav-link {% if request.get_full_path == home %} activate {% endif %}" href="{% url 'home' %}">{% trans 'Home' %}</a>
+                <a class="nav-link {% if request.get_full_path == home %} activate {% endif %}"
+                   href="{% url 'home' %}">{% trans 'Home' %}</a>
             </li>
             <li class="nav-item hidden-md-down">
                 <div class="btn-group">
-                <a style="cursor: pointer;color: gold;"  class=" hidden-sm-down nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {% trans 'Tours & Excursions' %}</a>
-                <div class="dropdown-menu">
-                    {% if nav.tour_categories_list %}
-                        {% for tour in nav.tour_categories_list %}
-                            <a href="{{ tour.get_absolute_url }}" class="dropdown-item">{{ tour.category }}</a>
-                        {% endfor %}
-                    {% endif %}
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{% url 'tour:list' %}">{% trans 'All Tours' %}</a>
-                </div>
+                    <a style="cursor: pointer;color: gold;" class=" hidden-sm-down nav-link dropdown-toggle"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {% trans 'Tours & Excursions' %}</a>
+                    <div class="dropdown-menu">
+                        {% if nav.tour_categories_list %}
+                            {% for tour in nav.tour_categories_list %}
+                                <a href="{{ tour.get_absolute_url }}" class="dropdown-item">{{ tour.category }}</a>
+                            {% endfor %}
+                        {% endif %}
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url 'tour:list' %}">{% trans 'All Tours' %}</a>
+                    </div>
                 </div>
             </li>
             <li class="nav-item hidden-sm-down">
                 <div class="btn-group">
-                    <a style="cursor: pointer;color: gold;" class=" hidden-sm-down nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {% trans 'Offers' %}</a>
+                    <a style="cursor: pointer;color: gold;" class=" hidden-sm-down nav-link dropdown-toggle"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {% trans 'Offers' %}</a>
                     <div class="dropdown-menu">
                         {% if nav.offer_categories_list %}
                             {% for offer in nav.offer_categories_list %}
-                                <a href="{% if 'car' in offer.get_absolute_url  %}{% url 'rent_car:list' %}{% else %}{% if 'hotel' in offer.get_absolute_url %}{% url 'rent_hotel:list' %}{% else %}{{ offer.get_absolute_url }}{% endif %}{% endif %}" class="dropdown-item">{{ offer.category }}</a>
+                                <a href="
+
+
+                                        {% if 'car' in offer.get_absolute_url %}{% url 'rent_car:list' %}{% else %}{% if 'hotel' in offer.get_absolute_url %}{% url 'rent_hotel:list' %}{% else %}{{ offer.get_absolute_url }}{% endif %}{% endif %}"
+                                   class="dropdown-item">{{ offer.category }}</a>
                             {% endfor %}
-                            {% else %}
-                            <a href="{% url 'rent_car:list' %}" class="dropdown-item">{% trans 'Car Rent in Lisbon' %}</a>
-                        <a href="{% url 'rent_hotel:list' %}" class="dropdown-item">{% trans 'Hotels in Lisbon' %}</a>
+                        {% else %}
+                            <a href="{% url 'rent_car:list' %}"
+                               class="dropdown-item">{% trans 'Car Rent in Lisbon' %}</a>
+                            <a href="{% url 'rent_hotel:list' %}"
+                               class="dropdown-item">{% trans 'Hotels in Lisbon' %}</a>
                         {% endif %}
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{% url 'offer:list' %}">{% trans 'Full Offer list' %}</a>
@@ -98,25 +108,32 @@
             </li>
             {% url 'about' as about_url %}
             <li class="nav-item hidden-sm-down">
-                <a class="nav-link {% if request.get_full_path == about_url %} activate {% endif %}" href="{% url 'about' %}">{% trans 'About Us' %}</a>
+                <a class="nav-link {% if request.get_full_path == about_url %} activate {% endif %}"
+                   href="{% url 'about' %}">{% trans 'About Us' %}</a>
             </li>
             {% url 'contact:list' as contact_list_url %}
             <li class="nav-item hidden-sm-down">
-                <a class="nav-link {% if request.get_full_path == contact_list_url %} activate {% endif %}" href="{% url 'contact:list' %}">{% trans 'Contacts' %}</a>
+                <a class="nav-link {% if request.get_full_path == contact_list_url %} activate {% endif %}"
+                   href="{% url 'contact:list' %}">{% trans 'Contacts' %}</a>
             </li>
             {% url 'news:list' as news_list_url %}
             <li class="nav-item hidden-sm-down">
-                <a class="nav-link {% if request.get_full_path == news_list_url %} activate {% endif %}" href="{% url 'news:list' %}">{% trans 'News' %}</a>
+                <a class="nav-link {% if request.get_full_path == news_list_url %} activate {% endif %}"
+                   href="{% url 'news:list' %}">{% trans 'News' %}</a>
+            </li>
+            {% url 'review:list' as review_list_url %}
+            <li class="nav-item hidden-sm-down">
+                <a class="nav-link {% if request.get_full_path == review_list_url %} activate {% endif %}"
+                   href="{% url 'review:list' %}">{% trans 'Reviews' %}</a>
             </li>
             <li class="nav-item hidden-sm-down">
                 <div class="btn-group">
-                    <a style="cursor: pointer;color: gold;"  class=" hidden-sm-down nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {% trans 'More' %}</a>
+                    <a style="cursor: pointer;color: gold;" class=" hidden-sm-down nav-link dropdown-toggle"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {% trans 'More' %}</a>
                     <div class="dropdown-menu">
                         <a href="{% url 'gallery:list' %}" class="dropdown-item">{% trans 'Gallery' %}</a>
                         <a href="{% url 'related_links:list' %}" class="dropdown-item">{% trans 'Related Links' %}</a>
-                        <div class="dropdown-divider"></div>
-                        <a href="{% url 'review:list' %}" class="dropdown-item">{% trans 'Reviews' %}</a>
                     </div>
                 </div>
             </li>
@@ -125,16 +142,20 @@
             </li>
             <li class="nav-item">
                 <div class="btn-group">
-                    <a style="cursor: pointer;color: gold;" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a style="cursor: pointer;color: gold;" class="nav-link dropdown-toggle" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
                         <i class="flag-icon flag-icon-{% if request.LANGUAGE_CODE == 'en' %}gb{% else %}{{ request.LANGUAGE_CODE }}{% endif %}"></i>
                     </a>
                     <div class="dropdown-menu">
                         {% for lang in LANGUAGES %}
-                            <form id="setLang{{ lang.1}}" class="dropdown-item" style="display: {% if lang.0 == request.LANGUAGE_CODE  %}none{% else %}block{% endif %}" action="/i18n/setlang/" method="POST">
+                            <form id="setLang{{ lang.1 }}" class="dropdown-item"
+                                  style="display: {% if lang.0 == request.LANGUAGE_CODE %}none{% else %}block{% endif %}"
+                                  action="/i18n/setlang/" method="POST">
                                 {% csrf_token %}
                                 <input name="next" type="hidden" value="{{ request.path }}">
                                 <input type="hidden" name="language" value="{{ lang.0 }}">
-                                <a style="text-decoration: none" href="#" onclick="$('#setLang{{ lang.1 }}').submit(); return false;">
+                                <a style="text-decoration: none" href="#"
+                                   onclick="$('#setLang{{ lang.1 }}').submit(); return false;">
                                     <i class="flag-icon flag-icon-{% if lang.0 == 'en' %}gb{% else %}{{ lang.0 }}{% endif %}"></i>
                                     <span>{{ lang.1 }}</span>
                                 </a>
@@ -145,7 +166,8 @@
             </li>
         </ol>
         <form class="form-inline pull-xs-right hidden-md-down" method="GET" action="{% url 'search' %}">
-            <input class="form-control" type="text" name="q" placeholder="{% trans 'Search' %}" value="{{ request.GET.q }}"/>
+            <input class="form-control" type="text" name="q" placeholder="{% trans 'Search' %}"
+                   value="{{ request.GET.q }}"/>
             <input class="btn btn-success-outline" type="submit" value="{% trans 'Search' %}"/>
         </form>
     </div>
