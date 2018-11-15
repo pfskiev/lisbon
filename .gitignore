@@ -60,6 +60,7 @@ Desktop.ini
 
 # Project settings
 src/media/
+src/lisbon/settings/local.env
 
 # Migrations
 */*/migrations/00*.py
