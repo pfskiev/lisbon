@@ -125,16 +125,6 @@ WSGI_APPLICATION = 'lisbon.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'HOST': 'localhost',
-        'NAME': 'lisbon',
-        'USER': 'podlesny',
-        'PASSWORD': 'Rhfrfpz,hf1301'
-    }
-}
-
 # Internationalization
 # https://docs.djangoproject.com/en/dev/topics/i18n/
 
