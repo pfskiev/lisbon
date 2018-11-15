@@ -125,6 +125,16 @@ WSGI_APPLICATION = 'lisbon.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
+DATABASES = {
+    'default': {
+        'ENGINE': env('DATABASE_ENGINE'),
+        'HOST': env('DATABASE_HOST'),
+        'NAME': env('DATABASE_NAME'),
+        'USER': env('DATABASE_USER'),
+        'PASSWORD': env('DATABASE_PASSWORD')
+    }
+}
+
 # Internationalization
 # https://docs.djangoproject.com/en/dev/topics/i18n/
 
