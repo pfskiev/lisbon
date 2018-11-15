@@ -126,9 +126,13 @@ WSGI_APPLICATION = 'lisbon.wsgi.application'
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
 DATABASES = {
-    # Raises ImproperlyConfigured exception if DATABASE_URL not in
-    # os.environ
-    'default': env.db(),
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'HOST': 'localhost',
+        'NAME': 'lisbon',
+        'USER': 'podlesny',
+        'PASSWORD': 'Rhfrfpz,hf1301'
+    }
 }
 
 # Internationalization
