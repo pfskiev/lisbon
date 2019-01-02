@@ -39,7 +39,7 @@ def review_list(request):
         'en': Helpers.objects.get(id=1).about_footer_EN,
         'de': Helpers.objects.get(id=1).about_footer_DE
     }
-    queryset_list = Review.objects.all()
+    queryset_list = Review.objects.all().order_by('-timestamp')
     paginator = Paginator(queryset_list, 6)
     page_request_var = 'page'
     page = request.GET.get(page_request_var)
