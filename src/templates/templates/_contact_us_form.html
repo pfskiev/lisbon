@@ -1,5 +1,5 @@
 {% load i18n %}
-<form name="contactForm" method="POST" action="/booking/contact"
+<form name="contactForm" method="POST" action="/booking/contacts"
       enctype='multipart/form-data'>{% csrf_token %}
 {#    {{ contact_me.as_p }}#}
     <p><label for="id_fullname">Name:</label> <input id="id_fullname" ng-model="fullname" name="fullname" type="text" required/></p>
