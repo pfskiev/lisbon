@@ -25,6 +25,44 @@
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="{% static 'vendor/vendor.min.js' %}"></script>
     <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "TravelAgency",
+  "name": "Excursions Lisbon",
+  "image": "https://excursions-lisbon.com/media/151927-200.png.720x480_q85.png",
+  "@id": "",
+  "url": "https://excursions-lisbon.com/",
+  "telephone": "+351967155113",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "",
+    "addressLocality": "",
+    "postalCode": "",
+    "addressCountry": "PT"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 38.7221691,
+    "longitude": -9.140555800000016
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ],
+    "opens": "09:00",
+    "closes": "18:00"
+  }
+}
+</script>
 </head>
 <body ng-app="root">
 {% include 'templates/nav/_navbar.html' %}
