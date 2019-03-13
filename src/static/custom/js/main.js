@@ -65,6 +65,6 @@ function confirm_delete() {
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/static/sw.js');
+    navigator.serviceWorker.register('/static/custom/js/sw.js');
   });
 }
