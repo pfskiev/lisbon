@@ -34,3 +34,11 @@ workbox.routing.registerRoute(
       cacheName: 'vendor-css',
     })
   );
+
+
+workbox.routing.registerRoute(
+    'https://cdnjs.cloudflare.com/ajax/libs/ramda/0.26.1/ramda.min.js',
+    new workbox.strategies.StaleWhileRevalidate({
+      cacheName: 'ramda',
+    })
+  );
