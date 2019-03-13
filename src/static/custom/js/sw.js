@@ -1,11 +1,5 @@
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js');
 
-const CACHE_NAME = 'workbox:js';
-
-const APP_JS = new RegExp('/static/custom/js/.*\.js');
-const APP_ANGULAR_JS = new RegExp('/static/custom/js/app/.*\.js');
-const VENDOR_JS = new RegExp('/static/vendor/js/.*\.js');
-
 workbox.routing.registerRoute(
     '/',
     new workbox.strategies.StaleWhileRevalidate({
@@ -14,22 +8,29 @@ workbox.routing.registerRoute(
   );
 
 workbox.routing.registerRoute(
-    APP_JS,
+    '/static/custom/js/main.js',
     new workbox.strategies.StaleWhileRevalidate({
       cacheName: 'app-js',
     })
   );
 
 workbox.routing.registerRoute(
-    APP_ANGULAR_JS,
+    '/static/custom/css/dist/styles.min.css',
     new workbox.strategies.StaleWhileRevalidate({
-      cacheName: 'angular-js',
+      cacheName: 'app-css',
     })
   );
 
 workbox.routing.registerRoute(
-    VENDOR_JS,
+    '/static/vendor/vendor.min.js',
     new workbox.strategies.StaleWhileRevalidate({
       cacheName: 'vendor-js',
+    })
+  );
+
+workbox.routing.registerRoute(
+    '/static/vendor/vendor.min.css',
+    new workbox.strategies.StaleWhileRevalidate({
+      cacheName: 'vendor-css',
     })
   );
