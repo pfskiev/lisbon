@@ -62,3 +62,9 @@ function delete_contact(id) {
 function confirm_delete() {
     window.location.pathname = '/tours/' + _id + '/delete/'
 }
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/static/sw.js');
+  });
+}
