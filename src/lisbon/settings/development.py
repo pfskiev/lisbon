@@ -3,13 +3,13 @@ import sys
 import logging.config
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 TEMPLATES[0]['OPTIONS'].update({'debug': True})
 
 # Turn off debug while imported by Celery with a workaround
 # See http://stackoverflow.com/a/4806384
 if "celery" in sys.argv[0]:
-    DEBUG = True
+    DEBUG = False
 
 # Django Debug Toolbar
 # INSTALLED_APPS += (
@@ -19,7 +19,7 @@ if "celery" in sys.argv[0]:
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Show thumbnail generation errors
-THUMBNAIL_DEBUG = True
+THUMBNAIL_DEBUG = False
 
 # Log everything to the logs directory at the top
 LOGFILE_ROOT = join(dirname(BASE_DIR), 'logs')
