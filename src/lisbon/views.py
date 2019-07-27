@@ -250,42 +250,6 @@ def search(request):
     return render(request, 'partials/search.html', context)
 
 
-def email_me(request):
-    lang = request.LANGUAGE_CODE
-    footer = {
-        'pt': Helpers.objects.get(id=1).about_footer_PT,
-        'en': Helpers.objects.get(id=1).about_footer_EN,
-        'de': Helpers.objects.get(id=1).about_footer_DE
-    }
-    if request.method == 'GET':
-        contact_me = ContactMe()
-    else:
-        contact_me = ContactMe(request.POST)
-        if contact_me.is_valid():
-            init_contact_me_form(contact_me)
-            return redirect('tour:success')
-        else:
-            return redirect('tour:fail')
-
-    context = {
-        'contact_me': contact_me,
-        'footer': {
-            'about': footer[lang],
-            'icon': Helpers.objects.get(id=1).footer_icon
-        },
-        'form': contact_me,
-        'nav': {
-            'tour_categories_list': Category.objects.all(),
-            'offer_categories_list': OfferCategory.objects.all(),
-        },
-        'title': 'Contact me',
-        'company': get_company(),
-        'breadcrumbs': [
-            {'url': '/', 'name': _('Home')},
-        ]}
-    return render(request, 'partials/email.html', context)
-
-
 def contact_us(request):
     query = request.GET.get('q')
     if query:
