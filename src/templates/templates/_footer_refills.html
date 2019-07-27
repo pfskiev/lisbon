@@ -76,8 +76,5 @@
     <hr>
     <p style="padding-top: 50px; text-align: center">{% trans 'All Original Content' %} © 2015-{% now 'Y' %} {{ company }}, {% trans 'All Rights Reserved' %}</p>
 </footer>
-{% if contact_me %}
 
-
-{#{% include 'templates/modal/_contact_us.html' %}#}
-{% endif %}
+{% include 'templates/modal/_contact_us.html' %}
