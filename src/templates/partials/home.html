@@ -17,36 +17,44 @@
                     <img style="width: 100%;" src="{% static 'img/lisbon_tram.jpg' %}" alt="Excursions Lisbon">
                 </a>
             </div>
-        <div class="col-xs-12 col-sm-12 col-md-6">
-            <h1 style="text-align: center;">Excursions Lisbon</h1>
-            <p>
-                <strong>
-                    <a href="http://excursions-lisbon.com/">Excursions Lisbon</a>
-                </strong> – day Tours in Lisbon and Portugal with Professional Guide. Excursions Lisbon will organize for you in Lisbon: Walking Lisbon Tours, Tours to Sintra, Day Tours Lisbon, Guided Tours in Portugal, Group Tours in Lisbon, Fishing Tours and Transfers.
-            </p>
-            <p>
-                <strong>
-                    <a href="http://excursions-lisbon.com/">Excursions Lisbon</a>
-                </strong> – hello there dear visitors of Lisbon, my name is Marian Danici and I am professional
-                interpreter-guide and also CEO of my family travel firm. With us you can book unforgettable excursions in
-                Lisbon, transfers from/to Lisbon airport, interesting walking tours in Lisbon city, the most tasty
-                gastronomic tours, unbelievable sea trips, big game fishing trips, guided private tours, guided group tours
-                in Lisbon and Portugal and many more. Our staff including me will show you every monument they know and
-                share with you the knowledge about history of Lisbon and Portugal. Our guides speak English, Spanish and
-                Portuguese. Should you need any other language please let us know.
-            </p>
-            <p>
-                <em>
-                    <strong>Lisbon is a great capital of Portugal</strong>
-                </em> and it has one of the biggest ports in the country. It has a great and rich history which can be seen
-            through its majestic architectural monuments. Lisbon city is one of the oldest cities in Western Europe and
-            it attracts a lot of tourists with its unique Mediterranean climate and a huge offer of entertainments of
-            different levels
-            </p>
-        </div>
+            <div class="col-xs-12 col-sm-12 col-md-6">
+                <h1 style="text-align: center;">Excursions Lisbon</h1>
+                <p>
+                    <strong>
+                        <a href="http://excursions-lisbon.com/">Excursions Lisbon</a>
+                    </strong> – day Tours in Lisbon and Portugal with Professional Guide. Excursions Lisbon will
+                    organize for you in Lisbon: Walking Lisbon Tours, Tours to Sintra, Day Tours Lisbon, Guided Tours in
+                    Portugal, Group Tours in Lisbon, Fishing Tours and Transfers.
+                </p>
+                <p>
+                    <strong>
+                        <a href="http://excursions-lisbon.com/">Excursions Lisbon</a>
+                    </strong> – hello there dear visitors of Lisbon, my name is Marian Danici and I am professional
+                    interpreter-guide and also CEO of my family travel firm. With us you can book unforgettable
+                    excursions in
+                    Lisbon, transfers from/to Lisbon airport, interesting walking tours in Lisbon city, the most tasty
+                    gastronomic tours, unbelievable sea trips, big game fishing trips, guided private tours, guided
+                    group tours
+                    in Lisbon and Portugal and many more. Our staff including me will show you every monument they know
+                    and
+                    share with you the knowledge about history of Lisbon and Portugal. Our guides speak English, Spanish
+                    and
+                    Portuguese. Should you need any other language please let us know.
+                </p>
+                <p>
+                    <em>
+                        <strong>Lisbon is a great capital of Portugal</strong>
+                    </em> and it has one of the biggest ports in the country. It has a great and rich history which can
+                    be seen
+                    through its majestic architectural monuments. Lisbon city is one of the oldest cities in Western
+                    Europe and
+                    it attracts a lot of tourists with its unique Mediterranean climate and a huge offer of
+                    entertainments of
+                    different levels
+                </p>
+            </div>
         </div>
     </article>
-    {# tours section #}
     <article class="tours">
         <div class="container">
             <h3 class="display-3 text-md-center">{{ section.tour_header }}</h3>
@@ -54,7 +62,6 @@
                 <a href="{% url 'tour:list' %}"><em>{% trans 'full tour list' %}</em></a>
             </p>
             <div style="display: flex; align-items: flex-start; justify-content: space-around; flex-wrap: wrap;">
-{#               <div class="card-columns">#}
 
                 {% if 'pt' in request.LANGUAGE_CODE %}
                     {% for object in tour_list %}
@@ -71,98 +78,109 @@
                         {% include 'templates/_tour_card_de.html' %}
                     {% endfor %}
                 {% endif %}
-                </div>
             </div>
-            {% if user.is_staff or user.is_superuser %}
-                <a class="btn btn-warning" href="{% url 'tour:create' %}">
-                    <i class="fa fa-plus"></i> {% trans 'Create Tour' %}</a>
-            {% endif %}
-            {% include 'templates/_pagination.html' %}
+        </div>
+        {% if user.is_staff or user.is_superuser %}
+            <a class="btn btn-warning" href="{% url 'tour:create' %}">
+                <i class="fa fa-plus"></i> {% trans 'Create Tour' %}</a>
+        {% endif %}
+        {% include 'templates/_pagination.html' %}
         </div>
     </article>
-        <article class="tours">
+    <article class="tours">
         <div class="container">
             <div class="col-xs-12 col-sm-12 col-md-6">
                 <a href="http://excursions-lisbon.com/">
                     <img style="width: 100%;" src="{% static 'img/Excursions-Lisbon.jpg' %}" alt="Excursions Lisbon">
                 </a>
             </div>
-        <div class="col-xs-12 col-sm-12 col-md-6">
-            <h2 style="text-align: center;"><a href="http://excursions-lisbon.com/">Excursions in Lisbon</a></h2>
-            <p>Our
-                <a href="http://excursions-lisbon.com/">
-                    <span style="text-decoration: underline;">Excursions in Lisbon</span>
-                </a>
-                are full of varieties and different amazing routes which will make you see Lisbon with the eyes of the
-                local people. Our interpreter-guides are local and all qualified professionals, friendly persons and
-                they love working with Lisbon visitors. Our favorite monument in Lisbon is Monsteiro dos Jeronimos.
-                It is outstanding architectural monument which attracts a lot of tourists every year. It took nearly a
-                hundred years to build that great monument and it has pure Portuguese architectural style which is called
-                Manuelinho. Also that monument is a kind of national Renaissance and it has got elements of Gothic and
-                Moorish styles. That Monestary was a shelter for a long time for Jerome monks who served very well to
-                the king Manuel I. It has been many years when the Monestary was dissolved and became a national property
-                of Portugal. Now it is a Archaeological Museum which you can visit with our help.
-            </p>
-        </div>
+            <div class="col-xs-12 col-sm-12 col-md-6">
+                <h2 style="text-align: center;"><a href="http://excursions-lisbon.com/">Excursions in Lisbon</a></h2>
+                <p>Our
+                    <a href="http://excursions-lisbon.com/">
+                        <span style="text-decoration: underline;">Excursions in Lisbon</span>
+                    </a>
+                    are full of varieties and different amazing routes which will make you see Lisbon with the eyes of
+                    the
+                    local people. Our interpreter-guides are local and all qualified professionals, friendly persons and
+                    they love working with Lisbon visitors. Our favorite monument in Lisbon is Monsteiro dos Jeronimos.
+                    It is outstanding architectural monument which attracts a lot of tourists every year. It took nearly
+                    a
+                    hundred years to build that great monument and it has pure Portuguese architectural style which is
+                    called
+                    Manuelinho. Also that monument is a kind of national Renaissance and it has got elements of Gothic
+                    and
+                    Moorish styles. That Monestary was a shelter for a long time for Jerome monks who served very well
+                    to
+                    the king Manuel I. It has been many years when the Monestary was dissolved and became a national
+                    property
+                    of Portugal. Now it is a Archaeological Museum which you can visit with our help.
+                </p>
+            </div>
         </div>
     </article>
 
     <article class="offer">
         <div class="container">
-            <h3 style="text-align: center;"><a href="http://excursions-lisbon.com/">Tours and excursions in Lisbon</a></h3>
-            <p>Booking our <em><a href="http://excursions-lisbon.com/">tours and excursions in Lisbon</a></em> you receive quality and sympathy. We have to offer a lot of interesting tours and amazing excursions in Lisbon and Portugal. We are professionals and we love what you do. You will be very welcome in Lisbon and it would be very nice to meet you!</p>
+            <h3 style="text-align: center;"><a href="http://excursions-lisbon.com/">Tours and excursions in Lisbon</a>
+            </h3>
+            <p>Booking our <em><a href="http://excursions-lisbon.com/">tours and excursions in Lisbon</a></em> you
+                receive quality and sympathy. We have to offer a lot of interesting tours and amazing excursions in
+                Lisbon and Portugal. We are professionals and we love what you do. You will be very welcome in Lisbon
+                and it would be very nice to meet you!</p>
         </div>
     </article>
-    {# offers section #}
     {% include 'templates/_offers_home.html' %}
 
-    {# carousel #}
     <article class="carousel">
-    <div class="container">
-        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="3"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="4"></li>
-            </ol>
-            <div style="min-height: 600px; max-height: 600px" class="carousel-inner" role="listbox">
-                <div class="carousel-item active">
-			<img style="width: 100%;object-fit: cover; min-height: 600px" src="{% thumbnail img1 1920x1080 crop="smart" %}" alt="{{ header }}">
-                    <p class="main-header display-3 type">{{ header }}</p>
+        <div class="container">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+                </ol>
+                <div style="min-height: 600px; max-height: 600px" class="carousel-inner" role="listbox">
+                    <div class="carousel-item active">
+                        <img style="width: 100%;object-fit: cover; min-height: 600px"
+                             src="{% thumbnail img1 1920x1080 crop="smart" %}" alt="{{ header }}">
+                        <p class="main-header display-3 type">{{ header }}</p>
+                    </div>
+                    <div class="carousel-item">
+                        <img style="width: 100%;object-fit: cover; min-height: 600px"
+                             src="{% thumbnail img2 1920x1080 crop="smart" %}" alt="{{ header }}">
+                        <p class="main-header display-3 type">{{ header }}</p>
+                    </div>
+                    <div class="carousel-item">
+                        <img style="width: 100%;object-fit: cover; min-height: 600px"
+                             src="{% thumbnail img3 1920x1080 crop="smart" %}" alt="{{ header }}">
+                        <p class="main-header display-3 type">{{ header }}</p>
+                    </div>
+                    <div class="carousel-item">
+                        <img style="width: 100%;object-fit: cover; min-height: 600px"
+                             src="{% thumbnail img4 1920x1080 crop="smart" %}" alt="{{ header }}">
+                        <p class="main-header display-3 type">{{ header }}</p>
+                    </div>
+                    <div class="carousel-item">
+                        <img style="width: 100%;object-fit: cover; min-height: 600px"
+                             src="{% thumbnail img5 1920x1080 crop="smart" %}" alt="{{ header }}">
+                        <p class="main-header display-3 type">{{ header }}</p>
+                    </div>
                 </div>
-                <div class="carousel-item">
-                    <img style="width: 100%;object-fit: cover; min-height: 600px" src="{% thumbnail img2 1920x1080 crop="smart" %}" alt="{{ header }}">
-                    <p class="main-header display-3 type">{{ header }}</p>
-                </div>
-                <div class="carousel-item">
-			<img style="width: 100%;object-fit: cover; min-height: 600px" src="{% thumbnail img3 1920x1080 crop="smart" %}" alt="{{ header }}">
-                    <p class="main-header display-3 type">{{ header }}</p>
-                </div>
-                <div class="carousel-item">
-			<img style="width: 100%;object-fit: cover; min-height: 600px" src="{% thumbnail img4 1920x1080 crop="smart" %}" alt="{{ header }}">
-                    <p class="main-header display-3 type">{{ header }}</p>
-                </div>
-                <div class="carousel-item">
-                    <img style="width: 100%;object-fit: cover; min-height: 600px" src="{% thumbnail img5 1920x1080 crop="smart" %}" alt="{{ header }}">
-                    <p class="main-header display-3 type">{{ header }}</p>
-                </div>
+                <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                    <span class="icon-prev" aria-hidden="true"></span>
+                    <span class="sr-only">{% trans 'Previous' %}</span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                    <span class="icon-next" aria-hidden="true"></span>
+                    <span class="sr-only">{% trans 'Next' %}</span>
+                </a>
             </div>
-            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                <span class="icon-prev" aria-hidden="true"></span>
-                <span class="sr-only">{% trans 'Previous' %}</span>
-            </a>
-            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                <span class="icon-next" aria-hidden="true"></span>
-                <span class="sr-only">{% trans 'Next' %}</span>
-            </a>
         </div>
-    </div>
     </article>
 
-    {# {% include 'templates/_audio.html' %}#}
-{#    {% include 'templates/modal/_contact_us.html' %}#}
     {% include 'templates/modal/_delete_tour.html' %}
     {% include 'templates/_modal_book_now.html' %}
 {% endblock content %}
