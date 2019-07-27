@@ -6,62 +6,62 @@
 {% endblock %}
 {% block content %}
     <section>
-    <div class="container contact">
-        <div class="row">
-        <h2>{% trans 'Search results'%}</h2>
+        <div class="container">
+            <div class="row">
+                <h2>{% trans 'Search results' %}</h2>
 
-        {% if 'en' in request.LANGUAGE_CODE %}
-            {% if  offer_object_list or tour_object_list%}
-                {% for object in offer_object_list %}
-                    {% include 'templates/search/_img.html' %}
-                    <a href="{{ object.get_absolute_url }}">{{ object.title_EN }}</a>
-                    <p>{{ object.description_EN }}</p>
-                {% endfor %}
-                {% for object in tour_object_list %}
-                    {% include 'templates/search/_img.html' %}
-                    <a href="{{ object.get_absolute_url }}">{{ object.title_EN }}</a>
-                    <p>{{ object.description_EN }}</p>
-                {% endfor %}
-            {% else %}
-                <p>No matches</p>
-            {% endif %}
-        {% endif %}
+                {% if 'en' in request.LANGUAGE_CODE %}
+                    {% if  offer_object_list or tour_object_list %}
+                        {% for object in offer_object_list %}
+                            {% include 'templates/search/_img.html' %}
+                            <a href="{{ object.get_absolute_url }}">{{ object.title_EN }}</a>
+                            <p>{{ object.description_EN|safe }}</p>
+                        {% endfor %}
+                        {% for object in tour_object_list %}
+                            {% include 'templates/search/_img.html' %}
+                            <a href="{{ object.get_absolute_url }}">{{ object.title_EN }}</a>
+                            <p>{{ object.description_EN|safe }}</p>
+                        {% endfor %}
+                    {% else %}
+                        <p>No matches</p>
+                    {% endif %}
+                {% endif %}
 
-        {% if 'pt' in request.LANGUAGE_CODE %}
-            {% if  offer_object_list or tour_object_list%}
-                {% for object in offer_object_list %}
-                    {% include 'templates/search/_img.html' %}
-                    <a href="{{ object.get_absolute_url }}">{{ object.title_PT }}</a>
-                    <p>{{ object.description_PT }}</p>
-                {% endfor %}
-                {% for object in tour_object_list %}
-                    {% include 'templates/search/_img.html' %}
-                    <a href="{{ object.get_absolute_url }}">{{ object.title_PT }}</a>
-                    <p>{{ object.description_PT }}</p>
-                {% endfor %}
-            {% else %}
-                <p>No matches</p>
-            {% endif %}
-        {% endif %}
+                {% if 'pt' in request.LANGUAGE_CODE %}
+                    {% if  offer_object_list or tour_object_list %}
+                        {% for object in offer_object_list %}
+                            {% include 'templates/search/_img.html' %}
+                            <a href="{{ object.get_absolute_url }}">{{ object.title_PT }}</a>
+                            <p>{{ object.description_PT|safe }}</p>
+                        {% endfor %}
+                        {% for object in tour_object_list %}
+                            {% include 'templates/search/_img.html' %}
+                            <a href="{{ object.get_absolute_url }}">{{ object.title_PT }}</a>
+                            <p>{{ object.description_PT|safe }}</p>
+                        {% endfor %}
+                    {% else %}
+                        <p>No matches</p>
+                    {% endif %}
+                {% endif %}
 
-        {% if 'de' in request.LANGUAGE_CODE %}
-            {% if  offer_object_list or tour_object_list%}
-                {% for object in offer_object_list %}
-                    {% include 'templates/search/_img.html' %}
-                    <a href="{{ object.get_absolute_url }}">{{ object.title_DE }}</a>
-                    <p>{{ object.description_DE }}</p>
-                {% endfor %}
-                {% for object in tour_object_list %}
-                    {% include 'templates/search/_img.html' %}
-                    <a href="{{ object.get_absolute_url }}">{{ object.title_DE }}</a>
-                    <p>{{ object.description_DE }}</p>
-                {% endfor %}
-            {% else %}
-                <p>No matches</p>
-            {% endif %}
-        {% endif %}
+                {% if 'de' in request.LANGUAGE_CODE %}
+                    {% if  offer_object_list or tour_object_list %}
+                        {% for object in offer_object_list %}
+                            {% include 'templates/search/_img.html' %}
+                            <a href="{{ object.get_absolute_url }}">{{ object.title_DE }}</a>
+                            <p>{{ object.description_DE|safe }}</p>
+                        {% endfor %}
+                        {% for object in tour_object_list %}
+                            {% include 'templates/search/_img.html' %}
+                            <a href="{{ object.get_absolute_url }}">{{ object.title_DE }}</a>
+                            <p>{{ object.description_DE|safe }}</p>
+                        {% endfor %}
+                    {% else %}
+                        <p>No matches</p>
+                    {% endif %}
+                {% endif %}
 
+            </div>
         </div>
-    </div>
     </section>
 {% endblock %}
