@@ -1,7 +1,6 @@
 {% load i18n %}
 <form name="contactForm" method="POST" action="/booking/contacts"
       enctype='multipart/form-data'>{% csrf_token %}
-{#    {{ contact_me.as_p }}#}
     <p><label for="id_fullname">Name:</label> <input id="id_fullname" ng-model="fullname" name="fullname" type="text" required/></p>
     <div ng-messages="contactForm.fullname.$error" ng-show="contactForm.fullname.$touched" style="color:maroon" role="alert">
         <div ng-message="required">This field is required</div>
@@ -20,6 +19,9 @@
     </div>
     <input type='submit'
            class='btn btn-lg btn-primary'
-           value='{% trans 'Send' %}' ng-disabled="contactForm.$invalid || wrongCaptchaResponse"/>
+           value='{% trans 'Send' %}'
+
+
+    />
     <div class="g-recaptcha" data-sitekey="6LfDoCMUAAAAAAomUjyHcUDKcFj833NuvBNlX2D3" data-callback="recaptchaResponse"></div>
 </form>
