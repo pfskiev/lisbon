@@ -1,25 +1,26 @@
 {% load i18n %}
-<form name="contactForm" method="POST" action="/booking/contacts"
+<form data-test="contact-form" name="contactForm" method="POST" action="/booking/contacts"
       enctype='multipart/form-data'>{% csrf_token %}
-{#    {{ contact_me.as_p }}#}
-    <p><label for="id_fullname">Name:</label> <input id="id_fullname" ng-model="fullname" name="fullname" type="text" required/></p>
+    <p><label for="id_fullname">Name:</label> <input id="id_fullname" data-test="contact-form__name" ng-model="fullname" name="fullname" type="text" required/></p>
     <div ng-messages="contactForm.fullname.$error" ng-show="contactForm.fullname.$touched" style="color:maroon" role="alert">
         <div ng-message="required">This field is required</div>
     </div>
-    <p><label for="id_email">Email:</label> <input id="id_email" ng-model="email" name="email" type="email" required/></p>
+    <p><label for="id_email">Email:</label> <input id="id_email" data-test="contact-form__email" ng-model="email" name="email" type="email" required/></p>
     <div ng-messages="contactForm.email.$error" ng-show="contactForm.email.$touched" style="color:maroon" role="alert">
         <div ng-message="required">This field is required</div>
     </div>
-    <p><label for="id_phone">Phone:</label> <input id="id_phone" ng-model="phone" name="phone" type="text" required/></p>
+    <p><label for="id_phone">Phone:</label> <input id="id_phone" data-test="contact-form__phone" ng-model="phone" name="phone" type="text" required/></p>
     <div ng-messages="contactForm.phone.$error" ng-show="contactForm.phone.$touched" style="color:maroon" role="alert">
         <div ng-message="required">This field is required</div>
     </div>
-    <p><label for="id_message">Message:</label> <textarea cols="40" id="id_message" ng-model="message" name="message" rows="10" required></textarea></p>
+    <p><label for="id_message">Message:</label> <textarea cols="40" data-test="contact-form__message" id="id_message" ng-model="message" name="message" rows="10" required></textarea></p>
     <div ng-messages="contactForm.message.$error" ng-show="contactForm.message.$touched" style="color:maroon" role="alert">
         <div ng-message="required">This field is required</div>
     </div>
     <input type='submit'
            class='btn btn-lg btn-primary'
-           value='{% trans 'Send' %}' ng-disabled="contactForm.$invalid || wrongCaptchaResponse"/>
+           value='{% trans 'Send' %}'
+           data-test="contact-form__submit-button"
+           ng-disabled="contactForm.$invalid || wrongCaptchaResponse"/>
     <div class="g-recaptcha" data-sitekey="6LfDoCMUAAAAAAomUjyHcUDKcFj833NuvBNlX2D3" data-callback="recaptchaResponse"></div>
 </form>

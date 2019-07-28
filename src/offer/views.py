@@ -1,18 +1,13 @@
-from django.conf import settings
-from django.core.mail import send_mail, BadHeaderError
+from django.contrib import messages
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.core.urlresolvers import reverse
-from django.db.models import Q
-from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.translation import ugettext_lazy as _
-from django.contrib import messages
-from .models import Offer, OfferCategory
-from .forms import OfferForm
-from tours.models import Category
+
 from helpers.models import Helpers
-from tours.forms import ContactMe
-from lisbon.views import init_contact_me_form
+from tours.models import Category
+from .forms import OfferForm
+from .models import Offer, OfferCategory
 
 
 def get_lang(request):
@@ -50,20 +45,8 @@ def offer_list(request):
     except EmptyPage:
         queryset = paginator.page(paginator.num_pages)
 
-    # if not request.user.is_staff or not request.user.is_superuser:
-    #     return redirect('accounts:signup')
-    # else:
-    #
-
-    # if request.method == 'GET':
-    #     contact_me = ContactMe()
-    # else:
-    #     contact_me = ContactMe(request.POST)
-    #     if contact_me.is_valid():
-    #         init_contact_me_form(contact_me)
-    #         return redirect('tour:success')
-    #     else:
-    #         return redirect('tour:fail')
+    if not request.user.is_staff or not request.user.is_superuser:
+        return redirect('accounts:signup')
 
     form = OfferForm(request.POST or None, request.FILES or None)
     if form.is_valid():
@@ -74,7 +57,6 @@ def offer_list(request):
         return redirect('offer:list')
 
     context = {
-        # 'contact_me': contact_me,
         'footer': {
             'about': footer[lang],
             'icon': Helpers.objects.get(id=1).footer_icon
@@ -99,16 +81,6 @@ def offer_detail(request, pk=None):
     query = request.GET.get('q')
     if query:
         return redirect(reverse('search') + '?q=' + query)
-    if request.method == 'GET':
-        contact_me = ContactMe()
-    else:
-        contact_me = ContactMe(request.POST)
-        if contact_me.is_valid():
-            init_contact_me_form(contact_me)
-            return redirect('tour:success')
-        else:
-            return redirect('tour:fail')
-
     footer = {
         'pt': Helpers.objects.get(id=1).about_footer_PT,
         'en': Helpers.objects.get(id=1).about_footer_EN,
@@ -126,7 +98,6 @@ def offer_detail(request, pk=None):
         {'url': '/offer', 'name': _('Offers'), 'active': False},
         {'url': '#', 'name': title[lang], 'active': True}]
     context = {
-        'contact_me': contact_me,
         'footer': {
             'about': footer[lang],
             'icon': Helpers.objects.get(id=1).footer_icon
@@ -249,15 +220,6 @@ def offer_category(request, slug=None):
     query = request.GET.get('q')
     if query:
         return redirect(reverse('search') + '?q=' + query)
-    if request.method == 'GET':
-        contact_me = ContactMe()
-    else:
-        contact_me = ContactMe(request.POST)
-        if contact_me.is_valid():
-            init_contact_me_form(contact_me)
-            return redirect('tour:success')
-        else:
-            return redirect('tour:fail')
     footer = {
         'pt': Helpers.objects.get(id=1).about_footer_PT,
         'en': Helpers.objects.get(id=1).about_footer_EN,
@@ -281,7 +243,6 @@ def offer_category(request, slug=None):
     category = OfferCategory.objects.filter(slug__icontains=slug)
 
     context = {
-        'contact_me': contact_me,
         'nav': {
             'tour_categories_list': Category.objects.all(),
             'offer_categories_list': OfferCategory.objects.all(),
