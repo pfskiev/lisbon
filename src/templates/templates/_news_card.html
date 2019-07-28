@@ -1,84 +1,53 @@
 {% load thumbnail %}
 {% load i18n %}
+{% load get_translated_title %}
+{% load get_translated_description %}
+
 <div class="card">
-    {% if object.img %}
-        <a href="{{ object.id }}">
-            <img style="height: 350px;width: 100%; object-fit: cover;" class="img-fluid" src="{% thumbnail object.img 720x480 crop="smart" %}" alt="{{ object.title_EN }}" width="100%">
-        </a>
-    {% else %}
-        <p style="text-align: center"><small><em>{% trans 'place for image' %}</em></small></p>
+
+  {% if object.img %}
+    <a href="{{ object.id }}">
+      <img style="height: 350px;width: 100%; object-fit: cover;" class="img-fluid"
+           src="{% thumbnail object.img 720x480 crop="smart" %}" alt="{{ object.title_EN }}" width="100%">
+    </a>
+  {% else %}
+    <p style="text-align: center">
+      <small><em>{% trans 'place for image' %}</em></small>
+    </p>
+  {% endif %}
+
+  <div class="card-block">
+
+    <h2>{% get_translated_title object request.LANGUAGE_CODE %}</h2>
+    <p class="text-justify">
+      {% autoescape off %}
+        {% get_translated_description object request.LANGUAGE_CODE %}
+      {% endautoescape %}
+    </p>
+
+    {% if object.category %}
+      <p>
+        <small>
+          <em class="text-uppercase">{% trans 'category' %}: </em>
+          <em>
+            <a href="{{ object.category.get_absolute_url }}">{{ object.category }}</a>
+          </em>
+        </small>
+      </p>
     {% endif %}
-    <div class="card-block">
 
-        {% if 'pt' in request.LANGUAGE_CODE %}
-            <h2>{{ object.title_PT }}</h2>
-            <p class="text-justify">{{ object.description_PT|truncatechars:200|safe }}</p>
-            <p>
-                <small>
-                    <em class="text-uppercase">{% trans 'category' %}: </em>
-                    <em>
-                        <a href="{{ object.category.get_absolute_url }}">{{ object.category }}</a>
-                    </em>
-                </small>
-            </p>
-            <p>
-                <small>
-                    <em class="text-uppercase">{% trans 'tour' %}: </em>
-                    <em>
-                        <a href="{{ object.tour.get_absolute_url }}">{{ object.tour }}</a>
-                    </em>
-                </small>
-            </p>
-        {% endif %}
+    {% if object.tour %}
+      <p>
+        <small>
+          <em class="text-uppercase">{% trans 'tour' %}: </em>
+          <em>
+            <a href="{{ object.tour.get_absolute_url }}">{{ object.tour }}</a>
+          </em>
+        </small>
+      </p>
+    {% endif %}
 
-        {% if 'en' in request.LANGUAGE_CODE %}
-            <h2>{{ object.title_EN }}</h2>
-            <p class="text-justify">{{ object.description_EN|truncatechars:200|safe }}</p>
-            <p>
-                <small>
-                    <em class="text-uppercase">{% trans 'category' %}: </em>
-                    <em>
-                        <a href="{{ object.category.get_absolute_url }}">{{ object.category }}</a>
-                    </em>
-                </small>
-            </p>
-            <p>
-                <small>
-                    <em class="text-uppercase">{% trans 'tour' %}: </em>
-                    <em>
-                        <a href="{{ object.tour.get_absolute_url }}">{{ object.tour }}</a>
-                    </em>
-                </small>
-            </p>
-        {% endif %}
-
-        {% if 'de' in request.LANGUAGE_CODE %}
-            <h2>{{ object.title_DE }}</h2>
-            <p class="text-justify">{{ object.description_DE|truncatechars:200|safe }}</p>
-            {% if object.category %}
-            <p>
-                <small>
-                    <em class="text-uppercase">{% trans 'category' %}: </em>
-                    <em>
-                        <a href="{{ object.category.get_absolute_url }}">{{ object.category }}</a>
-                    </em>
-                </small>
-            </p>
-            {% endif %}
-            {% if object.tour %}
-            <p>
-                <small>
-                    <em class="text-uppercase">{% trans 'tour' %}: </em>
-                    <em>
-                        <a href="{{ object.tour.get_absolute_url }}">{{ object.tour }}</a>
-                    </em>
-                </small>
-            </p>
-            {% endif %}
-        {% endif %}
-
-        {% include 'templates/_share.html' %}
-        {% include 'templates/_CRUD.html' %}
-
-    </div>
+    {% include 'templates/_share.html' %}
+    {% include 'templates/_CRUD.html' %}
+  </div>
 </div>

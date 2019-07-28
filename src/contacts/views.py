@@ -1,18 +1,14 @@
-from django.conf import settings
-from django.core.mail import send_mail, BadHeaderError
-from django.core.urlresolvers import reverse
+from django.contrib import messages
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from django.db.models import Q
-from django.http import HttpResponse
+from django.core.urlresolvers import reverse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.translation import ugettext_lazy as _
-from django.contrib import messages
+
 from helpers.models import Helpers
-from tours.models import Category
 from offer.models import OfferCategory
-from .models import Contact, ContactHelpers
+from tours.models import Category
 from .forms import ContactForm
-from tours.forms import ContactMe
+from .models import Contact, ContactHelpers
 
 
 def get_lang(request):
@@ -44,31 +40,12 @@ def contact_list(request):
     except EmptyPage:
         queryset = paginator.page(paginator.num_pages)
 
-    if request.method == 'GET':
-        contact_me = ContactMe()
-    else:
-        contact_me = ContactMe(request.POST)
-        if contact_me.is_valid():
-            fullname = contact_me.cleaned_data['fullname']
-            message = contact_me.cleaned_data['message']
-            subject = 'Mail from ' + fullname
-            from_email = settings.EMAIL_HOST_USER
-            to_list = settings.EMAIL_TO
-            try:
-                send_mail(subject, message, from_email, to_list, fail_silently=False)
-            except BadHeaderError:
-                return HttpResponse('Invalid header found.')
-            return redirect('tour:success')
-        else:
-            return redirect('tour:fail')
-
     footer = {
         'pt': Helpers.objects.get(id=1).about_footer_PT,
         'en': Helpers.objects.get(id=1).about_footer_EN,
         'de': Helpers.objects.get(id=1).about_footer_DE
     }
     context = {
-        'contact_me': contact_me,
         'footer': {
             'about': footer[lang],
             'icon': Helpers.objects.get(id=1).footer_icon
@@ -93,23 +70,6 @@ def contact_detail(request, pk=None):
     query = request.GET.get('q')
     if query:
         return redirect(reverse('search') + '?q=' + query)
-    if request.method == 'GET':
-        contact_me = ContactMe()
-    else:
-        contact_me = ContactMe(request.POST)
-        if contact_me.is_valid():
-            fullname = contact_me.cleaned_data['fullname']
-            message = contact_me.cleaned_data['message']
-            subject = 'Mail from ' + fullname
-            from_email = settings.EMAIL_HOST_USER
-            to_list = settings.EMAIL_TO
-            try:
-                send_mail(subject, message, from_email, to_list, fail_silently=False)
-            except BadHeaderError:
-                return HttpResponse('Invalid header found.')
-            return redirect('tour:success')
-        else:
-            return redirect('tour:fail')
     breadcrumbs = [
         {'url': '/', 'name': _('Home')},
         {'url': '/contacts', 'name': _('Contacts')},
@@ -121,7 +81,6 @@ def contact_detail(request, pk=None):
         'de': Helpers.objects.get(id=1).about_footer_DE
     }
     context = {
-        'contact_me': contact_me,
         'footer': {
             'about': footer[lang],
             'icon': Helpers.objects.get(id=1).footer_icon
@@ -143,23 +102,6 @@ def contact_create(request):
     query = request.GET.get('q')
     if query:
         return redirect(reverse('search') + '?q=' + query)
-    if request.method == 'GET':
-        contact_me = ContactMe()
-    else:
-        contact_me = ContactMe(request.POST)
-        if contact_me.is_valid():
-            fullname = contact_me.cleaned_data['fullname']
-            message = contact_me.cleaned_data['message']
-            subject = 'Mail from ' + fullname
-            from_email = settings.EMAIL_HOST_USER
-            to_list = settings.EMAIL_TO
-            try:
-                send_mail(subject, message, from_email, to_list, fail_silently=False)
-            except BadHeaderError:
-                return HttpResponse('Invalid header found.')
-            return redirect('tour:success')
-        else:
-            return redirect('tour:fail')
     lang = get_lang(request)
     footer = {
         'pt': Helpers.objects.get(id=1).about_footer_PT,
@@ -183,7 +125,7 @@ def contact_create(request):
             return redirect('contact:list')
 
         context = {
-            'contact_me': contact_me,
+
             'footer': {
                 'about': footer[lang],
                 'icon': Helpers.objects.get(id=1).footer_icon
