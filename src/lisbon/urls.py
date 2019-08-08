@@ -33,6 +33,7 @@ urlpatterns = [
     url(r'^related-links/', include('related_links.urls', namespace='related_links')),
     url(r'^booking/', include('booking.urls', namespace='booking')),
     url(r'^search/$', views.search, name='search'),
+    url(r'^welcome/$', views.welcome, name='welcome'),
 ]
 
 # User-uploaded files like profile pics need to be served in development

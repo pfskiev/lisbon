@@ -82,6 +82,7 @@ DJANGO_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'django.contrib.sitemaps',
+    'corsheaders'
 ]
 HELPER_APPS = [
     'authtools',
@@ -107,6 +108,7 @@ PROJECT_APPS = [
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS + HELPER_APPS
 
 MIDDLEWARE_CLASSES = (
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -179,3 +181,11 @@ LOGIN_REDIRECT_URL = reverse_lazy("profiles:show_self")
 LOGIN_URL = reverse_lazy("accounts:login")
 
 THUMBNAIL_EXTENSION = 'jpg'  # Or any extn for your thumbnails
+
+
+CORS_ORIGIN_WHITELIST = [
+    'localhost:4200'
+]
+
+CORS_ALLOW_CREDENTIALS = True
+
