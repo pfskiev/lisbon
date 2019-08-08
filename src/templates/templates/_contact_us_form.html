@@ -1,7 +1,11 @@
 {% load i18n %}
 <form data-test="contact-form" name="contactForm" method="POST" action="/booking/contacts"
       enctype='multipart/form-data'>{% csrf_token %}
+<<<<<<< HEAD
     <p><label for="id_fullname">Name:</label> <input id="id_fullname" data-test="contact-form__name" ng-model="fullname" name="fullname" type="text" required/></p>
+=======
+    <p><label for="id_fullname">Name:</label> <input id="id_fullname" ng-model="fullname" name="fullname" type="text" required/></p>
+>>>>>>> a217d3081d8e23806d40959c924b9cbd7b3d2dbe
     <div ng-messages="contactForm.fullname.$error" ng-show="contactForm.fullname.$touched" style="color:maroon" role="alert">
         <div ng-message="required">This field is required</div>
     </div>
