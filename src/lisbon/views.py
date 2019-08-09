@@ -1,3 +1,5 @@
+import json
+
 from django.conf import settings
 from django.core.mail import send_mail, BadHeaderError
 from django.core.urlresolvers import reverse
@@ -5,7 +7,9 @@ from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.utils.translation import ugettext_lazy as _
+from django.views.decorators.http import require_http_methods
 
+from contacts.forms import ContactForm
 from helpers.models import Helpers
 from offer.models import Offer
 from offer.models import OfferCategory
@@ -234,3 +238,27 @@ def book_form(request):
     }
 
     return render(request, 'templates/_book_now.html', context)
+
+
+@require_http_methods(['POST'])
+def welcome(request):
+    body_unicode = request.body.decode('utf-8')
+    body_data = json.loads(body_unicode)
+
+    form = ContactForm({
+        "name": body_data["name"],
+        "email": body_data["email"],
+        "message": body_data["message"],
+        "additional_information": body_data["additionalInformation"],
+    })
+
+    if form.is_valid():
+
+        return HttpResponse(request.body)
+    else:
+        response = HttpResponse(form.errors)
+
+        response.status_code = 422
+        response.reason_phrase = 'Validation failed'
+
+        return response
