@@ -197,49 +197,6 @@ def search(request):
     return render(request, 'partials/search.html', context)
 
 
-def contact_us(request):
-    query = request.GET.get('q')
-    if query:
-        return redirect(reverse('search') + '?q=' + query)
-
-    context = {
-        'value': _('SEND'),
-    }
-
-    return render(request, 'templates/_contact_us_form.html', context)
-
-
-def book_form(request):
-    query = request.GET.get('q')
-    if query:
-        return redirect(reverse('search') + '?q=' + query)
-
-    if request.method == 'GET':
-        form = BookNow()
-    else:
-        form = BookNow(request.POST)
-        if form.is_valid():
-            fullname = form.cleaned_data['fullname']
-            message = form.cleaned_data['message']
-            subject = 'BOOK REQUEST from ' + fullname
-            from_email = settings.EMAIL_HOST_USER
-            to_list = settings.EMAIL_TO
-            try:
-                send_mail(subject, message, from_email, to_list, fail_silently=False)
-            except BadHeaderError:
-                return HttpResponse('Invalid header found.')
-            return redirect('tour:success')
-        else:
-            return redirect('tour:fail')
-
-    context = {
-        'form_book_now': form,
-        'value': _('book now')
-    }
-
-    return render(request, 'templates/_book_now.html', context)
-
-
 @require_http_methods(['POST'])
 def welcome(request):
     body_unicode = request.body.decode('utf-8')

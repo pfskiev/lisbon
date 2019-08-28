@@ -22,7 +22,7 @@
         <p class="card-text text-justify">{{ object.short_description_PT|safe}}</p>
         <p>{{ object.created_on }}</p>
         <p><small><em class="text-uppercase">{% trans 'category' %}: </em><em><a href="{{ object.category.get_absolute_url }}">{{ object.category }}</a></em></small></p>
-        <a class="btn btn-danger text-uppercase" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">{% trans 'book now' %}</a>
+        <a class="btn btn-danger text-uppercase" data-toggle="modal" data-test="booking-form-modal-trigger" data-target="#bookingFormModal" data-whatever="@getbootstrap">{% trans 'book now' %}</a>
         <a class="btn btn-danger-outline" href="{{ object.get_absolute_url }}" role="button">{% trans 'View details' %} &raquo;</a>
     </div>
     <div class="card-footer">

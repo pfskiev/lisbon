@@ -38,7 +38,7 @@
                 <div class="col-md-6">
                     <a href="{% url 'home' %}" class="card-title">{{ object.title|upper }}{% if object.price %} | {{ object.price }} €{% endif %}</a>
                     <p class="card-text text-justify">{{ object.description|safe }}</p>
-                    <a href="{{ object.id }}" class="btn btn-danger text-uppercase" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">{% trans 'book now' %}</a>
+                    <a href="{{ object.id }}" class="btn btn-danger text-uppercase" data-toggle="modal" data-target="#bookingFormModal" data-test="booking-form-modal-trigger" data-whatever="@getbootstrap">{% trans 'book now' %}</a>
                     {% include 'templates/_share.html' %}
                     {% if user.is_staff %}
                         <a class="btn btn-sm btn-danger-outline" href="{{ object.get_edit_url }}">
