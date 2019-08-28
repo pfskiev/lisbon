@@ -1,50 +1,73 @@
 {% load i18n %}
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" ng-controller="FormController">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancel()">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <h4 class="modal-title text-uppercase">{% trans 'book now' %}</h4>
+<div class="modal fade" id="bookingFormModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true" ng-controller="FormController">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancel()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title text-uppercase">{% trans 'book now' %}</h4>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <form data-test="booking-form" method="post" action="/booking/info" name="bookingForm">{% csrf_token %}
+            <p>
+              <label for="id_fullname">Name:</label>
+              <input data-test="booking-form__name" id="id_fullname" ng-model="fullname" name="fullname" type="text" required/>
+            </p>
+            <div ng-messages="bookingForm.fullname.$error" ng-show="bookingForm.fullname.$touched" style="color:maroon"
+                 role="alert">
+              <div ng-message="required">This field is required</div>
             </div>
-            <div class="modal-body">
-                <div class="container">
-                    <form method="post" action="/booking/info" name="bookingForm">{% csrf_token %}
-{#                        {{ booking_form.as_p }}#}
-                        <p><label for="id_fullname">Name:</label> <input id="id_fullname" ng-model="fullname" name="fullname" type="text" required/></p>
-                        <div ng-messages="bookingForm.fullname.$error" ng-show="bookingForm.fullname.$touched" style="color:maroon" role="alert">
-                            <div ng-message="required">This field is required</div>
-                        </div>
-                        <p><label for="id_email">Email:</label> <input id="id_email" ng-model="email" name="email" type="email" required/></p>
-                        <div ng-messages="bookingForm.email.$error" ng-show="bookingForm.email.$touched" style="color:maroon" role="alert">
-                            <div ng-message="required">This field is required</div>
-                        </div>
-                        <p><label for="id_phone">Phone:</label> <input id="id_phone" ng-model="phone" name="phone" type="text" required/></p>
-                        <div ng-messages="bookingForm.phone.$error" ng-show="bookingForm.phone.$touched" style="color:maroon" role="alert">
-                            <div ng-message="required">This field is required</div>
-                        </div>
-                        <p><label for="id_message">Message:</label> <textarea cols="40" id="id_message" ng-model="message" name="message" rows="10" required></textarea></p>
-                        <div ng-messages="bookingForm.message.$error" ng-show="bookingForm.message.$touched" style="color:maroon" role="alert">
-                            <div ng-message="required">This field is required</div>
-                        </div>
-                        <p><label for="id_date">From Date:</label> <input id="id_date" ng-model="date" name="date" type="text" required/></p>
-                        <div ng-messages="bookingForm.date.$error" ng-show="bookingForm.date.$touched" style="color:maroon" role="alert">
-                            <div ng-message="required">This field is required</div>
-                        </div>
-                        <button type="submit" class="btn btn-lg btn-primary text-uppercase" style="width: 100%;" ng-disabled="bookingForm.$invalid">
-                            {% trans 'book now' %}
-                        </button>
-                    </form>
-                </div>
+            <p>
+              <label for="id_email">Email:</label>
+              <input data-test="booking-form__email" id="id_email" ng-model="email" name="email" type="email" required/>
+            </p>
+            <div ng-messages="bookingForm.email.$error" ng-show="bookingForm.email.$touched" style="color:maroon"
+                 role="alert">
+              <div ng-message="required">This field is required</div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="cancel()">{% trans 'Cancel' %}</button>
+            <p>
+              <label for="id_phone">Phone:</label>
+              <input data-test="booking-form__phone" id="id_phone" ng-model="phone" name="phone" type="text" required/>
+            </p>
+            <div ng-messages="bookingForm.phone.$error" ng-show="bookingForm.phone.$touched" style="color:maroon"
+                 role="alert">
+              <div ng-message="required">This field is required</div>
             </div>
+            <p>
+              <label for="id_message">Message:</label>
+              <textarea data-test="booking-form__message" cols="40" id="id_message" ng-model="message" name="message" rows="10" required></textarea>
+            </p>
+            <div ng-messages="bookingForm.message.$error" ng-show="bookingForm.message.$touched" style="color:maroon"
+                 role="alert">
+              <div ng-message="required">This field is required</div>
+            </div>
+            <p>
+              <label for="id_date">From Date:</label>
+              <input id="id_date" data-test="booking-form__date" ng-model="date" name="date" type="text" required/>
+            </p>
+            <div ng-messages="bookingForm.date.$error" ng-show="bookingForm.date.$touched" style="color:maroon"
+                 role="alert">
+              <div ng-message="required">This field is required</div>
+            </div>
+            <button data-test="booking-form__submit-button" type="submit"
+                    class="btn btn-lg btn-primary text-uppercase" style="width: 100%;"
+                    ng-disabled="bookingForm.$invalid">
+              {% trans 'book now' %}
+            </button>
+          </form>
         </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                ng-click="cancel()">{% trans 'Cancel' %}</button>
+      </div>
     </div>
+  </div>
 </div>
 <script>
-    $( "#id_date" ).datepicker();
+    $("#id_date").datepicker();
 </script>

@@ -26,7 +26,6 @@ urlpatterns = [
     url(r'^rent-car/', include('rent_car.urls', namespace='rent_car')),
     url(r'^rent-hotel/', include('rent_hotel.urls', namespace='rent_hotel')),
     url(r'^about/$', views.about, name='about'),
-    url(r'^book-form/$', views.book_form, name='book_form'),
     url(r'^login-or-register/$', views.login_or_register, name='login_or_register'),
     url(r'^offers/', include('offer.urls', namespace='offer')),
     url(r'^category/', include('category.urls', namespace='category')),
