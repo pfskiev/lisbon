@@ -4,13 +4,39 @@
 {% load thumbnail %}
 {% load crispy_forms_tags %}
 {% block title %}Excursions Lisbon - Day Tours in Lisbon and Portugal with Professional Guide{% endblock %}
-{% block keywords %}Excursions Lisbon,Excursions to Lisbon,Excursions in Lisbon,Tours in lisbon,Lisbon Excursions{% endblock keywords %}
-{% block description %}Excursions Lisbon - Day Tours in Lisbon and Portugal with Professional Guide.xcursions Lisbon will organize for you in Lisbon : Walking City Tours, Tours to Sintra, Guided Tours in Portugal, Group Tours in Lisbon, Fishing Tours and Transfers.{% endblock description %}
+{% block keywords %}Excursions Lisbon,Excursions to Lisbon,Excursions in Lisbon,Tours in lisbon,Lisbon
+    Excursions{% endblock keywords %}
+{% block description %}Excursions Lisbon - Day Tours in Lisbon and Portugal with Professional Guide.xcursions Lisbon
+    will organize for you in Lisbon : Walking City Tours, Tours to Sintra, Guided Tours in Portugal, Group Tours in
+    Lisbon, Fishing Tours and Transfers.{% endblock description %}
 {% block content %}
     <img style="display: none;" src="{% static 'img/lisbon_tram.jpg' %}" alt="Excursions Lisbon">
     {% include 'templates/_breadcrumbs.html' %}
-    {# descriptions #}
-    <article class="tours-header offer">
+    <article class="offer" style="padding-top: 120px;">
+        <div class="container">
+            <div class="col-xs-12 col-sm-12 col-md-6" style="text-align: center">
+                <a target="_blank" href="https://www.visitportugal.com/en/content/clean-and-safe">
+                    <img style="width: 50%;" src="{% static '/media/certificate_clean_and_safe.jpg' %}"
+                         alt="Clean and Safe">
+                </a>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6" style="padding-top: 100px;">
+                {% if 'pt' in request.LANGUAGE_CODE %}
+                    Nossa empresa recebeu o certificado <a target="_blank" href="https://www.visitportugal.com/en/content/clean-and-safe"><em>Clean and Safe</em></a> que garante que os nossos clientes podem ficar em
+                    segurança connosco!
+                {% endif %}
+                {% if 'en' in request.LANGUAGE_CODE %}
+                    We have received the official certificate <a target="_blank" href="https://www.visitportugal.com/en/content/clean-and-safe"><em>Clean and Safe</em></a> from Turismo de Portugal which means that all
+                    our clients will be safe to travel with us!
+                {% endif %}
+                {% if 'de' in request.LANGUAGE_CODE %}
+                    Wir haben das offizielle Zertifikat <a target="_blank" href="https://www.visitportugal.com/en/content/clean-and-safe"><em>Clean and Safe</em></a> von Turismo de Portugal erhalten, was bedeutet,
+                    dass alle unsere Kunden sicher mit uns reisen können!
+                {% endif %}
+            </div>
+        </div>
+    </article>
+    <article class="offer">
         <div class="container">
             <div class="col-xs-12 col-sm-12 col-md-6">
                 <a href="http://excursions-lisbon.com/">
